@@ -1,0 +1,55 @@
+﻿@model RedLions.Presentation.Web.Models.Member
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Profile/Shared/_Layout.cshtml";
+}
+@section NavigationControls
+{
+    @{ Html.RenderPartial("_ProfileControlPartial"); }
+}
+
+
+
+<h2>My Profile</h2>
+<dl>
+    <dt>@Html.DisplayNameFor(model => model.Username)</dt>
+    <dd>@Html.DisplayTextFor(model => model.Username)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.FullName)</dt>
+    <dd>@Html.DisplayTextFor(model => model.FullName)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+    <dd>@Html.DisplayTextFor(model => model.Email)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.ReferrerUsername)</dt>
+    <dd>@Html.DisplayTextFor(model => model.ReferrerUsername)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.ReferralCount)</dt>
+    <dd>@Html.DisplayTextFor(model => model.ReferralCount)</dd>
+
+    <dt>Referral Link</dt>
+    <dd><a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=@Html.DisplayTextFor(model => model.ReferralLink)&p[images][0]=http://unoredlions.com/Content/Images/Banners/redlion_logo.png&p[title]=RedLions&p[summary]="
+        onclick="return windowpop(this.href, 545, 433)">Share on Facebook</a>
+
+
+    </dd>
+
+    
+</dl>
+
+
+<script>
+
+    function windowpop(url, width, height) {
+        event.preventDefault();
+        var leftPosition, topPosition;
+        //Allow for borders.
+        leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+        //Allow for title and status bars.
+        topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+        //Open the window.
+        window.open(url, "Window2", "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no");
+    }
+</script>

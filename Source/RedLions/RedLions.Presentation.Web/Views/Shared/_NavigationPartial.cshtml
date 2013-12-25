@@ -1,0 +1,33 @@
+﻿<nav class="navigation-bar">
+    <div class="navigation-bar-content">
+        <img id="redlions-logo" src="~/Content/Images/Banners/redlion_logo.png" />
+        <button class="element center-nav">Home</button>
+        <span class="element-divider"></span>
+
+        <div class="element">
+            <a class="dropdown-toggle" href="#">Company</a>
+            <ul class="dropdown-menu" data-role="dropdown">
+                <li><a href="#">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Partnerships</a></li>
+            </ul>
+        </div>
+
+        <span class="element-divider"></span>
+        <button class="element">Products</button>
+        <span class="element-divider"></span>
+        <button class="element">Business</button>
+        <span class="element-divider"></span>
+        <button class="element">Events</button>
+
+        @{ Html.RenderPartial("_LoginPartial"); }
+    </div>
+</nav>
+
+<!-- 
+    Explicitly load the metro-dropdown.js here, because 
+    this partial view is reloaded when a user logs in, 
+    If we don't load this dropdown, 
+    we lose the jquery-hookups.
+     -->
+<script src="@Url.Content("~/Scripts/Metro/metro-dropdown.js")"></script>

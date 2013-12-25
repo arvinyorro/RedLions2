@@ -1,0 +1,42 @@
+﻿<nav class="navigation-bar">
+    <div class="navigation-bar-content">
+
+        <div class="element">
+            <a class="dropdown-toggle" href="#">Admin</a>
+            <ul class="dropdown-menu" data-role="dropdown">
+                <li><a href="@Url.Action("Index")">Members</a></li>
+            </ul>
+        </div>
+
+        <span class="element-divider"></span>
+        <a class="element brand" href="javascript:location.reload(true)"><span class="icon-spin"></span></a>
+        <span class="element-divider"></span>
+        <div class="element">
+            <a href="@Url.Action("Create")" class="fg-white">Add User</a>
+        </div>
+        <span class="element-divider"></span>
+
+
+        <div class="element place-right">
+            <a class="dropdown-toggle" href="#">
+                <span class="icon-cog"></span>
+            </a>
+            <ul class="dropdown-menu place-right" data-role="dropdown">
+                <li>
+                    @using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                    }
+                </li>
+
+            </ul>
+        </div>
+        <span class="element-divider place-right"></span>
+        <a class="element place-right" href="#"><span class="icon-locked-2"></span></a>
+        <span class="element-divider place-right"></span>
+        <button class="element place-right">
+            <i class="icon-user-3 on-left"></i>@User.Identity.Name
+        </button>
+    </div>
+</nav>

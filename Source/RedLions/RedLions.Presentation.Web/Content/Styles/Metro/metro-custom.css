@@ -1,0 +1,34 @@
+/* Navigation Bar Background */
+.metro.redlions .navigation-bar {
+    background-color: #A60000;
+}
+
+/* Navigation Bar Hover */
+.metro.redlions .navigation-bar .navigation-bar-content .element:hover {
+    background-color: #BF3030;
+}
+
+/* DropDown Hover */
+.metro.redlions .dropdown-menu li:hover {
+    background: #BF3030;
+    color: #fff;
+}
+
+.center-nav
+{
+    margin-left: 40%;
+}
+
+/* User Interface */
+.metro.user-ui .page
+{
+    width: 980px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: left;
+}
+
+.metro.user-ui .input-control.text, .metro.user-ui .input-control.password
+{
+    width: 60%;
+}

@@ -1,0 +1,46 @@
+﻿@model RedLions.Presentation.Web.Models.LoginForm
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="page">
+    <div class="page-region">
+        <div class="page-region-content">
+<h2>Login</h2>
+
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl })) 
+{
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div id="login-form">
+        <label>@Html.LabelFor(m => m.Username)</label>
+        <div class="input-control text">
+            @Html.TextBoxFor(m => m.Username)
+            <button class="btn-clear"></button>
+        </div> 
+
+        <label>@Html.LabelFor(m => m.Password)</label>
+        <div class="input-control password">
+            @Html.PasswordFor(m => m.Password)
+            <button class="btn-reveal"></button>
+        </div> 
+        <div class="input-control checkbox">
+            <label>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                <span class="check"></span>
+                Remember Me
+            </label>
+        </div>
+        <div class="form-actions">
+            <button class="button primary" type="submit">Login</button>
+        </div>
+    </div>
+}
+
+        </div>
+    </div>
+</div>

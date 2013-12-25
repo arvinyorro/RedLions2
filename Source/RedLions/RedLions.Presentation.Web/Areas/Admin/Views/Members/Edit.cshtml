@@ -1,0 +1,67 @@
+﻿@model RedLions.Presentation.Web.ViewModels.EditMember
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Edit Member Details</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <!-- Username -->
+        @Html.LabelFor(model => model.Username)
+        <div class="input-control text" data-role="input-control">
+            @Html.TextBoxFor(model => model.Username, new { placeholder = "Username" } )
+            <button class="btn-clear" tabindex="-1"></button>
+        </div>
+        @Html.ValidationMessageFor(model => model.Username)
+
+        <!-- Email -->
+        @Html.LabelFor(model => model.Email)
+        <div class="input-control text" data-role="input-control">
+            @Html.TextBoxFor(model => model.Email, new { placeholder = "Email" } )
+            <button class="btn-clear" tabindex="-1"></button>
+        </div>
+        @Html.ValidationMessageFor(model => model.Email)
+
+        <!-- Firstname -->
+        @Html.LabelFor(model => model.FirstName)
+        <div class="input-control text" data-role="input-control">
+            @Html.TextBoxFor(model => model.FirstName, new { placeholder = "First name" } )
+            <button class="btn-clear" tabindex="-1"></button>
+        </div>
+        @Html.ValidationMessageFor(model => model.FirstName)
+
+        <!-- Lastname -->
+        @Html.LabelFor(model => model.LastName)
+        <div class="input-control text" data-role="input-control">
+            @Html.TextBoxFor(model => model.LastName, new { placeholder = "Last name" } )
+            <button class="btn-clear" tabindex="-1"></button>
+        </div>
+         @Html.ValidationMessageFor(model => model.LastName)
+
+        <!-- Referrer -->
+        @Html.LabelFor(model => model.ReferrerUsername)
+        <div class="input-control text" data-role="input-control">
+            @Html.TextBoxFor(model => model.ReferrerUsername, new { placeholder = "Referrer's Username" } )
+            <button class="btn-clear" tabindex="-1"></button>
+        </div>
+         @Html.ValidationMessageFor(model => model.ReferrerUsername)
+
+        <div class="input-control">
+            <input type="submit" value="Save" />
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

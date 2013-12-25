@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="~/Content/Images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <title>RedLions - @ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+
+    @Styles.Render("~/bundles/mvc-custom")
+    @Styles.Render("~/bundles/metro-style")
+    @Scripts.Render("~/bundles/metro-script")
+</head>
+<body class="metro user-ui">
+    <header>
+        @Html.Partial("_NavigationPartial")
+    </header>
+    <div class="page">
+        <div class="page-region">
+            <div class="page-region-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-content">
+            <!--Html.Partial("_FooterPartial")-->
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

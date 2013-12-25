@@ -1,0 +1,31 @@
+﻿@model IEnumerable<RedLions.Presentation.Web.Models.Member>
+
+@{
+    ViewBag.Title = "My Referrals";
+    Layout = "~/Views/Profile/Shared/_Layout.cshtml";
+}
+
+<h3>My Referrals</h3>
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().Username)</th>
+            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().RegisteredDateTime)</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            
+        @foreach (var item in Model) {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                <td class="right">@Html.DisplayFor(modelItem => item.RegisteredDateTime)</td>
+            </tr>
+        }
+        </tbody>
+
+        <tfoot></tfoot>
+
+    </table>
+</div>

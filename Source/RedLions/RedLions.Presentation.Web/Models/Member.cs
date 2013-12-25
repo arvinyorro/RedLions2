@@ -1,0 +1,53 @@
+﻿namespace RedLions.Presentation.Web.Models
+{
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+    using System.Web.Mvc;
+    using DTO = RedLions.Application.DTO;
+
+    public class Member : User
+    {
+        public Member(DTO.Member memberDTO)
+        {
+            this.ID = memberDTO.ID;
+            this.FirstName = memberDTO.FirstName;
+            this.LastName = memberDTO.LastName;
+            this.FullName = string.Format("{0} {1}",
+                memberDTO.FirstName,
+                memberDTO.LastName);
+            this.Username = memberDTO.Username;
+            this.Email = memberDTO.Email;
+            this.RegisteredDateTime = memberDTO.RegisteredDateTime;
+            this.ReferralCount = memberDTO.ReferralCount;
+            this.ReferralCode = memberDTO.ReferralCode;
+            this.ReferrerUsername = memberDTO.ReferrerUsername ?? "No referrer";
+            var request = HttpContext.Current.Request;
+            this.ReferralLink = string.Format("{0}/?r={1}",
+                request.Url.GetLeftPart(UriPartial.Authority), memberDTO.ReferralCode);
+        }
+
+        public Member()
+        {
+            // Required by MVC default data binding.
+        }
+
+        public int ID { get; set; }
+
+        [Display(Name="Name")]
+        public string FullName { get; set; }
+
+        [Display(Name = "Referral Code")]
+        public string ReferralCode { get; set; }
+
+        [Display(Name = "Referral Link")]
+        public string ReferralLink { get; set; }
+
+        [Display(Name = "Total Referrals")]
+        public int ReferralCount { get; set; }
+
+        [Display(Name = "Referrer")]
+        public string ReferrerUsername { get; set; }
+    }
+}

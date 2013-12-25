@@ -1,0 +1,107 @@
+﻿@model RedLions.Presentation.Web.Models.LoginForm
+
+@using (Html.BeginForm("LoginPartial", "Account", new { ReturnUrl = ViewBag.ReturnUrl })) 
+{
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div id="login-form">
+        <label>@Html.LabelFor(m => m.Username)</label>
+        <div class="input-control text">
+            @Html.TextBoxFor(m => m.Username)
+            <button class="btn-clear"></button>
+        </div> 
+
+        <label>@Html.LabelFor(m => m.Password)</label>
+        <div class="input-control password">
+            @Html.PasswordFor(m => m.Password)
+            <button class="btn-reveal"></button>
+        </div> 
+        <div class="input-control checkbox">
+            <label>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                <span class="check"></span>
+                Remember Me
+            </label>
+        </div>
+        <div class="form-actions">
+            <button class="button primary" type="button" onclick="login()">Login</button>&nbsp;
+            <button class="button" type="button" onclick="closeDialog()">Cancel</button>
+            <div id="login-loader" class="loaders" />
+        </div>
+    </div>
+}
+
+<!--
+    Did not utilize render.scripts because
+    PartialView cannot render scripts, raw scripts must be generated.
+-->
+<script>
+    var url = { 
+        login: '@Url.Action("LoginPartial", "Account")',
+    };
+
+    $(document).ready(function () {
+        bindFormEvents('#login-form');
+    });
+
+    function bindFormEvents(formSelector) {
+
+        var form = $(formSelector);
+        form.find('input,select,button').keypress(function (event) {
+            if (event.keyCode == 13) {
+                login();
+                return false;
+            }
+        });
+
+        var loader = form.find('#login-loader');
+        loader.hide();
+    }
+
+    // Do not name this 'close()'
+    function closeDialog() {
+        $.Dialog.close();
+    }
+
+    function login() {
+        
+        var loginForm = $('.metro .window-overlay .content form');
+
+        // remove fixed height css of the dialog box
+        $('.window.flat.shadow').css("height", "");
+
+        var loader = loginForm.find('#login-loader');
+        loader.show('fast');
+
+        $.ajax({
+            type: "POST",
+            url: url.login,
+            data: loginForm.serialize(),
+            cache: false,
+            success: function (data) {
+                
+                if (data.Success == true) {
+                    $("#header").load('@Url.Action("NavigationBar", "Home")');
+                    $.Dialog.close();
+                }
+                else {
+                    loginForm.html(data);
+                }
+
+                bindFormEvents(loginForm);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+            }
+        });
+    }
+</script>
+
+
+<!-- 
+    Explicitly load the metro-input-control.js here, because 
+    the buttons inside the form (btn-reveal) is reloaded evertime the user tries to login.
+    If we don't reload this script, we lose the related functionality on those buttons.
+     -->
+<script src="@Url.Content("~/Scripts/Metro/metro-input-control.js")"></script>

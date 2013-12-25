@@ -1,0 +1,40 @@
+﻿@model IEnumerable<RedLions.Presentation.Web.Models.Member>
+
+@{
+    ViewBag.Title = "Admin Interface - Members";
+}
+
+<h3>Members</h3>
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().Username)</th>
+            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</th>
+            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().FullName)</th>
+            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().RegisteredDateTime)</th>
+            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().ReferralCount)</th>
+            <th class="text-right">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            
+        @foreach (var item in Model) {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                <td class="right">@Html.DisplayFor(modelItem => item.RegisteredDateTime)</td>
+                <td class="right">@Html.DisplayFor(modelItem => item.ReferralCount)</td>
+                <td class="right text-right">
+                    <a href="@Url.Action("Edit", new { userID=item.ID })" class="button default">Edit</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+
+        <tfoot></tfoot>
+
+    </table>
+</div>

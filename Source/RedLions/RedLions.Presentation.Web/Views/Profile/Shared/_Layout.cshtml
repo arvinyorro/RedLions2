@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="~/Content/Images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <title>RedLions - @ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+
+    @Styles.Render("~/bundles/mvc-custom")
+    @Styles.Render("~/bundles/metro-style")
+    @Scripts.Render("~/bundles/metro-script")
+</head>
+<body class="metro redlions user-ui">
+    <header>
+        <nav class="navigation-bar">
+            <div class="navigation-bar-content">
+
+                <div class="element">
+                    <a class="dropdown-toggle" href="#">My Account</a>
+                    <ul class="dropdown-menu" data-role="dropdown">
+                        <li><a href="@Url.Action("Index")">My Profile</a></li>
+                        <li><a href="@Url.Action("Referrals")">My Referrals</a></li>
+                    </ul>
+                </div>
+                <span class="element-divider"></span>
+
+                @RenderSection("NavigationControls", false)
+
+                <span class="element-divider"></span>
+
+
+                <div class="element place-right">
+                    <a class="dropdown-toggle" href="#">
+                        <span class="icon-cog"></span>
+                    </a>
+                    <ul class="dropdown-menu place-right" data-role="dropdown">
+                        <li>
+                            @using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                            }
+                        </li>
+
+                    </ul>
+                </div>
+                <span class="element-divider place-right"></span>
+                <a class="element place-right" href="#"><span class="icon-locked-2"></span></a>
+                <span class="element-divider place-right"></span>
+                <button class="element place-right">
+                    <i class="icon-user-3 on-left"></i>@User.Identity.Name
+                </button>
+            </div>
+        </nav>
+    </header>
+    <div class="page">
+        <div class="page-region">
+            <div class="page-region-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-content">
+            <!--Html.Partial("_FooterPartial")-->
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

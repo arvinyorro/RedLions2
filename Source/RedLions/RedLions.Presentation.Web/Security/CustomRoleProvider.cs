@@ -20,7 +20,7 @@
         public CustomRoleProvider()
             : base()
         {
-            this.UserService = MvcApplication.Container.Resolve<UserService>();
+            this.UserService = UnityConfig.GetConfiguredContainer().Resolve<UserService>();
         }
 
         public override bool IsUserInRole(string username, string roleName)

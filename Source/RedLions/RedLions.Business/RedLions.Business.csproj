@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IInquiryRepository.cs" />
     <Compile Include="IMemberRepository.cs" />
+    <Compile Include="Inquiry.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

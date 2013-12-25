@@ -1,4 +1,5 @@
-﻿@model IEnumerable<RedLions.Presentation.Web.Models.Member>
+﻿@model PagedList.IPagedList<RedLions.Presentation.Web.Models.Member>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Admin Interface - Members";
@@ -38,3 +39,15 @@
 
     </table>
 </div>
+
+<!-- Pagination Info -->
+<p>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+</p>
+
+<!-- Pagination Links -->
+@Html.PagedListPager(
+    list: Model, 
+    generatePageUrl: page => Url.Action("Index", 
+                             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, }),
+    options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })

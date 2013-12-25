@@ -95,7 +95,7 @@
                 memberDTO.Password = "redlions";
             }
 
-            Business.Member member = new Business.Member(
+            var member = new Business.Member(
                 username: memberDTO.Username,
                 firstName: memberDTO.FirstName,
                 lastName: memberDTO.LastName,

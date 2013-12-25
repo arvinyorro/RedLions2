@@ -31,6 +31,7 @@ namespace RedLions.Infrastructure.Repository
         {
             modelBuilder.Configurations.Add(new UserMap());
             modelBuilder.Configurations.Add(new MemberMap());
+            modelBuilder.Configurations.Add(new InquiryMap());
         }
     }
 }

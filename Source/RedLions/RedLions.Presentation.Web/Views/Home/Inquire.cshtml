@@ -1,0 +1,58 @@
+﻿@model RedLions.Presentation.Web.Models.Inquiry
+@{
+    ViewBag.Title = "Inquire";
+}
+
+<h2>Inquire</h2>
+
+<div class="page">
+    <div class="page-region">
+        <div class="page-region-content">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+                    <legend>Inquire</legend>
+
+                    <!-- Firstname -->
+                    @Html.LabelFor(model => model.FirstName)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.FirstName, new { placeholder = "First name" })
+                        <button class="btn-clear" tabindex="-1"></button>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.FirstName)
+
+                    <!-- Lastname -->
+                    @Html.LabelFor(model => model.LastName)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.LastName, new { placeholder = "Last name" })
+                        <button class="btn-clear" tabindex="-1"></button>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.LastName)
+
+                    <!-- Email -->
+                    @Html.LabelFor(model => model.Email)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.Email, new { placeholder = "Email" })
+                        <button class="btn-clear" tabindex="-1"></button>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Email)
+
+                    <!-- CellphoneNumber -->
+                    @Html.LabelFor(model => model.CellphoneNumber)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.CellphoneNumber, new { placeholder = "Cellphone Number" })
+                        <button class="btn-clear" tabindex="-1"></button>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.CellphoneNumber)
+
+                    <div class="input-control">
+                        <button type="submit" class="primary">Create Account</button>
+                    </div>
+                </fieldset>
+            }
+
+        </div>
+    </div>
+</div>

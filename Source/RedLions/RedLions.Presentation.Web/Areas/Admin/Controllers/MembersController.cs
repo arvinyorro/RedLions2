@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     // Third Party
     using Microsoft.Practices.Unity;
+    using PagedList;
     // Other Layers
     using RedLions.Application;
     using DTO = RedLions.Application.DTO;
@@ -20,11 +21,14 @@
         //
         // GET: /Admin/Members/
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             IEnumerable<DTO.Member> memberDTOs = this.MemberService.GetAllMembers();
             IEnumerable<Models.Member> memberModels = memberDTOs.Select(x => new Models.Member(x));
-            return View(memberModels);
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(memberModels.ToPagedList(pageNumber, pageSize));
         }
 
         public ViewResult Create()

@@ -155,7 +155,7 @@
         public CustomMembershipProvider()
             : base()
         {
-            this.UserService = MvcApplication.Container.Resolve<UserService>();
+            this.UserService = UnityConfig.GetConfiguredContainer().Resolve<UserService>();
         }
 
         public override bool ValidateUser(string username, string password)

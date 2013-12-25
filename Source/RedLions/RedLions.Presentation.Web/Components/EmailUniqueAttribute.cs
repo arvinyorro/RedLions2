@@ -14,7 +14,7 @@
         public EmailUniqueAttribute(string errorMessage)
         {
             // Inject dependency
-            this.userService = MvcApplication.Container.Resolve<UserService>();
+            this.userService = UnityConfig.GetConfiguredContainer().Resolve<UserService>();
 
             this.ErrorMessage = errorMessage;
 

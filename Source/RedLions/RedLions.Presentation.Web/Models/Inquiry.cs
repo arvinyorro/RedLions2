@@ -1,5 +1,6 @@
 ﻿namespace RedLions.Presentation.Web.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using DTO = RedLions.Application.DTO;
@@ -19,9 +20,17 @@
             this.Email = inquiryDTO.Email;
             this.ReferrerID = inquiryDTO.ReferrerID;
             this.ReferrerUsername = inquiryDTO.ReferrerUsername;
+
+            this.Name = string.Format("{0} {1}", inquiryDTO.FirstName, inquiryDTO.LastName);
+            this.InquiredDateTime = inquiryDTO.InquiredDateTime;
         }
 
         public int ID  { get; set; }
+
+        public string Name { get; set; }
+
+        [Display(Name="Date Inquired")]
+        public DateTime InquiredDateTime { get; set; }
 
         [Display(Name = "First name")]
         [Required(ErrorMessage = "Please enter your first name.")]

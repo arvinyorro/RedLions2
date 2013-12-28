@@ -20,6 +20,7 @@ namespace RedLions.Presentation.Web.ViewModels
             this.Username = memberDTO.Username;
             this.Email = memberDTO.Email;
             this.ReferrerUsername = memberDTO.ReferrerUsername;
+            this.CellphoneNumber = memberDTO.CellphoneNumber;
         }
 
         public EditMember()
@@ -47,6 +48,11 @@ namespace RedLions.Presentation.Web.ViewModels
         [Required(ErrorMessage = "Please enter your last name.")]
         [MaxLength(100)]
         public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Contact Number")]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "Invalid Cellphone Number")]
+        public string CellphoneNumber { get; set; }
 
         [Display(Name = "Referrer")]
         public string ReferrerUsername { get; set; }

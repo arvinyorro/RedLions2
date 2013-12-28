@@ -53,6 +53,7 @@
             memberDTO.FirstName = member.FirstName;
             memberDTO.LastName = member.LastName;
             memberDTO.Email = member.Email;
+            memberDTO.CellphoneNumber = member.CellphoneNumber;
 
             StatusCode statusCode = this.MemberService.Update(memberDTO);
 

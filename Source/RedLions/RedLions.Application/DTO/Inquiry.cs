@@ -14,20 +14,23 @@
         public string Email { get; set; }
         public int? ReferrerID { get; set; }
         public string ReferrerUsername { get; set; }
+        public DateTime InquiredDateTime { get; set; }
     }
 
     internal static class InquiryAssembler
     {
-        internal static DTO.Inquiry ToDTO(Business.Inquiry inquiry)
+        internal static DTO.Inquiry ToDTO(this Business.Inquiry inquiry)
         {
             var inquiryDTO = new DTO.Inquiry()
             {
+                ID = inquiry.ID,
                 FirstName = inquiry.FirstName,
                 LastName = inquiry.LastName,
                 CellphoneNumber = inquiry.CellphoneNumber,
                 Email = inquiry.Email,
                 ReferrerID = inquiry.Referrer.ID,
-                ReferrerUsername = inquiry.Referrer.Username
+                ReferrerUsername = inquiry.Referrer.Username,
+                InquiredDateTime = inquiry.InquiredDataTime
             };
 
             return inquiryDTO;
@@ -35,7 +38,7 @@
 
         internal static IEnumerable<DTO.Inquiry> ToDTOList(IEnumerable<Business.Inquiry> inquiries)
         {
-            return inquiries.Select(x => InquiryAssembler.ToDTO(x));
+            return inquiries.Select(x => x.ToDTO());
         }
     }
 }

@@ -5,7 +5,7 @@
     {
         protected Inquiry()
         {
-
+            // Required by EF
         }
 
         public Inquiry(

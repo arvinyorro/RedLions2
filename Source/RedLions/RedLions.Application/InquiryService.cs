@@ -1,6 +1,8 @@
 ﻿namespace RedLions.Application
 {
     using System;
+    using System.Linq;
+    using System.Collections.Generic;  
     using RedLions.Application.DTO;
     using RedLions.Business;
     
@@ -8,6 +10,7 @@
     {
         private IInquiryRepository inquiryRepository;
         private IMemberRepository memberRepository;
+        private const int pageSize = 10;
 
         public InquiryService(
             IInquiryRepository inquiryRepository,
@@ -27,11 +30,19 @@
             this.memberRepository = memberRepository;
         }
 
+        public int PageSize
+        {
+            get
+            {
+                return pageSize;
+            }
+        }
+
         public StatusCode SubmitInquiry(DTO.Inquiry inquiryDTO)
         {
             if (inquiryDTO == null)
             {
-                throw new ArgumentNullException("inquiryDTO must not be null");
+                throw new ArgumentNullException("inquiryDTO must not be null.");
             }
 
             Business.Member referrer = this.GenerateReferrer(inquiryDTO.ReferrerID);
@@ -47,6 +58,32 @@
             this.inquiryRepository.Inquire(inquiry);
 
             return StatusCode.Success;
+        }
+
+        public ICollection<DTO.Inquiry> GetPagedInquiries(
+            int pageIndex,
+            out int totalCount)
+        {
+            int index = (pageIndex == 0 ? 1 : pageIndex) - 1;
+            totalCount = 0;
+
+            IEnumerable<Business.Inquiry> inquiries = this.inquiryRepository
+                .GetPagedList(
+                    index,
+                    pageSize,
+                    out totalCount,
+                    x => x.InquiredDataTime,
+                    x => x.Registered == false);
+
+            return InquiryAssembler.ToDTOList(inquiries).ToList();
+        }
+
+        public DTO.Inquiry GetById(int inquiryId)
+        {
+            Business.Inquiry inquiry = this.inquiryRepository.GetById(inquiryId);
+            if (inquiry == null) return null;
+
+            return inquiry.ToDTO();
         }
 
         private Business.Member GenerateReferrer(int? referrerID)

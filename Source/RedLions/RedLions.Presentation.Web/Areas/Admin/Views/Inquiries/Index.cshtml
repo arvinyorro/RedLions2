@@ -1,0 +1,52 @@
+﻿@model PagedList.IPagedList<RedLions.Presentation.Web.Models.Inquiry>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Admin Interface - Inquiries";
+}
+
+<h3>Inquiries</h3>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().Name)</th>
+                <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</th>
+                <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().CellphoneNumber)</th>
+                <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().InquiredDateTime)</th>
+                <th class="text-right">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {   
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CellphoneNumber)</td>
+                    <td class="right">@Html.DisplayFor(modelItem => item.InquiredDateTime)</td>
+                    <td class="right text-right">
+                        <a href="@Url.Action("Create", "Members", new { inquiryID = item.ID })" class="button default">Register</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot></tfoot>
+
+    </table>
+</div>
+
+<!-- Pagination Info -->
+<p>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+</p>
+
+<!-- Pagination Links -->
+@Html.PagedListPager(
+    list: Model,
+    generatePageUrl: page => Url.Action("Index",
+                             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, }),
+    options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })

@@ -5,6 +5,14 @@
     ViewBag.Title = "Admin Interface - Members";
 }
 
+@section NavigationControls
+{
+    @{ Html.RenderPartial("_MembersControlPartial"); }
+}
+
+
+
+
 <h3>Members</h3>
 <div>
     <table class="table">
@@ -13,6 +21,7 @@
             <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().Username)</th>
             <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</th>
             <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().FullName)</th>
+            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().CellphoneNumber)</th>
             <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().RegisteredDateTime)</th>
             <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().ReferralCount)</th>
             <th class="text-right">Action</th>
@@ -26,6 +35,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Username)</td>
                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
                 <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                <td>@Html.DisplayFor(modelItem => item.CellphoneNumber)</td>
                 <td class="right">@Html.DisplayFor(modelItem => item.RegisteredDateTime)</td>
                 <td class="right">@Html.DisplayFor(modelItem => item.ReferralCount)</td>
                 <td class="right text-right">

@@ -16,14 +16,24 @@
                 .IsRequired()
                 .HasMaxLength(50);
 
+            this.Property(t => t.CellphoneNumber)
+                .IsRequired()
+                .HasMaxLength(11);
+
+            // Navigational Models
             this.HasOptional(t => t.Referrer)
                 .WithMany(t => t.Referrals)
                 .Map(m => m.MapKey("referral_user_id"));
-
+            
+            this.HasOptional(t => t.Inquiry)
+                .WithOptionalDependent()
+                .Map(m => m.MapKey("inquiry_id"));
+            
             // Column and Table Mappings
             this.ToTable("member_details");
             this.Property(t => t.MemberID).HasColumnName("member_id");
             this.Property(t => t.ReferralCode).HasColumnName("referral_code");
+            this.Property(t => t.CellphoneNumber).HasColumnName("cellphone_number");
         }
     }
 }

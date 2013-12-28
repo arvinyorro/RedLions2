@@ -34,6 +34,14 @@
         </div>
         @Html.ValidationMessageFor(model => model.Email)
 
+        <!-- Cellphone Number -->
+        @Html.LabelFor(model => model.CellphoneNumber)
+        <div class="input-control text" data-role="input-control">
+            @Html.TextBoxFor(model => model.CellphoneNumber, new { placeholder = "Contact number" })
+            <button class="btn-clear" tabindex="-1"></button>
+        </div>
+        @Html.ValidationMessageFor(model => model.CellphoneNumber)
+
         <!-- Firstname -->
         @Html.LabelFor(model => model.FirstName)
         <div class="input-control text" data-role="input-control">

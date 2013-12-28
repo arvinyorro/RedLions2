@@ -95,13 +95,21 @@
                 memberDTO.Password = "redlions";
             }
 
+            Business.Inquiry inquiry = null;
+            if (memberDTO.InquiryID.HasValue)
+            {
+                inquiry = this.genericRepository.GetById<Business.Inquiry>(memberDTO.InquiryID.Value);
+            }
+
             var member = new Business.Member(
+                inquiry: inquiry,
                 username: memberDTO.Username,
                 firstName: memberDTO.FirstName,
                 lastName: memberDTO.LastName,
                 email: memberDTO.Email,
                 password: Password.Encrypt(memberDTO.Password),
-                personalReferralCode: this.GenerateReferralCode());
+                personalReferralCode: this.GenerateReferralCode(),
+                cellphoneNumber: memberDTO.CellphoneNumber);
 
             member.Referrer = this.GenerateReferrer(out statusCode, memberDTO.ReferrerUsername);
 
@@ -130,6 +138,7 @@
             member.FirstName = memberDTO.FirstName;
             member.LastName = memberDTO.LastName;
             member.Email = memberDTO.Email;
+            member.CellphoneNumber = memberDTO.CellphoneNumber;
 
             if (member.Referrer != null &&
                 member.Referrer.Username != memberDTO.ReferrerUsername)

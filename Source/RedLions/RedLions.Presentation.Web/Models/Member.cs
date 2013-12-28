@@ -10,7 +10,7 @@
     public class Member : User
     {
         public Member(DTO.Member memberDTO)
-        {
+        {   
             this.ID = memberDTO.ID;
             this.FirstName = memberDTO.FirstName;
             this.LastName = memberDTO.LastName;
@@ -26,6 +26,7 @@
             var request = HttpContext.Current.Request;
             this.ReferralLink = string.Format("{0}/?r={1}",
                 request.Url.GetLeftPart(UriPartial.Authority), memberDTO.ReferralCode);
+            this.CellphoneNumber = memberDTO.CellphoneNumber;
         }
 
         public Member()
@@ -34,6 +35,8 @@
         }
 
         public int ID { get; set; }
+
+        public int? InquiryID { get; set; }
 
         [Display(Name="Name")]
         public string FullName { get; set; }
@@ -49,5 +52,10 @@
 
         [Display(Name = "Referrer")]
         public string ReferrerUsername { get; set; }
+
+        [Required]
+        [Display(Name = "Contact Number")]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "Invalid Cellphone Number")]
+        public string CellphoneNumber { get; set; }
     }
 }

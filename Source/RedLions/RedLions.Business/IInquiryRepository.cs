@@ -8,11 +8,13 @@
     {
         void Inquire(Inquiry inquiry);
         Inquiry GetById(int id);
+        IEnumerable<Inquiry> GetAllInquiries(bool registered);
         IEnumerable<Inquiry> GetPagedList<TKey>(
             int pageIndex,
             int pageSize,
             out int totalCount,
             Expression<Func<Inquiry, TKey>> order,
-            Expression<Func<Inquiry, bool>> predicate);
+            Expression<Func<Inquiry, bool>> filter = null);
+        int Count(bool registered);
     }
 }

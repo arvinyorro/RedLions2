@@ -18,6 +18,9 @@
         [Dependency]
         public MemberService MemberService { get; set; }
 
+        [Dependency]
+        public InquiryService InquiryService { get; set; }
+
         //
         // GET: /Admin/Members/
 
@@ -26,14 +29,34 @@
             IEnumerable<DTO.Member> memberDTOs = this.MemberService.GetAllMembers();
             IEnumerable<Models.Member> memberModels = memberDTOs.Select(x => new Models.Member(x));
 
-            int pageSize = 5;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(memberModels.ToPagedList(pageNumber, pageSize));
         }
 
-        public ViewResult Create()
+        public ViewResult Create(int? inquiryID)
         {
-            return View();
+            DTO.Inquiry inquiryDTO = null;
+            if (inquiryID.HasValue)
+            {
+                inquiryDTO = this.InquiryService.GetById(inquiryID.Value);
+            }
+
+            if (!inquiryID.HasValue ||
+                inquiryDTO == null)
+            {
+                return View();
+            }
+
+            var templateMember = new Models.Member();
+            templateMember.InquiryID = inquiryDTO.ID;
+            templateMember.Email = inquiryDTO.Email;
+            templateMember.FirstName = inquiryDTO.FirstName;
+            templateMember.LastName = inquiryDTO.LastName;
+            templateMember.ReferrerUsername = inquiryDTO.ReferrerUsername;
+            templateMember.CellphoneNumber = inquiryDTO.CellphoneNumber;
+
+            return View(templateMember);
         }
 
         [HttpPost]
@@ -46,11 +69,13 @@
 
             var memberDTO = new DTO.Member()
             {
+                InquiryID = member.InquiryID,
                 Username = member.Username,
                 FirstName = member.FirstName,
                 LastName = member.LastName,
                 Email = member.Email,
-                ReferrerUsername = member.ReferrerUsername 
+                ReferrerUsername = member.ReferrerUsername,
+                CellphoneNumber = member.CellphoneNumber,
             };
 
             this.MemberService.Register(memberDTO);
@@ -81,7 +106,8 @@
                 FirstName = member.FirstName,
                 LastName = member.LastName,
                 Email = member.Email,
-                ReferrerUsername = member.ReferrerUsername 
+                ReferrerUsername = member.ReferrerUsername,
+                CellphoneNumber = member.CellphoneNumber
             };
 
             StatusCode statusCode = this.MemberService.Update(memberDTO);

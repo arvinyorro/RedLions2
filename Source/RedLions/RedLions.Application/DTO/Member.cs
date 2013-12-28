@@ -7,8 +7,10 @@
 
     public class Member : User
     {
+        public int? InquiryID { get; set; }
         public int ReferralCount { get; set; }
         public string ReferralCode { get; set; }
+        public string CellphoneNumber { get; set; }
         public string ReferrerUsername { get; set; }
     }
 
@@ -30,7 +32,8 @@
                 Email = member.Email,
                 RegisteredDateTime = member.RegisteredDateTime,
                 ReferralCount = member.Referrals.Count,
-                ReferralCode = member.ReferralCode,              
+                ReferralCode = member.ReferralCode,         
+                CellphoneNumber = member.CellphoneNumber,
             };
 
             if (member.Referrer != null)

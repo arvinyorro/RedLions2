@@ -78,6 +78,12 @@
             return this.context.Set<TEntity>().Count(filter);
         }
 
+        public void Create<TEntity>(TEntity entity) where TEntity : class
+        {
+            this.context.Set<TEntity>().Add(entity);
+            this.Save();
+        }
+
         public void Update<TEntity>(TEntity entity) where TEntity : class
         {
             this.context.Entry<TEntity>(entity).State = System.Data.EntityState.Modified;

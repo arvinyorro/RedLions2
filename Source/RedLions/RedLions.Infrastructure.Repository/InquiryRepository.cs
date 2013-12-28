@@ -8,18 +8,11 @@
     using System.Text;
     using RedLions.Business;
 
-    public class InquiryRepository : IInquiryRepository
+    public class InquiryRepository : GenericRepository, IInquiryRepository
     {
-        private RedLionsContext context;
-
         public InquiryRepository(RedLionsContext context)
+            : base(context)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("The parameter 'context' must not be null.");
-            }
-
-            this.context = context;
         }
 
         public void Inquire(Inquiry inquiry)
@@ -29,13 +22,17 @@
                 throw new ArgumentNullException("The parameter 'inquiry' must not be null.");
             }
 
-            this.context.Inquiries.Add(inquiry);
-            this.Save();
+            base.Create<Inquiry>(inquiry);
         }
 
         public Inquiry GetById(int id)
         {
-            return this.context.Inquiries.Find(id);
+            return base.GetById<Inquiry>(id);
+        }
+
+        public IEnumerable<Inquiry> GetAllInquiries(bool registered)
+        {
+            return base.GetAll<Inquiry>(x => x.Registered == registered);
         }
 
         public IEnumerable<Inquiry> GetPagedList<TKey>(
@@ -45,49 +42,12 @@
             Expression<Func<Inquiry, TKey>> order,
             Expression<Func<Inquiry, bool>> filter = null)
         {
-            var query = from x in this.context.Inquiries
-                        select x;
-
-            if (filter != null)
-            {
-                query = query.Where(filter);
-            }
-
-            totalCount = query.Count();
-
-            // Warning: OrderBy() must be used before Skip();
-            query = query.OrderBy(order);
-
-            query = query.Skip(pageSize * pageIndex).Take(pageSize);
-
-            return query.ToList();
+            return base.GetPagedList<Inquiry, TKey>(pageIndex, pageSize, out totalCount, order, filter);
         }
 
-        private void Save()
+        public int Count(bool registered)
         {
-            try
-            {
-                this.context.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                StringBuilder sb = new StringBuilder();
-
-                foreach (var failure in ex.EntityValidationErrors)
-                {
-                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
-                    foreach (var error in failure.ValidationErrors)
-                    {
-                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
-                        sb.AppendLine();
-                    }
-                }
-
-                throw new DbEntityValidationException(
-                    "Entity Validation Failed - errors follow:\n" +
-                    sb.ToString(), ex
-                ); // Add the original exception as the innerException
-            }
+            return base.Count<Inquiry>(x => x.Registered == registered);
         }
     }
 }

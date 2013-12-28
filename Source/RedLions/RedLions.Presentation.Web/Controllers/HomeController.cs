@@ -14,6 +14,7 @@
             MemberService memberService)
         {
             this.memberService = memberService;
+            this.inquiryService = inquiryService;
         }
         //
         // GET: /Home/
@@ -41,7 +42,7 @@
             {
                 FirstName = inquiry.FirstName,
                 LastName = inquiry.LastName,
-                Email = inquiry.LastName,
+                Email = inquiry.Email,
                 CellphoneNumber = inquiry.CellphoneNumber
             };
 

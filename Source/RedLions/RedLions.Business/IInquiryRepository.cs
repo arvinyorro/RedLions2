@@ -8,7 +8,7 @@
     {
         void Inquire(Inquiry inquiry);
         Inquiry GetById(int id);
-        IEnumerable<Inquiry> GetPagedList<Inquiry, TKey>(
+        IEnumerable<Inquiry> GetPagedList<TKey>(
             int pageIndex,
             int pageSize,
             out int totalCount,

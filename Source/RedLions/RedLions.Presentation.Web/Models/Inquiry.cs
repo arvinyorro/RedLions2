@@ -23,13 +23,11 @@
 
         public int ID  { get; set; }
 
-        [Required]
         [Display(Name = "First name")]
         [Required(ErrorMessage = "Please enter your first name.")]
         [MaxLength(100)]
         public string FirstName { get; set; }
 
-        [Required]
         [Display(Name = "Last name")]
         [Required(ErrorMessage = "Please enter your first name.")]
         [MaxLength(100)]

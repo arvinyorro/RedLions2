@@ -26,6 +26,7 @@ namespace RedLions.Infrastructure.Repository
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Inquiry> Inquiries { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

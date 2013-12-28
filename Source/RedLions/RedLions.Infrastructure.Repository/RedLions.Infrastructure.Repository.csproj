@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenericRepository.cs" />
+    <Compile Include="InquiryRepository.cs" />
     <Compile Include="Mapping\InquiryMap.cs" />
     <Compile Include="Mapping\MemberMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />

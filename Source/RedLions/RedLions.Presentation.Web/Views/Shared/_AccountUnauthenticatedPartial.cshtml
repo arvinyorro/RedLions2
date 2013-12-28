@@ -1,0 +1,39 @@
+﻿<button id="login-button" class="element place-right">Login</button>
+<button id="register-button" class="element place-right" onclick="location.href='@Url.Action("Inquire", "Home")';">Inquire</button>
+
+<div id="login-dialog" style="display: none;">
+    @{
+        var returnUrl = @Request.RawUrl; // Get current page URL
+        Html.RenderAction("LoginForm", "Account", returnUrl);
+    }
+</div>
+
+<!--
+    Did not utilize 'RenderSection.Scripts' because
+    PartialViews cannot render scripts, raw <scripts> tags must be used.
+-->
+<script>
+    $(document).ready(function () {
+
+        // Login Button Clicked
+        $("#login-button").on('click', function () {
+
+            // Display Rendered PartialView(Account/LoginFormPartial) as Dialog
+            $.Dialog({
+                overlay: true,
+                shadow: true,
+                flat: true,
+                title: 'Flat window',
+                content: '',
+                padding: 10,
+                onShow: function (_dialog) {
+                    var loginDialog = $('#login-dialog');
+                    $.Dialog.title("User login");
+                    $.Dialog.content(loginDialog.html());
+                    reinitInputs();
+                }
+            });
+        });
+
+    });
+</script>

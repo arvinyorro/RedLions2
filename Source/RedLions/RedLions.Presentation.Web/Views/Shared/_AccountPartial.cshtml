@@ -1,0 +1,9 @@
+﻿@if (Request.IsAuthenticated)
+{
+    Html.RenderPartial("_AccountAuthenticatedPartial");
+}
+else
+{
+    Html.RenderPartial("_AccountUnauthenticatedPartial");
+}
+

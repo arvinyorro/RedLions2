@@ -44,6 +44,7 @@ namespace RedLions.Presentation.Web
             container.RegisterType<IRepository, GenericRepository>();
             container.RegisterType<IUserRepository, UserRepository>();
             container.RegisterType<IMemberRepository, MemberRepository>();
+            container.RegisterType<IInquiryRepository, InquiryRepository>();
             container.RegisterType<MemberService, MemberService>();
             container.RegisterType<UserService, UserService>();
         }

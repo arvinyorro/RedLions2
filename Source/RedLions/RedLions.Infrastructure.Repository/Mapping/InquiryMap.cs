@@ -41,7 +41,7 @@
             // Navigational Models
             this.HasRequired(t => t.Referrer)
                 .WithMany()
-                .Map(m => m.MapKey("member_id"));
+                .Map(m => m.MapKey("referrer_user_id"));
 
             // Column and Table Mappings
             this.ToTable("inquiries");

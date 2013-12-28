@@ -260,7 +260,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_AccountPartial.cshtml" />
     <Content Include="Views\Account\LoginFormPartial.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Profile\Shared\_Layout.cshtml" />
@@ -270,6 +270,8 @@
     <Content Include="Views\Profile\Shared\_ProfileControlPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Home\Inquire.cshtml" />
+    <Content Include="Views\Shared\_AccountUnauthenticatedPartial.cshtml" />
+    <Content Include="Views\Shared\_AccountAuthenticatedPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

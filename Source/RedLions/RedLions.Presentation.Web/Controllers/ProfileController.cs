@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Web.Mvc;
     // Third Party
+    using PagedList;
     using Microsoft.Practices.Unity;
     // Other Layers
     using RedLions.Application;
@@ -66,13 +67,30 @@
             return RedirectToAction("Index");
         }
 
-        public ViewResult Referrals()
+        public ViewResult Referrals(int? page)
         {
-            DTO.Member memberDTO = this.GetMemberDTO();
-            IEnumerable<DTO.Member> memberDTOs = this.MemberService.GetReferrals(memberDTO.ID);
-            IEnumerable<Models.Member> memberModels = memberDTOs.Select(x => new Models.Member(x));
+            int currentPage = (page ?? 1);
 
-            return View(memberModels);
+            // Fix negative page
+            currentPage = currentPage < 0 ? 1 : currentPage;
+
+            int totalReferrals = 0;
+
+            DTO.Member memberDTO = this.GetMemberDTO();
+
+            IEnumerable<Models.Member> memberModels = this.MemberService
+                .GetReferrals(currentPage, out totalReferrals, memberDTO.ID)
+                .ToModels();
+
+            int pageSize = this.MemberService.PageSize;
+
+            var pagedList = new StaticPagedList<Models.Member>(
+                memberModels,
+                currentPage,
+                pageSize,
+                totalReferrals);
+
+            return View(pagedList);
         }
 
         public ViewResult ChangePassword()
@@ -120,5 +138,7 @@
                     break;
             }
         }
+
     }
+   
 }

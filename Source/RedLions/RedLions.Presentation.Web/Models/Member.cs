@@ -55,7 +55,8 @@
 
         [Required]
         [Display(Name = "Contact Number")]
-        [StringLength(11, MinimumLength = 11, ErrorMessage = "Invalid Cellphone Number")]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "Invalid Cellphone Length.")]
+        [RegularExpression(@"^09([0-9]){9}$", ErrorMessage = "Invalid Cellphone Format.")]
         public string CellphoneNumber { get; set; }
     }
 }

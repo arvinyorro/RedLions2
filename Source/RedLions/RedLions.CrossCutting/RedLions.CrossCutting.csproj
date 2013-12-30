@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="IRepository.cs" />
     <Compile Include="Password.cs" />
+    <Compile Include="PredicateBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,12 +16,12 @@
 
     internal static class MemberAssembler
     {
-        internal static IEnumerable<DTO.Member> ToDTOList(IEnumerable<Business.Member> members)
+        internal static IEnumerable<DTO.Member> ToDTOList(this IEnumerable<Business.Member> members)
         {
             return members.Select(x => MemberAssembler.ToDTO(x));
         }
 
-        internal static DTO.Member ToDTO(Business.Member member)
+        internal static DTO.Member ToDTO(this Business.Member member)
         {
             var memberDTO = new DTO.Member()
             {

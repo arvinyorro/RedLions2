@@ -1,3 +1,32 @@
 ﻿<div class="element">
     <a href="@Url.Action("Create", "Members")" class="fg-white">Add User</a>
 </div>
+
+<span class="element-divider"></span>
+
+<div class="element input-element">
+    <div class="input-control text">
+        @using (Html.BeginForm("Index", "Members", FormMethod.Get))
+        {
+            @Html.TextBox("SearchUsername", ViewBag.SearchUsername as string, new { placeholder = "Search Username...", autocomplete = "off" })
+            <button class="btn-search"></button>
+            <ul class="dropdown-menu option-menu" data-role="dropdown">
+                <li><a href="#">Advance Search</a></li>
+            </ul>
+        }
+    </div>
+</div>
+
+<!--
+    Did not utilize render.scripts because
+    PartialView cannot render scripts, raw scripts must be generated.
+-->
+<script>
+    var url = {
+        login: '@Url.Action("LoginPartial", "Account")',
+    };
+
+    $(document).ready(function () {
+        bindFormEvents('#login-form');
+    });
+</script>

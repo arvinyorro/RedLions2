@@ -40,6 +40,12 @@
         {
         }      
 
+        public IEnumerable<Member> GetPagedReferrals(int pageIndex, int pageSize)
+        {
+            pageIndex = (pageIndex <= 0 ? 1 : pageIndex) - 1;
+            return this.Referrals.OrderBy(x => x.ID).Skip(pageIndex * pageSize).Take(pageSize);
+        }
+
         public int MemberID { get; private set; }
         public string ReferralCode { get; private set; }
         public string CellphoneNumber { get; set; }

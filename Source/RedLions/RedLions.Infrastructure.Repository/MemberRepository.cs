@@ -4,17 +4,19 @@
     using System.Collections.Generic;
     using System.Data.Entity.Validation;
     using System.Linq;
+    using System.Linq.Expressions;
     using System.Text;
     using RedLions.Business;
 
     /// <summary>
     /// This class implements the <see cref="RedLions.Business.IMemberRepository"/> interface.
     /// </summary>
-    public class MemberRepository : IMemberRepository
+    public class MemberRepository : GenericRepository, IMemberRepository
     {
         private RedLionsContext context;
 
         public MemberRepository(RedLionsContext context)
+            : base(context)
         {
             if (context == null)
             {
@@ -31,8 +33,7 @@
                 throw new ArgumentNullException("The parameter 'member' must not be null");
             }
 
-            this.context.Users.Add(member);
-            this.Save();            
+            base.Create<Member>(member);
         }
 
         public void Update(Member member)
@@ -42,31 +43,37 @@
                 throw new ArgumentNullException("The parameter 'member' must not be null");
             }
 
-            this.context.Entry<Member>(member).State = System.Data.EntityState.Modified;
-            this.Save();
+            base.Update<Member>(member);
         }
 
         public IEnumerable<Member> GetAllMembers()
         {
-            return this.context.Users.OfType<Member>().ToList();
+            return base.GetAll<Member>();
+        }
+
+        public IEnumerable<Member> GetPagedMembers<TKey>(
+            int pageIndex,
+            int pageSize,
+            out int totalCount,
+            Expression<Func<Member, TKey>> order,
+            Expression<Func<Member, bool>> predicate)
+        {
+            return base.GetPagedList<Member, TKey>(pageIndex, pageSize, out totalCount, order, predicate);
         }
 
         public Member GetMemberByID(int userID)
         {
-            return this.context.Users.OfType<Member>()
-                .FirstOrDefault(x => x.ID == userID);
+            return base.GetById<Member>(userID);
         }
 
         public Member GetMemberByUsername(string username)
         {
-            return this.context.Users.OfType<Member>()
-                .FirstOrDefault(x => x.Username == username);
+            return base.GetSingle<Member>(x => x.Username == username);
         }
 
         public Member GetMemberByReferralCode(string referralCode)
         {
-            return this.context.Users.OfType<Member>()
-                .FirstOrDefault(x => x.ReferralCode == referralCode);
+            return base.GetSingle<Member>(x => x.ReferralCode == referralCode);
         }
 
         public Member GetRandomMember()
@@ -78,31 +85,5 @@
                 .OrderBy(x => x.ID).Skip(randomCount).First();
         }
 
-        private void Save()
-        {
-            try
-            {
-                this.context.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                StringBuilder sb = new StringBuilder();
-
-                foreach (var failure in ex.EntityValidationErrors)
-                {
-                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
-                    foreach (var error in failure.ValidationErrors)
-                    {
-                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
-                        sb.AppendLine();
-                    }
-                }
-
-                throw new DbEntityValidationException(
-                    "Entity Validation Failed - errors follow:\n" +
-                    sb.ToString(), ex
-                ); // Add the original exception as the innerException
-            }
-        }
     }
 }

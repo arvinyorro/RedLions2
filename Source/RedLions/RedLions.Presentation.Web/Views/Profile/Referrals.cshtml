@@ -1,4 +1,5 @@
-﻿@model IEnumerable<RedLions.Presentation.Web.Models.Member>
+﻿@model PagedList.IPagedList<RedLions.Presentation.Web.Models.Member>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "My Referrals";
@@ -29,3 +30,9 @@
 
     </table>
 </div>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(
+    Model, 
+    page => Url.Action("Referrals", "Profile", new { page }),
+    options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })

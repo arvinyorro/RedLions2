@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Linq.Expressions;
     using RedLions.CrossCutting;
     using RedLions.Application.DTO;
     using RedLions.Business;
@@ -14,6 +15,7 @@
 
     public class MemberService
     {
+        private int pageSize = 10;
         private const int ReferralCodeLength = 20;
         private IRepository genericRepository;
         private IMemberRepository memberRepository;
@@ -44,10 +46,41 @@
             this.memberRepository = memberRepository;
         }
 
+        public int PageSize
+        {
+            get
+            {
+                return pageSize;
+            }
+        }
+
         public IEnumerable<DTO.Member> GetAllMembers()
         {
             IEnumerable<Business.Member> members = this.memberRepository.GetAllMembers();
             return MemberAssembler.ToDTOList(members);
+        }
+
+        public IEnumerable<DTO.Member> GetPagedMembers(
+            int pageIndex,
+            out int totalCount,
+            string username)
+        {
+            Expression<Func<Business.Member, bool>> query = PredicateBuilder.True<Business.Member>();
+
+            if (!string.IsNullOrEmpty(username))
+            {
+                query = query.And(x => x.Username.ToUpper().Contains(username.ToUpper()));
+            }
+
+            IEnumerable<Business.Member> members = this.memberRepository
+                .GetPagedMembers(
+                    pageIndex, 
+                    PageSize, 
+                    out totalCount,
+                    x => x.ID,
+                    query);
+
+            return members.ToDTOList();
         }
 
         public DTO.Member GetMemberByID(int userID)
@@ -77,10 +110,18 @@
             return MemberAssembler.ToDTO(member);
         }
 
-        public IEnumerable<DTO.Member> GetReferrals(int referrerUserID)
+        public IEnumerable<DTO.Member> GetReferrals(
+            int pageIndex,
+            out int totalCount,
+            int referrerUserID)
         {
             Business.Member member = this.memberRepository.GetMemberByID(referrerUserID);
-            return MemberAssembler.ToDTOList(member.Referrals);
+
+            totalCount = member.Referrals.Count;
+
+            IEnumerable<Business.Member> referrals = member.GetPagedReferrals(pageIndex, this.pageSize);
+
+            return referrals.ToDTOList();
         }
 
         public StatusCode Register(DTO.Member memberDTO)

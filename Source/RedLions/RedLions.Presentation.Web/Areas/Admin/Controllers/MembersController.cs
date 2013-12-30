@@ -24,14 +24,25 @@
         //
         // GET: /Admin/Members/
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string searchUsername)
         {
-            IEnumerable<DTO.Member> memberDTOs = this.MemberService.GetAllMembers();
+            ViewBag.SearchUsername = searchUsername;
+
+            int currentPage = (page ?? 1);
+
+            // Fix negative page
+            currentPage = currentPage < 0 ? 1 : currentPage;
+
+            int totalItems = 0;
+            
+            IEnumerable<DTO.Member> memberDTOs = this.MemberService.GetPagedMembers(currentPage, out totalItems, searchUsername);          
             IEnumerable<Models.Member> memberModels = memberDTOs.Select(x => new Models.Member(x));
 
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(memberModels.ToPagedList(pageNumber, pageSize));
+            int pageSize = this.MemberService.PageSize;
+
+            var pagedList = new StaticPagedList<Models.Member>(memberModels, currentPage, pageSize, totalItems);
+
+            return View(pagedList);
         }
 
         public ViewResult Create(int? inquiryID)

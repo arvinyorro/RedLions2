@@ -63,6 +63,8 @@
             // Warning: OrderBy() must be used before Skip();
             query = query.OrderBy(order);
 
+
+            pageIndex = (pageIndex <= 0 ? 1 : pageIndex) - 1;
             query = query.Skip(pageSize * pageIndex).Take(pageSize);
 
             return query.ToList();

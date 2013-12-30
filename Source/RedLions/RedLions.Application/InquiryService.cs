@@ -64,12 +64,11 @@
             int pageIndex,
             out int totalCount)
         {
-            int index = (pageIndex == 0 ? 1 : pageIndex) - 1;
             totalCount = 0;
 
             IEnumerable<Business.Inquiry> inquiries = this.inquiryRepository
                 .GetPagedList(
-                    index,
+                    pageIndex,
                     pageSize,
                     out totalCount,
                     x => x.InquiredDataTime,

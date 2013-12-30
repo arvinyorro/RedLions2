@@ -157,6 +157,7 @@
     <Compile Include="Areas\Admin\Controllers\InquiriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\MembersController.cs" />
     <Compile Include="Components\EmailUniqueAttribute.cs" />
+    <Compile Include="Components\ModelExtensions.cs" />
     <Compile Include="Components\StatusCodeHandler.cs" />
     <Compile Include="Components\UsernameUniqueAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -207,6 +208,7 @@
     <Content Include="Areas\Admin\Views\Members\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Edit.cshtml" />
+    <Content Include="Scripts\Custom\admin.members.index.js" />
     <Content Include="Views\Profile\ChangePassword.cshtml" />
     <Content Include="Areas\Admin\Views\Inquiries\Index.cshtml" />
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />

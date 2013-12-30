@@ -59,5 +59,15 @@
 @Html.PagedListPager(
     list: Model, 
     generatePageUrl: page => Url.Action("Index", 
-                             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, }),
+                             new { page, sortOrder = ViewBag.CurrentSort, searchMember = ViewBag.SearchUsername, }),
     options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })
+
+<script type="text/javascript">
+var url =
+    {
+        filterMembers : '@Url.Action("Index", "Members")',
+    };
+</script>
+
+<!-- External Scripts -->
+@Scripts.Render("~/Scripts/Custom/admin.members.index.js")

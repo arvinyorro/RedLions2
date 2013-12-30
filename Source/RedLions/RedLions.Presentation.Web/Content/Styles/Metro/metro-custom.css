@@ -5,12 +5,12 @@
 
 /* Navigation Bar Hover */
 .metro.redlions .navigation-bar .navigation-bar-content .element:hover {
-    background-color: #BF3030;
+    background-color: #BF3030; /* Hover highlight */
 }
 
 /* DropDown Hover */
 .metro.redlions .dropdown-menu li:hover {
-    background: #BF3030;
+    background: #BF3030; /* Hover highlight */
     color: #fff;
 }
 
@@ -31,4 +31,9 @@
 .metro.user-ui .input-control.text, .metro.user-ui .input-control.password
 {
     width: 60%;
+}
+
+.metro.user-ui .dropdown-menu.option-menu
+{
+    top: 120%;
 }

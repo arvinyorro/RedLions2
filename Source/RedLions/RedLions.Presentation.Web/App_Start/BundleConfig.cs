@@ -33,8 +33,15 @@
 
             /* End Metro */
 
+            /* Begin Responsive Slides */
+
+            bundles.Add(new StyleBundle("~/bundles/responsive-slides-style")
+                .Include("~/Content/Styles/ResponsiveSlides/responsive-slides.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/responsiveslides")
                 .Include("~/Scripts/responsiveslides.js"));
+
+            /* End Responsive Slides */
         }
     }
 }

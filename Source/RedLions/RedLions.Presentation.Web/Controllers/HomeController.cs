@@ -30,6 +30,11 @@
             return View();
         }
 
+        public ViewResult Products()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Inquire(Models.Inquiry inquiry)
         {

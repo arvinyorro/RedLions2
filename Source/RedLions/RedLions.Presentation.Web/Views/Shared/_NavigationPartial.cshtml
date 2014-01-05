@@ -1,7 +1,7 @@
 ﻿<nav class="navigation-bar">
     <div class="navigation-bar-content">
         <img id="redlions-logo" src="~/Content/Images/Banners/redlion_logo.png" />
-        <button class="element center-nav">Home</button>
+        <a class="element center-nav" href="@Url.Action("Index", "Home")">Home</a>
         <span class="element-divider"></span>
 
         <div class="element">
@@ -14,7 +14,7 @@
         </div>
 
         <span class="element-divider"></span>
-        <button class="element">Products</button>
+        <a class="element" href="@Url.Action("Products", "Home")">Products</a>
         <span class="element-divider"></span>
         <button class="element">Business</button>
         <span class="element-divider"></span>

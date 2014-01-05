@@ -178,6 +178,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Images\Banners\Products\acai.jpg" />
+    <Content Include="Content\Images\Banners\Products\advance_care.jpg" />
+    <Content Include="Content\Images\Banners\Products\bbcream.jpg" />
+    <Content Include="Content\Images\Banners\Products\cappuccino.jpg" />
+    <Content Include="Content\Images\Banners\Products\coffee_strong.jpg" />
+    <Content Include="Content\Images\Banners\Products\coffee.jpg" />
+    <Content Include="Content\Images\Banners\Products\corncoffee.jpg" />
+    <Content Include="Content\Images\Banners\Products\dishwashing_liquid.jpg" />
+    <Content Include="Content\Images\Banners\Products\glutasoap.jpg" />
+    <Content Include="Content\Images\Banners\Products\kojic.jpg" />
+    <Content Include="Content\Images\Banners\Products\lotion.jpg" />
+    <Content Include="Content\Images\Banners\Products\magiccream.jpg" />
     <Content Include="Content\Images\Banners\redlion_logo.png" />
     <Content Include="Content\Images\UI\loading_small.gif" />
     <Content Include="Content\PagedList.css" />
@@ -196,6 +208,8 @@
     <Content Include="Content\Styles\Metro\metro-bootstrap.css" />
     <Content Include="Content\Styles\homepage-ui.css" />
     <Content Include="Content\Styles\mvc-custom.css" />
+    <Content Include="Content\Styles\ResponsiveSlides\responsive-slides.css" />
+    <Content Include="Content\Styles\ResponsiveSlides\themes.gif" />
     <Content Include="Global.asax" />
     <Content Include="Content\Styles\fonts\iconFont.eot" />
     <Content Include="Content\Styles\fonts\iconFont.json" />
@@ -276,6 +290,7 @@
     <Content Include="Views\Home\Inquire.cshtml" />
     <Content Include="Views\Shared\_AccountUnauthenticatedPartial.cshtml" />
     <Content Include="Views\Shared\_AccountAuthenticatedPartial.cshtml" />
+    <Content Include="Views\Home\Products.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

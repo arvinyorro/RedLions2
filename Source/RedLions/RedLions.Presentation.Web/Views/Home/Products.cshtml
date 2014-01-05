@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Products";
+}
+<div id="slider-container">
+    <ul class="rslides" id="slider">
+        <li><img src="~/Content/Images/Banners/Products/acai.jpg" /></li>
+        <li><img src="~/Content/Images/Banners/Products/advance_care.jpg" /></li>
+        <li><img src="~/Content/Images/Banners/Products/bbcream.jpg" /></li>
+        <li><img src="~/Content/Images/Banners/Products/cappuccino.jpg" /></li>
+        <li><img src="~/Content/Images/Banners/Products/coffee_strong.jpg" /></li>
+        <li><img src="~/Content/Images/Banners/Products/corncoffee.jpg" /></li>
+        <li><img src="~/Content/Images/Banners/Products/dishwashing_liquid.jpg" /></li>
+        <li><img src="~/Content/Images/Banners/Products/glutasoap.jpg" /></li>
+        <li><img src="~/Content/Images/Banners/Products/kojic.jpg" /></li>
+        <li><img src="~/Content/Images/Banners/Products/lotion.jpg" /></li>
+        <li><img src="~/Content/Images/Banners/Products/magiccream.jpg" /></li>
+    </ul>
+</div>
+    <div id="slider-control"></div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#slider").responsiveSlides({
+                maxwidth: 800,
+                speed: 800,
+
+                pager: true,
+                nav: true,
+                namespace: "centered-btns"
+            });
+        });
+    </script>
+}

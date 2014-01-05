@@ -2,8 +2,10 @@
 {
     using System;
     using System.Linq;
+    using System.Linq.Expressions;
     using System.Collections.Generic;  
     using RedLions.Application.DTO;
+    using RedLions.CrossCutting;
     using RedLions.Business;
     
     public class InquiryService
@@ -62,9 +64,17 @@
 
         public ICollection<DTO.Inquiry> GetPagedInquiries(
             int pageIndex,
-            out int totalCount)
+            out int totalCount,
+            string filterEmail)
         {
-            totalCount = 0;
+            Expression<Func<Business.Inquiry, bool>> query = PredicateBuilder.True<Business.Inquiry>();
+
+            if (!string.IsNullOrEmpty(filterEmail))
+            {
+                query = query.And(x => x.Email.ToUpper().Contains(filterEmail.ToUpper()));
+            }
+
+            query = query.And(x => x.Registered == false);
 
             IEnumerable<Business.Inquiry> inquiries = this.inquiryRepository
                 .GetPagedList(
@@ -72,7 +82,7 @@
                     pageSize,
                     out totalCount,
                     x => x.InquiredDataTime,
-                    x => x.Registered == false);
+                    query);
 
             return InquiryAssembler.ToDTOList(inquiries).ToList();
         }

@@ -25,11 +25,20 @@
         //
         // GET: /Admin/Inquiries/
 
-        public ActionResult Index()
+        public ActionResult Index(int? page, string searchEmail)
         {
-            int currentPage = this.GetCurrentPage();
+            ViewBag.SearchEmail = searchEmail;
+
+            int currentPage = (page ?? 1);
+
             int totalInquiries = 0;
-            IEnumerable<DTO.Inquiry> inquiryDTOList = this.inquiryService.GetPagedInquiries(currentPage, out totalInquiries);
+
+            IEnumerable<DTO.Inquiry> inquiryDTOList = this.inquiryService
+                .GetPagedInquiries(
+                    currentPage, 
+                    out totalInquiries,
+                    searchEmail);
+
             IEnumerable<Models.Inquiry> inquiryModels = inquiryDTOList.Select(x => new Models.Inquiry(x));
 
             int pageSize = this.inquiryService.PageSize;
@@ -37,13 +46,5 @@
             var pagedList = new StaticPagedList<Models.Inquiry>(inquiryModels, currentPage, pageSize, totalInquiries);
             return View(pagedList);
         }
-
-        private int GetCurrentPage()
-        {
-            int page = 1;
-            int.TryParse(HttpContext.Request.QueryString["page"], out page);
-            return page == 0 ? 1 : page;
-        }
-
     }
 }

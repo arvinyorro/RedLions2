@@ -5,6 +5,11 @@
     ViewBag.Title = "Admin Interface - Inquiries";
 }
 
+@section NavigationControls
+{
+    @{ Html.RenderPartial("_InquiriesControlPartial"); }
+}
+
 <h3>Inquiries</h3>
 <div>
     <table class="table">
@@ -48,5 +53,5 @@
 @Html.PagedListPager(
     list: Model,
     generatePageUrl: page => Url.Action("Index",
-                             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, }),
+                             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.SearchEmail, }),
     options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })

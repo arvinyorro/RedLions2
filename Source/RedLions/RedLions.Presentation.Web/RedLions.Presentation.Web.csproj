@@ -225,6 +225,7 @@
     <Content Include="Scripts\Custom\admin.members.index.js" />
     <Content Include="Views\Profile\ChangePassword.cshtml" />
     <Content Include="Areas\Admin\Views\Inquiries\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_InquiriesControlPartial.cshtml" />
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion Local.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />

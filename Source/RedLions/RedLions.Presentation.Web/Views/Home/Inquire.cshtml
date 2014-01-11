@@ -45,6 +45,13 @@
                     </div>
                     @Html.ValidationMessageFor(model => model.CellphoneNumber)
 
+                    <!-- Message -->
+                    @Html.LabelFor(model => model.Message)
+                    <div class="input-control textarea" data-role="input-control">
+                        @Html.TextAreaFor(model => model.Message, new { placeholder = "Your question" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Message)
+
                     <div class="input-control">
                         <button type="submit" class="primary">Send Inquiry</button>
                     </div>

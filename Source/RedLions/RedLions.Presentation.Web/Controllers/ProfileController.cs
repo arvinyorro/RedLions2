@@ -15,11 +15,19 @@
     [Authorize(Roles = "Member")]
     public class ProfileController : Controller
     {
-        [Dependency]
-        public MemberService MemberService { get; set; }
+        private MemberService memberService;
+        public UserService userService;
+        public InquiryService inquiryService;
 
-        [Dependency]
-        public UserService UserService { get; set; }
+        public ProfileController(
+            MemberService memberService,
+            UserService userService,
+            InquiryService inquiryService)
+        {
+            this.memberService = memberService;
+            this.userService = userService;
+            this.inquiryService = inquiryService;
+        }
 
         //
         // GET: /Admin/Home/
@@ -27,7 +35,7 @@
         public ActionResult Index()
         {
             string username = User.Identity.Name;
-            DTO.Member memberDTO = this.MemberService.GetMemberByUsername(username);
+            DTO.Member memberDTO = this.memberService.GetMemberByUsername(username);
             Models.Member memberModel = new Models.Member(memberDTO);
             return View(memberModel);
         }
@@ -48,7 +56,7 @@
             }
 
             string username = User.Identity.Name;
-            DTO.Member memberDTO = this.MemberService.GetMemberByUsername(username);
+            DTO.Member memberDTO = this.memberService.GetMemberByUsername(username);
 
             memberDTO.Username = member.Username;
             memberDTO.FirstName = member.FirstName;
@@ -56,7 +64,7 @@
             memberDTO.Email = member.Email;
             memberDTO.CellphoneNumber = member.CellphoneNumber;
 
-            StatusCode statusCode = this.MemberService.Update(memberDTO);
+            StatusCode statusCode = this.memberService.Update(memberDTO);
 
             if (statusCode != StatusCode.Success)
             {
@@ -78,11 +86,11 @@
 
             DTO.Member memberDTO = this.GetMemberDTO();
 
-            IEnumerable<Models.Member> memberModels = this.MemberService
+            IEnumerable<Models.Member> memberModels = this.memberService
                 .GetReferrals(currentPage, out totalReferrals, memberDTO.ID)
                 .ToModels();
 
-            int pageSize = this.MemberService.PageSize;
+            int pageSize = this.memberService.PageSize;
 
             var pagedList = new StaticPagedList<Models.Member>(
                 memberModels,
@@ -91,6 +99,35 @@
                 totalReferrals);
 
             return View(pagedList);
+        }
+
+        public ViewResult Inquiries(int? page, string searchEmail)
+        {
+            ViewBag.SearchEmail = searchEmail;
+
+            int currentPage = (page ?? 1);
+            int totalInquiries = 0;
+            DTO.Member memberDTO = this.GetMemberDTO();
+
+            IEnumerable<Models.Inquiry> inquiryModels = this.inquiryService
+                .GetPagedInquiriesByMember(
+                    memberDTO.ID,
+                    currentPage,
+                    out totalInquiries,
+                    searchEmail)
+                .Select(x => new Models.Inquiry(x));
+
+            int pageSize = this.inquiryService.PageSize;
+
+            var pagedList = new StaticPagedList<Models.Inquiry>(inquiryModels, currentPage, pageSize, totalInquiries);
+            return View(pagedList);
+        }
+
+        public ViewResult Inquiry(int id)
+        {
+            DTO.Inquiry inquiryDTO = this.inquiryService.GetById(id);
+            var inquiry = new Models.Inquiry(inquiryDTO);
+            return View(inquiry);
         }
 
         public ViewResult ChangePassword()
@@ -107,7 +144,7 @@
             }
 
             DTO.Member memberDTO = this.GetMemberDTO();
-            StatusCode statusCode = this.UserService.ChangePassword(
+            StatusCode statusCode = this.userService.ChangePassword(
                     memberDTO.ID, 
                     changePassword.OldPassword, 
                     changePassword.NewPassword);
@@ -124,7 +161,7 @@
         private DTO.Member GetMemberDTO()
         {
             string username = User.Identity.Name;
-            return this.MemberService.GetMemberByUsername(username);
+            return this.memberService.GetMemberByUsername(username);
         }
 
         private void AddError(StatusCode statusCode)

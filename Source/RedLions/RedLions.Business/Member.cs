@@ -7,33 +7,25 @@
     public class Member : User
     {
         public Member(
-            Inquiry inquiry,
             string username,
             string firstName,
             string lastName,
             string email,
             string password,
             string personalReferralCode,
-            string cellphoneNumber)
+            string cellphoneNumber,
+            Inquiry inquiry = null)
             : base(username, firstName, lastName, email, password)
         {
-            this.Inquiry = inquiry;
-            inquiry.Register();
+            if (inquiry != null)
+            {
+                this.Inquiry = inquiry;
+                inquiry.Register();
+            }
+
             this.Role = Role.Member;
             this.ReferralCode = personalReferralCode;
             this.CellphoneNumber = cellphoneNumber;
-        }
-
-        public Member(
-            Inquiry inquiry,
-            string username,
-            string password,
-            string personalReferralCode)
-            : base(username, inquiry.FirstName, inquiry.LastName, inquiry.Email, password)
-        {
-            this.Role = Role.Member;
-            this.ReferralCode = personalReferralCode;
-            inquiry.Register();
         }
 
         public Member()

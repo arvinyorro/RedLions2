@@ -19,8 +19,9 @@
     margin-left: 40%;
 }
 
-/* User Interface */
-.metro.user-ui .page
+/* User Interface - Generic */
+
+.metro.general-ui .page
 {
     width: 980px;
     margin: 0 auto;
@@ -28,12 +29,51 @@
     text-align: left;
 }
 
-.metro.user-ui .input-control.text, .metro.user-ui .input-control.password
+
+.metro.general-ui .input-control.text, .metro.general-ui .input-control.password, .metro.general-ui .input-control.textarea
 {
     width: 60%;
 }
 
-.metro.user-ui .dropdown-menu.option-menu
+.metro.general-ui .input-control.textarea textarea
+{
+    resize: none;
+}
+
+.metro.general-ui .dropdown-menu.option-menu
 {
     top: 120%;
+}
+
+/* User Interface for Member */
+
+body.metro.member-ui 
+{
+    min-width: 900px;
+}
+
+.metro.member-ui .page
+{
+    padding-left: 220px; /* Size of the Sidebar, the extra 20px gives extra space */
+    text-align: left;
+}
+
+.metro.member-ui div.page-region
+{
+    width: 600px; /* Make sure the width does not exceed the size of the body.min-width */
+    margin: 0 auto; /* Makes content align center */
+}
+
+.metro.member-ui .sidebar
+{
+    width: 200px; /* If you are going to change the size, make sure to change the padding in .page */
+    position: fixed;
+    top: 0;
+    z-index:100;
+    overflow-y: auto;
+}
+
+.metro.member-ui .left-nav
+{
+    margin-left: 200px;
 }

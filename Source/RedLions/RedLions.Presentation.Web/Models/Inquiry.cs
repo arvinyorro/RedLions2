@@ -18,6 +18,7 @@
             this.LastName = inquiryDTO.LastName;
             this.CellphoneNumber = inquiryDTO.CellphoneNumber;
             this.Email = inquiryDTO.Email;
+            this.Message = inquiryDTO.Message;
             this.ReferrerID = inquiryDTO.ReferrerID;
             this.ReferrerUsername = inquiryDTO.ReferrerUsername;
 
@@ -52,6 +53,11 @@
         [Required(ErrorMessage = "You must provide an email.")]
         [MaxLength(200)]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "You must provide your question.")]
+        [Display(Name = "Question")]
+        [MaxLength(765)]
+        public string Message { get; set; }
 
         public int? ReferrerID { get; set; }
         public string ReferrerUsername { get; set; }

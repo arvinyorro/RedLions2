@@ -30,6 +30,9 @@
                 .IsRequired()
                 .HasMaxLength(200);
 
+            this.Property(t => t.Message)
+                .IsRequired();
+
             this.Property(t => t.InquiredDataTime)
                 .IsRequired()
                 .HasColumnType("datetime");
@@ -50,6 +53,7 @@
             this.Property(t => t.LastName).HasColumnName("last_name");
             this.Property(t => t.CellphoneNumber).HasColumnName("cellphone_number");
             this.Property(t => t.Email).HasColumnName("email");
+            this.Property(t => t.Message).HasColumnName("message");
             this.Property(t => t.InquiredDataTime).HasColumnName("datetime_inquired");
         }
     }

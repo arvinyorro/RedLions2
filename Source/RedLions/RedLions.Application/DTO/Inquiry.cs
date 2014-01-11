@@ -14,6 +14,7 @@
         public string Email { get; set; }
         public int? ReferrerID { get; set; }
         public string ReferrerUsername { get; set; }
+        public string Message { get; set; }
         public DateTime InquiredDateTime { get; set; }
     }
 
@@ -30,13 +31,14 @@
                 Email = inquiry.Email,
                 ReferrerID = inquiry.Referrer.ID,
                 ReferrerUsername = inquiry.Referrer.Username,
-                InquiredDateTime = inquiry.InquiredDataTime
+                InquiredDateTime = inquiry.InquiredDataTime,
+                Message = inquiry.Message,
             };
 
             return inquiryDTO;
         }
 
-        internal static IEnumerable<DTO.Inquiry> ToDTOList(IEnumerable<Business.Inquiry> inquiries)
+        internal static IEnumerable<DTO.Inquiry> ToDTOList(this IEnumerable<Business.Inquiry> inquiries)
         {
             return inquiries.Select(x => x.ToDTO());
         }

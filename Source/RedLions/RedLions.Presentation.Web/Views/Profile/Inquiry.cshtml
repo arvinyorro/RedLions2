@@ -1,0 +1,46 @@
+﻿@model RedLions.Presentation.Web.Models.Inquiry
+
+@{
+    ViewBag.Title = "Inquiry";
+    Layout = "~/Views/Profile/Shared/_Layout.cshtml";
+}
+
+<fieldset>
+    <legend>Inquiry</legend>
+
+
+    <!-- Firstname -->
+    @Html.LabelFor(model => model.Name)
+    <div class="input-control text" data-role="input-control">
+        @Html.TextBoxFor(model => model.Name, new { disabled = "disabled" })
+    </div>
+
+    <!-- InquiredDateTime -->
+    @Html.LabelFor(model => model.InquiredDateTime)
+    <div class="input-control text" data-role="input-control">
+        @Html.TextBoxFor(model => model.InquiredDateTime, new { disabled = "disabled" })
+    </div>
+
+    <!-- CellphoneNumber -->
+    @Html.LabelFor(model => model.CellphoneNumber)
+    <div class="input-control text" data-role="input-control">
+        @Html.TextBoxFor(model => model.CellphoneNumber, new { disabled = "disabled" })
+    </div>
+
+    <!-- Email -->
+    @Html.LabelFor(model => model.Email)
+    <div class="input-control text" data-role="input-control">
+        @Html.TextBoxFor(model => model.Email, new { disabled = "disabled" })
+    </div>
+
+    <!-- Message -->
+    @Html.LabelFor(model => model.Message)
+    <div class="input-control textarea" data-role="input-control">
+        @Html.TextAreaFor(model => model.Message, new { disabled = "disabled" })
+    </div>
+
+</fieldset>
+
+<p>
+    @Html.ActionLink("Back to my inquiries", "Inquiries", "Profile")
+</p>

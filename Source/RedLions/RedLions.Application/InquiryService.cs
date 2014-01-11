@@ -12,7 +12,7 @@
     {
         private IInquiryRepository inquiryRepository;
         private IMemberRepository memberRepository;
-        private const int pageSize = 10;
+        private int pageSize = 10;
 
         public InquiryService(
             IInquiryRepository inquiryRepository,
@@ -54,8 +54,8 @@
                 lastName: inquiryDTO.LastName,
                 cellphoneNumber: inquiryDTO.CellphoneNumber,
                 email: inquiryDTO.Email,
-                referrer: referrer
-                );
+                message: inquiryDTO.Message,
+                referrer: referrer);
 
             this.inquiryRepository.Inquire(inquiry);
 
@@ -74,17 +74,47 @@
                 query = query.And(x => x.Email.ToUpper().Contains(filterEmail.ToUpper()));
             }
 
-            query = query.And(x => x.Registered == false);
-
-            IEnumerable<Business.Inquiry> inquiries = this.inquiryRepository
-                .GetPagedList(
+            ICollection<DTO.Inquiry> inquiryDTOs = this
+                .GetPagedInquiries(
                     pageIndex,
-                    pageSize,
                     out totalCount,
-                    x => x.InquiredDataTime,
-                    query);
+                    query)
+                .ToDTOList()
+                .ToList();
 
-            return InquiryAssembler.ToDTOList(inquiries).ToList();
+            return inquiryDTOs;
+        }
+
+        public ICollection<DTO.Inquiry> GetPagedInquiriesByMember(
+            int memberUserID,
+            int pageIndex,
+            out int totalCount,
+            string filterEmail)
+        {
+            Expression<Func<Business.Inquiry, bool>> query = PredicateBuilder.True<Business.Inquiry>();
+
+            if (!string.IsNullOrEmpty(filterEmail))
+            {
+                query = query.And(x => x.Email.ToUpper().Contains(filterEmail.ToUpper()));
+            }
+
+            Business.Member referrer = this.memberRepository.GetMemberByID(memberUserID);
+            if (referrer == null)
+            {
+                throw new Exception("Referrer of inquiry not found.");
+            }
+
+            query = query.And(x => x.Referrer.ID == referrer.ID);
+
+            ICollection<DTO.Inquiry> inquiryDTOs = this
+                .GetPagedInquiries(
+                    pageIndex,
+                    out totalCount,
+                    query)
+                .ToDTOList()
+                .ToList();
+
+            return inquiryDTOs;
         }
 
         public DTO.Inquiry GetById(int inquiryId)
@@ -108,6 +138,22 @@
                 throw new Exception("Referrer specified was not found");
             }
             return referrer;
+        }
+
+        private IEnumerable<Business.Inquiry> GetPagedInquiries(
+            int pageIndex,
+            out int totalCount,
+            Expression<Func<Business.Inquiry, bool>> query)
+        {
+            query = query.And(x => x.Registered == false);
+
+            return this.inquiryRepository
+                .GetPagedList(
+                    pageIndex,
+                    this.pageSize,
+                    out totalCount,
+                    x => x.InquiredDataTime,
+                    query);
         }
     }
 }

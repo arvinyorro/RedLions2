@@ -292,6 +292,8 @@
     <Content Include="Views\Shared\_AccountUnauthenticatedPartial.cshtml" />
     <Content Include="Views\Shared\_AccountAuthenticatedPartial.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Profile\Inquiries.cshtml" />
+    <Content Include="Views\Profile\Inquiry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

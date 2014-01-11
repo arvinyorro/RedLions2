@@ -14,19 +14,35 @@
     @Styles.Render("~/bundles/metro-style")
     @Scripts.Render("~/bundles/metro-script")
 </head>
-<body class="metro redlions user-ui">
+<body class="metro redlions general-ui member-ui">
+
+    <nav class="sidebar">
+        <ul>
+            <li class="title">Profile</li>
+            <li><a href="#"><i class="icon-user-3"></i>@User.Identity.Name</a></li>
+            <li class="active"><a href="@Url.Action("Index", "Profile")"><i class="icon-home"></i>Home</a></li>
+            <li><a href="#"><i class="icon-mail"></i>Messages</a></li>
+            <li class="stick bg-yellow">
+                <a class="dropdown-toggle" href="#"><i class="icon-tree-view"></i>My Account</a>
+                <ul class="dropdown-menu" data-role="dropdown">
+                    <li><a href="@Url.Action("Referrals", "Profile")">Downlines</a></li>
+                    <li><a href="@Url.Action("Inquiries", "Profile")">Inquiries</a></li>
+                </ul>
+            </li>
+
+            <li class="title">RedLions</li>
+            <li><a href="#"><i class="icon-rocket"></i>News Feed</a></li>
+            <li><a href="#"><i class="icon-basket"></i>Products</a></li>
+            <li><a href="#"><i class="icon-calendar"></i>Events</a></li>
+        </ul>
+    </nav>
+    
     <header>
         <nav class="navigation-bar">
             <div class="navigation-bar-content">
 
-                <div class="element">
-                    <a class="dropdown-toggle" href="#">My Account</a>
-                    <ul class="dropdown-menu" data-role="dropdown">
-                        <li><a href="@Url.Action("Index")">My Profile</a></li>
-                        <li><a href="@Url.Action("Referrals")">My Referrals</a></li>
-                    </ul>
-                </div>
-                <span class="element-divider"></span>
+                
+                <span class="element-divider left-nav"></span>
 
                 @RenderSection("NavigationControls", false)
 
@@ -57,6 +73,7 @@
             </div>
         </nav>
     </header>
+
     <div class="page">
         <div class="page-region">
             <div class="page-region-content">

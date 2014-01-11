@@ -48,7 +48,8 @@
                 FirstName = inquiry.FirstName,
                 LastName = inquiry.LastName,
                 Email = inquiry.Email,
-                CellphoneNumber = inquiry.CellphoneNumber
+                CellphoneNumber = inquiry.CellphoneNumber,
+                Message = inquiry.Message,
             };
 
             if (Session["ReferralCode"] != null)

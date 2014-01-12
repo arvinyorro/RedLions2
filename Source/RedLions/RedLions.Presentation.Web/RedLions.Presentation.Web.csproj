@@ -156,6 +156,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\InquiriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\MembersController.cs" />
+    <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="Components\EmailUniqueAttribute.cs" />
     <Compile Include="Components\ModelExtensions.cs" />
     <Compile Include="Components\StatusCodeHandler.cs" />
@@ -226,6 +227,7 @@
     <Content Include="Views\Profile\ChangePassword.cshtml" />
     <Content Include="Areas\Admin\Views\Inquiries\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_InquiriesControlPartial.cshtml" />
+    <Content Include="Areas\Member\Views\Web.config" />
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion Local.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
@@ -300,6 +302,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Member\Controllers\" />
+    <Folder Include="Areas\Member\Models\" />
+    <Folder Include="Areas\Member\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

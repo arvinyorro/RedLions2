@@ -2,17 +2,20 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "My Referrals";
+    ViewBag.Title = "My Downlines";
     Layout = "~/Views/Profile/Shared/_Layout.cshtml";
 }
 
-<h3>My Referrals</h3>
+<h3>My Downlines</h3>
 <div>
     <table class="table">
         <thead>
         <tr>
+            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().FullName)</th>
             <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().Username)</th>
-            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().RegisteredDateTime)</th>
+            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</th>
+            <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().CellphoneNumber)</th>
+            <!-- <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().RegisteredDateTime)</th> -->
         </tr>
         </thead>
 
@@ -20,8 +23,11 @@
             
         @foreach (var item in Model) {
             <tr>
+                <td>@Html.DisplayFor(modelItem => item.FullName)</td>
                 <td>@Html.DisplayFor(modelItem => item.Username)</td>
-                <td class="right">@Html.DisplayFor(modelItem => item.RegisteredDateTime)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.CellphoneNumber)</td>
+                <!-- <td class="right">@Html.DisplayFor(modelItem => item.RegisteredDateTime)</td>-->
             </tr>
         }
         </tbody>

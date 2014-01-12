@@ -61,7 +61,7 @@ body.metro.member-ui
 
 .metro.member-ui div.page-region
 {
-    width: 600px; /* Make sure the width does not exceed the size of the body.min-width */
+    width: 680px; /* Make sure the width does not exceed the size of the body.min-width (680this + 220sidebar = 900body) */
     margin: 0 auto; /* Makes content align center */
 }
 
@@ -77,4 +77,9 @@ body.metro.member-ui
 .metro.member-ui .left-nav
 {
     margin-left: 200px;
+}
+
+.member-profile h4
+{
+    padding-top: 0.8em!important;
 }

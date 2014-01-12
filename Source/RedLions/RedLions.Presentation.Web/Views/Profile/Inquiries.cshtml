@@ -6,6 +6,11 @@
     Layout = "~/Views/Profile/Shared/_Layout.cshtml";
 }
 
+@section NavigationControls
+{
+    @{ Html.RenderPartial("_InquiriesControlPartial"); }
+}
+
 <h3>My Inquiries</h3>
 <div>
     <table class="table">

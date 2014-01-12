@@ -1,0 +1,12 @@
+﻿<div class="element input-element">
+    <div class="input-control text">
+        @using (Html.BeginForm("Inquiries", "Profile", FormMethod.Get))
+        {
+            @Html.TextBox("SearchEmail", ViewBag.SearchEmail as string, new { placeholder = "Search Email...", autocomplete = "off" })
+            <button class="btn-search"></button>
+            <ul class="dropdown-menu option-menu" data-role="dropdown">
+                <li><a href="#">Advance Search</a></li>
+            </ul>
+        }
+    </div>
+</div>

@@ -127,7 +127,7 @@
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Profile");
             }
         }
     }

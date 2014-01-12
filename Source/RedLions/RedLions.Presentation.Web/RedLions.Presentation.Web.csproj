@@ -294,6 +294,8 @@
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Profile\Inquiries.cshtml" />
     <Content Include="Views\Profile\Inquiry.cshtml" />
+    <Content Include="Views\Profile\Shared\_InquiriesControlPartial.cshtml" />
+    <Content Include="Views\Home\InquireConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

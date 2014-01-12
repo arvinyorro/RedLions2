@@ -54,6 +54,7 @@ body.metro.member-ui
 
 .metro.member-ui .page
 {
+    width: 900px; /* Value must match the body.member-ui */
     padding-left: 220px; /* Size of the Sidebar, the extra 20px gives extra space */
     text-align: left;
 }

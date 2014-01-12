@@ -63,7 +63,7 @@
             }
 
             this.inquiryService.SubmitInquiry(inquiryDTO);
-            return RedirectToAction("Index", "Home");
+            return View("InquireConfirm");
         }
 
         public PartialViewResult NavigationBar()

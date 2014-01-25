@@ -13,6 +13,7 @@ namespace RedLions.Presentation.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Add a ProfileDefault this so that ~/Profile url is not mixed with ~/referrerUsername
             routes.MapRoute(
                 name: "ProfileDefault",
                 url: "Profile",

@@ -78,6 +78,12 @@
                 return View(member);
             }
 
+            if (member.Username.ToLower() == "profile")
+            {
+                ModelState.AddModelError("Username", "Profile username is a reserved. Please use a different username.");
+                return View(member);
+            }
+
             var memberDTO = new DTO.Member()
             {
                 InquiryID = member.InquiryID,

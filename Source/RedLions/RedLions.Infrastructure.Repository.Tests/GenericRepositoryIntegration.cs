@@ -26,6 +26,7 @@ namespace RedLions.Infrastructure.Repository.Tests
         public void ConnectionTest()
         {
             var users = this.context.Users.ToList();
+            Assert.IsNotNull(users);
         }
 
         [TestMethod]

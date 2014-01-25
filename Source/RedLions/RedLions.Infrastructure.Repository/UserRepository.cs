@@ -42,7 +42,7 @@
                 throw new ArgumentNullException("The parameter 'user' must not be null");
             }
 
-            this.context.Entry<User>(user).State = System.Data.EntityState.Modified;
+            this.context.Entry<User>(user).State = System.Data.Entity.EntityState.Modified;
             this.context.SaveChanges();
         }
 

@@ -32,6 +32,7 @@
 
         public ViewResult Products()
         {
+            this.SaveReferralCodeToSession();
             return View();
         }
 

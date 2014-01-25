@@ -88,7 +88,7 @@
 
         public void Update<TEntity>(TEntity entity) where TEntity : class
         {
-            this.context.Entry<TEntity>(entity).State = System.Data.EntityState.Modified;
+            this.context.Entry<TEntity>(entity).State = System.Data.Entity.EntityState.Modified;
             this.Save();
         }
 

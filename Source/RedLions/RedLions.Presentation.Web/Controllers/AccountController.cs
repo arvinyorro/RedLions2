@@ -1,6 +1,8 @@
 ﻿namespace RedLions.Presentation.Web.Controllers
 {
     // Built-in
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Mvc;
     using System.Web.Security;
     // Third Party
@@ -16,6 +18,9 @@
     {
         [Dependency]
         public MemberService MemberService { get; set; }
+
+        [Dependency]
+        public UserService UserService { get; set; }
 
         public CustomMembershipProvider provider = (CustomMembershipProvider)Membership.Provider;
 
@@ -42,7 +47,7 @@
                 this.provider.ValidateUser(loginForm.Username, loginForm.Password))
             {
                 FormsAuthentication.SetAuthCookie(loginForm.Username, loginForm.RememberMe);
-                return RedirectToLocal(returnUrl);
+                return RedirectToLocal(loginForm.Username, returnUrl);
             }
 
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
@@ -103,7 +108,7 @@
                 this.provider.ValidateUser(loginForm.Username, loginForm.Password))
             {
                 FormsAuthentication.SetAuthCookie(loginForm.Username, loginForm.RememberMe);
-                return Json(new { Success = true } );
+                return Json(new { Success = true, RedirectUrl = this.GetRedirectUrl(loginForm.Username) });
             }
 
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
@@ -119,15 +124,38 @@
             return RedirectToAction("Index", "Home");
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
+        private bool IsMember(string username)
+        {
+            IEnumerable<DTO.Role> roles = this.UserService.GetUserRoles(username);
+
+            return roles.Count(x => x.Title == "Member") > 0 ? true : false;
+        }
+
+        private string GetRedirectUrl(string username)
+        {
+            if (this.IsMember(username))
+            {
+                return Url.Action("Index", "Profile");
+            }
+            else
+            {
+                return Url.Action("Index", "Home");
+            }
+        }
+
+        private ActionResult RedirectToLocal(string username, string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
             }
-            else
+            else if (this.IsMember(username))
             {
                 return RedirectToAction("Index", "Profile");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
             }
         }
     }

@@ -86,9 +86,9 @@
                     // Reload navigation bar to display the user controls.
                     // $("#header").load('@Url.Action("NavigationBar", "Home")');
                     // $.Dialog.close();
-
+                        
                     // Auto-redirect to profile account page.
-                    window.location.replace("@Url.Action("Index", "Profile")");
+                    window.location.replace(data.RedirectUrl);
                 }
                 else {
                     loginForm.html(data);

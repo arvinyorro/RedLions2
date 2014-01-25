@@ -4,6 +4,7 @@
     using RedLions.Application;
     using DTO = RedLions.Application.DTO;
 
+
     public class HomeController : Controller
     {
         private MemberService memberService;
@@ -19,9 +20,10 @@
         //
         // GET: /Home/
 
-        public ActionResult Index()
+        [Route("{referrerUsername?}")]
+        public ActionResult Index(string referrerUsername)
         {
-            this.SaveReferralCodeToSession();
+            this.SaveReferrerCodeToSession(referrerUsername);
             return View();
         }
 
@@ -30,9 +32,10 @@
             return View();
         }
 
-        public ViewResult Products()
+        [Route("Products/{referrerUsername?}")]
+        public ViewResult Products(string referrerUsername)
         {
-            this.SaveReferralCodeToSession();
+            this.SaveReferrerCodeToSession(referrerUsername);
             return View();
         }
 
@@ -53,10 +56,10 @@
                 Message = inquiry.Message,
             };
 
-            if (Session["ReferralCode"] != null)
+            if (Session["ReferrerUsername"] != null)
             {
-                string referralCode = Session["ReferralCode"] as string;
-                DTO.Member referrer = this.memberService.GetMemberByReferralCode(referralCode);
+                string referrerUsername = Session["ReferrerUsername"] as string;
+                DTO.Member referrer = this.memberService.GetMemberByUsername(referrerUsername);
                 if (referrer != null)
                 {
                     inquiryDTO.ReferrerID = referrer.ID;
@@ -72,14 +75,19 @@
             return PartialView("_NavigationPartial");
         }
 
-        private void SaveReferralCodeToSession()
+        private void SaveReferrerCodeToSession(string username)
         {
-            string referralCode = Request.QueryString["r"];
-            if (string.IsNullOrEmpty(referralCode))
+            if (string.IsNullOrEmpty(username))
             {
                 return;
             }
-            Session["ReferralCode"] = referralCode;
+
+            Session["ReferrerUsername"] = username;
+
+            // We need to remove the referrerUsername in the URL, otherwise
+            // the MVC framework will generate this parameter all over our
+            // links.
+            Request.RequestContext.RouteData.Values.Remove("referrerUsername");
         }
     }
 }

@@ -14,6 +14,16 @@ namespace RedLions.Presentation.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "ProfileDefault",
+                url: "Profile",
+                defaults: new { controller = "Profile", action = "Index" },
+                namespaces: new[] { "RedLions.Presentation.Web.Controllers" }
+            );
+
+            // Enables Attribute Routing
+            routes.MapMvcAttributeRoutes();
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },

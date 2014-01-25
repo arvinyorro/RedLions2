@@ -24,8 +24,8 @@
             this.ReferralCode = memberDTO.ReferralCode;
             this.ReferrerUsername = memberDTO.ReferrerUsername ?? "No upline";
             var request = HttpContext.Current.Request;
-            this.ReferralLink = string.Format("{0}/?r={1}",
-                request.Url.GetLeftPart(UriPartial.Authority), memberDTO.ReferralCode);
+            this.ReferralLink = string.Format("{0}/{1}",
+                request.Url.GetLeftPart(UriPartial.Authority), memberDTO.Username);
             this.CellphoneNumber = memberDTO.CellphoneNumber;
         }
 

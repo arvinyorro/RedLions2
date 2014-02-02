@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Skin";
+}
+
+
+<div id="slider-container">
+    <ul class="rslides" id="slider">
+        <li><img src="~/Content/Images/Home/Skin/bbcream.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Skin/glutasoap.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Skin/kojic.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Skin/lotion.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Skin/magiccream.jpg" /></li>
+    </ul>
+</div>
+<div id="slider-control"></div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#slider").responsiveSlides({
+                maxwidth: 800,
+                speed: 800,
+
+                pager: true,
+                nav: true,
+                namespace: "centered-btns"
+            });
+        });
+    </script>
+}

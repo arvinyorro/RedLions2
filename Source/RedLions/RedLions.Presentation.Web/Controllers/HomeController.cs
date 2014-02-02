@@ -75,6 +75,41 @@
             return PartialView("_NavigationPartial");
         }
 
+        public ViewResult Awards()
+        {
+            return View();
+        }
+
+        public ViewResult Beverages()
+        {
+            return View();
+        }
+
+        public ViewResult Nutritions()
+        {
+            return View();
+        }
+
+        public ViewResult Personal()
+        {
+            return View();
+        }
+
+        public ViewResult Skin()
+        {
+            return View();
+        }
+
+        public ViewResult Business()
+        {
+            return View();
+        }
+
+        public ViewResult Packages()
+        {
+            return View();
+        }
+
         private void SaveReferrerCodeToSession(string username)
         {
             if (string.IsNullOrEmpty(username))

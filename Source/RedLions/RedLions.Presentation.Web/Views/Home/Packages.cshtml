@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Packages";
+}
+
+
+<div id="slider-container">
+    <ul class="rslides" id="slider">
+        <li><img src="~/Content/Images/Home/Packages/local_a1.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Packages/local_j1.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Packages/local_k2.jpg" /></li>
+    </ul>
+</div>
+<div id="slider-control"></div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#slider").responsiveSlides({
+                maxwidth: 800,
+                speed: 800,
+
+                pager: true,
+                nav: true,
+                namespace: "centered-btns"
+            });
+        });
+    </script>
+}

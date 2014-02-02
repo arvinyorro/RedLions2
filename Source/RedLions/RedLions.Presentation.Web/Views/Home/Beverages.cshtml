@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Beverages";
+}
+
+
+<div id="slider-container">
+    <ul class="rslides" id="slider">
+        <li><img src="~/Content/Images/Home/Beverages/acai.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Beverages/cappuccino.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Beverages/choco8.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Beverages/primejuice.jpg" /></li>
+    </ul>
+</div>
+<div id="slider-control"></div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#slider").responsiveSlides({
+                maxwidth: 800,
+                speed: 800,
+
+                pager: true,
+                nav: true,
+                namespace: "centered-btns"
+            });
+        });
+    </script>
+}

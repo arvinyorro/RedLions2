@@ -22,7 +22,7 @@
             this.RegisteredDateTime = memberDTO.RegisteredDateTime;
             this.ReferralCount = memberDTO.ReferralCount;
             this.ReferralCode = memberDTO.ReferralCode;
-            this.ReferrerUsername = memberDTO.ReferrerUsername ?? "No upline";
+            this.ReferrerUsername = memberDTO.ReferrerUsername ?? "No referral";
             var request = HttpContext.Current.Request;
             this.ReferralLink = string.Format("{0}/{1}",
                 request.Url.GetLeftPart(UriPartial.Authority), memberDTO.Username);
@@ -50,7 +50,7 @@
         [Display(Name = "Total Downlines")]
         public int ReferralCount { get; set; }
 
-        [Display(Name = "Upline")]
+        [Display(Name = "Referral")]
         public string ReferrerUsername { get; set; }
 
         [Required]

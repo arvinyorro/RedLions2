@@ -211,6 +211,29 @@
     <Content Include="Content\Images\Banners\Products\lotion.jpg" />
     <Content Include="Content\Images\Banners\Products\magiccream.jpg" />
     <Content Include="Content\Images\Banners\redlion_logo.png" />
+    <Content Include="Content\Images\Home\Awards\certs.jpg" />
+    <Content Include="Content\Images\Home\Awards\iso_certs.jpg" />
+    <Content Include="Content\Images\Home\Beverages\acai.jpg" />
+    <Content Include="Content\Images\Home\Beverages\cappuccino.jpg" />
+    <Content Include="Content\Images\Home\Beverages\choco8.jpg" />
+    <Content Include="Content\Images\Home\Beverages\primejuice.jpg" />
+    <Content Include="Content\Images\Home\Nutritions\acai.jpg" />
+    <Content Include="Content\Images\Home\Nutritions\ultimac.jpg" />
+    <Content Include="Content\Images\Home\Packages\local_a1.jpg" />
+    <Content Include="Content\Images\Home\Packages\local_j1.jpg" />
+    <Content Include="Content\Images\Home\Packages\local_k2.jpg" />
+    <Content Include="Content\Images\Home\Personal\advance_care.jpg" />
+    <Content Include="Content\Images\Home\Personal\hairtreats.jpg" />
+    <Content Include="Content\Images\Home\Personal\icare.jpg" />
+    <Content Include="Content\Images\Home\Personal\naturawhite_deodorant.jpg" />
+    <Content Include="Content\Images\Home\Personal\nutrihair.jpg" />
+    <Content Include="Content\Images\Home\Personal\organic_laundry.jpg" />
+    <Content Include="Content\Images\Home\Personal\scareaway.jpg" />
+    <Content Include="Content\Images\Home\Skin\bbcream.jpg" />
+    <Content Include="Content\Images\Home\Skin\glutasoap.jpg" />
+    <Content Include="Content\Images\Home\Skin\kojic.jpg" />
+    <Content Include="Content\Images\Home\Skin\lotion.jpg" />
+    <Content Include="Content\Images\Home\Skin\magiccream.jpg" />
     <Content Include="Content\Images\UI\loading_small.gif" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Styles\fonts\iconFont.dev.svg" />
@@ -319,6 +342,12 @@
     <Content Include="Views\Profile\Inquiry.cshtml" />
     <Content Include="Views\Profile\Shared\_InquiriesControlPartial.cshtml" />
     <Content Include="Views\Home\InquireConfirm.cshtml" />
+    <Content Include="Views\Home\Awards.cshtml" />
+    <Content Include="Views\Home\Beverages.cshtml" />
+    <Content Include="Views\Home\Nutritions.cshtml" />
+    <Content Include="Views\Home\Personal.cshtml" />
+    <Content Include="Views\Home\Skin.cshtml" />
+    <Content Include="Views\Home\Packages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

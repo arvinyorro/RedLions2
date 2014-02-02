@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Personal";
+}
+
+
+<div id="slider-container">
+    <ul class="rslides" id="slider">
+        <li><img src="~/Content/Images/Home/Personal/advance_care.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Personal/hairtreats.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Personal/icare.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Personal/naturawhite_deodorant.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Personal/nutrihair.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Personal/organic_laundry.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Personal/scareaway.jpg" /></li>
+    </ul>
+</div>
+<div id="slider-control"></div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#slider").responsiveSlides({
+                maxwidth: 800,
+                speed: 800,
+
+                pager: true,
+                nav: true,
+                namespace: "centered-btns"
+            });
+        });
+    </script>
+}

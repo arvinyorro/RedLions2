@@ -347,7 +347,8 @@
     <Content Include="Views\Home\Nutritions.cshtml" />
     <Content Include="Views\Home\Personal.cshtml" />
     <Content Include="Views\Home\Skin.cshtml" />
-    <Content Include="Views\Home\Packages.cshtml" />
+    <Content Include="Views\Home\LocalPackages.cshtml" />
+    <Content Include="Views\Home\LocalBusiness.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

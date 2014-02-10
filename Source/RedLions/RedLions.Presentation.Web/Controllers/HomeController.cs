@@ -100,12 +100,12 @@
             return View();
         }
 
-        public ViewResult Business()
+        public ViewResult LocalBusiness()
         {
             return View();
         }
 
-        public ViewResult Packages()
+        public ViewResult LocalPackages()
         {
             return View();
         }

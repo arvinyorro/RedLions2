@@ -47,10 +47,10 @@
         [Display(Name = "Referral Link")]
         public string ReferralLink { get; set; }
 
-        [Display(Name = "Total Downlines")]
+        [Display(Name = "Total Referrals")]
         public int ReferralCount { get; set; }
 
-        [Display(Name = "Referral")]
+        [Display(Name = "Referrer")]
         public string ReferrerUsername { get; set; }
 
         [Required]

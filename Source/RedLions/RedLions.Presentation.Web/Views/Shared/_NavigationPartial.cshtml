@@ -14,9 +14,22 @@
         </div>
 
         <span class="element-divider"></span>
-        <a class="element" href="@Url.Action("Products", "Home")">Products</a>
+
+        <div class="element">
+            <a class="dropdown-toggle" href="@Url.Action("Products", "Home")">Products</a>
+            <ul class="dropdown-menu" data-role="dropdown">
+                <li><a href="@Url.Action("Products", "Home")">All Products</a></li>
+                <li class="divider"></li>
+                <li><a href="@Url.Action("Beverages", "Home")">Healthy Beverages</a></li>
+                <li><a href="@Url.Action("Nutritions", "Home")">Nutritions</a></li>
+                <li><a href="@Url.Action("Personal", "Home")">Personal Care</a></li>
+                <li><a href="@Url.Action("Skin", "Home")">Skin Care</a></li>
+                <li><a href="#">Health Accessories</a></li>
+            </ul>
+        </div>
+
         <span class="element-divider"></span>
-        <button class="element">Business</button>
+        <a class="element" href="@Url.Action("LocalBusiness", "Home")">Business</a>
         <span class="element-divider"></span>
         <button class="element">Events</button>
 

@@ -95,7 +95,13 @@
                 CellphoneNumber = member.CellphoneNumber,
             };
 
-            this.MemberService.Register(memberDTO);
+            StatusCode statusCode = this.MemberService.Register(memberDTO);
+
+            if (statusCode != StatusCode.Success)
+            {
+                this.AddError(statusCode);
+                return View(member);
+            }
 
             return RedirectToAction("Index");
         }
@@ -148,6 +154,7 @@
                     ModelState.AddModelError("ReferrerUsername", errorMessage);
                     break;
                 case StatusCode.DuplicateUsername:
+                case StatusCode.UsernameInvalid:
                     ModelState.AddModelError("Username", errorMessage);
                     break;
                 case StatusCode.DuplicateEmail:

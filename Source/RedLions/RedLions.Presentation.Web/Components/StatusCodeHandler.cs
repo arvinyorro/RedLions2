@@ -12,6 +12,8 @@ namespace RedLions.Presentation.Web.Components
                     return "Referrer Username not found. Leave empty if you wish to set a random referrer.";
                 case StatusCode.DuplicateUsername:
                     return "This username is already taken.";
+                case StatusCode.UsernameInvalid:
+                    return "This username must only contain letters, numbers, and underscores.";
                 case StatusCode.DuplicateEmail:
                     return "This email is already taken.";
                 case StatusCode.PasswordInvalid:

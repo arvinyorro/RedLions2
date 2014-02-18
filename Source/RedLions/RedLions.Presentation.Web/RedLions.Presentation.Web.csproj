@@ -178,6 +178,7 @@
     <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="Components\EmailUniqueAttribute.cs" />
     <Compile Include="Components\ModelExtensions.cs" />
+    <Compile Include="Components\SaveReferrerAttribute.cs" />
     <Compile Include="Components\StatusCodeHandler.cs" />
     <Compile Include="Components\UsernameUniqueAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />

@@ -19,11 +19,11 @@
 
         public override bool IsValid(object value)
         {
-        string username = value as string;
-        if (string.IsNullOrEmpty(username))
-        {
-            return true;
-        }
+            string username = value as string;
+            if (string.IsNullOrEmpty(username))
+            {
+                return true;
+            }
 
             bool valid = (!this.userService.ExistsByUsername(username));
 

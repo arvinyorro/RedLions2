@@ -13,14 +13,16 @@ namespace RedLions.Presentation.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.LowercaseUrls = true;    
+
             // Add a ProfileDefault this so that ~/Profile url is not mixed with ~/referrerUsername
             routes.MapRoute(
                 name: "ProfileDefault",
-                url: "Profile",
-                defaults: new { controller = "Profile", action = "Index" },
+                url: "Profile/{action}/{id}",
+                defaults: new { controller = "Profile", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "RedLions.Presentation.Web.Controllers" }
             );
-
+            
             // Enables Attribute Routing
             routes.MapMvcAttributeRoutes();
 

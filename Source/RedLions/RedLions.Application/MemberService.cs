@@ -129,7 +129,11 @@
             var statusCode = StatusCode.Success;
 
             // Add validations here
-            this.Validate(memberDTO);
+            statusCode = this.Validate(memberDTO);
+            if (statusCode != StatusCode.Success)
+            {
+                return statusCode;
+            }
 
             if (memberDTO.Password == null)
             {
@@ -202,17 +206,18 @@
                 throw new ArgumentNullException("The parameter 'memberRepository' must not be null");
             }
 
-            if (memberDTO.ID == 0)
-            {
-                return StatusCode.Success;
-            }
-
             bool duplicateUsername = (this.genericRepository.GetSingle<Business.Member>(x =>
                                             x.Username == memberDTO.Username &&
                                             x.ID != memberDTO.ID) != null);
             if (duplicateUsername)
             {
                 return StatusCode.DuplicateUsername;
+            }
+
+            bool usernameInvalid = !memberDTO.Username.All(c => Char.IsLetterOrDigit(c) || c == '_');
+            if (usernameInvalid)
+            {
+                return StatusCode.UsernameInvalid;
             }
 
             bool duplicateEmail = (this.genericRepository.GetSingle<Business.Member>(x =>

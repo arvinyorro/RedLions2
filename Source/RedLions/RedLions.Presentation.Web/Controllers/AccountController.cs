@@ -14,6 +14,7 @@
     using DTO = RedLions.Application.DTO;
 
     [Authorize]
+    [Route("Account/{action=Login}")]
     public class AccountController : Controller
     {
         [Dependency]
@@ -32,6 +33,7 @@
         }
 
         [AllowAnonymous]
+        [Route("Account/Login", Order = 0)]
         public ViewResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;

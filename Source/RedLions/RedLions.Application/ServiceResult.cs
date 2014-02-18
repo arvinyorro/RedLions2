@@ -13,6 +13,7 @@
     {
         Success,
         UserNotFound,
+        UsernameInvalid,
         PasswordInvalid,
         DescriptionIsNull,
         ReferrerNotFound,

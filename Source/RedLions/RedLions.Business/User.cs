@@ -1,6 +1,7 @@
 ﻿namespace RedLions.Business
 {
     using System;
+    using System.Linq;
 
     public class User
     {
@@ -34,6 +35,13 @@
             if (string.IsNullOrEmpty(password))
             {
                 throw new ArgumentNullException("Password must not be null or empty.");
+            }
+
+            // Allow only alphahumeric characters and underscore.
+            bool usernameInvalid = !username.All(c => Char.IsLetterOrDigit(c) || c == '_');
+            if (usernameInvalid)
+            {
+                throw new Exception("Username must only contain alphanumeric or underscore characters.");
             }
 
             this.Username = username;

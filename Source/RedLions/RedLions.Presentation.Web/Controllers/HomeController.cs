@@ -1,10 +1,12 @@
 ﻿namespace RedLions.Presentation.Web.Controllers
 {
     using System.Web.Mvc;
+    using RedLions.Presentation.Web.Components;
     using RedLions.Application;
     using DTO = RedLions.Application.DTO;
 
-
+    [SaveReferrer]
+    [Route("Home/{action=Index}/{referrerUsername?}")]
     public class HomeController : Controller
     {
         private MemberService memberService;
@@ -20,10 +22,11 @@
         //
         // GET: /Home/
 
-        [Route("{referrerUsername?}")]
-        public ActionResult Index(string referrerUsername)
+        [Route("Home/Index/{referrerUsername?}", Order = 1)]
+        [Route("Home/{referrerUsername?}", Order = 2)]
+        [Route("{referrerUsername?}", Order = 3)]
+        public ActionResult Index()
         {
-            this.SaveReferrerCodeToSession(referrerUsername);
             return View();
         }
 
@@ -33,9 +36,8 @@
         }
 
         [Route("Products/{referrerUsername?}")]
-        public ViewResult Products(string referrerUsername)
+        public ViewResult Products()
         {
-            this.SaveReferrerCodeToSession(referrerUsername);
             return View();
         }
 
@@ -105,24 +107,14 @@
             return View();
         }
 
-        public ViewResult LocalPackages()
+        public ViewResult InternationalBusiness()
         {
             return View();
         }
 
-        private void SaveReferrerCodeToSession(string username)
+        public ViewResult LocalPackages()
         {
-            if (string.IsNullOrEmpty(username))
-            {
-                return;
-            }
-
-            Session["ReferrerUsername"] = username;
-
-            // We need to remove the referrerUsername in the URL, otherwise
-            // the MVC framework will generate this parameter all over our
-            // links.
-            Request.RequestContext.RouteData.Values.Remove("referrerUsername");
+            return View();
         }
     }
 }

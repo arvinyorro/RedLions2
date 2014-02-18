@@ -170,6 +170,16 @@
 
             switch (statusCode)
             {
+                case StatusCode.ReferrerNotFound:
+                    ModelState.AddModelError("ReferrerUsername", errorMessage);
+                    break;
+                case StatusCode.DuplicateUsername:
+                case StatusCode.UsernameInvalid:
+                    ModelState.AddModelError("Username", errorMessage);
+                    break;
+                case StatusCode.DuplicateEmail:
+                    ModelState.AddModelError("Email", errorMessage);
+                    break;
                 case StatusCode.PasswordInvalid:
                     ModelState.AddModelError("OldPassword", errorMessage);
                     break;

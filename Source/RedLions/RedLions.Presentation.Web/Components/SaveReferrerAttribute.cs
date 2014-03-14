@@ -22,11 +22,6 @@
             }
 
             httpContext.Session["ReferrerUsername"] = parameterValue as string;
-
-            // We need to remove the referrerUsername in the URL, otherwise
-            // the MVC framework will generate this parameter to all our
-            // links.
-            routeData.Values.Remove("referrerUsername");
         }
     }
 }

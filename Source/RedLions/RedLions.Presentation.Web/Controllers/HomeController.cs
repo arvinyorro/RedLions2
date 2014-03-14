@@ -6,7 +6,7 @@
     using DTO = RedLions.Application.DTO;
 
     [SaveReferrer]
-    [Route("Home/{action=Index}/{referrerUsername?}")]
+    [Route("Home/{action=Index}/{referrerUsername?}", Order = 1)]
     public class HomeController : Controller
     {
         private MemberService memberService;
@@ -77,41 +77,49 @@
             return PartialView("_NavigationPartial");
         }
 
+        [Route("Awards/{referrerUsername?}")]
         public ViewResult Awards()
         {
             return View();
         }
 
+        [Route("Beverages/{referrerUsername?}")]
         public ViewResult Beverages()
         {
             return View();
         }
 
+        [Route("Nutritions/{referrerUsername?}")]
         public ViewResult Nutritions()
         {
             return View();
         }
 
+        [Route("Personal/{referrerUsername?}")]
         public ViewResult Personal()
         {
             return View();
         }
 
+        [Route("Skin/{referrerUsername?}")]
         public ViewResult Skin()
         {
             return View();
         }
 
+        [Route("LocalBusiness/{referrerUsername?}")]
         public ViewResult LocalBusiness()
         {
             return View();
         }
 
+        [Route("InternationalBusiness/{referrerUsername?}")]
         public ViewResult InternationalBusiness()
         {
             return View();
         }
 
+        [Route("LocalPackages/{referrerUsername?}")]
         public ViewResult LocalPackages()
         {
             return View();

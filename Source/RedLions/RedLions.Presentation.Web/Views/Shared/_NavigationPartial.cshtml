@@ -7,9 +7,10 @@
         <div class="element">
             <a class="dropdown-toggle" href="#">Company</a>
             <ul class="dropdown-menu" data-role="dropdown">
-                <li><a href="#">About Us</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Partnerships</a></li>
+                <li><a href="@Url.Action("Company", "Home")">Company Profile</a></li>
+                <li><a href="@Url.Action("Certifications", "Home")">Certifications</a></li>
+                <li><a href="@Url.Action("Awards", "Home")">Awards</a></li>
+                <li><a href="@Url.Action("Redlions", "Home")">RedLions International</a></li>
             </ul>
         </div>
 
@@ -24,12 +25,45 @@
                 <li><a href="@Url.Action("Nutritions", "Home")">Nutritions</a></li>
                 <li><a href="@Url.Action("Personal", "Home")">Personal Care</a></li>
                 <li><a href="@Url.Action("Skin", "Home")">Skin Care</a></li>
-                <li><a href="#">Health Accessories</a></li>
+                <li><a href="@Url.Action("Health", "Home")">Health Accessories</a></li>
+            </ul>
+        </div>
+
+        <!-- Business -->
+        <span class="element-divider"></span>
+        <div class="element">
+            <a class="dropdown-toggle" href="#">Business</a>
+            <ul class="dropdown-menu" data-role="dropdown">
+
+                <li><a href="@Url.Action("LocalBusiness", "Home")">Local Business Plan</a></li>
+                <li><a href="@Url.Action("InternationalBusiness", "Home")">International Business Plan</a></li>
+                <li><a href="@Url.Action("LocalPackages", "Home")">Local Product Packages</a></li>
+
+                <li>
+                    <a href="@Url.Action("InternaltionalPackages", "Home")" class="dropdown-toggle">International Product Packages</a>
+                    <ul class="dropdown-menu" data-role="dropdown">
+                        <li><a href="@Url.Action("InternationalPackages", "Home")">All International</a></li>
+                        <li class="divider"></li>
+                        <li><a href="@Url.Action("Dubai", "Home")">Dubai</a></li>
+                        <li><a href="@Url.Action("HongKong", "Home")">HongKong</a></li>
+                        <li><a href="@Url.Action("Macau", "Home")">Macau</a></li>
+                        <li><a href="@Url.Action("Ksa", "Home")">KSA</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
 
         <span class="element-divider"></span>
-        <a class="element" href="@Url.Action("LocalBusiness", "Home")">Business</a>
+
+        <div class="element">
+            <a class="dropdown-toggle" href="#">Media</a>
+            <ul class="dropdown-menu" data-role="dropdown">
+                <li><a href="@Url.Action("Videos", "Home")">Videos</a></li>
+                <li><a href="@Url.Action("Featured", "Home")">Featured Shows</a></li>
+                <li><a href="@Url.Action("Possible", "Home")">1mpossible</a></li>
+            </ul>
+        </div>
+
         <span class="element-divider"></span>
         <button class="element">Events</button>
 

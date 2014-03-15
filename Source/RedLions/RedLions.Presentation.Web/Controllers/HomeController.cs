@@ -1,5 +1,6 @@
 ﻿namespace RedLions.Presentation.Web.Controllers
 {
+    using System.Web;
     using System.Web.Mvc;
     using RedLions.Presentation.Web.Components;
     using RedLions.Application;
@@ -30,7 +31,7 @@
             return View();
         }
 
-        public ViewResult Inquire()
+        public ViewResult Inquire(string referrerUsername = null)
         {
             return View();
         }
@@ -83,6 +84,24 @@
             return View();
         }
 
+        [Route("Certifications/{referrerUsername?}")]
+        public ViewResult Certifications()
+        {
+            return View();
+        }
+
+        [Route("Company/{referrerUsername?}")]
+        public ViewResult Company()
+        {
+            return View();
+        }
+
+        [Route("Redlions/{referrerUsername?}")]
+        public ViewResult Redlions()
+        {
+            return View();
+        }
+
         [Route("Beverages/{referrerUsername?}")]
         public ViewResult Beverages()
         {
@@ -107,6 +126,12 @@
             return View();
         }
 
+        [Route("Health/{referrerUsername?}")]
+        public ViewResult Health()
+        {
+            return View("UnderConstruction");
+        }
+
         [Route("LocalBusiness/{referrerUsername?}")]
         public ViewResult LocalBusiness()
         {
@@ -121,6 +146,74 @@
 
         [Route("LocalPackages/{referrerUsername?}")]
         public ViewResult LocalPackages()
+        {
+            return View();
+        }
+
+        [Route("InternationalPackages/{referrerUsername?}")]
+        public ViewResult InternationalPackages()
+        {
+            return View("UnderConstruction");
+        }
+
+        [Route("Dubai/{referrerUsername?}")]
+        public ViewResult Dubai()
+        {
+            return View("UnderConstruction");
+        }
+
+        [Route("HongKong/{referrerUsername?}")]
+        public ViewResult HongKong()
+        {
+            return View("UnderConstruction");
+        }
+
+        [Route("Macau/{referrerUsername?}")]
+        public ViewResult Macau()
+        {
+            return View("UnderConstruction");
+        }
+
+        [Route("Ksa/{referrerUsername?}")]
+        public ViewResult Ksa()
+        {
+            return View("UnderConstruction");
+        }
+
+        [Route("Featured/{referrerUsername?}")]
+        public ViewResult Featured()
+        {
+            return View();
+        }
+
+        [Route("Featured/{id:int}/{referrerUsername?}", Name = "FeaturedSingle")]
+        public ViewResult FeaturedSingle(int id)
+        {
+            switch(id)
+            {
+                case 1:
+                    ViewBag.VideoID = "Cv8ExYqBB7A";
+                    ViewBag.Title = "Go Negosyo with Ms. Mabel Gonzales";
+                    break;  
+                case 2:
+                    ViewBag.VideoID = "HuMwSGUqJeg";
+                    ViewBag.Title = "Go Negosyo Featured the 6th Anniversary Celebration of UNO";
+                    break;  
+                default:
+                    throw new HttpException(404, "Video not found");
+            }
+
+            return View();
+        }
+
+        [Route("Videos/{referrerUsername?}")]
+        public ViewResult Videos()
+        {
+            return View();
+        }
+
+        [Route("Possible/{referrerUsername?}")]
+        public ViewResult Possible()
         {
             return View();
         }

@@ -54,6 +54,6 @@
 <!-- Pagination Links -->
 @Html.PagedListPager(
     list: Model,
-    generatePageUrl: page => Url.Action("Index",
+    generatePageUrl: page => Url.Action("Inquiries",
                              new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.SearchEmail, }),
     options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })

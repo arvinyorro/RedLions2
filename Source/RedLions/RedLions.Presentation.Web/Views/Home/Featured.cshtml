@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Featured Shows";
+}
+
+<h2>Featured Shows</h2>
+
+<div class="grid featured">
+    <div class="row">
+        <div class="span4">
+            <a href="@Url.RouteUrl("FeaturedSingle", new { id = 1 })">
+                <img src="http://img.youtube.com/vi/Cv8ExYqBB7A/maxresdefault.jpg" />
+                Go Negosyo with Ms. Mabel Gonzales
+            </a>
+        </div>
+
+        <div class="span4">
+            <a href="@Url.RouteUrl("FeaturedSingle", new { id = 2 })">
+                <img src="http://img.youtube.com/vi/HuMwSGUqJeg/maxresdefault.jpg" />
+                Go Negosyo Featured the 6th Anniversary Celebration of UNO
+            </a>    
+        </div>
+
+    </div>
+</div>

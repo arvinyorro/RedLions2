@@ -218,6 +218,7 @@
     <Content Include="Content\Images\Home\Beverages\cappuccino.jpg" />
     <Content Include="Content\Images\Home\Beverages\choco8.jpg" />
     <Content Include="Content\Images\Home\Beverages\primejuice.jpg" />
+    <Content Include="Content\Images\Home\Company\profile.jpg" />
     <Content Include="Content\Images\Home\Nutritions\acai.jpg" />
     <Content Include="Content\Images\Home\Nutritions\ultimac.jpg" />
     <Content Include="Content\Images\Home\Packages\local_a1.jpg" />
@@ -230,6 +231,7 @@
     <Content Include="Content\Images\Home\Personal\nutrihair.jpg" />
     <Content Include="Content\Images\Home\Personal\organic_laundry.jpg" />
     <Content Include="Content\Images\Home\Personal\scareaway.jpg" />
+    <Content Include="Content\Images\Home\Redlions\welcome.jpg" />
     <Content Include="Content\Images\Home\Skin\bbcream.jpg" />
     <Content Include="Content\Images\Home\Skin\glutasoap.jpg" />
     <Content Include="Content\Images\Home\Skin\kojic.jpg" />
@@ -350,6 +352,14 @@
     <Content Include="Views\Home\Skin.cshtml" />
     <Content Include="Views\Home\LocalPackages.cshtml" />
     <Content Include="Views\Home\LocalBusiness.cshtml" />
+    <Content Include="Views\Home\Featured.cshtml" />
+    <Content Include="Views\Home\Videos.cshtml" />
+    <Content Include="Views\Home\FeaturedSingle.cshtml" />
+    <Content Include="Views\Home\Certifications.cshtml" />
+    <Content Include="Views\Home\Company.cshtml" />
+    <Content Include="Views\Home\Redlions.cshtml" />
+    <Content Include="Views\Home\UnderConstruction.cshtml" />
+    <Content Include="Views\Home\Possible.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

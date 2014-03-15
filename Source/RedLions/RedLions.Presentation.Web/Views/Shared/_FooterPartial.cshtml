@@ -1,12 +1,15 @@
 ﻿<div class="footer-menu">
 
     <div class="footer-columns">
-        <h1>Other Sites</h1>
+        <img id="uno-logo" src="http://www.uno-corp.com/images/uno-logo.png" />
+    </div>
+    <div class="footer-columns">
+        <h1>Company</h1>
         <ul>
-            <li><a href="#">Company Profile</a></li>
-            <li><a href="#">Certifications</a></li>
+            <li><a href="@Url.Action("Company", "Home")">Company Profile</a></li>
+            <li><a href="@Url.Action("Certifications", "Home")">Certifications</a></li>
             <li><a href="@Url.Action("Awards", "Home")">Awards</a></li>
-            <li><a href="#">RedLions International</a></li>
+            <li><a href="@Url.Action("Redlions", "Home")">RedLions International</a></li>
         </ul>
     </div>
 
@@ -17,7 +20,7 @@
             <li><a href="@Url.Action("Nutritions", "Home")">Nutritions</a></li>
             <li><a href="@Url.Action("Personal", "Home")">Personal Care</a></li>
             <li><a href="@Url.Action("Skin", "Home")">Skin Care</a></li>
-            <li><a href="#">Health Accessories</a></li>
+            <li><a href="@Url.Action("Health", "Home")">Health Accessories</a></li>
         </ul>
     </div>
 
@@ -26,30 +29,26 @@
         <ul>
             <li><a href="@Url.Action("LocalBusiness", "Home")">Local Business Plan</a></li>
             <li><a href="@Url.Action("InternationalBusiness", "Home")">International Business Plan</a></li>
-            <li><a href="@Url.Action("Business", "Home")">Business Plan</a></li>
             <li><a href="@Url.Action("LocalPackages", "Home")">Local Product Packages</a></li>
-            <li><a href="#">International Product Packages</a></li>
-            <li><a href="#">Join Now</a></li>
-            <li><a href="#">Inquire Now</a></li>
+            <li>
+                <a href="@Url.Action("InternationalPackages", "Home")">International Product Packages</a>
+                <ul>
+                    <li><a href="@Url.Action("Dubai", "Home")">Dubai</a></li>
+                    <li><a href="@Url.Action("HongKong", "Home")">HongKong</a></li>
+                    <li><a href="@Url.Action("Macau", "Home")">Macau</a></li>
+                    <li><a href="@Url.Action("Ksa", "Home")">KSA</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 
     <div class="footer-columns">
         <h1>Media</h1>
         <ul>
-            <li><a href="#">Videos</a></li>
-            <li><a href="#">Featured Shows</a></li>
-            <li><a href="#">1mpossible</a></li>
+            <li><a href="@Url.Action("Videos", "Home")">Videos</a></li>
+            <li><a href="@Url.Action("Featured", "Home")">Featured Shows</a></li>
+            <li><a href="@Url.Action("Possible", "Home")">1mpossible</a></li>
         </ul>
-    </div>
-
-    <div class="footer-columns">
-        <h1>Follow Us</h1>
-        <div class="socialmedia">
-            <p><a id="fb" href="http://www.facebook.com/" class="social">Facebook</a>
-            <a id="twitter" href="http://twitter.com/" class="social">Twitter</a>
-            <a id="youtube" href="http://youtube.com/" class="social">Youtube</a></p>
-        </div><!-- /socialmedia -->
     </div>
 
     <div id="copyright">

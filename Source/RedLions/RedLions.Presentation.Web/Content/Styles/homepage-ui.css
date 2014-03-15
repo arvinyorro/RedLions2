@@ -6,7 +6,7 @@ body > #container { height: auto; min-height: 100%; }
 
 #container 
 {
-    min-width: 1200px;
+    min-width: 1200px; /* Value must be synced  with footer */
 }
 
 #header {
@@ -29,6 +29,13 @@ body > #container { height: auto; min-height: 100%; }
     left: 15%;
 }
 
+#uno-logo {
+    width: 80%;
+    height: 80%;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
 #footer 
 {
     /*background: #f1f1f1 url('/Content/Images/UI/footer50_bg2.png') 0 0 repeat-x;
@@ -41,11 +48,12 @@ body > #container { height: auto; min-height: 100%; }
 #footer {
     clear: both;
     position: relative;
-    margin-top: -200px; /* Must counter the heigh of the footer */
-    height:200px;   /* Height of the footer */
+    margin-top: -230px; /* Must counter the heigh of the footer */
+    height:230px;   /* Height of the footer */
 
     text-align: center;
     background: #f1f1f1 url('/Content/Images/UI/footer50_bg2.png') 0 0 repeat-x;
+    min-width: 1200px; /* Value must be synced  with container */
 }
 
 .footer-menu

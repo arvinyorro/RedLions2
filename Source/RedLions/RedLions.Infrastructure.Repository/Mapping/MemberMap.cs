@@ -10,7 +10,7 @@
         {
             this.Property(t => t.MemberID)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-
+  
             // Properties
             this.Property(t => t.ReferralCode)
                 .IsRequired()
@@ -20,6 +20,10 @@
                 .IsRequired()
                 .HasMaxLength(11);
 
+            this.Property(t => t.UnoID)
+                .IsRequired()
+                .HasMaxLength(50);
+
             // Navigational Models
             this.HasOptional(t => t.Referrer)
                 .WithMany(t => t.Referrals)
@@ -28,12 +32,17 @@
             this.HasOptional(t => t.Inquiry)
                 .WithOptionalDependent()
                 .Map(m => m.MapKey("inquiry_id"));
+
+            this.HasRequired(t => t.Country)
+                .WithMany()
+                .Map(m => m.MapKey("country_id"));
             
             // Column and Table Mappings
             this.ToTable("member_details");
             this.Property(t => t.MemberID).HasColumnName("member_id");
             this.Property(t => t.ReferralCode).HasColumnName("referral_code");
             this.Property(t => t.CellphoneNumber).HasColumnName("cellphone_number");
+            this.Property(t => t.UnoID).HasColumnName("uno_id");
         }
     }
 }

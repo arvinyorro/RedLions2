@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using RedLions.Presentation.Web.Components
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -19,14 +21,14 @@
     <nav class="sidebar">
         <ul>
             <li class="title">Profile</li>
-            <li><a href="#"><i class="icon-user-3"></i>@User.Identity.Name</a></li>
-            <li class="active"><a href="@Url.Action("Index", "Profile")"><i class="icon-home"></i>Home</a></li>
-            <li><a href="#"><i class="icon-mail"></i>Messages</a></li>
+            <li @Html.HighlightActive("Details")><a href="@Url.Action("Details", "Profile")"><i class="icon-user-3"></i>@User.Identity.Name</a></li>
+            <li @Html.HighlightActive("Index")><a href="@Url.Action("Index", "Profile")"><i class="icon-home"></i>Home</a></li>
+            <li @Html.HighlightActive("Messages")><a href="#"><i class="icon-mail"></i>Messages</a></li>
             <li class="stick bg-yellow">
                 <a class="dropdown-toggle" href="#"><i class="icon-tree-view"></i>Networks</a>
                 <ul class="dropdown-menu" data-role="dropdown">
-                    <li><a href="@Url.Action("Referrals", "Profile")">Referrals</a></li>
-                    <li><a href="@Url.Action("Inquiries", "Profile")">Inquiries</a></li>
+                    <li @Html.HighlightActive("Referrals")><a href="@Url.Action("Referrals", "Profile")">Referrals</a></li>
+                    <li @Html.HighlightActive("Inquiries")><a href="@Url.Action("Inquiries", "Profile")">Inquiries</a></li>
                 </ul>
             </li>
 
@@ -35,9 +37,10 @@
             <li><a href="#"><i class="icon-basket"></i>Products</a></li>
             <li><a href="#"><i class="icon-calendar"></i>Events</a></li>
             <li><a href="#"><i class="icon-alarm-2"></i>Activities</a></li>
-            <li><a href="#"><i class="icon-cars"></i>Super Cars</a></li>
-            <li><a href="#"><i class="icon-smiley"></i>Incentive</a></li>
+            <li><a href="#"><i class="icon-cone"></i>Tutorials</a></li>            
+            <li><a href="#"><i class="icon-smiley"></i>Incentives</a></li>
             <li><a href="#"><i class="icon-medal"></i>Success</a></li>
+            <li><a href="#"><i class="icon-cars"></i>Super Cars</a></li>
             <li><a href="#"><i class="icon-star-3"></i>Company Profile</a></li>
         </ul>
     </nav>
@@ -45,9 +48,11 @@
     <header>
         <nav class="navigation-bar">
             <div class="navigation-bar-content">
-
-                
                 <span class="element-divider left-nav"></span>
+                    <div class="element">
+                        <a href="@Url.Action("Index", "Home")" class="fg-white">Redlions Online</a>
+                    </div>
+                <span class="element-divider"></span>
 
                 @RenderSection("NavigationControls", false)
 

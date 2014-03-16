@@ -11,6 +11,7 @@
     using DTO = RedLions.Application.DTO;
     // Internal
     using RedLions.Presentation.Web.Components;
+    using RedLions.Presentation.Web.ViewModels;
     
     [Authorize(Roles = "Admin")]
     public class MembersController : Controller
@@ -20,6 +21,9 @@
 
         [Dependency]
         public InquiryService InquiryService { get; set; }
+
+        [Dependency]
+        public CountryService CountryService { get; set; }
 
         //
         // GET: /Admin/Members/
@@ -53,34 +57,52 @@
                 inquiryDTO = this.InquiryService.GetById(inquiryID.Value);
             }
 
-            if (!inquiryID.HasValue ||
-                inquiryDTO == null)
+            var templateMember = new UpdateMember();
+
+            if (inquiryID.HasValue ||
+                inquiryDTO != null)
             {
-                return View();
+                templateMember.InquiryID = inquiryDTO.ID;
+                templateMember.Email = inquiryDTO.Email;
+                templateMember.FirstName = inquiryDTO.FirstName;
+                templateMember.LastName = inquiryDTO.LastName;
+                templateMember.ReferrerUsername = inquiryDTO.ReferrerUsername;
+                templateMember.CellphoneNumber = inquiryDTO.CellphoneNumber;
             }
 
-            var templateMember = new Models.Member();
-            templateMember.InquiryID = inquiryDTO.ID;
-            templateMember.Email = inquiryDTO.Email;
-            templateMember.FirstName = inquiryDTO.FirstName;
-            templateMember.LastName = inquiryDTO.LastName;
-            templateMember.ReferrerUsername = inquiryDTO.ReferrerUsername;
-            templateMember.CellphoneNumber = inquiryDTO.CellphoneNumber;
+            // Country.
+            DTO.Country defaultCountryDTO = this.CountryService.GetDefaultCountry();
+            templateMember.Country = new Models.Country(defaultCountryDTO);
+            templateMember.CountrySelectListItems = this.CountryService
+                .GetAll()
+                .Select(x => new Models.Country(x))
+                .ToSelectListItems(defaultCountryDTO.ID);
 
             return View(templateMember);
         }
 
         [HttpPost]
-        public ActionResult Create(Models.Member member)
+        public ActionResult Create(UpdateMember member)
         {
             if (!ModelState.IsValid)
             {
+                member.CountrySelectListItems = this.CountryService
+                    .GetAll()
+                    .Select(x => new Models.Country(x))
+                    .ToSelectListItems(member.Country.ID); 
+
                 return View(member);
             }
 
             if (member.Username.ToLower() == "profile")
             {
                 ModelState.AddModelError("Username", "Profile username is a reserved. Please use a different username.");
+
+                member.CountrySelectListItems = this.CountryService
+                    .GetAll()
+                    .Select(x => new Models.Country(x))
+                    .ToSelectListItems(member.Country.ID); 
+
                 return View(member);
             }
 
@@ -93,6 +115,8 @@
                 Email = member.Email,
                 ReferrerUsername = member.ReferrerUsername,
                 CellphoneNumber = member.CellphoneNumber,
+                UnoID = member.UnoID,
+                Country = new DTO.Country() {  ID = member.Country.ID },
             };
 
             StatusCode statusCode = this.MemberService.Register(memberDTO);
@@ -109,16 +133,25 @@
         public ViewResult Edit(int userID)
         {
             DTO.Member memberDTO = this.MemberService.GetMemberByID(userID);
-            var memberModel = new ViewModels.EditMember(memberDTO);
+            IEnumerable<Models.Country> countryModels = this.CountryService
+                    .GetAll()
+                    .Select(x => new Models.Country(x));
+
+            var memberModel = new UpdateMember(memberDTO, countryModels);
 
             return View(memberModel);
         }
 
         [HttpPost]
-        public ActionResult Edit(ViewModels.EditMember member)
+        public ActionResult Edit(UpdateMember member)
         {
             if (!ModelState.IsValid)
             {
+                member.CountrySelectListItems = this.CountryService
+                    .GetAll()
+                    .Select(x => new Models.Country(x))
+                    .ToSelectListItems(member.Country.ID); 
+
                 return View(member);
             }
 
@@ -130,7 +163,9 @@
                 LastName = member.LastName,
                 Email = member.Email,
                 ReferrerUsername = member.ReferrerUsername,
-                CellphoneNumber = member.CellphoneNumber
+                CellphoneNumber = member.CellphoneNumber,
+                UnoID = member.UnoID,
+                Country = new DTO.Country() { ID = member.Country.ID },
             };
 
             StatusCode statusCode = this.MemberService.Update(memberDTO);
@@ -138,6 +173,11 @@
             if (statusCode != StatusCode.Success)
             {
                 this.AddError(statusCode);
+                member.CountrySelectListItems = this.CountryService
+                    .GetAll()
+                    .Select(x => new Models.Country(x))
+                    .ToSelectListItems(member.Country.ID); 
+
                 return View(member);
             }
 

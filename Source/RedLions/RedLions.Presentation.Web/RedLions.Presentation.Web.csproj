@@ -175,8 +175,11 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\InquiriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\MembersController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\UpdatedMemberViewModel.cs" />
     <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="Components\EmailUniqueAttribute.cs" />
+    <Compile Include="Components\EnumerableExtensions.cs" />
+    <Compile Include="Components\HtmlExtensions.cs" />
     <Compile Include="Components\ModelExtensions.cs" />
     <Compile Include="Components\SaveReferrerAttribute.cs" />
     <Compile Include="Components\StatusCodeHandler.cs" />
@@ -188,6 +191,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\IDropDown.cs" />
     <Compile Include="Models\Inquiry.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,6 +217,7 @@
     <Content Include="Content\Images\Banners\Products\lotion.jpg" />
     <Content Include="Content\Images\Banners\Products\magiccream.jpg" />
     <Content Include="Content\Images\Banners\redlion_logo.png" />
+    <Content Include="Content\Images\Banners\uno_logo.jpg" />
     <Content Include="Content\Images\Home\Awards\certs.jpg" />
     <Content Include="Content\Images\Home\Awards\iso_certs.jpg" />
     <Content Include="Content\Images\Home\Beverages\acai.jpg" />
@@ -332,7 +338,7 @@
     <Content Include="Views\Account\LoginFormPartial.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Profile\Shared\_Layout.cshtml" />
-    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\Details.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Profile\Referrals.cshtml" />
     <Content Include="Views\Profile\Shared\_ProfileControlPartial.cshtml" />
@@ -360,6 +366,7 @@
     <Content Include="Views\Home\Redlions.cshtml" />
     <Content Include="Views\Home\UnderConstruction.cshtml" />
     <Content Include="Views\Home\Possible.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

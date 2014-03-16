@@ -27,12 +27,14 @@ namespace RedLions.Infrastructure.Repository
 
         public DbSet<User> Users { get; set; }
         public DbSet<Inquiry> Inquiries { get; set; }
+        public DbSet<Country> Countries { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserMap());
             modelBuilder.Configurations.Add(new MemberMap());
             modelBuilder.Configurations.Add(new InquiryMap());
+            modelBuilder.Configurations.Add(new CountryMap());
         }
     }
 }

@@ -32,7 +32,6 @@
 * Custom metro css for all interfaces.
 */
 
-
 .metro.general-ui .page {
     width: 980px;
     margin: 0 auto;
@@ -43,7 +42,8 @@
 /* Input Width */
 .metro.general-ui .input-control.text, 
 .metro.general-ui .input-control.password, 
-.metro.general-ui .input-control.textarea {
+.metro.general-ui .input-control.textarea,
+.metro.general-ui .input-control.select {
     width: 60%;
 }
 
@@ -73,17 +73,17 @@
 
 
 body.metro.member-ui {
-    min-width: 900px;
+    min-width: 1280px;
 }
 
 .metro.member-ui .page {
-    width: 900px; /* Value must match the body.member-ui */
+    width: 1280px; /* Value must match the body.member-ui */
     padding-left: 220px; /* Size of the Sidebar, the extra 20px gives extra space */
     text-align: left;
 }
 
 .metro.member-ui div.page-region {
-    width: 680px; /* Make sure the width does not exceed the size of the body.min-width (680this + 220sidebar = 900body) */
+    width: 1060px; /* Make sure the width does not exceed the size of the body.min-width (1060this + 220sidebar = 1280body) */
     margin: 0 auto; /* Makes content align center */
 }
 

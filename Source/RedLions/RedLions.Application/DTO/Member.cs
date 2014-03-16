@@ -11,7 +11,9 @@
         public int ReferralCount { get; set; }
         public string ReferralCode { get; set; }
         public string CellphoneNumber { get; set; }
+        public string UnoID { get; set; }
         public string ReferrerUsername { get; set; }
+        public Country Country { get; set; }
     }
 
     internal static class MemberAssembler
@@ -34,6 +36,8 @@
                 ReferralCount = member.Referrals.Count,
                 ReferralCode = member.ReferralCode,         
                 CellphoneNumber = member.CellphoneNumber,
+                UnoID = member.UnoID,
+                Country = member.Country.ToDTO(),
             };
 
             if (member.Referrer != null)

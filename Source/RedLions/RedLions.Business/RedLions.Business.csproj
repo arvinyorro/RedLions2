@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Country.cs" />
+    <Compile Include="ICountryRepository.cs" />
     <Compile Include="IInquiryRepository.cs" />
     <Compile Include="IMemberRepository.cs" />
     <Compile Include="Inquiry.cs" />

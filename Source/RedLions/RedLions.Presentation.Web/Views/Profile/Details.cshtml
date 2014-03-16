@@ -1,0 +1,58 @@
+﻿@model RedLions.Presentation.Web.Models.Member
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Profile/Shared/_Layout.cshtml";
+}
+@section NavigationControls
+{
+    @{ Html.RenderPartial("_ProfileControlPartial"); }
+}
+
+<h2>My Profile</h2>
+
+<div class="member-profile">
+    <h4>@Html.DisplayNameFor(model => model.FullName)</h4>
+    <p>@Html.DisplayTextFor(model => model.FullName)</p>
+
+    <h4>@Html.DisplayNameFor(model => model.Username)</h4>
+    <p>@Html.DisplayTextFor(model => model.Username)</p>
+
+    <h4>@Html.DisplayNameFor(model => model.UnoID)</h4>
+    <p>@Html.DisplayTextFor(model => model.UnoID)</p>
+
+    <h4>@Html.DisplayNameFor(model => model.Email)</h4>
+    <p>@Html.DisplayTextFor(model => model.Email)</p>
+
+    <h4>@Html.DisplayNameFor(model => model.CellphoneNumber)</h4>
+    <p>@Html.DisplayTextFor(model => model.CellphoneNumber)</p>
+
+    <h4>@Html.DisplayNameFor(model => model.Country.Title)</h4>
+    <p>@Html.DisplayTextFor(model => model.Country.Title)</p>
+
+    <h4>@Html.DisplayNameFor(model => model.ReferrerUsername)</h4>
+    <p>@Html.DisplayTextFor(model => model.ReferrerUsername)</p>
+
+    <h4>@Html.DisplayNameFor(model => model.ReferralCount)</h4>
+    <p><a href="@Url.Action("Referrals", "Profile")">@Html.DisplayTextFor(model => model.ReferralCount)</a></p>
+
+    <h4>Referral Link</h4>
+    <p>
+        <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=@Html.DisplayTextFor(model => model.ReferralLink)&p[images][0]=http://unoredlions.com/Content/Images/Banners/redlion_logo.png&p[title]=RedLions&p[summary]="
+           onclick="return windowpop(this.href, 545, 433)">Share on Facebook</a>
+    </p>
+</div>
+
+<script>
+
+    function windowpop(url, width, height) {
+        event.preventDefault();
+        var leftPosition, topPosition;
+        //Allow for borders.
+        leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+        //Allow for title and status bars.
+        topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+        //Open the window.
+        window.open(url, "Window2", "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no");
+    }
+</script>

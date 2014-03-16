@@ -20,30 +20,38 @@
         private IRepository genericRepository;
         private IMemberRepository memberRepository;
         private IUserRepository userRepository;
+        private ICountryRepository countryRepository;
 
         public MemberService(
             IRepository genericRepository,
             IUserRepository userRepository,
-            IMemberRepository memberRepository)
+            IMemberRepository memberRepository,
+            ICountryRepository countryRepository)
         {
             if (userRepository == null)
             {
-                throw new ArgumentNullException("The parameter 'userRepository' must not be null");
+                throw new ArgumentNullException("userRepository");
             }
 
             if (memberRepository == null)
             {
-                throw new ArgumentNullException("The parameter 'memberRepository' must not be null");
+                throw new ArgumentNullException("memberRepository");
             }
 
             if (genericRepository == null)
             {
-                throw new ArgumentNullException("The parameter 'memberRepository' must not be null");
+                throw new ArgumentNullException("memberRepository");
+            }
+
+            if (countryRepository == null)
+            {
+                throw new ArgumentNullException("countryRepository");
             }
 
             this.genericRepository = genericRepository;
             this.userRepository = userRepository;
             this.memberRepository = memberRepository;
+            this.countryRepository = countryRepository;
         }
 
         public int PageSize
@@ -146,6 +154,8 @@
                 inquiry = this.genericRepository.GetById<Business.Inquiry>(memberDTO.InquiryID.Value);
             }
 
+            Business.Country country = this.countryRepository.GetByID(memberDTO.Country.ID);
+
             var member = new Business.Member(
                 inquiry: inquiry,
                 username: memberDTO.Username,
@@ -154,7 +164,9 @@
                 email: memberDTO.Email,
                 password: Password.Encrypt(memberDTO.Password),
                 personalReferralCode: this.GenerateReferralCode(),
-                cellphoneNumber: memberDTO.CellphoneNumber);
+                cellphoneNumber: memberDTO.CellphoneNumber,
+                country: country,
+                unoID: memberDTO.UnoID);
 
             member.Referrer = this.GenerateReferrer(out statusCode, memberDTO.ReferrerUsername);
 
@@ -184,6 +196,13 @@
             member.LastName = memberDTO.LastName;
             member.Email = memberDTO.Email;
             member.CellphoneNumber = memberDTO.CellphoneNumber;
+            member.UnoID = memberDTO.UnoID;
+
+            if (member.Country.ID != memberDTO.Country.ID)
+            {
+                Business.Country country = this.countryRepository.GetByID(memberDTO.Country.ID);
+                member.Country = country;
+            }
 
             if (member.Referrer != null &&
                 member.Referrer.Username != memberDTO.ReferrerUsername)

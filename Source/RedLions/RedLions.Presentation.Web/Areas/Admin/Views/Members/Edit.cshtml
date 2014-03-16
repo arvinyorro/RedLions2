@@ -1,4 +1,4 @@
-﻿@model RedLions.Presentation.Web.ViewModels.EditMember
+﻿@model RedLions.Presentation.Web.ViewModels.UpdateMember
 
 @{
     ViewBag.Title = "Edit";
@@ -8,8 +8,6 @@
 {
     @{ Html.RenderPartial("_MembersControlPartial"); }
 }
-
-
 
 
 @using (Html.BeginForm()) {
@@ -27,6 +25,14 @@
             <button class="btn-clear" tabindex="-1"></button>
         </div>
         @Html.ValidationMessageFor(model => model.Username)
+
+        <!-- UnoID -->
+        @Html.LabelFor(model => model.UnoID)
+        <div class="input-control text" data-role="input-control">
+            @Html.TextBoxFor(model => model.UnoID, new { placeholder = "UNO ID Number" })
+            <button class="btn-clear" tabindex="-1"></button>
+        </div>
+        @Html.ValidationMessageFor(model => model.UnoID)
 
         <!-- Email -->
         @Html.LabelFor(model => model.Email)
@@ -59,6 +65,15 @@
             <button class="btn-clear" tabindex="-1"></button>
         </div>
          @Html.ValidationMessageFor(model => model.LastName)
+
+        <!-- Country -->
+        <div class="editor-field">
+            @Html.LabelFor(model => model.Country)
+            <div class="input-control select" data-role="input-control">
+                @Html.DropDownListFor(model => model.Country.ID, Model.CountrySelectListItems)
+            </div>
+            @Html.ValidationMessageFor(model => model.Country.ID)
+        </div>
 
         <!-- Referrer -->
         @Html.LabelFor(model => model.ReferrerUsername)

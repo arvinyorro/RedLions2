@@ -27,6 +27,8 @@
             this.ReferralLink = string.Format("{0}/{1}",
                 request.Url.GetLeftPart(UriPartial.Authority), memberDTO.Username);
             this.CellphoneNumber = memberDTO.CellphoneNumber;
+            this.UnoID = memberDTO.UnoID;
+            this.Country = new Models.Country(memberDTO.Country);
         }
 
         public Member()
@@ -58,5 +60,11 @@
         [StringLength(11, MinimumLength = 11, ErrorMessage = "Invalid Cellphone Length.")]
         [RegularExpression(@"^09([0-9]){9}$", ErrorMessage = "Invalid Cellphone Format.")]
         public string CellphoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "UNO ID Number")]
+        public string UnoID { get; set; }
+
+        public Country Country { get; set; }
     }
 }

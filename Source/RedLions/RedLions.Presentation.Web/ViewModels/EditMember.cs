@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace RedLions.Presentation.Web.ViewModels
+﻿namespace RedLions.Presentation.Web.ViewModels
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Collections.Generic;
+    using System.Web.Mvc;
+    using RedLions.Presentation.Web.Components;
+    using RedLions.Presentation.Web.Models;
     using DTO = RedLions.Application.DTO;
-
-    public class EditMember
+    
+    public class UpdateMember
     {
-        public EditMember(DTO.Member memberDTO)
+        public UpdateMember(
+            DTO.Member memberDTO,
+            IEnumerable<IDropDown> countryDropDownItems)
         {
             this.ID = memberDTO.ID;
             this.FirstName = memberDTO.FirstName;
@@ -21,9 +20,12 @@ namespace RedLions.Presentation.Web.ViewModels
             this.Email = memberDTO.Email;
             this.ReferrerUsername = memberDTO.ReferrerUsername;
             this.CellphoneNumber = memberDTO.CellphoneNumber;
+            this.UnoID = memberDTO.UnoID;
+            this.Country = new Models.Country(memberDTO.Country);
+            this.CountrySelectListItems = countryDropDownItems.ToSelectListItems(memberDTO.Country.ID);
         }
 
-        public EditMember()
+        public UpdateMember()
         {
         }
 
@@ -55,7 +57,17 @@ namespace RedLions.Presentation.Web.ViewModels
         [RegularExpression(@"^09([0-9]){9}$", ErrorMessage = "Invalid Cellphone Format.")]
         public string CellphoneNumber { get; set; }
 
+        [Required]
+        [Display(Name = "UNO ID Number")]
+        public string UnoID { get; set; }
+
         [Display(Name = "Referrer")]
         public string ReferrerUsername { get; set; }
+
+        public int? InquiryID { get; set; }
+
+        public Country Country { get; set; }
+
+        public IEnumerable<SelectListItem> CountrySelectListItems { get; set; }
     }
 }

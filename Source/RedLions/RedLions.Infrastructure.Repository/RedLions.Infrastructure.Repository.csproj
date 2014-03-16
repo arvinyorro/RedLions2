@@ -52,8 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CountryRepository.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="InquiryRepository.cs" />
+    <Compile Include="Mapping\CountryMap.cs" />
     <Compile Include="Mapping\InquiryMap.cs" />
     <Compile Include="Mapping\MemberMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />

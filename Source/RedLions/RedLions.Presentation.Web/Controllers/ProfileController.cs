@@ -11,6 +11,7 @@
     using DTO = RedLions.Application.DTO;
     // Internal
     using RedLions.Presentation.Web.Components;
+    using RedLions.Presentation.Web.ViewModels;
 
     [Authorize(Roles = "Member")]
     public class ProfileController : Controller
@@ -18,21 +19,29 @@
         private MemberService memberService;
         public UserService userService;
         public InquiryService inquiryService;
+        private CountryService countryService;
 
         public ProfileController(
             MemberService memberService,
             UserService userService,
-            InquiryService inquiryService)
+            InquiryService inquiryService,
+            CountryService countryService)
         {
             this.memberService = memberService;
             this.userService = userService;
             this.inquiryService = inquiryService;
+            this.countryService = countryService;
         }
 
         //
         // GET: /Admin/Home/
 
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ViewResult Details()
         {
             string username = User.Identity.Name;
             DTO.Member memberDTO = this.memberService.GetMemberByUsername(username);
@@ -43,15 +52,22 @@
         public ViewResult Edit()
         {
             DTO.Member memberDTO = this.GetMemberDTO();
-            ViewModels.EditMember editMemberViewModel = new ViewModels.EditMember(memberDTO);
+            IEnumerable<Models.Country> countryModels = this.countryService
+                .GetAll()
+                .Select(x => new Models.Country(x));
+            ViewModels.UpdateMember editMemberViewModel = new UpdateMember(memberDTO, countryModels);
             return View(editMemberViewModel);
         }
 
         [HttpPost]
-        public ActionResult Edit(ViewModels.EditMember member)
+        public ActionResult Edit(UpdateMember member)
         {
             if (!ModelState.IsValid)
             {
+                IEnumerable<Models.Country> countryModels = this.countryService
+                    .GetAll()
+                    .Select(x => new Models.Country(x));
+                member.CountrySelectListItems = countryModels.ToSelectListItems(member.Country.ID);
                 return View(member);
             }
 
@@ -63,6 +79,8 @@
             memberDTO.LastName = member.LastName;
             memberDTO.Email = member.Email;
             memberDTO.CellphoneNumber = member.CellphoneNumber;
+            memberDTO.Country.ID = member.Country.ID;
+            memberDTO.UnoID = member.UnoID;
 
             StatusCode statusCode = this.memberService.Update(memberDTO);
 

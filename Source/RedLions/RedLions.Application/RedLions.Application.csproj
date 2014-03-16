@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CountryService.cs" />
+    <Compile Include="DTO\Country.cs" />
     <Compile Include="DTO\Inquiry.cs" />
     <Compile Include="DTO\Member.cs" />
     <Compile Include="DTO\Role.cs" />

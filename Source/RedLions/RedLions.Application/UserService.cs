@@ -1,11 +1,8 @@
-﻿
-namespace RedLions.Application
+﻿namespace RedLions.Application
 {
-    // Built-in
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
-    // Other Layers
     using RedLions.Application.DTO;
     using RedLions.Business;
     using RedLions.CrossCutting;

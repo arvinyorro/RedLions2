@@ -1,5 +1,4 @@
-﻿
-namespace RedLions.Application.DTO
+﻿namespace RedLions.Application.DTO
 {
     using System;
     using System.Collections.Generic;

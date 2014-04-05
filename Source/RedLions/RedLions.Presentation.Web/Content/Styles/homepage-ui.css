@@ -194,3 +194,14 @@ a#youtube
     display: inline-block;
    
 }
+
+/**
+* Grid System
+*
+* Custom grid system just for the featured videos page.
+*/
+.grid.featured {
+    width: 940px;
+    min-height: 250px;
+    margin: 0 auto;
+}

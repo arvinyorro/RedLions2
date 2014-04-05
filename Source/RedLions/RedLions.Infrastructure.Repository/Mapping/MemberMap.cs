@@ -18,7 +18,7 @@
 
             this.Property(t => t.CellphoneNumber)
                 .IsRequired()
-                .HasMaxLength(11);
+                .HasMaxLength(20);
 
             this.Property(t => t.UnoID)
                 .IsRequired()

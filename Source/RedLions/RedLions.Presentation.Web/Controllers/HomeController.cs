@@ -159,7 +159,7 @@
         [Route("Dubai/{referrerUsername?}")]
         public ViewResult Dubai()
         {
-            return View("UnderConstruction");
+            return View();
         }
 
         [Route("HongKong/{referrerUsername?}")]
@@ -171,19 +171,19 @@
         [Route("Macau/{referrerUsername?}")]
         public ViewResult Macau()
         {
-            return View("UnderConstruction");
+            return View();
         }
 
         [Route("Ksa/{referrerUsername?}")]
         public ViewResult Ksa()
         {
-            return View("UnderConstruction");
+            return View();
         }
 
         [Route("Singapore/{referrerUsername?}")]
         public ViewResult Singapore()
         {
-            return View("UnderConstruction");
+            return View();
         }
 
         [Route("Featured/{referrerUsername?}")]
@@ -204,7 +204,11 @@
                 case 2:
                     ViewBag.VideoID = "HuMwSGUqJeg";
                     ViewBag.Title = "Go Negosyo Featured the 6th Anniversary Celebration of UNO";
-                    break;  
+                    break;
+                case 3:
+                    ViewBag.VideoID = "h7Ic7yjobhU";
+                    ViewBag.Title = "Rated K";
+                    break;
                 default:
                     throw new HttpException(404, "Video not found");
             }

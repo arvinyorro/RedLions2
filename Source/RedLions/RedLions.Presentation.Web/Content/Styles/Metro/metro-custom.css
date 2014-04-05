@@ -55,15 +55,6 @@
     top: 120%;
 }
 
-/**
-* Grid System
-*
-* Custom grid system just for the featured videos page.
-*/
-.grid.featured {
-    width: 630px;
-    margin: 0 auto;
-}
 
 /**
 * #.# Member Interface

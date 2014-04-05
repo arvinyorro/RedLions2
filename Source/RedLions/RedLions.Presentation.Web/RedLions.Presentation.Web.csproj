@@ -367,6 +367,11 @@
     <Content Include="Views\Home\UnderConstruction.cshtml" />
     <Content Include="Views\Home\Possible.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Home\InternationalBusiness.cshtml" />
+    <Content Include="Views\Home\Singapore.cshtml" />
+    <Content Include="Views\Home\Dubai.cshtml" />
+    <Content Include="Views\Home\Macau.cshtml" />
+    <Content Include="Views\Home\Ksa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

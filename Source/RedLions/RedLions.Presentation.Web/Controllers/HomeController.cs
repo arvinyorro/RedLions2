@@ -180,6 +180,12 @@
             return View("UnderConstruction");
         }
 
+        [Route("Singapore/{referrerUsername?}")]
+        public ViewResult Singapore()
+        {
+            return View("UnderConstruction");
+        }
+
         [Route("Featured/{referrerUsername?}")]
         public ViewResult Featured()
         {

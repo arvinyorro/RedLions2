@@ -87,6 +87,10 @@
             if (statusCode != StatusCode.Success)
             {
                 this.AddError(statusCode);
+                IEnumerable<Models.Country> countryModels = this.countryService
+                    .GetAll()
+                    .Select(x => new Models.Country(x));
+                member.CountrySelectListItems = countryModels.ToSelectListItems(member.Country.ID);
                 return View(member);
             }
 

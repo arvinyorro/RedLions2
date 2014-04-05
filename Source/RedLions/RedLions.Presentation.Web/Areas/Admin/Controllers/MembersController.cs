@@ -124,6 +124,11 @@
             if (statusCode != StatusCode.Success)
             {
                 this.AddError(statusCode);
+
+                member.CountrySelectListItems = this.CountryService
+                    .GetAll()
+                    .Select(x => new Models.Country(x))
+                    .ToSelectListItems(member.Country.ID); 
                 return View(member);
             }
 

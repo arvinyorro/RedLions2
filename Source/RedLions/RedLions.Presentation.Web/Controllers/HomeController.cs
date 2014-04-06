@@ -165,7 +165,7 @@
         [Route("HongKong/{referrerUsername?}")]
         public ViewResult HongKong()
         {
-            return View("UnderConstruction");
+            return View();
         }
 
         [Route("Macau/{referrerUsername?}")]

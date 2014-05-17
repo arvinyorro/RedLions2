@@ -118,6 +118,13 @@
             return MemberAssembler.ToDTO(member);
         }
 
+        public DTO.Member GetRandomMember()
+        {
+            Business.Member randomMember = this.memberRepository.GetRandomMember();
+
+            return MemberAssembler.ToDTO(randomMember);
+        }
+
         public IEnumerable<DTO.Member> GetReferrals(
             int pageIndex,
             out int totalCount,
@@ -293,6 +300,5 @@
 
             return this.memberRepository.GetRandomMember();
         }
-
     }
 }

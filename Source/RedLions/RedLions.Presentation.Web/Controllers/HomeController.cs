@@ -67,7 +67,7 @@
                 {
                     inquiryDTO.ReferrerID = referrer.ID;
                 }
-            }
+            }           
 
             this.inquiryService.SubmitInquiry(inquiryDTO);
             return View("InquireConfirm");

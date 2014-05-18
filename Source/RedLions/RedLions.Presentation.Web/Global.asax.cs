@@ -7,6 +7,7 @@
     using System.Web.Routing;
     // Internals
     using RedLions.Presentation.Web.Components;
+    using AppLayer = RedLions.Application;
 
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
@@ -34,6 +35,7 @@
 
             //Bootstrapper.Initialise(); // Unity IoC integration
 
+            AppLayer.AutoMapperConfig.Register();
         }
     }
 }

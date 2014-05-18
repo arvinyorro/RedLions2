@@ -1,0 +1,33 @@
+﻿@model RedLions.Presentation.Web.Models.InquiryChatRegister
+
+@{
+    ViewBag.Title = "Inquiry Chat";
+}
+
+<div class="page">
+    <div class="page-region">
+        <div class="page-region-content">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+                    <legend>Inquire</legend>
+
+                    <!-- Full Name -->
+                    @Html.LabelFor(model => model.Name)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.Name, new { placeholder = "Your name" })
+                        <button class="btn-clear" tabindex="-1"></button>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Name)
+
+                    <div class="input-control">
+                        <button type="submit" class="primary">Begin Chat</button>
+                    </div>
+                </fieldset>
+            }
+
+        </div>
+    </div>
+</div>

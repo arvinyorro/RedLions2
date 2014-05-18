@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Country.cs" />
     <Compile Include="ICountryRepository.cs" />
+    <Compile Include="IInquiryChatRepository.cs" />
     <Compile Include="IInquiryRepository.cs" />
     <Compile Include="IMemberRepository.cs" />
     <Compile Include="Inquiry.cs" />

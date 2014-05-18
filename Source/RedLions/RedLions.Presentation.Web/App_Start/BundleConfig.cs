@@ -42,6 +42,11 @@
                 .Include("~/Scripts/responsiveslides.js"));
 
             /* End Responsive Slides */
+
+
+            // SignalR
+            bundles.Add(new ScriptBundle("~/bundles/signalr")
+                .Include("~/Scripts/jquery.signalR-{version}.js"));
         }
     }
 }

@@ -1,0 +1,51 @@
+﻿@model RedLions.Presentation.Web.Models.InquiryChatMessage
+
+@{
+    ViewBag.Title = "Inquiry Chat";
+}
+
+<div class="page">
+    <div class="page-region">
+        <div class="page-region-content">
+
+            <div id="chat-box">
+
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.InquiryChatSessionID)
+
+                <fieldset>
+                    <!-- Message -->
+                    @Html.LabelFor(model => model.Message)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.Message)
+                        <button class="btn-clear" tabindex="-1"></button>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Message)
+
+                    <div class="input-control">
+                        <button type="submit" id="send" class="primary">Send</button>
+                    </div>
+                </fieldset>
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var modelValues =
+        {
+            chatSessionID : '@Html.ValueFor(model => model.InquiryChatSessionID)',
+        };
+    </script>
+}
+
+@Scripts.Render("~/bundles/signalr");
+@Scripts.Render("~/Scripts/Custom/inquiry.chat.js")
+@Scripts.Render("~/signalr/hubs")

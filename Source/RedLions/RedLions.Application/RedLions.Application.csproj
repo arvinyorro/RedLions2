@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InquiryChatService.cs" />
     <Compile Include="CountryService.cs" />
     <Compile Include="DTO\Country.cs" />
     <Compile Include="DTO\Inquiry.cs" />

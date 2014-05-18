@@ -28,6 +28,8 @@ namespace RedLions.Infrastructure.Repository
         public DbSet<User> Users { get; set; }
         public DbSet<Inquiry> Inquiries { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<InquiryChatSession> InquiryChatSessions { get; set; }
+        public DbSet<InquiryChatMessage> InquiryChatMessages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -35,6 +37,8 @@ namespace RedLions.Infrastructure.Repository
             modelBuilder.Configurations.Add(new MemberMap());
             modelBuilder.Configurations.Add(new InquiryMap());
             modelBuilder.Configurations.Add(new CountryMap());
+            modelBuilder.Configurations.Add(new InquiryChatMessageMap());
+            modelBuilder.Configurations.Add(new InquiryChatSessionMap());
         }
     }
 }

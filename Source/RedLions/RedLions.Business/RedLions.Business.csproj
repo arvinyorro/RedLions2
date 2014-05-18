@@ -49,6 +49,8 @@
     <Compile Include="IInquiryRepository.cs" />
     <Compile Include="IMemberRepository.cs" />
     <Compile Include="Inquiry.cs" />
+    <Compile Include="InquiryChatMessage.cs" />
+    <Compile Include="InquiryChatSession.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

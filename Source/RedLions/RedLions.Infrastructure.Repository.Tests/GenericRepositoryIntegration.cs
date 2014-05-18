@@ -49,5 +49,17 @@ namespace RedLions.Infrastructure.Repository.Tests
             IEnumerable<Member> user = this.context.Users.OfType<Member>().AsEnumerable();
             Assert.IsTrue(user.First() is Member, "User type should be Member");
         }
+
+        [TestMethod]
+        public void GetAllInquiryChatSessionsTest()
+        {
+            IEnumerable<InquiryChatSession> inquiryChatSessions = this.context.InquiryChatSessions.ToList();
+        }
+
+        [TestMethod]
+        public void GetAllInquiryChatMessagesTest()
+        {
+            IEnumerable<InquiryChatMessage> inquiryChatMessages = this.context.InquiryChatMessages.ToList();
+        }
     }
 }

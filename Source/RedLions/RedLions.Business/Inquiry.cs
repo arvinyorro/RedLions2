@@ -1,6 +1,7 @@
 ﻿namespace RedLions.Business
 {
     using System;
+
     public class Inquiry
     {
         protected Inquiry()

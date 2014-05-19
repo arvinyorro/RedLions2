@@ -2,10 +2,11 @@
 {
     using System.Collections.Generic;
     using RedLions.Business;
+    using RedLions.CrossCutting;
 
     public class InquiryChatRepository : GenericRepository, IInquiryChatRepository
     {
-        public InquiryChatRepository(RedLionsContext dbContext)
+        public InquiryChatRepository(IDbContext dbContext)
             : base(dbContext)
         {
 

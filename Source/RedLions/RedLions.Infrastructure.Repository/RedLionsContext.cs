@@ -8,12 +8,13 @@ namespace RedLions.Infrastructure.Repository
 {
     using System.Data.Entity;
     using RedLions.Infrastructure.Repository.Mapping;
+    using RedLions.CrossCutting;
     using RedLions.Business;
 
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class RedLionsContext : DbContext
+    public class RedLionsContext : DbContext, IDbContext
     {
         static RedLionsContext()
         {
@@ -39,6 +40,11 @@ namespace RedLions.Infrastructure.Repository
             modelBuilder.Configurations.Add(new CountryMap());
             modelBuilder.Configurations.Add(new InquiryChatMessageMap());
             modelBuilder.Configurations.Add(new InquiryChatSessionMap());
+        }
+
+        public void ExecuteSqlCommand(string query, params object[] parameters)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

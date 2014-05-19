@@ -2,10 +2,11 @@
 {
     using System.Collections.Generic;
     using RedLions.Business;
+    using RedLions.CrossCutting;
 
     public class CountryRepository : GenericRepository, ICountryRepository
     {
-        public CountryRepository(RedLionsContext dbContext)
+        public CountryRepository(IDbContext dbContext)
             : base(dbContext)
         {
 

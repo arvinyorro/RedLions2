@@ -40,15 +40,18 @@ namespace RedLions.Presentation.Web
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
 
-            container.RegisterType<RedLionsContext, RedLionsContext>(new PerRequestLifetimeManager());
+            container.RegisterType<IDbContext, RedLionsContext>(new PerRequestLifetimeManager());
+            container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IRepository, GenericRepository>();
             container.RegisterType<IUserRepository, UserRepository>();
             container.RegisterType<IMemberRepository, MemberRepository>();
             container.RegisterType<IInquiryRepository, InquiryRepository>();
             container.RegisterType<ICountryRepository, CountryRepository>();
+            container.RegisterType<IInquiryChatRepository, InquiryChatRepository>();
             container.RegisterType<MemberService, MemberService>();
             container.RegisterType<UserService, UserService>();
             container.RegisterType<CountryService, CountryService>();
+            container.RegisterType<InquiryChatService, InquiryChatService>();
         }
     }
 }

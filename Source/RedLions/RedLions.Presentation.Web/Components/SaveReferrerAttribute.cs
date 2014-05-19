@@ -29,7 +29,7 @@
 
             // Get referrer's username in cookie.
             HttpCookie cookie = httpContext.Request.Cookies.Get(this.referrerCookieName);
-            bool referrerInCookie = (httpContext.Request.Cookies[this.referrerCookieName].Value != null);
+            bool referrerInCookie = (httpContext.Request.Cookies[this.referrerCookieName] != null);
 
             string referrerUsername = string.Empty;
 

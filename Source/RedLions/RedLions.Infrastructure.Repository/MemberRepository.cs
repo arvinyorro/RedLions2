@@ -7,6 +7,7 @@
     using System.Linq.Expressions;
     using System.Text;
     using RedLions.Business;
+    using RedLions.CrossCutting;
 
     /// <summary>
     /// This class implements the <see cref="RedLions.Business.IMemberRepository"/> interface.

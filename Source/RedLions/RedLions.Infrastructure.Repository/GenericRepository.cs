@@ -13,8 +13,8 @@
     /// </summary>
     public class GenericRepository : IRepository
     {
-        private RedLionsContext context;
-        public GenericRepository(RedLionsContext context)
+        private IDbContext context;
+        public GenericRepository(IDbContext context)
         {
             if (context == null)
             {
@@ -78,6 +78,11 @@
         public int Count<TEntity>(Expression<Func<TEntity, bool>> filter) where TEntity : class
         {
             return this.context.Set<TEntity>().Count(filter);
+        }
+
+        public int Count<TEntity>() where TEntity : class
+        {
+            return this.context.Set<TEntity>().Count();
         }
 
         public void Create<TEntity>(TEntity entity) where TEntity : class

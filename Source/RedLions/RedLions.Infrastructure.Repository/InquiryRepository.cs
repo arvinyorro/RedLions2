@@ -7,10 +7,11 @@
     using System.Linq.Expressions;
     using System.Text;
     using RedLions.Business;
+    using RedLions.CrossCutting;
 
     public class InquiryRepository : GenericRepository, IInquiryRepository
     {
-        public InquiryRepository(RedLionsContext context)
+        public InquiryRepository(IDbContext context)
             : base(context)
         {
         }

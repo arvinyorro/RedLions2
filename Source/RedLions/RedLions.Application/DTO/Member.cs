@@ -7,6 +7,7 @@
 
     public class Member : User
     {
+        public int MemberID { get; set; }
         public int? InquiryID { get; set; }
         public int ReferralCount { get; set; }
         public string ReferralCode { get; set; }
@@ -28,6 +29,7 @@
             var memberDTO = new DTO.Member()
             {
                 ID = member.ID,
+                MemberID = member.MemberID,
                 Username = member.Username,
                 FirstName = member.FirstName,
                 LastName = member.LastName,

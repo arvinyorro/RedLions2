@@ -6,19 +6,21 @@
     using System.Linq;
     using System.Text;
     using RedLions.Business;
+    using RedLions.CrossCutting;
 
     /// <summary>
     /// This class implements the <see cref="RedLions.Business.IUserRepository"/> interface.
     /// </summary>
-    public class UserRepository : IUserRepository
+    public class UserRepository : GenericRepository, IUserRepository
     {
-        private RedLionsContext context;
+        private IDbContext context;
 
-        public UserRepository(RedLionsContext context)
+        public UserRepository(IDbContext context)
+            : base(context)
         {
             if (context == null)
             {
-                throw new ArgumentNullException("The parameter 'context' must not be null");
+                throw new ArgumentNullException("context");
             }
 
             this.context = context;
@@ -28,10 +30,10 @@
         {
             if (user == null)
             {
-                throw new ArgumentNullException("The parameter 'user' must not be null");
+                throw new ArgumentNullException("user");
             }
 
-            this.context.Users.Add(user);
+            base.Create(user);
             this.context.SaveChanges();
         }
 
@@ -39,7 +41,7 @@
         {
             if (user == null)
             {
-                throw new ArgumentNullException("The parameter 'user' must not be null");
+                throw new ArgumentNullException("user");
             }
 
             this.context.Entry<User>(user).State = System.Data.Entity.EntityState.Modified;
@@ -48,30 +50,27 @@
 
         public IEnumerable<User> GetAllUsers()
         {
-            return this.context.Users.ToList();
+            return this.GetAll<User>();
         }
 
         public User GetUserByID(int userID)
         {
-            return this.context.Users.FirstOrDefault(x => x.ID == userID);
+            return base.GetById<User>(userID);
         }
 
         public User GetUserByUsername(string username, string password)
         {
-            return this.context.Users
-                .FirstOrDefault(x => x.Username == username && x.Password == password);
+            return base.GetSingle<User>(x => x.Username == username && x.Password == password);
         }
 
         public User GetUserByUsername(string username)
         {
-            return this.context.Users
-                .FirstOrDefault(x => x.Username == username);
+            return base.GetSingle<User>(x => x.Username == username);
         }
 
         public User GetUserByEmail(string email)
         {
-            return this.context.Users
-                .FirstOrDefault(x => x.Username == email);
+            return base.GetSingle<User>(x => x.Email == email);
         }
     }
 }

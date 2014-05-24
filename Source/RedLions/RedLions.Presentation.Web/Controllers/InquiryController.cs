@@ -76,7 +76,7 @@ namespace RedLions.Presentation.Web.Controllers
             // Create new session.
             DTO.Member memberDTO = this.memberService.GetMemberByUsername(referrerUsername);
             DTO.InquiryChatSession chatSesssionDTO = this.inquiryChatService
-                .CreateSession(inquiryChatRegister.Name, memberDTO.MemberID);
+                .CreateSession(inquiryChatRegister.Name, memberDTO.ID);
 
             // Save new cookie.
             var newCookie = new HttpCookie("ChatSession");

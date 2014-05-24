@@ -5,6 +5,7 @@ using System.Web;
 using System.Threading.Tasks;
 using RedLions.Presentation.Web.Models;
 using Microsoft.AspNet.SignalR;
+using Newtonsoft.Json;
 
 namespace RedLions.Presentation.Web.Hubs
 {
@@ -41,6 +42,8 @@ namespace RedLions.Presentation.Web.Hubs
         public void Register(int chatSessionID)
         {
             // If not exists, create new group using unique inquiry ID (single user group)
+            string groupName = chatSessionID.ToString();
+            base.Groups.Add(Context.ConnectionId, groupName);
 
             // Add client connection ID to group
 
@@ -63,10 +66,18 @@ namespace RedLions.Presentation.Web.Hubs
 
             // TODO:
             // Send to group self (single user group)
-            Clients.All.populateChatLog(chatMessages);
+            Clients.Group(groupName).populateChatLog(chatMessages);
 
             // TODO:
             // Notify member
+        }
+
+        public void Send(string data)
+        {
+            InquiryChatMessage inquiryChatMessage = JsonConvert.DeserializeObject<InquiryChatMessage>(data);
+            string groupName = inquiryChatMessage.InquiryChatSessionID.ToString();
+
+            Clients.Group(groupName).BroadcastMessage(inquiryChatMessage);
         }
     }
 }

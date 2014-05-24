@@ -12,10 +12,10 @@
 
             </div>
 
-            @using (Html.BeginForm())
-            {
+            <div id="chat-form">
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.InquiryChatSessionID)
+                @Html.HiddenFor(model => model.Name)
 
                 <fieldset>
                     <!-- Message -->
@@ -27,11 +27,10 @@
                     @Html.ValidationMessageFor(model => model.Message)
 
                     <div class="input-control">
-                        <button type="submit" id="send" class="primary">Send</button>
+                        <button type="button" id="send" class="primary">Send</button>
                     </div>
                 </fieldset>
-            }
-
+            </div>
         </div>
     </div>
 </div>
@@ -46,6 +45,6 @@
     </script>
 }
 
-@Scripts.Render("~/bundles/signalr");
+@Scripts.Render("~/bundles/signalr")
 @Scripts.Render("~/Scripts/Custom/inquiry.chat.js")
 @Scripts.Render("~/signalr/hubs")

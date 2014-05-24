@@ -6,25 +6,41 @@
 	chat.client.populateChatLog = function (chatMessages) {
 		// Populate the chat log.
 		$.each(chatMessages, function (index, chatMessage) {
-		    $("#chat-box").append("<div id='chat-log'><strong id='chat-name'>" + chatMessage.Name + " :</strong><div id='chat-message'>" + chatMessage.Message + "</div></div>");
+		    appendMessage(chatMessage);
 		});
 	};
 
+	chat.client.broadcastMessage = function (chatMessage) {
+	    appendMessage(chatMessage);
+	}
 
 	// Set initial focus to message input box.
 	$('#message').focus();
 	// Start the connection.
 	$.connection.hub.start().done(function () {
-		$('#send').click(function () {
-		    // Call the Send method on the hub.
+	    $('#send').click(function () {
 
-			// chat.server.send($('#displayname').val(), $('#message').val());
+		    // Call the Send method on the hub.
+		    var inquiryChatMessage = new Object();
+		    inquiryChatMessage.InquiryChatSessionID = $("#InquiryChatSessionID").val();
+		    inquiryChatMessage.Message = $("#Message").val();
+		    inquiryChatMessage.Name = $("#Name").val();
+		    var serializedData = JSON.stringify(inquiryChatMessage);
+
+		    console.log(serializedData);
+		    chat.server.send(serializedData);
+
 			// Clear text box and reset focus for next comment.
-			// $('#message').val('').focus();
+		    $('#Message').val('').focus();
 		});
 
 		chat.server.register(modelValues.chatSessionID);
 	});
 
 });
+
+function appendMessage(chatMessage) {
+    $("#chat-box").append("<div id='chat-log'><strong id='chat-name'>" + chatMessage.Name + " :</strong><div id='chat-message'>" + chatMessage.Message + "</div></div>");
+    $("#chat-box").animate({ scrollTop: $(document).height() }, "slow");
+}
 

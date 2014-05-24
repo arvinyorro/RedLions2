@@ -34,9 +34,9 @@
             return chatSessionDto;
         }
 
-        public DTO.InquiryChatSession CreateSession(string inquiryName, int memberID)
+        public DTO.InquiryChatSession CreateSession(string inquiryName, int memberUserID)
         {
-            var member = this.memberRepository.GetMemberByID(memberID);
+            var member = this.memberRepository.GetMemberByID(memberUserID);
             var chatSession = new Business.InquiryChatSession(member, inquiryName);
 
             this.inquiryChatRepository.CreateSession(chatSession);

@@ -36,6 +36,7 @@
             //Bootstrapper.Initialise(); // Unity IoC integration
 
             AppLayer.AutoMapperConfig.Register();
+            AutoMapperConfig.Register();
         }
     }
 }

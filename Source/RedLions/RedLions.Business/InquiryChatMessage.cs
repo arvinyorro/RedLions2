@@ -21,6 +21,8 @@
                 throw new ArgumentNullException("message");
             }
 
+            this.SenderUsername = senderUsername;
+            this.Message = message;
             this.SentDateTime = DateTime.Now;
         }
 

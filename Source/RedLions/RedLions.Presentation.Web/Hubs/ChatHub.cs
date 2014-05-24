@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Threading.Tasks;
+using RedLions.Application;
+using DTO = RedLions.Application.DTO;
 using RedLions.Presentation.Web.Models;
 using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
+using AutoMapper;
 
 namespace RedLions.Presentation.Web.Hubs
 {
     public class ChatHub : Hub
     {
+        private InquiryChatService inquiryChatService;
+
+        public ChatHub(InquiryChatService inquiryChatService)
+        {
+            this.inquiryChatService = inquiryChatService;
+        }
+
         public override Task OnConnected()
         {
             // Add your own code here.
@@ -45,28 +53,21 @@ namespace RedLions.Presentation.Web.Hubs
             string groupName = chatSessionID.ToString();
             base.Groups.Add(Context.ConnectionId, groupName);
 
-            // Add client connection ID to group
-
             // Retrieve chat session using chat session ID
-
-            // If none found, throw error.
-
+            DTO.InquiryChatSession chatSessionDTO = this.inquiryChatService.GetSessionByID(chatSessionID);
+            if (chatSessionDTO == null)
+            {
+                throw new Exception("Chat session not found");
+            }
+            
             // Retrieve chat messages from chat session.
-
-            var chatMessages = new List<InquiryChatMessage>();
-            chatMessages.Add(new InquiryChatMessage(
-                username: "test_member1",
-                message: "Hi",
-                sentDateTime: DateTime.Now));
-
-            chatMessages.Add(new InquiryChatMessage(
-                username: "user12314",
-                message: "Koya",
-                sentDateTime: DateTime.Now));
+            IEnumerable<DTO.InquiryChatMessage> chatMessageDTOList = this.inquiryChatService
+                .GetChatMessagesBySession(chatSessionDTO.ID);
+            IEnumerable<Models.InquiryChatMessage> chatMessages = Mapper.Map<IEnumerable<Models.InquiryChatMessage>>(chatMessageDTOList);
 
             // TODO:
             // Send to group self (single user group)
-            Clients.Group(groupName).populateChatLog(chatMessages);
+            Clients.Client(Context.ConnectionId).populateChatLog(chatMessages);
 
             // TODO:
             // Notify member
@@ -75,8 +76,11 @@ namespace RedLions.Presentation.Web.Hubs
         public void Send(string data)
         {
             InquiryChatMessage inquiryChatMessage = JsonConvert.DeserializeObject<InquiryChatMessage>(data);
-            string groupName = inquiryChatMessage.InquiryChatSessionID.ToString();
+            DTO.InquiryChatMessage chatMessageDTO = Mapper.Map<DTO.InquiryChatMessage>(inquiryChatMessage);
 
+            this.inquiryChatService.SaveMessage(chatMessageDTO);
+
+            string groupName = inquiryChatMessage.InquiryChatSessionID.ToString();
             Clients.Group(groupName).BroadcastMessage(inquiryChatMessage);
         }
     }

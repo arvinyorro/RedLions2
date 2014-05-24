@@ -58,7 +58,7 @@
         public void SaveMessage(DTO.InquiryChatMessage chatMessageDTO)
         {
             Business.InquiryChatSession chatSession = this.inquiryChatRepository
-                .GetSessionByID(chatMessageDTO.SessionID);
+                .GetSessionByID(chatMessageDTO.InquiryChatSessionID);
 
             var chatMessage = new Business.InquiryChatMessage(
                 chatMessageDTO.SenderUsername, 

@@ -6,6 +6,8 @@ namespace RedLions.Presentation.Web
     using RedLions.Business;
     using RedLions.CrossCutting;
     using RedLions.Infrastructure.Repository;
+    using RedLions.Presentation.Web.Hubs;
+
     /// <summary>
     /// Specifies the Unity configuration for the main container.
     /// </summary>
@@ -52,6 +54,7 @@ namespace RedLions.Presentation.Web
             container.RegisterType<UserService, UserService>();
             container.RegisterType<CountryService, CountryService>();
             container.RegisterType<InquiryChatService, InquiryChatService>();
+            container.RegisterType<ChatHub, ChatHub>();
         }
     }
 }

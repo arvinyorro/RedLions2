@@ -6,6 +6,7 @@
     // Third Party
     using PagedList;
     using Microsoft.Practices.Unity;
+    using AutoMapper;
     // Other Layers
     using RedLions.Application;
     using DTO = RedLions.Application.DTO;
@@ -20,17 +21,20 @@
         public UserService userService;
         public InquiryService inquiryService;
         private CountryService countryService;
+        private InquiryChatService inquiryChatService;
 
         public ProfileController(
             MemberService memberService,
             UserService userService,
             InquiryService inquiryService,
-            CountryService countryService)
+            CountryService countryService,
+            InquiryChatService inquiryChatService)
         {
             this.memberService = memberService;
             this.userService = userService;
             this.inquiryService = inquiryService;
             this.countryService = countryService;
+            this.inquiryChatService = inquiryChatService;
         }
 
         //
@@ -178,6 +182,42 @@
             }
 
             return RedirectToAction("Index");
+        }
+
+        public ViewResult Messages()
+        {
+            // Retrieve user details.
+            DTO.Member memberDTO = this.memberService.GetMemberByUsername(User.Identity.Name);
+
+            // Retrieve sessions.
+            IEnumerable<DTO.InquiryChatSession> chatSessionDTOList = this.inquiryChatService
+                .GetSessionsByMember(memberDTO.ID);
+
+            // Map DTO list to Models.
+            IEnumerable<Models.InquiryChatSession> chatSessions = Mapper
+                .Map<IEnumerable<Models.InquiryChatSession>>(chatSessionDTOList);
+
+            // Create View Model
+            var viewModel = new ViewModels.MemberMessagesViewModel()
+            {
+                ChatSessions = Mapper.Map<IEnumerable<Models.InquiryChatSession>>(chatSessionDTOList),
+            };
+
+            // Get default session.
+            if (chatSessions.Any())
+            {
+                viewModel.SelectedChatSessionID = chatSessions.First().ID;
+            }
+
+            // Create Chat Message for Page
+            var chatMessage = new Models.InquiryChatMessage()
+            {
+                InquiryChatSessionID = viewModel.SelectedChatSessionID,
+                Name = string.Format("{0} {1}",memberDTO.FirstName, memberDTO.LastName),
+            };
+            viewModel.ChatMessage = chatMessage;
+
+            return View(viewModel);
         }
 
         private DTO.Member GetMemberDTO()

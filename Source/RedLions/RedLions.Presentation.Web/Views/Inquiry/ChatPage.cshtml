@@ -38,9 +38,12 @@
 @section Scripts
 {
     <script type="text/javascript">
-        var modelValues =
+        var modelIDs =
         {
-            chatSessionID : '@Html.ValueFor(model => model.InquiryChatSessionID)',
+            chatSessionID: '#' + '@Html.IdFor(model => model.InquiryChatSessionID)',
+            message: '#' + '@Html.IdFor(model => model.Message)',
+            name : '#' + '@Html.IdFor(model => model.Name)',
+            sendButton : '#send',
         };
     </script>
 }

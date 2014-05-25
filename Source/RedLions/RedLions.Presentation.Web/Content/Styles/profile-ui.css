@@ -1,0 +1,49 @@
+﻿/**
+* Profile UI Style
+*
+* Styles that are referenced for member profile page.
+*/
+
+.chat-content {
+    height: 500px;
+    width: 700px;
+    border: 1px solid #D9D9D9;
+}
+
+#chat-sessions {
+    overflow-y: auto;
+    overflow-x: hidden;
+    float: left;
+    width: 30%;
+    height: 100%;
+    border-right: 1px solid #D9D9D9;
+    /*background: #4800ff;*/
+}
+
+.chat-session {
+    border-bottom: 1px solid #D9D9D9;
+    padding-left: 5px;
+    /*background: #00ff21;*/
+}
+
+#chat-box {
+    width: 70%;
+    height: 100%;
+    padding: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-wrap: break-word;
+}
+
+#chat-log {
+    display: block;
+    margin: 5px;
+}
+
+#chat-name {
+    display: block;
+}
+
+#chat-message {
+
+}

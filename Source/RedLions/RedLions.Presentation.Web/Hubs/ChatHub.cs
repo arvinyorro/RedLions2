@@ -65,7 +65,6 @@ namespace RedLions.Presentation.Web.Hubs
                 .GetChatMessagesBySession(chatSessionDTO.ID);
             IEnumerable<Models.InquiryChatMessage> chatMessages = Mapper.Map<IEnumerable<Models.InquiryChatMessage>>(chatMessageDTOList);
 
-            // TODO:
             // Send to group self (single user group)
             Clients.Client(Context.ConnectionId).populateChatLog(chatMessages);
 

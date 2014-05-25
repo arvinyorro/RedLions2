@@ -17,6 +17,11 @@
             return base.GetById<InquiryChatSession>(id);
         }
 
+        public IEnumerable<InquiryChatSession> GetSessionsByMember(Member member)
+        {
+            return base.GetAll<InquiryChatSession>(x => x.Member.ID == member.ID);
+        }
+
         public void CreateSession(InquiryChatSession inquiryChatSession)
         {
             base.Create<InquiryChatSession>(inquiryChatSession);

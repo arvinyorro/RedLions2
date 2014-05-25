@@ -20,6 +20,9 @@
             bundles.Add(new StyleBundle("~/bundles/homepage-ui")
                 .Include("~/Content/Styles/homepage-ui.css"));
 
+            bundles.Add(new StyleBundle("~/bundles/profile-ui")
+                .Include("~/Content/Styles/profile-ui.css"));
+
             /* Begin Metro */
            
             bundles.Add(new StyleBundle("~/bundles/metro-style")

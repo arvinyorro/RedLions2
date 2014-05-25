@@ -220,6 +220,7 @@
     </Compile>
     <Compile Include="Hubs\OwinStartup.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\InquiryChatSession.cs" />
     <Compile Include="Models\InquiryChatMessage.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\IDropDown.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="Security\CustomMembershipProvider.cs" />
     <Compile Include="Security\CustomRoleProvider.cs" />
     <Compile Include="ViewModels\EditMember.cs" />
+    <Compile Include="ViewModels\MemberMessagesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -291,6 +293,7 @@
     <Content Include="Content\Styles\Metro\metro-bootstrap.css" />
     <Content Include="Content\Styles\homepage-ui.css" />
     <Content Include="Content\Styles\mvc-custom.css" />
+    <Content Include="Content\Styles\profile-ui.css" />
     <Content Include="Content\Styles\ResponsiveSlides\responsive-slides.css" />
     <Content Include="Content\Styles\ResponsiveSlides\themes.gif" />
     <Content Include="Global.asax" />
@@ -409,6 +412,7 @@
     <Content Include="Views\Home\HongKong.cshtml" />
     <Content Include="Views\Inquiry\Chat.cshtml" />
     <Content Include="Views\Inquiry\ChatPage.cshtml" />
+    <Content Include="Views\Profile\Messages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

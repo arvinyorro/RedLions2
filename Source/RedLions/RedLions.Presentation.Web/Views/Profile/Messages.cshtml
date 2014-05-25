@@ -1,0 +1,65 @@
+﻿@model RedLions.Presentation.Web.ViewModels.MemberMessagesViewModel
+
+@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/Profile/Shared/_Layout.cshtml";
+}
+
+<h2>Messages</h2>
+
+<div class="chat-content">
+    
+    <!-- Chat Session -->
+    <div id="chat-sessions">
+        @foreach(var session in Model.ChatSessions)
+        {
+            <div class="chat-session">
+                <strong>@session.InquirerName</strong>
+                <p>@session.ThumbMessage</p>
+            </div>
+        }
+    </div>
+
+    <!-- Chat Box -->
+    <div id="chat-box">
+
+    </div>
+</div>
+
+<!-- Chat Controls -->
+<div id="chat-form">
+
+    @Html.HiddenFor(model => model.ChatMessage.InquiryChatSessionID)
+    @Html.HiddenFor(model => model.ChatMessage.Name)
+
+    <fieldset>
+        <!-- Message -->
+        @Html.LabelFor(model => model.ChatMessage.Message)
+        <div class="input-control text" data-role="input-control">
+            @Html.TextBoxFor(model => model.ChatMessage.Message)
+            <button class="btn-clear" tabindex="-1"></button>
+        </div>
+
+        <!-- Button -->
+        <div class="input-control">
+            <button type="button" id="send" class="primary">Send</button>
+        </div>
+    </fieldset>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var modelIDs =
+        {
+            chatSessionID: '#' + '@Html.IdFor(model => model.ChatMessage.InquiryChatSessionID)',
+            message: '#' + '@Html.IdFor(model => model.ChatMessage.Message)',
+            name: '#' + '@Html.IdFor(model => model.ChatMessage.Name)',
+            sendButton: '#send',
+        };
+    </script>
+}
+
+@Scripts.Render("~/bundles/signalr")
+@Scripts.Render("~/Scripts/Custom/inquiry.chat.js")
+@Scripts.Render("~/signalr/hubs")

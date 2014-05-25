@@ -1,6 +1,7 @@
 ﻿namespace RedLions.Business
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
 
     public class InquiryChatSession
@@ -25,6 +26,7 @@
             this.Member = member;
             this.InquirerName = inquirerName;
             this.StartedDateTime = DateTime.Now;
+            this.ChatMessages = new List<InquiryChatMessage>();
         }
 
         public int ID { get; set; }
@@ -36,5 +38,15 @@
         public virtual Member Member { get; private set; }
 
         public virtual ICollection<InquiryChatMessage> ChatMessages { get; private set; }
+
+        public string GetLastMessage()
+        {
+            if (ChatMessages.Count == 0)
+            {
+                return string.Empty;
+            }
+
+            return this.ChatMessages.Last().Message;
+        }
     }
 }

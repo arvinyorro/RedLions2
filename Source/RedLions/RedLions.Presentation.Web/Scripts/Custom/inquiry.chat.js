@@ -14,33 +14,52 @@
 	    appendMessage(chatMessage);
 	}
 
+	chat.client.updateChatSessions = function (chatMessage) {
+	    // 
+	}
+
 	// Set initial focus to message input box.
-	$('#message').focus();
+	$(modelIDs.Message).focus();
 	// Start the connection.
 	$.connection.hub.start().done(function () {
-	    $('#send').click(function () {
+
+	    var chatSessionID = $(modelIDs.chatSessionID).val();
+
+	    $(modelIDs.sendButton).click(function () {
 
 		    // Call the Send method on the hub.
 		    var inquiryChatMessage = new Object();
-		    inquiryChatMessage.InquiryChatSessionID = $("#InquiryChatSessionID").val();
-		    inquiryChatMessage.Message = $("#Message").val();
-		    inquiryChatMessage.Name = $("#Name").val();
+		    inquiryChatMessage.InquiryChatSessionID = chatSessionID;
+		    inquiryChatMessage.Message = $(modelIDs.message).val();
+		    inquiryChatMessage.Name = $(modelIDs.name).val();
 		    var serializedData = JSON.stringify(inquiryChatMessage);
 
 		    console.log(serializedData);
 		    chat.server.send(serializedData);
 
 			// Clear text box and reset focus for next comment.
-		    $('#Message').val('').focus();
+		    $(modelIDs.message).val('').focus();
 		});
 
-		chat.server.register(modelValues.chatSessionID);
+	    chat.server.register(chatSessionID);
 	});
 
 });
 
 function appendMessage(chatMessage) {
     $("#chat-box").append("<div id='chat-log'><strong id='chat-name'>" + chatMessage.Name + " :</strong><div id='chat-message'>" + chatMessage.Message + "</div></div>");
-    $("#chat-box").animate({ scrollTop: $(document).height() }, "slow");
+    // $("#chat-box").animate({ scrollTop: $("#chat-box").height() }, "slow");
+    $('#chat-box').scrollTop($('#chat-box').prop("scrollHeight"));
+}
+
+function switchChatSession() {
+
+    // TODO:
+    // Get new chat session ID
+
+    var chatSessionID = 1;
+
+    $(modelIDs.chatSessionID).val(chatSessionID);
+    chat.server.register(chatSessionID);
 }
 

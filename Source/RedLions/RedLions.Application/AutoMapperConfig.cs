@@ -1,5 +1,6 @@
 ﻿namespace RedLions.Application
 {
+    using System.Linq;
     using RedLions.Business;
     using AutoMapper;
 

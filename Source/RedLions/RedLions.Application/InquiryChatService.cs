@@ -34,6 +34,15 @@
             return chatSessionDto;
         }
 
+        public IEnumerable<DTO.InquiryChatSession> GetSessionsByMember(int memberUserID)
+        {
+            Business.Member member = this.memberRepository.GetMemberByID(memberUserID);
+            IEnumerable<Business.InquiryChatSession> chatSessions = this.inquiryChatRepository
+                .GetSessionsByMember(member);
+
+            return Mapper.Map<IEnumerable<DTO.InquiryChatSession>>(chatSessions);
+        }
+
         public DTO.InquiryChatSession CreateSession(string inquiryName, int memberUserID)
         {
             var member = this.memberRepository.GetMemberByID(memberUserID);

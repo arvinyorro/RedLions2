@@ -36,10 +36,14 @@
         /// </remarks>
         public static void Register()
         {
-            Mapper.CreateMap<Models.InquiryChatMessage, DTO.InquiryChatMessage>()
-                .ForMember(dest => dest.SenderUsername, opt => opt.MapFrom(src => src.Name))
+            Mapper.CreateMap<DTO.InquiryChatMessage, Models.InquiryChatMessage>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.SenderUsername))
                 .ReverseMap()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.SenderUsername));
+                .ForMember(dest => dest.SenderUsername, opt => opt.MapFrom(src => src.Name));
+
+            Mapper.CreateMap<DTO.InquiryChatSession, Models.InquiryChatSession>()
+                .ForMember(dest => dest.ThumbMessage, opt => opt.MapFrom(src => src.LastMessage))
+                .ReverseMap();
         }
     }
 }

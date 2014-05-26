@@ -88,7 +88,6 @@
         public void Create<TEntity>(TEntity entity) where TEntity : class
         {
             this.context.Set<TEntity>().Add(entity);
-            this.Save();
         }
 
         public void Update<TEntity>(TEntity entity) where TEntity : class

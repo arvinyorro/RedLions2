@@ -13,7 +13,8 @@
     <div id="chat-sessions">
         @foreach(var session in Model.ChatSessions)
         {
-            <div class="chat-session">
+            <div class="chat-session @(Model.SelectedChatSessionID == session.ID ? "selected" : null)">
+                <input type="hidden" name="chat-session-id" value="@session.ID" />
                 <strong>@session.InquirerName</strong>
                 <p>@session.ThumbMessage</p>
             </div>
@@ -57,9 +58,16 @@
             name: '#' + '@Html.IdFor(model => model.ChatMessage.Name)',
             sendButton: '#send',
         };
+
+        var modelValues =
+        {
+            username : '@Html.ValueFor(model => model.Username)',
+        };
+
     </script>
 }
 
 @Scripts.Render("~/bundles/signalr")
 @Scripts.Render("~/Scripts/Custom/inquiry.chat.js")
+@Scripts.Render("~/Scripts/Custom/member.messages.js")
 @Scripts.Render("~/signalr/hubs")

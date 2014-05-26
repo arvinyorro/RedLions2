@@ -11,7 +11,7 @@
                 @Html.ValidationSummary(true)
 
                 <fieldset>
-                    <legend>Inquiry Chat</legend>
+                    <legend>Inquiry</legend>
 
                     <!-- Firstname -->
                     @Html.LabelFor(model => model.FirstName)
@@ -54,6 +54,11 @@
 
                     <div class="input-control">
                         <button type="submit" class="primary">Send Inquiry</button>
+
+                        <button id="chat-button" type="button" disabled class="image-button image-left">
+                            Chat with an online representative
+                            <i id="chat-online-icon" class="icon-comments"></i>
+                        </button>
                     </div>
                 </fieldset>
             }
@@ -61,3 +66,17 @@
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var url =
+        {
+            inquiryChat: '@Url.Action("Chat", "Inquiry", null, Request.Url.Scheme)',
+        };
+    </script>
+}
+
+@Scripts.Render("~/bundles/signalr")
+@Scripts.Render("~/Scripts/Custom/inquiry.index.js")
+@Scripts.Render("~/signalr/hubs")

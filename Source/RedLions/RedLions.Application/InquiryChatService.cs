@@ -38,16 +38,24 @@
         {
             Business.Member member = this.memberRepository.GetMemberByID(memberUserID);
             IEnumerable<Business.InquiryChatSession> chatSessions = this.inquiryChatRepository
-                .GetSessionsByMember(member);
+                .GetSessionsByMember(member)
+                .OrderByDescending(x => x.LastMessageDateTime);
 
             return Mapper.Map<IEnumerable<DTO.InquiryChatSession>>(chatSessions);
         }
 
-        public DTO.InquiryChatSession CreateSession(string inquiryName, int memberUserID)
+        public DTO.InquiryChatSession CreateSession(string inquirerName, int memberUserID)
         {
             var member = this.memberRepository.GetMemberByID(memberUserID);
-            var chatSession = new Business.InquiryChatSession(member, inquiryName);
+            var chatSession = new Business.InquiryChatSession(member, inquirerName);
 
+            // Add server message.
+            var chatMessage = new Business.InquiryChatMessage(
+                "[Server]",
+                string.Format("* {0} has initiated a chat *", inquirerName));
+
+            chatSession.AddMessage(chatMessage);
+            
             this.inquiryChatRepository.CreateSession(chatSession);
             this.unitOfWork.Commit();
 
@@ -73,7 +81,7 @@
                 chatMessageDTO.SenderUsername, 
                 chatMessageDTO.Message);
 
-            chatSession.ChatMessages.Add(chatMessage);
+            chatSession.AddMessage(chatMessage);
 
             this.unitOfWork.Commit();
         }

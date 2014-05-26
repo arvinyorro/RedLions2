@@ -309,6 +309,7 @@
     <Content Include="Areas\Admin\Views\Members\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Edit.cshtml" />
     <Content Include="Scripts\Custom\admin.members.index.js" />
+    <Content Include="Scripts\Custom\inquiry.index.js" />
     <Content Include="Scripts\jquery.signalR-2.0.3.js" />
     <Content Include="Scripts\jquery.signalR-2.0.3.min.js" />
     <Content Include="Views\Profile\ChangePassword.cshtml" />
@@ -318,6 +319,7 @@
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion Local.pubxml" />
     <Content Include="Scripts\Custom\inquiry.chat.js" />
+    <Content Include="Scripts\Custom\member.messages.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\Custom\home.index.js" />
     <Content Include="Scripts\Custom\login.js" />

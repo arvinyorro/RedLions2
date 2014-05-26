@@ -26,6 +26,7 @@
             this.Member = member;
             this.InquirerName = inquirerName;
             this.StartedDateTime = DateTime.Now;
+            this.LastMessageDateTime = DateTime.Now;
             this.ChatMessages = new List<InquiryChatMessage>();
         }
 
@@ -35,9 +36,17 @@
 
         public DateTime StartedDateTime { get; private set; }
 
+        public DateTime LastMessageDateTime { get; private set; }
+
         public virtual Member Member { get; private set; }
 
         public virtual ICollection<InquiryChatMessage> ChatMessages { get; private set; }
+
+        public void AddMessage(InquiryChatMessage inquiryChatMessage)
+        {
+            this.ChatMessages.Add(inquiryChatMessage);
+            this.LastMessageDateTime = DateTime.Now;
+        }
 
         public string GetLastMessage()
         {

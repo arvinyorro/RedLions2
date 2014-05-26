@@ -17,13 +17,31 @@
     width: 30%;
     height: 100%;
     border-right: 1px solid #D9D9D9;
-    /*background: #4800ff;*/
 }
 
 .chat-session {
     border-bottom: 1px solid #D9D9D9;
     padding-left: 5px;
-    /*background: #00ff21;*/
+
+    height: 51px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-session:hover{
+    background: #FFD8D8;
+    cursor: pointer; 
+    cursor: hand;
+}
+
+.chat-session.selected {
+    background-color: #A60000;
+    color: #fff!important;
+}
+
+.chat-session.selected p {
+    color: #fff!important;
 }
 
 #chat-box {

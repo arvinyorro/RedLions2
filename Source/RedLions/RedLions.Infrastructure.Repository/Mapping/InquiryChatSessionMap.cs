@@ -22,6 +22,10 @@
                 .IsRequired()
                 .HasColumnType("datetime");
 
+            this.Property(t => t.LastMessageDateTime)
+                .IsRequired()
+                .HasColumnType("datetime");
+
             // Navigational Properties.
             this.HasRequired(t => t.Member)
                 .WithMany()
@@ -35,6 +39,7 @@
             this.Property(t => t.ID).HasColumnName("inquiry_chat_session_id");
             this.Property(t => t.InquirerName).HasColumnName("inquirer_name");
             this.Property(t => t.StartedDateTime).HasColumnName("datetime_started");
+            this.Property(t => t.LastMessageDateTime).HasColumnName("datetime_lastmessage");
         }
     }
 }

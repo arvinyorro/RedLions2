@@ -31,5 +31,5 @@
         {
             base.Update<InquiryChatSession>(inquiryChatSession);
         }
-}
+    }
 }

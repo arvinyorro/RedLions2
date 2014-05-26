@@ -9,8 +9,8 @@ namespace RedLions.Application.DTO
     public class InquiryChatSession
     {
         public int ID { get; set; }
-        public int MemberUserID { get; set; }
         public string InquirerName { get; set; }
+        public string MemberUsername { get; set; }
         public string LastMessage { get; set; }
         public DateTime StartedDateTime { get; set; }
     }

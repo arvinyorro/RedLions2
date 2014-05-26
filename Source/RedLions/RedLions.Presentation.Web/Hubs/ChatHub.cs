@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using RedLions.Application;
 using DTO = RedLions.Application.DTO;
 using RedLions.Presentation.Web.Models;
@@ -12,11 +14,20 @@ namespace RedLions.Presentation.Web.Hubs
 {
     public class ChatHub : Hub
     {
-        private InquiryChatService inquiryChatService;
+        /// <summary>
+        /// The list of users connected.
+        /// </summary>
+        public static List<string> ConnectedUsers = new List<string>(); 
 
-        public ChatHub(InquiryChatService inquiryChatService)
+        private InquiryChatService inquiryChatService;
+        private MemberService memberService;
+
+        public ChatHub(
+            InquiryChatService inquiryChatService,
+            MemberService memberService)
         {
             this.inquiryChatService = inquiryChatService;
+            this.memberService = memberService;
         }
 
         public override Task OnConnected()
@@ -27,6 +38,14 @@ namespace RedLions.Presentation.Web.Hubs
             // After the code in this method completes, the client is informed that
             // the connection is established; for example, in a JavaScript client,
             // the start().done callback is executed.
+
+            string username = Context.User.Identity.Name;
+            if (!string.IsNullOrEmpty(username))
+            {
+                ChatHub.ConnectedUsers.Add(username);
+                Clients.Group(username).MemberConnected(username);
+            }
+
             return base.OnConnected();
         }
 
@@ -35,6 +54,15 @@ namespace RedLions.Presentation.Web.Hubs
             // Add your own code here.
             // For example: in a chat application, mark the user as offline, 
             // delete the association between the current connection id and user name.
+
+            string username = Context.User.Identity.Name;
+
+            if (!string.IsNullOrEmpty(username))
+            {
+                ChatHub.ConnectedUsers.Remove(username);
+                Clients.Group(username).MemberDisconnected(username);
+            }
+
             return base.OnDisconnected();
         }
 
@@ -44,10 +72,19 @@ namespace RedLions.Presentation.Web.Hubs
             // For example: in a chat application, you might have marked the
             // user as offline after a period of inactivity; in that case 
             // mark the user as online again.
+
+            string username = Context.User.Identity.Name;
+
+            if (!string.IsNullOrEmpty(username))
+            {
+                ChatHub.ConnectedUsers.Add(username);
+                Clients.Group(username).MemberConnected(username);
+            }
+
             return base.OnReconnected();
         }
 
-        public void Register(int chatSessionID)
+        public void RegisterChat(int chatSessionID)
         {
             // If not exists, create new group using unique inquiry ID (single user group)
             string groupName = chatSessionID.ToString();
@@ -57,30 +94,71 @@ namespace RedLions.Presentation.Web.Hubs
             DTO.InquiryChatSession chatSessionDTO = this.inquiryChatService.GetSessionByID(chatSessionID);
             if (chatSessionDTO == null)
             {
-                throw new Exception("Chat session not found");
+                return;
             }
             
-            // Retrieve chat messages from chat session.
+            // Retrieve saved chat messages from existing chat session.
             IEnumerable<DTO.InquiryChatMessage> chatMessageDTOList = this.inquiryChatService
                 .GetChatMessagesBySession(chatSessionDTO.ID);
             IEnumerable<Models.InquiryChatMessage> chatMessages = Mapper.Map<IEnumerable<Models.InquiryChatMessage>>(chatMessageDTOList);
 
-            // Send to group self (single user group)
+            // Send saved messages to user.
             Clients.Client(Context.ConnectionId).populateChatLog(chatMessages);
+        }
 
-            // TODO:
-            // Notify member
+        public void RegisterMember(string username)
+        {
+            Groups.Add(Context.ConnectionId, username);
+        }
+
+        public void RegisterInquirer()
+        {
+            // Retrieve referrer in cookie.
+            Cookie cookie = Context.Request.Cookies["ReferrerUsername"];
+            bool referrerNotInCookies = (Context.Request.Cookies["ReferrerUsername"] == null);
+            if (referrerNotInCookies)
+            {
+                throw new Exception("Referrer not found.");
+            }
+            string referrerUsername = cookie.Value;
+
+            Groups.Add(Context.ConnectionId, referrerUsername);
+        }
+
+        public bool ReferrerIsOnline()
+        {
+            // Retrieve referrer in cookie.
+            Cookie cookie = Context.Request.Cookies["ReferrerUsername"];
+            bool referrerNotInCookies = (Context.Request.Cookies["ReferrerUsername"] == null);
+            if (referrerNotInCookies)
+            {
+                throw new Exception("Referrer not found.");
+            }
+            string referrerUsername = cookie.Value;
+
+            return ChatHub.ConnectedUsers.Contains(referrerUsername);
         }
 
         public void Send(string data)
         {
+            // Bind to model.
             InquiryChatMessage inquiryChatMessage = JsonConvert.DeserializeObject<InquiryChatMessage>(data);
-            DTO.InquiryChatMessage chatMessageDTO = Mapper.Map<DTO.InquiryChatMessage>(inquiryChatMessage);
 
+            // Save message to database.
+            DTO.InquiryChatMessage chatMessageDTO = Mapper.Map<DTO.InquiryChatMessage>(inquiryChatMessage);
             this.inquiryChatService.SaveMessage(chatMessageDTO);
 
-            string groupName = inquiryChatMessage.InquiryChatSessionID.ToString();
-            Clients.Group(groupName).BroadcastMessage(inquiryChatMessage);
+            // Broadcast message to sender and recipient.
+            int inquiryChatSessionID = inquiryChatMessage.InquiryChatSessionID;
+            Clients.Group(inquiryChatSessionID.ToString()).BroadcastMessage(inquiryChatMessage);
+
+            // Update the member chat sessions panel.
+            DTO.InquiryChatSession chatSessionDTO = this.inquiryChatService.GetSessionByID(inquiryChatSessionID);
+            Clients.Group(chatSessionDTO.MemberUsername).UpdateChatSession(inquiryChatMessage);
+
+
+            // TODO:
+            // Notify member
         }
     }
 }

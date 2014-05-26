@@ -201,6 +201,7 @@
             var viewModel = new ViewModels.MemberMessagesViewModel()
             {
                 ChatSessions = Mapper.Map<IEnumerable<Models.InquiryChatSession>>(chatSessionDTOList),
+                Username = memberDTO.Username,
             };
 
             // Get default session.

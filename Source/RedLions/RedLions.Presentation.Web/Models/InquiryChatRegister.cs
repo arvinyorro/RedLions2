@@ -11,6 +11,7 @@
     {
         [Display(Name = "Name")]
         [Required]
+        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "No special characters allowed.")]
         public string Name { get; set; }
     }
 }

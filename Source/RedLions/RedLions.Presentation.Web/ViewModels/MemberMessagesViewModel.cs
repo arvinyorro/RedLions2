@@ -17,5 +17,6 @@ namespace RedLions.Presentation.Web.ViewModels
         public IEnumerable<InquiryChatSession> ChatSessions { get; set; }
         public int SelectedChatSessionID { get; set; }
         public InquiryChatMessage ChatMessage { get; set; }
+        public string Username { get; set; }
     }
 }

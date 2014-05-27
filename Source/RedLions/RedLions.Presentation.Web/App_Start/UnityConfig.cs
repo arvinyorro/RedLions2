@@ -54,7 +54,7 @@ namespace RedLions.Presentation.Web
             container.RegisterType<UserService, UserService>();
             container.RegisterType<CountryService, CountryService>();
             container.RegisterType<InquiryChatService, InquiryChatService>();
-            container.RegisterType<ChatHub, ChatHub>();
+            container.RegisterType<ChatHub, ChatHub>(new ContainerControlledLifetimeManager());
         }
     }
 }

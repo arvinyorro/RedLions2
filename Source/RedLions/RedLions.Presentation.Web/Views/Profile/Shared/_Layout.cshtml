@@ -25,7 +25,7 @@
             <li class="title">Profile</li>
             <li @Html.HighlightActive("Details")><a href="@Url.Action("Details", "Profile")"><i class="icon-user-3"></i>@User.Identity.Name</a></li>
             <li @Html.HighlightActive("Index")><a href="@Url.Action("Index", "Profile")"><i class="icon-home"></i>Home</a></li>
-            <li @Html.HighlightActive("Messages")><a href="#"><i class="icon-mail"></i>Messages</a></li>
+            <li @Html.HighlightActive("Messages")><a href="@Url.Action("Messages", "Profile")"><i class="icon-mail"></i>Messages</a></li>
             <li class="stick bg-yellow">
                 <a class="dropdown-toggle" href="#"><i class="icon-tree-view"></i>Networks</a>
                 <ul class="dropdown-menu" data-role="dropdown">

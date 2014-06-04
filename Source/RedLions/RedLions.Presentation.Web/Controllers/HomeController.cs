@@ -1,5 +1,6 @@
 ﻿namespace RedLions.Presentation.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Web;
     using System.Web.Mvc;
     using RedLions.Presentation.Web.Components;
@@ -90,11 +91,7 @@
             return View();
         }
 
-        [Route("Company/{referrerUsername?}")]
-        public ViewResult Company()
-        {
-            return View();
-        }
+        
 
         [Route("Redlions/{referrerUsername?}")]
         public ViewResult Redlions()
@@ -224,6 +221,42 @@
 
         [Route("Possible/{referrerUsername?}")]
         public ViewResult Possible()
+        {
+            return View();
+        }
+
+        [Route("Membership/{referrerUsername?}")]
+        public ViewResult Membership()
+        {
+            var selectListItems = new List<SelectListItem>();
+            selectListItems.Add(new SelectListItem()
+                {
+                    Value = "1",
+                    Text = "Local",
+                });
+
+            selectListItems.Add(new SelectListItem()
+                {
+                    Value = "2",
+                    Text = "International",
+                });
+
+            var viewModel = new ViewModels.Membership()
+            {
+                LocationSelectListItems = selectListItems,
+            };
+
+            return View(viewModel);
+        }
+
+        [Route("Company/{referrerUsername?}")]
+        public ViewResult Company()
+        {
+            return View();
+        }
+
+        [Route("Organization/{referrerUsername?}")]
+        public ViewResult Organization()
         {
             return View();
         }

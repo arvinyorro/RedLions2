@@ -1,0 +1,26 @@
+﻿@model RedLions.Presentation.Web.ViewModels.Membership
+
+@{
+    ViewBag.Title = "Be A Member";
+    Layout = "~/Views/Shared/_LayoutRedLions.cshtml";
+}
+
+<h2>Be a Member</h2>
+<hr />
+
+@using (Html.BeginForm("Membership", "Home", new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div id="membership-controls">
+        <label>@Html.LabelFor(m => m.LocationSelectListItems)</label>
+        <div class="input-control select">
+            @Html.DropDownListFor(m => m.LocationID, Model.LocationSelectListItems)
+        </div>
+
+        <div class="membership-actions">
+            <button class="button" type="submit">Register</button>
+        </div>
+    </div>
+}

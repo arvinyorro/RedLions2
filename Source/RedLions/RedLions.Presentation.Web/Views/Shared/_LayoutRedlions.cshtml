@@ -1,0 +1,175 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="~/Content/Images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <title>RedLions - @ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/bundles/homepage-ui")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+
+    @Styles.Render("~/bundles/metro-style")
+    @Scripts.Render("~/bundles/metro-script")
+
+    @Styles.Render("~/bundles/mvc-custom")
+
+    @Scripts.Render("~/bundles/responsiveslides")
+    @Styles.Render("~/bundles/responsive-slides-style")
+
+</head>
+
+
+
+<body class="metro" style='font-family: Calibri; height: 100%;'>
+
+
+    <div class="grid" style="height: auto; min-height: 100%;">
+        <div class="row" style="background-image: url('Content/Images/Home/Layout/header.png'); background-repeat: x-repeat; color: white; min-width:900px; margin-top:0;">
+
+            <div style="width:900px; margin:0 auto; height:80px;">
+                <div style="float: left;">
+                    <img src='Content/Images/Home/Layout/redlions.png' />
+                </div>
+
+                <div style="margin-top: 50px; float: right;">
+                    <strong>
+                        <a href='#' style='color:#1c1c1c;display:inline;'> Forgot your password?  &nbsp;</a>
+                        <a href='@Url.Action("Membership")' style='color:#c69000;display:inline;'> Be a Member </a>
+                    </strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" style="background-color: #1c1c1c; height: 80px; margin-top: 0px; min-width: 900px; ">
+            <div  style=' width: 900px; margin: 0 auto; '>
+                <div style='padding-top:10px;'>
+
+
+                    <ul id="menu">
+                        <li><a href="#">Home</a></li>
+                        <li>
+                            <a href="#">About us</a>
+                            <ul>
+                                <li><a href="@Url.Action("Company")">The Company</a></li>
+                                <li><a href="@Url.Action("Organization")">The Organization</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Products</a>
+                            <ul>
+                                <li><a href="#">Skin care and whitening</a></li>
+                                <li><a href="#">Food/Nutritional Supplements</a></li>
+                                <li><a href="#">Health Beveregaes and Fertilizty Enchancer</a></li>
+                                <li><a href="#">Household and Personal Care</a></li>
+                                <li><a href="#">Wellness Accessories</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">Opportunities</a>
+                            <ul>
+                                <li>
+                                    <a href="#">Local</a>
+                                    <ul>
+                                        <li><a href="#">Phil. Compensation Plan</a></li>
+                                        <li><a href="#">Phil. Distributorship Product Packages</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">International</a>
+                                    <ul>
+                                        <li><a href="#">Int'l Compensation Plan</a></li>
+                                        <li><a href="#">Int'l Distributorship Product Packages</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li><a href="#">News and Update</a></li>
+                    </ul>
+
+
+                    <div style="width: 400px; float: right;">
+                        <form>
+                            <input type='text' class='form-control input-sm' style='width:35%;height:25px;display:inline;' placeholder='Username'>
+                            <input type='text' class='form-control input-sm' style='width:35%;height:25px;display:inline;' placeholder='Password'>
+                            <a href='#'><img src='Content/Images/Home/Layout/login.png' height='25px;' style='display:inline;'></a>
+
+                            <a href=""><img src='Content/Images/Home/Layout/fb.png'></a>
+                            <a href=""><img src='Content/Images/Home/Layout/twitter.png'></a>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class='container' style="min-height: 700px; z-index: -1;">
+            <div style='background-color: #cccccc; box-shadow: 0px 0px 40px 0px #818181; 
+                    width: 900px; height: 100%; margin: 0 auto; z-index: -1; padding: 30px;padding-bottom:200px;'>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <div class='row' style='background-color: #7b0002; color: white !important; border-top: solid 3px #ffea3c; height: 200px; margin-top: -200px;'>
+        <div class='container'>
+            <div style='padding-top: 10px; width: 700px; margin: 0 auto;'>
+
+                <div style="width: 200px; float: left; ">
+
+                    <h4><b style="color: white !important; ">SUPPORT</b></h4>
+                    <ul style="color: white !important; ">
+                        <li>Contact Us</b></li>
+                        <li><b>Help Desk</b></li>
+                        <li><b>Privacy Policy</b></li>
+                        <li><b>Terms of Use</b></li>
+                        <li><b>Inquire</b></li>
+                    </ul>
+
+                </div>
+
+                <div style="width: 200px; float: left;">
+                    <h4><b style="color: white !important; ">About</b></h4>
+                    <ul style="color: white !important; ">
+                        <li><b >Company Profile</b></li>
+                        <li><b>Certifications</b></li>
+                        <li><b>Awards</b></li>
+                        <li><b>RedLions International</b></li>
+                    </ul>
+
+                </div>
+
+                <div style="width: 200px; float: left;">
+
+                    <h4><b style="color: white !important;">SHARE US</b></h4>
+                    <a href=""><img src='Content/Images/Home/Layout/fb.png' /></a>
+                    <a href=""><img src='Content/Images/Home/Layout/twitter.png' /></a>
+
+                </div>
+
+                <div style="float:right;">
+
+                    <img src='Content/Images/Home/Layout/unologo.png' style='width:100px;height:100px;' class='pull-right'>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -233,3 +233,68 @@ a#youtube
 #chat-message {
 
 }
+
+
+/**
+* 
+*
+* 
+*/
+
+
+#menu, #menu ul {
+    z-index: 200;
+    margin:0 auto;
+    padding:0;
+}
+#menu {
+    display: inline-block;
+    min-width: 450px;
+    list-style:none;
+    background-color: #1c1c1c;
+}
+#menu li {
+    float: left;
+    position: relative;
+    list-style: none;
+}
+#menu > li:hover > ul {
+    display: block;
+    background: #1c1c1c;
+}
+
+/* Stupid Second Level */
+#menu > li > ul > li:hover > ul{
+    display: block;
+    background: #1c1c1c;
+}
+
+#menu > li > ul {
+    display: none;
+    position: absolute;
+}
+
+/* Stupid Second Level */
+#menu > li > ul > li > ul {
+    position: absolute;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+
+#menu li a {
+    display:block;
+    padding:10px 10px;
+    text-decoration:none;
+    font-weight:bold;
+    white-space: nowrap;
+    color: #a8a8a8;
+}
+#menu li a:hover {
+    color: #a8a8a8;
+}

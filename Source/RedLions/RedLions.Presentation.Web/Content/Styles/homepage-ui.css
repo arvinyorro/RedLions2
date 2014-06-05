@@ -114,27 +114,26 @@ body > #container { height: auto; min-height: 100%; }
 /* Sliders */
 #slider
 {
-    margin: 0 auto;
+    margin: 0;
+    padding: 0px;
     list-style: none;
 }
 
 #slider img
 {
-    height: 480px;
-    width: 720px;
-    margin:auto;
-    display:block;
+    height: 460px;
+    width: 970px;
 }
 
-#slider-container
-{
-    display: inline-block;
-}
-#slider-control
-{
-    display: inline-block;
-    width: 100%;
-}
+.rslides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+
 
 /* resize */
 .clearboth 

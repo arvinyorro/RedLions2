@@ -31,6 +31,13 @@
                                     {
                                         "~/Views/{1}/Shared/{0}.cshtml",
                                     }).Concat(viewEngine.PartialViewLocationFormats).ToArray();
+            
+            // This is for Home/Shared/{products}
+            viewEngine.ViewLocationFormats = (new[]
+                {
+                     "~/Views/{1}/Shared/{0}.cshtml",
+                }).Concat(viewEngine.ViewLocationFormats).ToArray();
+
             ViewEngines.Engines.Add(viewEngine);
 
             //Bootstrapper.Initialise(); // Unity IoC integration

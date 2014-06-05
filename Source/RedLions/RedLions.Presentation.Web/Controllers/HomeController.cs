@@ -116,13 +116,7 @@
         {
             return View();
         }
-
-        [Route("Skin/{referrerUsername?}")]
-        public ViewResult Skin()
-        {
-            return View();
-        }
-
+                
         [Route("Health/{referrerUsername?}")]
         public ViewResult Health()
         {
@@ -257,6 +251,76 @@
 
         [Route("Organization/{referrerUsername?}")]
         public ViewResult Organization()
+        {
+            return View();
+        }
+
+        [Route("Skin/{referrerUsername?}")]
+        public ViewResult Skin()
+        {
+            return View();
+        }
+
+        [Route("ProductDetails/{id:int}/{referrerUsername?}", Name = "ProductDetails")]
+        public ViewResult ProductDetails(int id)
+        {
+            string viewName = string.Empty;
+            switch (id)
+            {
+                case 1:
+                    viewName = "BbCream"; 
+                    break;
+                case 2:
+                    viewName = "Body";
+                    break;
+                case 3:
+                    viewName = "GlutaLotion";
+                    break;
+                case 4:
+                    viewName = "GlutaCapsule";
+                    break;
+                case 5:
+                    viewName = "GlutaSoap";
+                    break;
+                case 6:
+                    viewName = "Kojic";
+                    break;
+                case 7:
+                    viewName = "Magic";
+                    break;
+                case 8:
+                    viewName = "Thana";
+                    break;
+                case 9:
+                    viewName = "Fit";
+                    break;
+                case 10:
+                    viewName = "Grape";
+                    break;
+                case 11:
+                    viewName = "Krypt";
+                    break;
+                case 12:
+                    viewName = "Super";
+                    break;
+                case 13:
+                    viewName = "Ultima";
+                    break;
+                case 14:
+                    viewName = "Vco";
+                    break;
+                case 15:
+                    viewName = "Wheat";
+                    break;
+                default:
+                    throw new HttpException(404, "Product not found.");
+            }
+
+            return View(viewName);
+        }
+
+        [Route("Food/{referrerUsername?}")]
+        public ViewResult Food()
         {
             return View();
         }

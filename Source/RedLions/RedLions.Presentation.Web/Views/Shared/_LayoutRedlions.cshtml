@@ -32,11 +32,11 @@
 
 
     <div class="grid" style="height: auto; min-height: 100%;">
-        <div class="row" style="background-image: url('Content/Images/Home/Layout/header.png'); background-repeat: x-repeat; color: white; min-width:900px; margin-top:0;">
+        <div class="row" style="background-image: url('@Url.Content("~/Content/Images/Home/Layout/header.png")'); background-repeat: x-repeat; color: white; min-width: 900px; margin-top: 0;">
 
             <div style="width:900px; margin:0 auto; height:80px;">
                 <div style="float: left;">
-                    <img src='Content/Images/Home/Layout/redlions.png' />
+                    <img src='@Url.Content("~/Content/Images/Home/Layout/redlions.png")' />
                 </div>
 
                 <div style="margin-top: 50px; float: right;">
@@ -55,7 +55,7 @@
 
 
                     <ul id="menu">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="@Url.Action("Index","Home")">Home</a></li>
                         <li>
                             <a href="#">About us</a>
                             <ul>
@@ -66,8 +66,8 @@
                         <li>
                             <a href="#">Products</a>
                             <ul>
-                                <li><a href="#">Skin care and whitening</a></li>
-                                <li><a href="#">Food/Nutritional Supplements</a></li>
+                                <li><a href="@Url.Action("Skin", "Home", null)">Skin care and whitening</a></li>
+                                <li><a href="@Url.Action("Food", "Home", null)">Food/Nutritional Supplements</a></li>
                                 <li><a href="#">Health Beveregaes and Fertilizty Enchancer</a></li>
                                 <li><a href="#">Household and Personal Care</a></li>
                                 <li><a href="#">Wellness Accessories</a></li>
@@ -102,12 +102,12 @@
                         <form>
                             <input type='text' class='form-control input-sm' style='width:35%;height:25px;display:inline;' placeholder='Username'>
                             <input type='text' class='form-control input-sm' style='width:35%;height:25px;display:inline;' placeholder='Password'>
-                            <a href='#'><img src='Content/Images/Home/Layout/login.png' height='25px;' style='display:inline;'></a>
+                            <a href='#'><img src='@Url.Content("~/Content/Images/Home/Layout/login.png")' height='25px;' style='display:inline;'></a>
 
-                            <a href=""><img src='Content/Images/Home/Layout/fb.png'></a>
-                            <a href=""><img src='Content/Images/Home/Layout/twitter.png'></a>
+                            <a href=""><img src='@Url.Content("~/Content/Images/Home/Layout/fb.png")'></a>
+                            <a href=""><img src='@Url.Content("~/Content/Images/Home/Layout/twitter.png")'></a>
 
-                        </form>
+                        ></form>
                     </div>
                 </div>
             </div>
@@ -115,8 +115,8 @@
         </div>
 
         <div class='container' style="min-height: 700px; z-index: -1;">
-            <div style='background-color: #cccccc; box-shadow: 0px 0px 40px 0px #818181; 
-                    width: 900px; height: 100%; margin: 0 auto; z-index: -1; padding: 30px;padding-bottom:200px;'>
+            <div style='box-shadow: 0px 0px 40px 0px #818181; min-height: 700px;
+                    width: 970px; height: 100%; margin: 0 auto; z-index: -1; padding: 2px;padding-bottom:200px;'>
                 @RenderBody()
             </div>
         </div>
@@ -134,7 +134,7 @@
                         <li><b>Help Desk</b></li>
                         <li><b>Privacy Policy</b></li>
                         <li><b>Terms of Use</b></li>
-                        <li><b>Inquire</b></li>
+                        <li><a style="color:white;font-weight:bold;" href="@Url.Action("Inquire", "Home")">Inquire</a></li>
                     </ul>
 
                 </div>
@@ -153,14 +153,14 @@
                 <div style="width: 200px; float: left;">
 
                     <h4><b style="color: white !important;">SHARE US</b></h4>
-                    <a href=""><img src='Content/Images/Home/Layout/fb.png' /></a>
-                    <a href=""><img src='Content/Images/Home/Layout/twitter.png' /></a>
+                    <a href=""><img src='@Url.Content("~/Content/Images/Home/Layout/fb.png")' /></a>
+                    <a href=""><img src='@Url.Content("~/Content/Images/Home/Layout/twitter.png")' /></a>
 
                 </div>
 
                 <div style="float:right;">
 
-                    <img src='Content/Images/Home/Layout/unologo.png' style='width:100px;height:100px;' class='pull-right'>
+                    <img src='@Url.Content("~/Content/Images/Home/Layout/unologo.png")' style='width:100px;height:100px;' class='pull-right'>
 
                 </div>
 

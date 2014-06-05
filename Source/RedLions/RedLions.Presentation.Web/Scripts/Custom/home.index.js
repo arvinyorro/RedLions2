@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $("#slider").responsiveSlides({
-        maxwidth: 800,
+        maxwidth: 970,
         speed: 800
     });
 });

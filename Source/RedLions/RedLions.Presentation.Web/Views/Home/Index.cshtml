@@ -1,14 +1,97 @@
 ﻿@{
     ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutRedLions.cshtml";
 }
 
-<ul class="rslides" id="slider">
-    <li><img src="~/Content/Images/Banners/banner1.png" /></li>
-    <li><img src="~/Content/Images/Banners/banner2.png" /></li>
-    <li><img src="~/Content/Images/Banners/banner3.png" /></li>
-</ul>
+<table style="border-spacing: 2px;border-collapse: separate;">
+    <tr>
+        <td colspan="2">
+            <ul class="rslides" id="slider">
+                <li><img src="~/Content/Images/Home/Index/acai.jpg" /></li>
+                <li><img src="~/Content/Images/Home/Index/coffee.jpg" /></li>
+                <li><img src="~/Content/Images/Home/Index/global.jpg" /></li>
+                <li><img src="~/Content/Images/Home/Index/lalumiere.jpg" /></li>
+                <li><img src="~/Content/Images/Home/Index/pacman1.jpg" /></li>
+                <li><img src="~/Content/Images/Home/Index/pacman2.jpg" /></li>
+            </ul>
+        </td>
+    </tr>
+    <tr style="height:286px;">
+        <td style="width:408px; background-color: aqua;"></td>
+        <td style="width: 548px; background-color: aqua;"></td>
+    </tr>
+</table>
+
+
+<h3 style="margin-left: 5px;font-weight:bold;">Success Stories</h3>
+
+
 <div class="clearboth"></div>
 
+<table style="border-spacing: 1px;border-collapse: separate;">
+    <tr>
+        <td>
+            <div class="panel panel-default" style="width:158px;">
+                <div class="panel-heading" style="background-image: url('@Url.Content("~/Content/Images/Home/Layout/panel_header.png")'); color: #fff;height: 45px; border-radius: 0px; text-align: center; padding-top: 12px; font-size: 12px;">
+                    Allan Jay Rosal
+                </div>
+                <div class="panel-body" style="padding:1px;background-color:#1c1c1c;color:#fff;">
+                    <img style="height:200px;" src="~/Content/Images/Home/SuccessStories/rosal1.jpg" /> 
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="panel panel-default" style="width:158px;">
+                <div class="panel-heading" style="background-image: url('@Url.Content("~/Content/Images/Home/Layout/panel_header.png")'); color: #fff;height: 45px; border-radius: 0px; text-align: center; padding-top: 12px; font-size: 12px;">
+                    Rowell Buado
+                </div>
+                <div class="panel-body" style="padding: 1px; background-color: #1c1c1c; color: #fff;">
+                    <img style="height:200px;width:156px;" src="~/Content/Images/Home/SuccessStories/buado1.png" /> 
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="panel panel-default" style="width:158px;">
+                <div class="panel-heading" style="background-image: url('@Url.Content("~/Content/Images/Home/Layout/panel_header.png")'); color: #fff;height: 45px; border-radius: 0px; text-align: center; padding-top: 12px; font-size: 12px;">
+                    Windslie Daquiado
+                </div>
+                <div class="panel-body" style="padding: 1px; background-color: #1c1c1c; color: #fff;">
+                    <img style="height:200px;width:156px;" src="~/Content/Images/Home/SuccessStories/wind1.png" /> 
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="panel panel-default" style="width:158px;">
+                <div class="panel-heading" style="background-image: url('@Url.Content("~/Content/Images/Home/Layout/panel_header.png")'); color: #fff;height: 45px; border-radius: 0px; text-align: center; padding-top: 12px; font-size: 12px;">
+                    Marianne Claire Gloria  
+                </div>
+                <div class="panel-body" style="padding:1px;background-color:#1c1c1c;color:#fff;">
+                    <img style="height:200px;width:156px;" src="~/Content/Images/Home/SuccessStories/mar1.jpg" /> 
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="panel panel-default" style="width:158px;">
+                <div class="panel-heading" style="background-image: url('@Url.Content("~/Content/Images/Home/Layout/panel_header.png")'); color: #fff;height: 45px; border-radius: 0px; text-align: center; padding-top: 12px; font-size: 12px;">
+                    Peter John Premallon
+                </div>
+                <div class="panel-body" style="padding:1px;background-color:#1c1c1c;color:#fff;">
+                    <img style="height:200px;width:156px;" src="~/Content/Images/Home/SuccessStories/pj1.jpg" />
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="panel panel-default" style="width:158px;">
+                <div class="panel-heading" style="background-image: url('@Url.Content("~/Content/Images/Home/Layout/panel_header.png")'); color: #fff;height: 45px; border-radius: 0px; text-align: center; padding-top: 12px; font-size: 12px;">
+                    Marylin Timpuloc
+                </div>
+                <div class="panel-body" style="padding:1px;background-color:#1c1c1c;color:#fff;">
+                    <img style="height:200px;width:156px;" src="~/Content/Images/Home/SuccessStories/marilyn1.jpg" />
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
 
 @section Scripts {
     @Scripts.Render("~/Scripts/Custom/home.index.js")

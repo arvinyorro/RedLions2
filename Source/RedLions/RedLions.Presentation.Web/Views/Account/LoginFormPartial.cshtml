@@ -1,8 +1,8 @@
 ﻿@model RedLions.Presentation.Web.Models.LoginForm
 
-@using (Html.BeginForm("LoginPartial", "Account", new { ReturnUrl = ViewBag.ReturnUrl })) 
+@using (Html.BeginForm("LoginPartial", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
 {
-    
+
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -11,13 +11,13 @@
         <div class="input-control text">
             @Html.TextBoxFor(m => m.Username)
             <button class="btn-clear"></button>
-        </div> 
+        </div>
 
         <label>@Html.LabelFor(m => m.Password)</label>
         <div class="input-control password">
             @Html.PasswordFor(m => m.Password)
             <button class="btn-reveal"></button>
-        </div> 
+        </div>
         <div class="input-control checkbox">
             <label>
                 @Html.CheckBoxFor(m => m.RememberMe)
@@ -28,7 +28,7 @@
         <div class="form-actions">
             <button class="button primary" type="button" onclick="login()">Login</button>&nbsp;
             <button class="button" type="button" onclick="closeDialog()">Cancel</button>
-            <div id="login-loader" class="loaders" />
+            <div id="login-loader" class="loaders"></div>
         </div>
     </div>
 }
@@ -84,7 +84,7 @@
                 
                 if (data.Success == true) {
                     // Reload navigation bar to display the user controls.
-                    $("#header").load('@Url.Action("NavigationBar", "Home")');
+                    $("#account-section").load('@Url.Action("AccountSection", "Home")');
                     $.Dialog.close();
                         
                     // Auto-redirect to profile account page.

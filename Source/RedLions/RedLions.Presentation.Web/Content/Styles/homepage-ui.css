@@ -240,6 +240,9 @@ a#youtube
 * 
 */
 
+.page-region .input-control.text, .page-region .input-control.password, .page-region .input-control.file, .page-region .input-control.textarea  {
+    width: 60% !important;
+}
 
 #menu, #menu ul {
     z-index: 200;
@@ -252,6 +255,14 @@ a#youtube
     list-style:none;
     background-color: #1c1c1c;
 }
+
+/** This is for the account-section */
+#menu.account {
+    display: inline-block;
+    list-style:none;
+    background-color : transparent;
+}
+
 #menu li {
     float: left;
     position: relative;
@@ -284,8 +295,6 @@ a#youtube
     margin: 0;
     display: none;
 }
-
-
 #menu li a {
     display:block;
     padding:10px 10px;

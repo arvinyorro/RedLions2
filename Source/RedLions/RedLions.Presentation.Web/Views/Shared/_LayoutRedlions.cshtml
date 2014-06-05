@@ -24,6 +24,11 @@
     @Scripts.Render("~/bundles/responsiveslides")
     @Styles.Render("~/bundles/responsive-slides-style")
 
+    @if (IsSectionDefined("AddToHead"))
+    {
+        @RenderSection("AddToHead", required: false)
+    }
+
 </head>
 
 
@@ -57,13 +62,6 @@
                     <ul id="menu">
                         <li><a href="@Url.Action("Index","Home")">Home</a></li>
                         <li>
-                            <a href="#">About us</a>
-                            <ul>
-                                <li><a href="@Url.Action("Company")">The Company</a></li>
-                                <li><a href="@Url.Action("Organization")">The Organization</a></li>
-                            </ul>
-                        </li>
-                        <li>
                             <a href="#">Products</a>
                             <ul>
                                 <li><a href="@Url.Action("Skin", "Home", null)">Skin care and whitening</a></li>
@@ -75,39 +73,19 @@
                         </li>
 
                         <li>
-                            <a href="#">Opportunities</a>
+                            <a href="#">Business</a>
                             <ul>
-                                <li>
-                                    <a href="#">Local</a>
-                                    <ul>
-                                        <li><a href="#">Phil. Compensation Plan</a></li>
-                                        <li><a href="#">Phil. Distributorship Product Packages</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">International</a>
-                                    <ul>
-                                        <li><a href="#">Int'l Compensation Plan</a></li>
-                                        <li><a href="#">Int'l Distributorship Product Packages</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="#">Local</a></li>
+                                <li><a href="@Url.Action("International", "Home")">International</a></li>
                             </ul>
                         </li>
 
                         <li><a href="#">News and Update</a></li>
                     </ul>
 
-
-                    <div style="width: 400px; float: right;">
-                        <form>
-                            <input type='text' class='form-control input-sm' style='width:35%;height:25px;display:inline;' placeholder='Username'>
-                            <input type='text' class='form-control input-sm' style='width:35%;height:25px;display:inline;' placeholder='Password'>
-                            <a href='#'><img src='@Url.Content("~/Content/Images/Home/Layout/login.png")' height='25px;' style='display:inline;'></a>
-
-                            <a href=""><img src='@Url.Content("~/Content/Images/Home/Layout/fb.png")'></a>
-                            <a href=""><img src='@Url.Content("~/Content/Images/Home/Layout/twitter.png")'></a>
-
-                        ></form>
+                    <!-- Login Form -->
+                    <div id="account-section" style="width: 250px; float: right;">
+                        @{ Html.RenderPartial("_AccountPartial"); }
                     </div>
                 </div>
             </div>
@@ -142,7 +120,9 @@
                 <div style="width: 200px; float: left;">
                     <h4><b style="color: white !important; ">About</b></h4>
                     <ul style="color: white !important; ">
-                        <li><b >Company Profile</b></li>
+                        <li><a href="@Url.Action("Company")"><b>The Company</b></a></li>
+                        <li><a href="@Url.Action("Organization")"><b>The Organization</b></a></li>
+                        <li><b>The Organization</b></li>
                         <li><b>Certifications</b></li>
                         <li><b>Awards</b></li>
                         <li><b>RedLions International</b></li>

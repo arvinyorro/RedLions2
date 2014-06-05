@@ -1,44 +1,19 @@
-﻿<div class="element place-right">
-    <a class="dropdown-toggle" href="#">
-        <span class="icon-cog"></span>
-    </a>
-    <ul class="dropdown-menu place-right" data-role="dropdown">
-
+﻿<ul id="menu" class="account">
+    <li>
         @if (Roles.IsUserInRole("Member"))
         {
-            <li>@Html.ActionLink("My Account", "Index", "Profile")</li>
+            @Html.ActionLink("My Account", "Index", "Profile")
         }
 
         @if (Roles.IsUserInRole("Admin"))
         {
-            <li>@Html.ActionLink("Admin", "Index", new { area = "Admin", controller = "Members" })</li>
+            @Html.ActionLink("Admin", "Index", new { area = "Admin", controller = "Members" })
         }
-
-        <li class="divider"></li>
-
-        <li>
-            @using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
-            {
-                @Html.AntiForgeryToken()
-                <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
-            }
-        </li>
-    </ul>
-</div>
-<span class="element-divider place-right"></span>
-<a class="element place-right" href="#"><span class="icon-earth"></span></a>
-<span class="element-divider place-right"></span>
-<button class="element place-right">
-
-    @if (Roles.IsUserInRole("Member"))
-    {
-        <i class="icon-user on-left"></i>@User.Identity.Name
-    }
-
-    @if (Roles.IsUserInRole("Admin"))
-    {
-        <i class="icon-user-3 on-left"></i>@User.Identity.Name
-    }
-
-
-</button>
+    <li>
+        @using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+        }
+    </li>
+</ul>

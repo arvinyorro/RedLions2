@@ -324,5 +324,17 @@
         {
             return View();
         }
+
+        // This is for updating the login section in the homepage after the user logins in.
+        public PartialViewResult AccountSection()
+        {
+            return PartialView("_AccountPartial");
+        }
+
+        [Route("International/{referrerUsername?}")]
+        public ViewResult International()
+        {
+            return View();
+        }
     }
 }

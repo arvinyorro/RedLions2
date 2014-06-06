@@ -243,15 +243,63 @@
             return View(viewModel);
         }
 
-        [Route("Company/{referrerUsername?}")]
-        public ViewResult Company()
+        [Route("Company/{id:int}/{referrerUsername?}")]
+        public ViewResult Company(int id)
         {
+            switch(id)
+            {
+                case 1:
+                    ViewBag.Company = true;
+                    ViewBag.Board = true;
+                    ViewBag.MissionVision = true;
+                    ViewBag.Certifications = true;
+                    ViewBag.Awards = true;
+                    break;
+                case 2:
+                    ViewBag.Company = true;
+                    break;
+                case 3:
+                    ViewBag.Board = true;
+                    break;
+                case 4:
+                    ViewBag.MissionVision = true;
+                    break;
+                case 5:
+                    ViewBag.Certifications = true;
+                    break;
+                case 6:
+                    ViewBag.Awards = true;
+                    break;
+                default:
+                    throw new HttpException("Incorrect ID in company page.");
+            }
+
             return View();
         }
 
-        [Route("Organization/{referrerUsername?}")]
-        public ViewResult Organization()
+        [Route("Organization/{id:int}/{referrerUsername?}")]
+        public ViewResult Organization(int id)
         {
+            switch (id)
+            {
+                case 1:
+                    ViewBag.Who = true;
+                    ViewBag.History = true;
+                    ViewBag.Founder = true;
+                    break;
+                case 2:
+                    ViewBag.Who = true;
+                    break;
+                case 3:
+                    ViewBag.History = true;
+                    break;
+                case 4:
+                    ViewBag.Founder = true;
+                    break;
+                default:
+                    throw new HttpException("Incorrect ID in organization page.");
+            }
+
             return View();
         }
 

@@ -5,32 +5,155 @@
 
 <div style="padding: 10px;">
     <div style="float: right; height: 180px; width: 350px;padding:10px;margin:10px">
-        <b>The Organization</b>
+        <b><a href="@Url.Action("Organization", "Home", new { id = 1 })">The Organization</a></b>
         <ul>
-            <li><a href="#about">About RedLions</a></li>
-            <li><a href="#history">History</a></li>
-            <li><a href="#founder">Founder</a></li>
+            <li><a href="@Url.Action("Organization", "Home", new { id = 2 })">Who We Are</a></li>
+            <li><a href="@Url.Action("Organization", "Home", new { id = 3 })">History</a></li>
+            <li><a href="@Url.Action("Organization", "Home", new { id = 4 })">Founder</a></li>
         </ul>
     </div>
 
-    <a name="about"><h3>The Organization</h3></a>
+    @if(ViewBag.Who == true)
+    {
+        <a name="about"><h3>Who We Are</h3></a>
 
-    <p>We are one of the fastest growing groups in UNO Int'l Corp., not only in the Philippines but also have made our mark in the global market. Our group has produced more than 50 car achievers and has developed numerous multi-millionaires. We have a worldwide membership of 35,000 developed in  only a span of 6 years. We are engaged in the distribution of health enhancing products and wealth promoting system.</p>
+        <p>We are one of the fastest growing groups in UNO Int'l Corp., not only in the Philippines but also have made our mark in the global market. Helping people and inspiring them to reach for their dreams are at the heart of everything we do. We are a TEAM of LEADERS who are FEROCIOUSLY FOCUSED, STRONGLY INFLUENTIAL, AGRESSIVELY GENTLE and UNSTOPPABLY DRIVEN - A TEAM of MOVERS who BLEEDS with PASSION, whose FIRES are set ABLAZED, and whose lives are DEEPLY INSPIRED to INSPIRE!</p>
 
-    <a name="history"><h3>History</h3></a>
+        <p>Our team has produced more than 50 car achievers and has developed numerous multi-millionaires. We have a worldwide members of 35,000 which were multiplied only in a span of 6 years and that, we believe, we can grow the number significantly with the help of our REDLIONS ONLINE SYSTEM – This Online System!</p>
 
-    <p><b>RedLions</b> is the team name under the network of <b>Mr. Warren Trinidad</b>, a consistent top earner and an Emerald Executive of UNO International Corp. Sometime in 2010 when leaders under his network decided to come-up with one name that will distinguish his entire empire from the rest of the groups in UNO. Red has been the color of his group and lion symbolizes bravery and honor, the leaders of the team with Warren Trinidad decided to come-up with the team name "RedLions". It was a good timing as well when the movie Robinhood was unleashed in theaters in the same year and it caught Mr. Trinidad's attention to use the tag line "Rise and Rise again until lambs become lions."</p>
+        <p>We make use of the power of the Internet nowadays to connect to every people in any parts of the world, build, and strengthen our business online! Our organization came up with this ever first ONLINE SYSTEM to help every member grow their network online and provide them with unbounded support! Multiplication, duplication, and training wouldn’t be a problem anymore! Because this system that we have come up for would make the ease for everyone else-- like you!</p>
 
-    <a name="founder"><h3>The Founder</h3></a>
+        <p>So, no matter what you do or where you from, our REDLIONS ONLINE SYSTEM (ROS) will help you succeed in this business. We’ve made this as a perfect tool to help you make money at the comfort of your home, office, or school!</p>
+        
+        <p><b>Do you have what it takes to be part of our team? You already have TOP 10 REASONS why YOU should JOIN us!</b></p>
+       
+        <ol>
+            <li><b>ONLINE SYSTEM</b>. We are the only team in UNO that has an exclusive Online System to provide an unbounded support to every team member.</li>
+
+            <li><b>EFFICIENCY</b>. Our RedLions Online System (ROS), which you can use for your own UNO business, can help you experience hassle-free online transactions like: prospecting, presentation, ordering, sign-ups/ membership, delivery and many others. ALL WILL BE DONE SMOOTHLY ONLINE!</li>
+
+            <li><b>INCOME OPPORTUNITY AT HOME</b>. For anything you’ve loved to do to make a living, this can be your additional source of income after work hours.</li>
+
+            <li><b>ONLINE TRAINING</b>. Training Online is freely available for you to use if you become a member of our team. Meaning, you will learn how to do business and to use our online system effectively.</li>
+
+            <li><b>SUPPORT SYSTEM</b>. The team has its own Online Support System available for your questions which can assist you 24/7. We have a community of leaders (Offline and Online) who can teach and coach you how to do UNO business in the right way.</li>
+
+            <li><b>GOING SOCIAL</b>. The team is effectively utilizing Social Media like Facebook, Twitter, Pinterest, and many others. The team will help you create a unique social site for you that will enable you to market UNO Products & Business Online.</li>
+
+            <li><b>PROFESSIONALISM</b>. You can do UNO Network Marketing Business with us without the fear of getting your friends and relatives annoyed of the Traditional ways because we have a very professional system in conducting our business (Online and Offline).</li>
+
+            <li><b>EFFECTIVE ONLINE SELLING</b>. Selling is an option in our business but we will teach you the best-selling techniques Online and Offline.</li>
+
+            <li><b>ONLINE TUTORIAL</b>. A step-by-step process of UNO business and our Global Online System will be provided for you. Tutorial videos will be available upon joining the team.</li>
+
+            <li><b>GLOBAL EXPANSION</b>. You have the chance to create your network anywhere in the world and, with our system, people will just come over to your business and become interested to join you.</li>
+
+        </ol>
+    }
+    
+
+    @if (ViewBag.History == true)
+    {
+        <a name="history"><h3>History</h3></a>
+
+        <p><b>RedLions</b> is the team name under the network of <b>Mr. Warren Trinidad</b>, a consistent top earner and an Emerald Executive of UNO International Corp. Sometime in 2010 when leaders under his network decided to come-up with one name that will distinguish his entire empire from the rest of the groups in UNO. Red has been the color of his group and lion symbolizes bravery and honor, the leaders of the team with Warren Trinidad decided to come-up with the team name "RedLions". It was a good timing as well when the movie Robinhood was unleashed in theaters in the same year and it caught Mr. Trinidad's attention to use the tag line "Rise and Rise again until lambs become lions."</p>
+    }
+
+   @if(ViewBag.Founder == true)
+   {
+        <a name="founder"><h3>The Founder</h3></a>
+
+       <div><img width="500" src="~/Content/Images/Home/Org/org_warren.jpg" /></div>
+       
+    <ul>
+        <li>He has been with the company, UNO Int’l Corp., for 7 years.</li>
+        <li>ONE Team Member</li>
+        <li>MILLIONAIRES CLUB (1ST BATCH)</li>
+        <li>Travel Incentives Qualifier</li>
+        <li>Acquired 11 luxury cars</li>
+        <li>Produced almost 50 CAR ACHIEVERS under his team</li>
+        <li>Produced almost 70 Millionaires club and car achievers under his team</li>
+        <li>PROFIT SHARING QUALIFIER</li>
+    </ul>
+
+    <ul>
+        <li>2007= overall TOP 4</li>
+        <li>2008= overall TOP 4</li>
+        <li>2009= overall TOP 5</li>
+        <li>2010= overall TOP 5</li>
+        <li>2011= overall TOP 6</li>
+        <li>2012= overall TOP 5</li>
+        <li>2013= overall TOP 4</li>
+    </ul>
 
     <p>
-        <b>Warren Trinidad</b> speaks and trains people around the philippines and abroad especially in our empire <b>REDLIONS</b>. He built the team thru continuous perseverance trainings, duplications, and motivations with his powerful core leaders around him. He has 10 years of professional experience in NETWORK MARKETING. He has his fair share of ups and downs, but he continued to strive hard to succeed in the arena of <b>NETWORK MARKETING</b>.
-        Warren is a husband to his wife Diane, Anika name of their lovely daughter. He's a Table Tennis player, network gamer, and loves to watch inspirational movies. He’s born and raised in Davao City, one of the best and lovely city to be in the Philippines.
+        but before he became successful, it was not that easy journey.
+        <b>SUCCESS is <span style="color: red;">for those people</span> who are willing to pay the price.</b>
     </p>
 
-    <img src="~/Content/Images/Home/Org/org_warren.jpg" />
+    <p>
+        At the age of 14 his brother William died due to lack of financially support for hospitalization. He tried joining MLM at the age of 18 but nothing happened, at 19 he stopped from school, and by 20 he became a messenger, at 21 he became totally broke, at 22 tried another MLM yet nothing happened, at 23 he joined UNO
+    </p>
+
+    <p>
+        One of his motivation why he joined UNO and studied network marketing really hard is because of his family, he promised to himself that he will do whatever it takes he will work hard to give his family a life of financial and time freedom.
+    </p>
+
+    <p>He became one of the members of an Elite team in UNO "ONE TEAM"sharing his life emotionally to his co‐distributors.</p>
+
+    <p>A lot of people discouraged him to do the business, some of them are his friends, relatives and parents.</p>
+
+    <p>There are times that he skipped his dinner and just wait for his downlines to go home, because he will just walk more than 6km. from the office to their house in Matina, Davao City just to save money.</p>
+
+    <p>In the video below, his father showed his one and only pair of shoes, because he cannot afford to buy for a new one that time.</p>
+
+    <p>But, he never gave up, he gave flyers everyday, prospecting everyday, and</p>
+
+    <p><b style="color:red;">he never stopped no matter how hard it was, because he saw something in UNO and he believed that he can make it!!!</b></p>
+
+
+    <p>
+        He started earning not just an amount but BIG INCOME and he bought his
+        BMW M3 Sport Series and Dodge Durango.
+    </p>
+
+    <p>He became one of the members of an Elite team in UNO "ONE TEAM" sharing his life emotionally to his co‐distributors.</p>
+
+    <p>A lot of people discouraged him to do the business; some of them are his friends, relatives and parents.</p>
+
+    <p>There are times that he skipped his dinner and just wait for his downlines to go home, because he will just walk more than 6km. from the office to their house in Matina, Davao City just to save money.</p>
+
+    <p>In the video below, his father showed his one and only pair of shoes, because he cannot afford to buy for a new one that time.</p>
+
+    <p>
+        But, he never gave up, he gave flyers everyday, prospecting everyday, and he never stopped even though how hard it is, because he saw something in UNO and he believed that he can make it!!!
+        
+    </p>
+
+    <p>but another challenge came......</p>
+
+    <p>during the Typhoon Ondoy....his BMW and Dodge Durango were drowned because of the flood, but he never gave up.</p>
+
+    <p>He stood up and continued with his journey to reach for his dreams – to buy his dream house and lot, to travel in any parts of the world, and to make his parents happy. In fact he was able to buy a Ford Explorer car for his parents.</p>
+
+    <p><b style="color:red;">For 6 years, he earned millions and helped a lot of downlines (people under his network) to earn as well. As of today, he continues to inspire a lot of people, that if we really want change, we can, if we believe and take actions to fulfil our dreams, UNO is one of the right vehicles for success.</b></p>
+
+    <p>
+        Now, Warren Trinidad speaks and trains people around the Philippines and abroad especially in our empire <b style="color: #c69000;">REDLIONS</b>. He built the team thru continuous perseverance trainings, duplications, and motivations with his powerful core leaders around him. He has 10 years of professional experience in NETWORK MARKETING. He has his fair share of ups and downs, but he continued to strive hard to succeed in the arena of <b>NETWORK MARKETING</b>.
+    </p>
+
+    <p>Warren is a husband to his wife Diane, Anika name of their lovely daughter. He's a Table Tennis player, network gamer, and loves to watch inspirational movies. He’s born and raised in Davao City, one of the best and lovely city to be in the Philippines.</p>
+
+    <p>He is now looking to attract people local and international to work with him. People who has BIG DREAMS, VISIONARY, POSITIVE MINDSET AND WILLING TO BE TRAINED and have MINDSET LIKE OURS.</p>
+    
+    
 
     <p>
         He is now looking to attract people local and international to work with him. People who has <b>BIG DREAMS, VISIONARY, POSITIVE MINDSET AND WILLING TO BE TRAINED and have MINDSET LIKE OURS. </b>
     </p>
+   }
+
+    <div style="width:150px; margin:0 auto; margin-top: 100px;">
+        <a class="button large danger" href="@Url.Action("Membership", "Home")">Join Now!!!</a>
+    </div>
 </div>

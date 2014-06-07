@@ -8,20 +8,158 @@
     <h2>Be a Member</h2>
     <hr />
 
-    @using (Html.BeginForm("Membership", "Home", new { ReturnUrl = ViewBag.ReturnUrl }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-
-        <div id="membership-controls">
-            <label>@Html.LabelFor(m => m.LocationSelectListItems)</label>
+    <div id="membership-controls">
+        <div id="location-control" style="width: 60%;">
+            <label>@Html.LabelFor(m => m.LocationItems)</label>
             <div class="input-control select">
-                @Html.DropDownListFor(m => m.LocationID, Model.LocationSelectListItems)
+                @Html.DropDownListFor(m => m.LocationID, Model.LocationItems)
             </div>
 
-            <div class="membership-actions">
-                <button class="button" type="submit">Register</button>
+        </div>
+        <div id="local-control" style="width: 60%; display: none;">
+            <label>@Html.LabelFor(m => m.LocalItems)</label>
+            <div class="input-control select">
+                @Html.DropDownListFor(m => m.LocalID, Model.LocalItems)
             </div>
         </div>
-    }
+
+        <div id="international-action" class="payment-action" style="margin:20px;">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="walterwarrentrinidad@yahoo.com">
+                <input type="hidden" name="lc" value="PH">
+                <input type="hidden" name="item_name" value="International membership">
+                <input type="hidden" name="item_number" value="151">
+                <input type="hidden" name="amount" value="1500.00">
+                <input type="hidden" name="currency_code" value="PHP">
+                <input type="hidden" name="button_subtype" value="services">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="tax_rate" value="0.000">
+                <input type="hidden" name="shipping" value="0.00">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+
+        </div>
+
+        <div id="local-luzon-action" class="local payment-action" style="margin: 20px; display: none; ">
+            
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="walterwarrentrinidad@yahoo.com">
+                <input type="hidden" name="lc" value="PH">
+                <input type="hidden" name="item_name" value="Local membership">
+                <input type="hidden" name="item_number" value="151">
+                <input type="hidden" name="amount" value="1500.00">
+                <input type="hidden" name="currency_code" value="PHP">
+                <input type="hidden" name="button_subtype" value="services">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="tax_rate" value="0.000">
+                <input type="hidden" name="shipping" value="0.00">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+
+        </div>
+
+        <div id="local-visayas-action" class="local payment-action" style="margin: 20px; display: none; ">
+            
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="walterwarrentrinidad@yahoo.com">
+                <input type="hidden" name="lc" value="PH">
+                <input type="hidden" name="item_name" value="Local membership">
+                <input type="hidden" name="item_number" value="151">
+                <input type="hidden" name="amount" value="1500.00">
+                <input type="hidden" name="currency_code" value="PHP">
+                <input type="hidden" name="button_subtype" value="services">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="tax_rate" value="0.000">
+                <input type="hidden" name="shipping" value="0.00">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+
+        </div>
+
+        <div id="local-mindanao-action" class="local payment-action" style="margin: 20px; display: none; ">
+            
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="walterwarrentrinidad@yahoo.com">
+                <input type="hidden" name="lc" value="PH">
+                <input type="hidden" name="item_name" value="Local membership">
+                <input type="hidden" name="item_number" value="151">
+                <input type="hidden" name="amount" value="1500.00">
+                <input type="hidden" name="currency_code" value="PHP">
+                <input type="hidden" name="button_subtype" value="services">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="tax_rate" value="0.000">
+                <input type="hidden" name="shipping" value="0.00">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+
+        </div>
+
+    </div>
 </div>
+
+
+@section Scripts {
+
+    <script>
+        var modelID =
+        {
+            locationID: '#' + '@Html.IdFor(model => model.LocationID)',
+            localID: '#' + '@Html.IdFor(model => model.LocalID)',
+        };
+
+        $(document).ready(function () {
+
+            $(modelID.locationID).change(function () {
+                
+                if($(this).val() == 2)
+                {
+                    $("#local-control").show("fast");
+                    $("#international-action").hide("fast");
+
+                    localChanged();
+                }
+                else
+                {
+                    $("#local-control").hide("fast");
+                    $("#international-action").show("fast");
+                    $(".local.payment-action").hide("hide");
+                }
+                
+            });
+
+            $(modelID.localID).change(localChanged);
+        });
+
+        function localChanged() {
+
+            console.log($(modelID.localID).val());
+
+            $(".local.payment-action").hide("hide");
+            
+            switch ($(modelID.localID).val()) {
+                case "1":
+                    $("#local-luzon-action").show("fast");
+                    break;
+                case "2":
+                    $("#local-visayas-action").show("fast");
+                    break;
+                case "3":
+                    $("#local-mindanao-action").show("fast");
+                    break;
+            }
+        }
+
+    </script>
+}

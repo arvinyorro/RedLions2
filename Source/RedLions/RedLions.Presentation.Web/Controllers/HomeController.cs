@@ -222,22 +222,46 @@
         [Route("Membership/{referrerUsername?}")]
         public ViewResult Membership()
         {
-            var selectListItems = new List<SelectListItem>();
-            selectListItems.Add(new SelectListItem()
+            var locationItems = new List<SelectListItem>();
+
+            locationItems.Add(new SelectListItem()
+            {
+                Value = "1",
+                Text = "International",
+            });
+
+            locationItems.Add(new SelectListItem()
                 {
-                    Value = "1",
+                    Value = "2",
                     Text = "Local",
                 });
 
-            selectListItems.Add(new SelectListItem()
-                {
-                    Value = "2",
-                    Text = "International",
-                });
+            
+
+            var localItems = new List<SelectListItem>();
+            localItems.Add(new SelectListItem()
+            {
+                Value = "1",
+                Text = "Luzon",
+            });
+
+            localItems.Add(new SelectListItem()
+            {
+                Value = "2",
+                Text = "Visayas",
+            });
+
+            localItems.Add(new SelectListItem()
+            {
+                Value = "3",
+                Text = "Mindanao",
+            });
+
 
             var viewModel = new ViewModels.Membership()
             {
-                LocationSelectListItems = selectListItems,
+                LocationItems = locationItems,
+                LocalItems = localItems,
             };
 
             return View(viewModel);

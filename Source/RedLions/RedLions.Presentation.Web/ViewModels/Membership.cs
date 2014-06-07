@@ -11,8 +11,12 @@
     public class Membership
     {
         public int LocationID { get; set; }
+        public int LocalID { get; set; }
 
         [Display(Name = "Location")]
-        public ICollection<SelectListItem> LocationSelectListItems { get; set; }
+        public ICollection<SelectListItem> LocationItems { get; set; }
+
+        [Display(Name = "Island")]
+        public ICollection<SelectListItem> LocalItems { get; set; }
     }
 }

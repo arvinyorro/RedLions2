@@ -61,7 +61,7 @@
         public string CellphoneNumber { get; set; }
 
         [Required]
-        [Display(Name = "UNO ID Number")]
+        [Display(Name = "Uno Id")]
         public string UnoID { get; set; }
 
         public Country Country { get; set; }

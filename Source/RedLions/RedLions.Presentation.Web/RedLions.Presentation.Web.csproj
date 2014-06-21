@@ -425,6 +425,8 @@
     <Content Include="Areas\Admin\Views\Members\Details.cshtml" />
     <Content Include="Content\Styles\fonts\metroSysIcons.ttf" />
     <Content Include="Content\Styles\fonts\metroSysIcons.woff" />
+    <Content Include="Areas\Admin\Views\Members\ResetPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Members\ResetPasswordConfirmed.cshtml" />
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion Local.pubxml" />
     <Content Include="Scripts\Custom\inquiry.chat.js" />

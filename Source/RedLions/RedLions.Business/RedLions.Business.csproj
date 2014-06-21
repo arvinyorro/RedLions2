@@ -60,6 +60,12 @@
   <ItemGroup>
     <None Include="Domain.cd" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RedLions.CrossCutting\RedLions.CrossCutting.csproj">
+      <Project>{24ad3531-5c23-4a14-9c43-ec5fd9642829}</Project>
+      <Name>RedLions.CrossCutting</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -162,7 +162,7 @@
         {
             if (string.IsNullOrEmpty(password) ||
                 string.IsNullOrWhiteSpace(password)) return false;
-            string hash = Password.Encrypt(password);
+            string hash = Encryption.Encrypt(password);
 
             DTO.User userDTO = this.UserService.GetUserByUsername(username, hash);
 

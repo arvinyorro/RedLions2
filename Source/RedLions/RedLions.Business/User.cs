@@ -2,15 +2,17 @@
 {
     using System;
     using System.Linq;
+    using RedLions.CrossCutting;
 
     public class User
     {
+        private const string DefaultPassword = "redlions";
+
         public User(
             string username,
             string firstName,
             string lastName,
-            string email,
-            string password)
+            string email)
         {
             if (string.IsNullOrEmpty(username))
             {
@@ -32,10 +34,6 @@
                 throw new ArgumentNullException("Email must not be null or empty.");
             }
 
-            if (string.IsNullOrEmpty(password))
-            {
-                throw new ArgumentNullException("Password must not be null or empty.");
-            }
 
             // Allow only alphahumeric characters and underscore.
             bool usernameInvalid = !username.All(c => Char.IsLetterOrDigit(c) || c == '_');
@@ -48,11 +46,10 @@
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Email = email;
-            this.Password = password;
 
             this.Role = Role.Admin;
-
             this.RegisteredDateTime = DateTime.Now;
+            this.ResetPassword();
         }
 
         protected User()
@@ -62,7 +59,7 @@
 
         public int ID { get; private set; }
         public string Username { get; set; }
-        public string Password { get; set; }
+        public string Password { get; private set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -71,7 +68,12 @@
 
         public void ChangePassword(string password)
         {
-            this.Password = password;
+            this.Password = Encryption.Encrypt(password);
+        }
+
+        public void ResetPassword()
+        {
+            this.Password = Encryption.Encrypt(DefaultPassword);
         }
     }
 }

@@ -88,13 +88,13 @@
                 throw new Exception("User ID not found");
             }
 
-            if (user.Password != Password.Encrypt(oldPassword) ||
+            if (user.Password != Encryption.Encrypt(oldPassword) ||
                 string.IsNullOrEmpty(newPassword))
             {
                 return StatusCode.PasswordInvalid;
             }
 
-            user.ChangePassword(Password.Encrypt(newPassword));
+            user.ChangePassword(newPassword);
             this.userRepository.Update(user);
 
             return StatusCode.Success;

@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FakeItEasy">
+      <HintPath>..\packages\FakeItEasy.1.22.0\lib\net40\FakeItEasy.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -62,6 +65,13 @@
       <Project>{16369677-0248-4860-92ec-b1eb270ad09d}</Project>
       <Name>RedLions.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RedLions.CrossCutting\RedLions.CrossCutting.csproj">
+      <Project>{24ad3531-5c23-4a14-9c43-ec5fd9642829}</Project>
+      <Name>RedLions.CrossCutting</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

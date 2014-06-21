@@ -2,7 +2,7 @@
 {
     using System.Text;
 
-    public static class Password
+    public static class Encryption
     {
         /// <summary>
         /// Procuses an MD5 hash string of the password

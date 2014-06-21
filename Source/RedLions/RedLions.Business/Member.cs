@@ -12,12 +12,11 @@
             string firstName,
             string lastName,
             string email,
-            string password,
             string personalReferralCode,
             string cellphoneNumber,
             Country country,
             Inquiry inquiry = null)
-            : base(username, firstName, lastName, email, password)
+            : base(username, firstName, lastName, email)
         {
             if (inquiry != null)
             {

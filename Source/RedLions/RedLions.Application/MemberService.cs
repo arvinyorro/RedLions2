@@ -158,11 +158,6 @@
                 return statusCode;
             }
 
-            if (memberDTO.Password == null)
-            {
-                memberDTO.Password = "redlions";
-            }
-
             Business.Inquiry inquiry = null;
             if (memberDTO.InquiryID.HasValue)
             {
@@ -177,7 +172,6 @@
                 firstName: memberDTO.FirstName,
                 lastName: memberDTO.LastName,
                 email: memberDTO.Email,
-                password: Password.Encrypt(memberDTO.Password),
                 personalReferralCode: this.GenerateReferralCode(),
                 cellphoneNumber: memberDTO.CellphoneNumber,
                 country: country,
@@ -234,11 +228,28 @@
             return statusCode;
         }
 
+        public StatusCode ResetPassword(int userID)
+        {
+            var statusCode = StatusCode.Success;
+
+            Business.Member member = this.memberRepository.GetMemberByID(userID);
+
+            if (member == null)
+            {
+                throw new Exception("Unable to reset password, user not found");
+            }
+
+            member.ResetPassword();
+            this.unitOfWork.Commit();
+
+            return statusCode;
+        }
+
         private StatusCode Validate(DTO.Member memberDTO)
         {
             if (memberDTO == null)
             {
-                throw new ArgumentNullException("The parameter 'memberRepository' must not be null");
+                throw new ArgumentNullException("memberDTO");
             }
 
             bool duplicateUsername = (this.genericRepository.GetSingle<Business.Member>(x =>

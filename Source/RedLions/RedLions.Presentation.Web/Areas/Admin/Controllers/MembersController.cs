@@ -1,5 +1,6 @@
 ﻿namespace RedLions.Presentation.Web.Areas.Admin.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
@@ -195,6 +196,30 @@
             }
 
             return RedirectToAction("Index");
+        }
+
+        public ViewResult ResetPassword(int id)
+        {
+            DTO.Member memberDTO = this.MemberService.GetMemberByID(id);
+
+            if (memberDTO == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            ViewBag.UserID = id;
+
+            return View();
+        }
+
+        [HttpPost, ActionName("ResetPassword")]
+        public ActionResult ResetPasswordConfirm(int id)
+        {
+            this.MemberService.ResetPassword(id);
+
+            ViewBag.UserID = id;
+
+            return View("ResetPasswordConfirmed");
         }
         
         private void AddError(StatusCode statusCode)

@@ -17,17 +17,24 @@
     {
         private int pageSize = 10;
         private const int ReferralCodeLength = 20;
+        private IUnitOfWork unitOfWork;
         private IRepository genericRepository;
         private IMemberRepository memberRepository;
         private IUserRepository userRepository;
         private ICountryRepository countryRepository;
 
         public MemberService(
+            IUnitOfWork unitOfWork,
             IRepository genericRepository,
             IUserRepository userRepository,
             IMemberRepository memberRepository,
             ICountryRepository countryRepository)
         {
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("unitOfWork");
+            }
+
             if (userRepository == null)
             {
                 throw new ArgumentNullException("userRepository");
@@ -48,6 +55,7 @@
                 throw new ArgumentNullException("countryRepository");
             }
 
+            this.unitOfWork = unitOfWork;
             this.genericRepository = genericRepository;
             this.userRepository = userRepository;
             this.memberRepository = memberRepository;
@@ -180,6 +188,7 @@
             if (statusCode == StatusCode.Success)
             {
                 this.memberRepository.RegisterMember(member);
+                this.unitOfWork.Commit();
             }
 
             return statusCode;

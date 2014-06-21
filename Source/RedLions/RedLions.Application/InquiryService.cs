@@ -10,24 +10,31 @@
     
     public class InquiryService
     {
+        private IUnitOfWork unitOfWork;
         private IInquiryRepository inquiryRepository;
         private IMemberRepository memberRepository;
         private int pageSize = 10;
 
         public InquiryService(
+            IUnitOfWork unitOfWork,
             IInquiryRepository inquiryRepository,
             IMemberRepository memberRepository)
         {
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("unitOfWork");
+            }
             if (inquiryRepository == null)
             {
-                throw new ArgumentNullException("The parameter 'inquiryRepository' must not be null");
+                throw new ArgumentNullException("inquiryRepository");
             }
 
             if (memberRepository == null)
             {
-                throw new ArgumentNullException("The parameter 'memberRepository' must not be null");
+                throw new ArgumentNullException("memberRepository");
             }
 
+            this.unitOfWork = unitOfWork;
             this.inquiryRepository = inquiryRepository;
             this.memberRepository = memberRepository;
         }
@@ -58,6 +65,7 @@
                 referrer: referrer);
 
             this.inquiryRepository.Inquire(inquiry);
+            this.unitOfWork.Commit();
 
             return StatusCode.Success;
         }

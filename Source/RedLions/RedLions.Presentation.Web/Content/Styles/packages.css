@@ -1,6 +1,6 @@
 ﻿.menu-option {
     width: 100%; 
-    text-align: right; 
+    text-align: left; 
     font-size: 12px;
 }
 
@@ -11,7 +11,6 @@
 
 .menu-option.selected {
     width: 100%; 
-    text-align: right; 
     font-size: 12px;
     background-color: #7b0002; 
     color: #fff; 
@@ -72,15 +71,15 @@
     color:#fff;
     text-align:left;
     padding:10px;
-    height:460px;
+    height:510px;
 }
 
 #option-hk.option .panel-body {
-    height: 800px !important;
+    height: 850px !important;
 }
 
 #option-sg.option .panel-body {
-    height: 800px !important;
+    height: 850px !important;
 }
 
 .option .panel-body ul {
@@ -96,4 +95,98 @@
 .option .panel-body p {
     font-size:12px;
     color:#fff;
+}
+
+
+
+div.summary.container {
+    width: 150px !important;
+    float: right;
+    vertical-align: top;
+    margin-right:10px;
+}
+
+
+.products .summary {
+    width: 100%; 
+    text-align: right; 
+    font-size: 12px;
+    padding: 5px;
+}
+
+.products.summary .title {
+    text-align: right;
+}
+
+.summary .heading {
+    color: #7b0002;
+}
+
+.summary ul {
+    list-style-type: none;
+}
+
+.summary ul li {
+    font-size: 11px; 
+    color: #000;
+}
+
+.summary:hover {
+    cursor: pointer; 
+    cursor: hand; 
+}
+
+.summary.selected {
+    width: 100%; 
+    font-size: 12px;
+    background-color: #7b0002; 
+    color: #fff; 
+}
+
+.summary.selected .heading {
+    color: #fff; 
+}
+
+.summary.selected ul li {
+    font-size: 11px; 
+    color: #fff;
+}
+
+
+.products.option-container {
+    background-color: #fff;
+    display:inline-block;
+    width:800px;
+    min-height:946px; 
+}
+
+
+.products.option-container .panel {
+    width: 155px;
+    display:inline-block;
+    float:left;
+    margin:2px;
+}
+
+.products.option-container .panel-heading {
+    background-image: url('/Content/Images/Home/Layout/panel_header.png'); 
+    color: #fff;
+    height: 45px; 
+    border-radius: 0px; 
+    text-align: center; 
+    padding-top: 12px; 
+    font-size: 12px;
+}
+
+.products.option-container .panel-body {
+    padding:1px;
+    background-color:#1c1c1c;
+    color:#fff;
+    text-align:left;
+    padding:2px;
+}
+
+form {
+    padding-top: 5px;
+    text-align: center;
 }

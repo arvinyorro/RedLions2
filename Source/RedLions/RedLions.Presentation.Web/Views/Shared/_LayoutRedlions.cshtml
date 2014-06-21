@@ -61,26 +61,46 @@
 
                     <ul id="menu">
                         <li><a href="@Url.Action("Index","Home")">Home</a></li>
-                        <li>
-                            <a href="#">Products</a>
+                        <li><a href="#">About Us</a>
                             <ul>
-                                <li><a href="@Url.Action("Skin", "Home", null)">Skin care and whitening</a></li>
-                                <li><a href="@Url.Action("Food", "Home", null)">Food/Nutritional Supplements</a></li>
-                                <li><a href="#">Health Beveregaes and Fertilizty Enchancer</a></li>
-                                <li><a href="#">Household and Personal Care</a></li>
-                                <li><a href="#">Wellness Accessories</a></li>
+                                <li><a href="@Url.Action("Company", "Home", new { id = 1 })">The Company</a></li>
+                                <li><a href="@Url.Action("Organization", "Home", new { id = 1 })">The Organization</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Products", "Home", new { id = 1 })">Products</a>
+                            <ul>
+                                <li><a href="@Url.Action("Products", "Home", new { id = 2 })">Skin care and whitening</a></li>
+                                <li><a href="@Url.Action("Products", "Home", new { id = 3 })">Food/Nutritional Supplements</a></li>
+                                <li><a href="@Url.Action("Products", "Home", new { id = 4 })">Health Bevereges</a></li>
+                                <li><a href="@Url.Action("Products", "Home", new { id = 5 })">Household and Personal Care</a></li>
+                                <li><a href="@Url.Action("Products", "Home", new { id = 6 })">Wellness Accessories</a></li>
                             </ul>
                         </li>
 
                         <li>
                             <a href="#">Business</a>
                             <ul>
-                                <li><a href="#">Local</a></li>
-                                <li><a href="@Url.Action("International", "Home")">International</a></li>
+                                <li>
+                                    <a href="#">Local Packages</a>
+                                    <ul>
+                                        <li><a href="#">Phil. Membership Product Packages</a></li>
+                                        <li><a href="#">Phil. Compensation Plan</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">International Packages</a>
+                                    <ul>
+                                        <li><a href="@Url.Action("International", "Home", new { id = 1 })">Int'l Membership Product Packages</a></li>
+                                        <li><a href="@Url.Action("International", "Home", new { id = 2 })">Int'l Compensation Plan</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
 
                         <li><a href="#">News and Update</a></li>
+                        <li><a href="@Url.Action("Inquire", "Home")">Inquire</a></li>
+                        
                     </ul>
 
                     <!-- Login Form -->
@@ -94,39 +114,38 @@
 
         <div class='container' style="min-height: 700px; z-index: -1;">
             <div style='box-shadow: 0px 0px 40px 0px #818181; min-height: 700px;
-                    width: 970px; height: 100%; margin: 0 auto; z-index: -1; padding: 2px;padding-bottom:200px;'>
+                    width: 970px; height: 100%; margin: 0 auto; z-index: -1; padding: 2px;padding-bottom:270px;'>
                 @RenderBody()
             </div>
         </div>
     </div>
 
-    <div class='row' style='background-color: #7b0002; color: white !important; border-top: solid 3px #ffea3c; height: 200px; margin-top: -200px;'>
+    <div class='row' style='background-color: #7b0002; color: white !important; border-top: solid 3px #ffea3c; height: 270px; margin-top: -270px;'>
         <div class='container'>
-            <div style='padding-top: 10px; width: 700px; margin: 0 auto;'>
+            <div style='padding-top: 10px; width: 900px; margin: 0 auto;'>
 
                 <div style="width: 200px; float: left; ">
 
-                    <h4><b style="color: white !important; ">SUPPORT</b></h4>
+                    <h4><b style="color: white !important; ">CUSTOMER SUPPORT</b></h4>
                     <ul style="color: white !important; ">
-                        <li>Contact Us</b></li>
-                        <li><b>Help Desk</b></li>
-                        <li><b>Privacy Policy</b></li>
-                        <li><b>Terms of Use</b></li>
-                        <li><a style="color:white;font-weight:bold;" href="@Url.Action("Inquire", "Home")">Inquire</a></li>
+                        <li><a style="color:white;font-weight:bold;" href="#">Local Membership Product Packages</a></li>
+                        <li><a style="color:white;font-weight:bold;" href="#">International Membership Product Packages</a></li>
+                        <li><a style="color:white;font-weight:bold;" href="#">Product List</a></li>
+                        <li><a style="color:white;font-weight:bold;" href="#">Place an Order</a></li>
+                        <li><a style="color:white;font-weight:bold;" href="@Url.Action("Membership", "Home")">Be A member</a></li>
+                        <li><a style="color:white;font-weight:bold;" href="#">Customer Service</a></li>
                     </ul>
 
                 </div>
 
                 <div style="width: 200px; float: left;">
-                    <h4><b style="color: white !important; ">About</b></h4>
-                    <ul style="color: white !important; ">
-                        <li><a style="color:white;font-weight:bold;" href="@Url.Action("Company", "Home", new { id = 1 })">The Company</a></li>
-                        <li><a style="color:white;font-weight:bold;" href="@Url.Action("Organization", "Home", new { id = 1 })">The Organization</a></li>
-                        <li><a style="color:white;font-weight:bold;" href="@Url.Action("Company", "Home", new { id = 5 })">Certifications</a></li>
-                        <li><a style="color:white;font-weight:bold;" href="@Url.Action("Company", "Home", new { id = 6 })">Awards</a></li>
-                        <li><b>RedLions International</b></li>
-                    </ul>
+                    <h4><b style="color: white !important; ">Payment Options</b></h4>
+                    <img src="@Url.Content("~/Content/Images/Home/Layout/payment.png")" />
+                </div>
 
+                <div style="width: 200px; float: left;">
+                    <h4><b style="color: white !important; ">Delivery Couriers</b></h4>
+                    <img src="@Url.Content("~/Content/Images/Home/Layout/delivery.png")" />
                 </div>
 
                 <div style="width: 200px; float: left;">

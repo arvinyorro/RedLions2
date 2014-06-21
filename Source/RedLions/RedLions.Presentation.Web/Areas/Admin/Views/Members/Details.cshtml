@@ -1,0 +1,58 @@
+﻿@model RedLions.Presentation.Web.Models.Member
+
+@{
+    ViewBag.Title = "Member Details";
+}
+
+@section NavigationControls
+{
+    @{ Html.RenderPartial("_MembersControlPartial"); }
+}
+
+
+<div class="panel transparent span7">
+    @Html.HiddenFor(model => model.ID)
+
+    <div class="panel-header bg-transparent">
+        <h3>Account Summary</h3>
+    </div>
+
+    
+
+    <div class="panel-content">
+        <!-- Full Name -->
+        <p>
+            @Html.DisplayFor(model => model.FullName)<br />
+            <small class="text-muted">@Html.DisplayNameFor(model => model.FullName)</small>
+        </p>
+
+        <!-- UNO ID -->
+        <p>
+            @Html.DisplayFor(model => model.UnoID)<br />
+            <small class="text-muted">@Html.DisplayNameFor(model => model.UnoID)</small><br />
+        </p>
+
+        <!-- Email Address -->
+        <p>
+            @Html.DisplayFor(model => model.Email)<br />
+            <small class="text-muted">@Html.DisplayNameFor(model => model.Email)</small>
+        </p>
+
+        <!-- Cellphone -->
+        <p>
+            @Html.DisplayFor(model => model.CellphoneNumber)<br />
+            <small class="text-muted">@Html.DisplayNameFor(model => model.CellphoneNumber)</small>
+        </p>
+    </div>
+</div>
+
+
+<!-- Profile -->
+<div class="panel transparent span7">
+    <div class="panel-content">
+        <p>
+            Edit Account<br />
+            <small>@Html.ActionLink("Edit Account", "Edit", new { id = Model.ID })</small>
+        </p>
+    </div>
+</div>

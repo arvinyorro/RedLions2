@@ -34,7 +34,6 @@
             }
 
             base.Create(user);
-            this.context.SaveChanges();
         }
 
         public void Update(User user)

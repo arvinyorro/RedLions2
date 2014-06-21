@@ -135,6 +135,14 @@
             return RedirectToAction("Index");
         }
 
+        public ViewResult Details(int userID)
+        {
+            DTO.Member memberDTO = this.MemberService.GetMemberByID(userID);
+            var memberModel = new Models.Member(memberDTO);
+
+            return View(memberModel);
+        }
+
         public ViewResult Edit(int userID)
         {
             DTO.Member memberDTO = this.MemberService.GetMemberByID(userID);

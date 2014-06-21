@@ -37,9 +37,11 @@
             return View();
         }
 
-        [Route("Products/{referrerUsername?}")]
-        public ViewResult Products()
+        [Route("Products/{id:int}/{referrerUsername?}")]
+        public ViewResult Products(int id)
         {
+            ViewBag.SelectedID = id;
+
             return View();
         }
 
@@ -139,12 +141,6 @@
         public ViewResult LocalPackages()
         {
             return View();
-        }
-
-        [Route("InternationalPackages/{referrerUsername?}")]
-        public ViewResult InternationalPackages()
-        {
-            return View("UnderConstruction");
         }
 
         [Route("Dubai/{referrerUsername?}")]
@@ -403,9 +399,10 @@
             return PartialView("_AccountPartial");
         }
 
-        [Route("International/{referrerUsername?}")]
-        public ViewResult International()
+        [Route("International/{id:int}/{referrerUsername?}")]
+        public ViewResult International(int id)
         {
+            ViewBag.SelectedID = id;
             return View();
         }
     }

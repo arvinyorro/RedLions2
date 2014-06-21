@@ -49,7 +49,7 @@
 }
 
 .option .panel {
-    width:300px;
+    width:310px;
     display:inline-block;
     float:left;
     margin:2px;
@@ -186,7 +186,7 @@ div.summary.container {
     padding:2px;
 }
 
-form {
+.panel form {
     padding-top: 5px;
     text-align: center;
 }

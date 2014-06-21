@@ -29,10 +29,14 @@
                 .Include(
                 "~/Content/Styles/Metro/metro-custom.css", // Custom CSS
                 "~/Content/Styles/Metro/metro-bootstrap-responsive.css",
-                "~/Content/Styles/Metro/metro-bootstrap.css"));
+                "~/Content/Styles/Metro/metro-bootstrap.css",
+                "~/Content/Styles/Metro/iconFont.css"));
+
+            //bundles.Add(new ScriptBundle("~/bundles/metro-script")
+            //    .Include("~/Scripts/Metro/metro-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/metro-script")
-                .Include("~/Scripts/Metro/metro-*"));
+                .Include("~/Scripts/Metro/metro.min.js"));
 
             /* End Metro */
 

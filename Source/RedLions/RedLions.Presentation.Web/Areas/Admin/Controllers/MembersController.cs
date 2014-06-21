@@ -135,17 +135,17 @@
             return RedirectToAction("Index");
         }
 
-        public ViewResult Details(int userID)
+        public ViewResult Details(int id)
         {
-            DTO.Member memberDTO = this.MemberService.GetMemberByID(userID);
+            DTO.Member memberDTO = this.MemberService.GetMemberByID(id);
             var memberModel = new Models.Member(memberDTO);
 
             return View(memberModel);
         }
 
-        public ViewResult Edit(int userID)
+        public ViewResult Edit(int id)
         {
-            DTO.Member memberDTO = this.MemberService.GetMemberByID(userID);
+            DTO.Member memberDTO = this.MemberService.GetMemberByID(id);
             IEnumerable<Models.Country> countryModels = this.CountryService
                     .GetAll()
                     .Select(x => new Models.Country(x));

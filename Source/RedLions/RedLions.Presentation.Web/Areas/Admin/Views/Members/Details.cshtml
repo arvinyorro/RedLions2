@@ -14,45 +14,36 @@
     @Html.HiddenFor(model => model.ID)
 
     <div class="panel-header bg-transparent">
-        <h3>Account Summary</h3>
+        Account Summary
     </div>
-
-    
+        
 
     <div class="panel-content">
-        <!-- Full Name -->
-        <p>
-            @Html.DisplayFor(model => model.FullName)<br />
-            <small class="text-muted">@Html.DisplayNameFor(model => model.FullName)</small>
-        </p>
 
-        <!-- UNO ID -->
-        <p>
-            @Html.DisplayFor(model => model.UnoID)<br />
-            <small class="text-muted">@Html.DisplayNameFor(model => model.UnoID)</small><br />
-        </p>
+        <strong>Details</strong>
 
-        <!-- Email Address -->
-        <p>
-            @Html.DisplayFor(model => model.Email)<br />
-            <small class="text-muted">@Html.DisplayNameFor(model => model.Email)</small>
-        </p>
-
-        <!-- Cellphone -->
-        <p>
-            @Html.DisplayFor(model => model.CellphoneNumber)<br />
-            <small class="text-muted">@Html.DisplayNameFor(model => model.CellphoneNumber)</small>
-        </p>
-    </div>
-</div>
+        <dl class="horizontal member-details">
+            <!-- Full Name -->
+            <dt>@Html.DisplayNameFor(model => model.FullName)</dt>
+            <dd>@Html.DisplayFor(model => model.FullName)</dd>
+            <!-- UNO ID -->
+            <dt>@Html.DisplayNameFor(model => model.UnoID)</dt>
+            <dd>@Html.DisplayFor(model => model.UnoID)</dd>
+            <!-- Email Address -->
+            <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+            <dd>@Html.DisplayFor(model => model.Email)</dd>
+            <!-- Cellphone -->
+            <dt>@Html.DisplayNameFor(model => model.CellphoneNumber)</dt>
+            <dd>@Html.DisplayFor(model => model.CellphoneNumber)</dd>
+            <!-- Country -->
+            <dt>@Html.DisplayNameFor(model => model.Country)</dt>
+            <dd>@Html.DisplayFor(model => model.Country.Title)</dd>
+            <!-- Referrer -->
+            <dt>@Html.DisplayNameFor(model => model.ReferrerUsername)</dt>
+            <dd>@Html.DisplayFor(model => model.ReferrerUsername)</dd>
+        </dl>
 
 
-<!-- Profile -->
-<div class="panel transparent span7">
-    <div class="panel-content">
-        <p>
-            Edit Account<br />
-            <small>@Html.ActionLink("Edit Account", "Edit", new { id = Model.ID })</small>
-        </p>
+        <p>@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</p>
     </div>
 </div>

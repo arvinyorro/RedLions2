@@ -39,7 +39,7 @@
                 <td class="right">@Html.DisplayFor(modelItem => item.RegisteredDateTime)</td>
                 <td class="right">@Html.DisplayFor(modelItem => item.ReferralCount)</td>
                 <td class="right text-right">
-                    <a href="@Url.Action("Details", new { userID=item.ID })">Details</a>
+                    <a href="@Url.Action("Details", new { id=item.ID })">Details</a>
                 </td>
             </tr>
         }

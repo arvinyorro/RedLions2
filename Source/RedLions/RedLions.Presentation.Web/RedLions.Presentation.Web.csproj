@@ -377,6 +377,10 @@
     <Content Include="Content\Images\Home\SuccessStories\rosal1.jpg" />
     <Content Include="Content\Images\Home\SuccessStories\wind1.png" />
     <Content Include="Content\Images\UI\loading_small.gif" />
+    <Content Include="Content\Styles\fonts\metroSysIcons.svg" />
+    <Content Include="Content\Styles\Metro\iconFont.css" />
+    <Content Include="Content\Styles\Metro\metro-bootstrap-responsive.min.css" />
+    <Content Include="Content\Styles\Metro\metro-bootstrap.min.css" />
     <Content Include="Content\Styles\packages.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Styles\fonts\iconFont.dev.svg" />
@@ -413,11 +417,14 @@
     <Content Include="Scripts\Custom\inquiry.index.js" />
     <Content Include="Scripts\jquery.signalR-2.0.3.js" />
     <Content Include="Scripts\jquery.signalR-2.0.3.min.js" />
+    <Content Include="Scripts\Metro\metro.min.js" />
     <Content Include="Views\Profile\ChangePassword.cshtml" />
     <Content Include="Areas\Admin\Views\Inquiries\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_InquiriesControlPartial.cshtml" />
     <Content Include="Areas\Member\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Members\Details.cshtml" />
+    <Content Include="Content\Styles\fonts\metroSysIcons.ttf" />
+    <Content Include="Content\Styles\fonts\metroSysIcons.woff" />
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion Local.pubxml" />
     <Content Include="Scripts\Custom\inquiry.chat.js" />

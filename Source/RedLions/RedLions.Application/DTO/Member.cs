@@ -14,6 +14,7 @@
         public string CellphoneNumber { get; set; }
         public string UnoID { get; set; }
         public string ReferrerUsername { get; set; }
+        public DateTime SubscriptionExpirationDateTime { get; set; }
         public Country Country { get; set; }
     }
 
@@ -39,6 +40,7 @@
                 ReferralCode = member.ReferralCode,         
                 CellphoneNumber = member.CellphoneNumber,
                 UnoID = member.UnoID,
+                SubscriptionExpirationDateTime = member.SubscriptionExpirationDateTime,
                 Country = member.Country.ToDTO(),
             };
 

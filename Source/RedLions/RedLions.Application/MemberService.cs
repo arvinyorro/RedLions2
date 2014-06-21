@@ -166,6 +166,8 @@
 
             Business.Country country = this.countryRepository.GetByID(memberDTO.Country.ID);
 
+            // TODO: Use subscription repository to retrieve default subscription plan.
+
             var member = new Business.Member(
                 inquiry: inquiry,
                 username: memberDTO.Username,
@@ -174,6 +176,7 @@
                 email: memberDTO.Email,
                 personalReferralCode: this.GenerateReferralCode(),
                 cellphoneNumber: memberDTO.CellphoneNumber,
+                subscription: null, // TODO: Update this one also.
                 country: country,
                 unoID: memberDTO.UnoID);
 

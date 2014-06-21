@@ -28,6 +28,7 @@
                 request.Url.GetLeftPart(UriPartial.Authority), memberDTO.Username);
             this.CellphoneNumber = memberDTO.CellphoneNumber;
             this.UnoID = memberDTO.UnoID;
+            this.SubscriptionExpirationDateTime = memberDTO.SubscriptionExpirationDateTime;
             this.Country = new Models.Country(memberDTO.Country);
         }
 
@@ -63,6 +64,9 @@
         [Required]
         [Display(Name = "Uno Id")]
         public string UnoID { get; set; }
+
+        [Display(Name = "Subscription Expiration Date")]
+        public DateTime SubscriptionExpirationDateTime { get; set; }
 
         public Country Country { get; set; }
     }

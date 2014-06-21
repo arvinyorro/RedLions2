@@ -14,6 +14,7 @@
             string email,
             string personalReferralCode,
             string cellphoneNumber,
+            Subscription subscription,
             Country country,
             Inquiry inquiry = null)
             : base(username, firstName, lastName, email)
@@ -29,6 +30,7 @@
             this.CellphoneNumber = cellphoneNumber;
             this.Country = country;
             this.UnoID = unoID;
+            this.Subscription = subscription;
         }
 
         protected Member()
@@ -40,18 +42,44 @@
         public string ReferralCode { get; private set; }
         public string CellphoneNumber { get; set; }
         public string UnoID { get; set; }
+        public DateTime SubscriptionExpirationDateTime { get; set; }
+        public bool SubscriptionExpired
+        {
+            get
+            {
+                if (this.SubscriptionExpirationDateTime < DateTime.Now)
+                {
+                    return true;
+                }
 
-        // Must be optional because the very first member has no referrer.
+                return false;  
+            }
+        }
+
+        /// <remarks>
+        /// Must be optional because the very first member has no referrer.
+        /// </remarks>
         public virtual Member Referrer { get; set; }
+
         public virtual Inquiry Inquiry { get; private set; }
+
         public virtual Country Country { get; set; }
+
+        public virtual Subscription Subscription { get; set; }
 
         public virtual ICollection<Member> Referrals { get; private set; }
 
         public IEnumerable<Member> GetPagedReferrals(int pageIndex, int pageSize)
         {
+            // Why did I did this again?
             pageIndex = (pageIndex <= 0 ? 1 : pageIndex) - 1;
             return this.Referrals.OrderBy(x => x.ID).Skip(pageIndex * pageSize).Take(pageSize);
+        }
+
+        public void ExtendSubscription(Subscription subscription)
+        {
+            this.SubscriptionExpirationDateTime.AddMonths(subscription.Months);
+            this.Subscription = subscription;
         }
     }
 }

@@ -24,6 +24,10 @@
                 .IsRequired()
                 .HasMaxLength(50);
 
+            this.Property(t => t.SubscriptionExpirationDateTime)
+                .IsRequired()
+                .HasColumnType("datetime");
+
             // Navigational Models
             this.HasOptional(t => t.Referrer)
                 .WithMany(t => t.Referrals)
@@ -37,12 +41,18 @@
                 .WithMany()
                 .Map(m => m.MapKey("country_id"));
             
+            // TODO: This should be "required".
+            this.HasOptional(t => t.Subscription)
+                .WithMany()
+                .Map(m => m.MapKey("subscription_id"));
+            
             // Column and Table Mappings
             this.ToTable("member_details");
             this.Property(t => t.MemberID).HasColumnName("member_id");
             this.Property(t => t.ReferralCode).HasColumnName("referral_code");
             this.Property(t => t.CellphoneNumber).HasColumnName("cellphone_number");
             this.Property(t => t.UnoID).HasColumnName("uno_id");
+            this.Property(t => t.SubscriptionExpirationDateTime).HasColumnName("datetime_subscription_expiration");
         }
     }
 }

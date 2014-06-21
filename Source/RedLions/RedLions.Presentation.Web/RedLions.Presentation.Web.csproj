@@ -232,6 +232,7 @@
     <Compile Include="Security\CustomRoleProvider.cs" />
     <Compile Include="ViewModels\EditMember.cs" />
     <Compile Include="ViewModels\MemberMessagesViewModel.cs" />
+    <Compile Include="ViewModels\Membership.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -251,6 +252,46 @@
     <Content Include="Content\Images\Banners\Products\magiccream.jpg" />
     <Content Include="Content\Images\Banners\redlion_logo.png" />
     <Content Include="Content\Images\Banners\uno_logo.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %281%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2810%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2811%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2812%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2813%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2814%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2815%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2816%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2817%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2818%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2819%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %282%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2820%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2821%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2822%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2823%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2824%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2825%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2826%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2827%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2828%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2829%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %283%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2830%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2831%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2832%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2833%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2834%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2835%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2836%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %2837%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %284%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %285%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %286%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %287%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %288%29.jpg" />
+    <Content Include="Content\Images\Home\Certificates\cert %289%29.jpg" />
+    <Content Include="Content\Images\Home\Company\company_awards.jpg" />
+    <Content Include="Content\Images\Home\Company\company_bod.jpg" />
+    <Content Include="Content\Images\Home\Company\company_why.jpg" />
     <Content Include="Content\Images\Home\Awards\certs.jpg" />
     <Content Include="Content\Images\Home\Awards\iso_certs.jpg" />
     <Content Include="Content\Images\Home\Beverages\acai.jpg" />
@@ -258,8 +299,18 @@
     <Content Include="Content\Images\Home\Beverages\choco8.jpg" />
     <Content Include="Content\Images\Home\Beverages\primejuice.jpg" />
     <Content Include="Content\Images\Home\Company\profile.jpg" />
+    <Content Include="Content\Images\Home\Index\acai.jpg" />
+    <Content Include="Content\Images\Home\Index\coffee.jpg" />
+    <Content Include="Content\Images\Home\Index\global.jpg" />
+    <Content Include="Content\Images\Home\Index\lalumiere.jpg" />
+    <Content Include="Content\Images\Home\Index\pacman1.jpg" />
+    <Content Include="Content\Images\Home\Index\pacman2.jpg" />
+    <Content Include="Content\Images\Home\Layout\delivery.png" />
+    <Content Include="Content\Images\Home\Layout\payment.png" />
     <Content Include="Content\Images\Home\Nutritions\acai.jpg" />
     <Content Include="Content\Images\Home\Nutritions\ultimac.jpg" />
+    <Content Include="Content\Images\Home\Org\org_warren.jpg" />
+    <Content Include="Content\Images\Home\Org\org_warren2.png" />
     <Content Include="Content\Images\Home\Packages\local_a1.jpg" />
     <Content Include="Content\Images\Home\Packages\local_j1.jpg" />
     <Content Include="Content\Images\Home\Packages\local_k2.jpg" />
@@ -270,13 +321,63 @@
     <Content Include="Content\Images\Home\Personal\nutrihair.jpg" />
     <Content Include="Content\Images\Home\Personal\organic_laundry.jpg" />
     <Content Include="Content\Images\Home\Personal\scareaway.jpg" />
-    <Content Include="Content\Images\Home\Redlions\welcome.jpg" />
+    <Content Include="Content\Images\Home\Layout\fb.png" />
+    <Content Include="Content\Images\Home\Layout\header.png" />
+    <Content Include="Content\Images\Home\Layout\login.png" />
+    <Content Include="Content\Images\Home\Layout\panel_header.png" />
+    <Content Include="Content\Images\Home\Layout\redlions.png" />
+    <Content Include="Content\Images\Home\Layout\twitter.png" />
+    <Content Include="Content\Images\Home\Layout\unologo.png" />
+    <Content Include="Content\Images\Home\Layout\welcome.jpg" />
+    <Content Include="Content\Images\Home\Products\bbcream.jpg" />
+    <Content Include="Content\Images\Home\Products\cappuccino.jpg" />
+    <Content Include="Content\Images\Home\Products\choco8.jpg" />
+    <Content Include="Content\Images\Home\Products\glutacapsule.jpg" />
+    <Content Include="Content\Images\Home\Products\grapeseed.jpg" />
+    <Content Include="Content\Images\Home\Products\icare.jpg" />
+    <Content Include="Content\Images\Home\Products\banner_lalumiere.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_acai.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_advance.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_bbcream.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_bodyworks.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_cappuccino.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_choco.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_coffee81.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_corn.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_dish.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_glutacapsule.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_glutalotion.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_glutasoap.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_grape.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_icare.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_kojic.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_krypt.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_lalumiere.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_laundry.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_magic.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_magnet.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_natura.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_prime.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_scalar.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_scare.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_tanaka.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_ultimac.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_virgin.jpg" />
+    <Content Include="Content\Images\Home\Products\mini_wheat.jpg" />
     <Content Include="Content\Images\Home\Skin\bbcream.jpg" />
+    <Content Include="Content\Images\Home\Skin\glutacapsule.jpg" />
     <Content Include="Content\Images\Home\Skin\glutasoap.jpg" />
     <Content Include="Content\Images\Home\Skin\kojic.jpg" />
     <Content Include="Content\Images\Home\Skin\lotion.jpg" />
     <Content Include="Content\Images\Home\Skin\magiccream.jpg" />
+    <Content Include="Content\Images\Home\SuccessStories\buado1.png" />
+    <Content Include="Content\Images\Home\SuccessStories\mar1.jpg" />
+    <Content Include="Content\Images\Home\SuccessStories\marilyn1.jpg" />
+    <Content Include="Content\Images\Home\SuccessStories\pj1.jpg" />
+    <Content Include="Content\Images\Home\SuccessStories\rosal1.jpg" />
+    <Content Include="Content\Images\Home\SuccessStories\wind1.png" />
     <Content Include="Content\Images\UI\loading_small.gif" />
+    <Content Include="Content\Styles\packages.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Styles\fonts\iconFont.dev.svg" />
     <Content Include="Content\Styles\fonts\iconFont.svg" />
@@ -316,6 +417,7 @@
     <Content Include="Areas\Admin\Views\Inquiries\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_InquiriesControlPartial.cshtml" />
     <Content Include="Areas\Member\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Members\Details.cshtml" />
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion Local.pubxml" />
     <Content Include="Scripts\Custom\inquiry.chat.js" />
@@ -415,6 +517,26 @@
     <Content Include="Views\Inquiry\Chat.cshtml" />
     <Content Include="Views\Inquiry\ChatPage.cshtml" />
     <Content Include="Views\Profile\Messages.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Membership.cshtml" />
+    <Content Include="Views\Home\Organization.cshtml" />
+    <Content Include="Views\Home\Shared\BbCream.cshtml" />
+    <Content Include="Views\Home\Shared\Body.cshtml" />
+    <Content Include="Views\Home\Shared\GlutaLotion.cshtml" />
+    <Content Include="Views\Home\Shared\GlutaCapsule.cshtml" />
+    <Content Include="Views\Home\Shared\GlutaSoap.cshtml" />
+    <Content Include="Views\Home\Shared\Kojic.cshtml" />
+    <Content Include="Views\Home\Shared\Magic.cshtml" />
+    <Content Include="Views\Home\Shared\Thana.cshtml" />
+    <Content Include="Views\Home\Food.cshtml" />
+    <Content Include="Views\Home\Shared\Fit.cshtml" />
+    <Content Include="Views\Home\Shared\Grape.cshtml" />
+    <Content Include="Views\Home\Shared\Krypt.cshtml" />
+    <Content Include="Views\Home\Shared\Super.cshtml" />
+    <Content Include="Views\Home\Shared\Ultima.cshtml" />
+    <Content Include="Views\Home\Shared\Vco.cshtml" />
+    <Content Include="Views\Home\Shared\Wheat.cshtml" />
+    <Content Include="Views\Home\International.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -424,13 +546,15 @@
     <Folder Include="Areas\Member\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutRedlions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
@@ -481,8 +605,6 @@
           <DevelopmentServerPort>12987</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:35696/</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://redlions.com:35696/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

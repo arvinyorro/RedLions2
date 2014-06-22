@@ -1,0 +1,45 @@
+﻿@model RedLions.Presentation.Web.ViewModels.UpdateSubscription
+
+@{
+    ViewBag.Title = "Update Subscription";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Extend Subscription</legend>
+
+        @Html.HiddenFor(model => model.UserID)
+
+        
+        <div class="input-control text">
+            @Html.DisplayFor(model => model.FullName)
+        </div>
+
+        <!-- Subscription -->
+        @Html.LabelFor(model => model.SubscriptionID)
+        <div class="input-control select" data-role="input-control">
+            @Html.DropDownListFor(model => model.SubscriptionID, Model.SubscriptionSelectListItems)
+        </div>
+        @Html.ValidationMessageFor(model => model.SubscriptionID)
+
+        <div class="input-control">
+            <input type="submit" class="primary" value="Extend Subscription" />
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to account Summary", "Details", new { id = Model.UserID })
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

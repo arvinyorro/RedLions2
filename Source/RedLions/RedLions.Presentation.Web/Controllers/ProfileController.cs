@@ -15,6 +15,7 @@
     using RedLions.Presentation.Web.ViewModels;
 
     [Authorize(Roles = "Member")]
+    [CheckSubscriptionExpiration]
     public class ProfileController : Controller
     {
         private MemberService memberService;

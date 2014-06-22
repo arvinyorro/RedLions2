@@ -55,6 +55,7 @@
     <Compile Include="AutoMapperConfig.cs" />
     <Compile Include="DTO\InquiryChatMessage.cs" />
     <Compile Include="DTO\InquiryChatSession.cs" />
+    <Compile Include="DTO\Subscription.cs" />
     <Compile Include="InquiryChatService.cs" />
     <Compile Include="CountryService.cs" />
     <Compile Include="DTO\Country.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="DTO\User.cs" />
     <Compile Include="MemberService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubscriptionService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -38,6 +38,7 @@
         {
             Mapper.CreateMap<Business.InquiryChatSession, DTO.InquiryChatSession>();
             Mapper.CreateMap<Business.InquiryChatMessage, DTO.InquiryChatMessage>();
+            Mapper.CreateMap<Business.Subscription, DTO.Subscription>();
         }
     }
 }

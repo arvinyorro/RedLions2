@@ -203,6 +203,7 @@
     <Compile Include="Areas\Admin\Controllers\MembersController.cs" />
     <Compile Include="Areas\Admin\ViewModels\UpdatedMemberViewModel.cs" />
     <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
+    <Compile Include="Components\CheckSubscriptionExpirationAttribute.cs" />
     <Compile Include="Controllers\InquiryController.cs" />
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Components\EmailUniqueAttribute.cs" />
@@ -227,12 +228,14 @@
     <Compile Include="Models\Inquiry.cs" />
     <Compile Include="Models\InquiryChatRegister.cs" />
     <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\Subscription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\CustomMembershipProvider.cs" />
     <Compile Include="Security\CustomRoleProvider.cs" />
     <Compile Include="ViewModels\EditMember.cs" />
     <Compile Include="ViewModels\MemberMessagesViewModel.cs" />
     <Compile Include="ViewModels\Membership.cs" />
+    <Compile Include="ViewModels\UpdateSubscription.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -427,6 +430,8 @@
     <Content Include="Content\Styles\fonts\metroSysIcons.woff" />
     <Content Include="Areas\Admin\Views\Members\ResetPassword.cshtml" />
     <Content Include="Areas\Admin\Views\Members\ResetPasswordConfirmed.cshtml" />
+    <Content Include="Areas\Admin\Views\Members\Subscription.cshtml" />
+    <Content Include="Areas\Admin\Views\Members\SubscriptionConfirmed.cshtml" />
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion Local.pubxml" />
     <Content Include="Scripts\Custom\inquiry.chat.js" />
@@ -546,6 +551,7 @@
     <Content Include="Views\Home\Shared\Vco.cshtml" />
     <Content Include="Views\Home\Shared\Wheat.cshtml" />
     <Content Include="Views\Home\International.cshtml" />
+    <Content Include="Views\Home\Expired.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

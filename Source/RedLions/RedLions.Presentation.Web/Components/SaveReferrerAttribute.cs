@@ -9,15 +9,12 @@
 
     public class SaveReferrerAttribute : ActionFilterAttribute, IActionFilter
     {
-        private MemberService memberService;
         private string referrerCookieName = "ReferrerUsername";
-        public SaveReferrerAttribute()
-        {
-            this.memberService = UnityConfig.GetConfiguredContainer().Resolve<MemberService>();
-        }
 
         void IActionFilter.OnActionExecuting(ActionExecutingContext filterContext)
         {
+            MemberService memberService = UnityConfig.GetConfiguredContainer().Resolve<MemberService>();
+
             HttpContextBase httpContext = filterContext.HttpContext;
             
             // Retrieve referrer's username in the query string.
@@ -46,7 +43,7 @@
             else
             {
                 // Generate random referrer as final solution.
-                referrerUsername = this.memberService.GetRandomMember().Username;
+                referrerUsername = memberService.GetRandomMember().Username;
             }
 
             if (string.IsNullOrEmpty(referrerUsername))

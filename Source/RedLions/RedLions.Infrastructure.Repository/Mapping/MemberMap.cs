@@ -41,8 +41,7 @@
                 .WithMany()
                 .Map(m => m.MapKey("country_id"));
             
-            // TODO: This should be "required".
-            this.HasOptional(t => t.Subscription)
+            this.HasRequired(t => t.Subscription)
                 .WithMany()
                 .Map(m => m.MapKey("subscription_id"));
             

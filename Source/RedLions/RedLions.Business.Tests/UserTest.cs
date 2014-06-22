@@ -10,7 +10,7 @@
     public class UserTest
     {
         [TestMethod]
-        public void CreateUserTest()
+        public void CreateUser()
         {
             string expectedUsername = "testUsername";
             string expectedFirstName = "firstname";

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using RedLions.CrossCutting;
 
     public class Member : User
     {
@@ -31,6 +32,7 @@
             this.Country = country;
             this.UnoID = unoID;
             this.Subscription = subscription;
+            this.SubscriptionExpirationDateTime = DateTime.Now.AddMonths(subscription.Months);
         }
 
         protected Member()
@@ -47,7 +49,7 @@
         {
             get
             {
-                if (this.SubscriptionExpirationDateTime < DateTime.Now)
+                if (this.SubscriptionExpirationDateTime < SystemTime.Now)
                 {
                     return true;
                 }
@@ -78,7 +80,7 @@
 
         public void ExtendSubscription(Subscription subscription)
         {
-            this.SubscriptionExpirationDateTime.AddMonths(subscription.Months);
+            this.SubscriptionExpirationDateTime = this.SubscriptionExpirationDateTime.AddMonths(subscription.Months);
             this.Subscription = subscription;
         }
     }

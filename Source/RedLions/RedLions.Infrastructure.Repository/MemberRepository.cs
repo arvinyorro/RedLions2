@@ -1,13 +1,10 @@
 ﻿namespace RedLions.Infrastructure.Repository
 {
+    using RedLions.Business;
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity.Validation;
     using System.Linq;
     using System.Linq.Expressions;
-    using System.Text;
-    using RedLions.Business;
-    using RedLions.CrossCutting;
 
     /// <summary>
     /// This class implements the <see cref="RedLions.Business.IMemberRepository"/> interface.

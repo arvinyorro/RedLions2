@@ -44,6 +44,9 @@
             Mapper.CreateMap<DTO.InquiryChatSession, Models.InquiryChatSession>()
                 .ForMember(dest => dest.ThumbMessage, opt => opt.MapFrom(src => src.LastMessage))
                 .ReverseMap();
+
+            Mapper.CreateMap<DTO.Subscription, Models.Subscription>()
+                .ReverseMap();
         }
     }
 }

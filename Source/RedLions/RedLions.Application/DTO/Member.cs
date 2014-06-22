@@ -15,6 +15,8 @@
         public string UnoID { get; set; }
         public string ReferrerUsername { get; set; }
         public DateTime SubscriptionExpirationDateTime { get; set; }
+        public Subscription Subscription { get; set; }
+        public bool SubscriptionExpired { get; set; }
         public Country Country { get; set; }
     }
 
@@ -42,6 +44,8 @@
                 UnoID = member.UnoID,
                 SubscriptionExpirationDateTime = member.SubscriptionExpirationDateTime,
                 Country = member.Country.ToDTO(),
+                Subscription = member.Subscription.ToDTO(),
+                SubscriptionExpired = member.SubscriptionExpired,
             };
 
             if (member.Referrer != null)

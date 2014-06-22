@@ -51,6 +51,7 @@
     <Compile Include="Inquiry.cs" />
     <Compile Include="InquiryChatMessage.cs" />
     <Compile Include="InquiryChatSession.cs" />
+    <Compile Include="ISubscriptionRepository.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

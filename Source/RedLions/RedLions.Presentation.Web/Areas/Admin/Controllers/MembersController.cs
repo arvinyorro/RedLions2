@@ -7,6 +7,7 @@
     // Third Party
     using Microsoft.Practices.Unity;
     using PagedList;
+    using AutoMapper;
     // Other Layers
     using RedLions.Application;
     using DTO = RedLions.Application.DTO;
@@ -25,6 +26,9 @@
 
         [Dependency]
         public CountryService CountryService { get; set; }
+
+        [Dependency]
+        public SubscriptionService SubscriptionService { get; set; }
 
         //
         // GET: /Admin/Members/
@@ -220,6 +224,24 @@
             ViewBag.UserID = id;
 
             return View("ResetPasswordConfirmed");
+        }
+
+        public ViewResult Subscription(int id)
+        {
+            DTO.Member memberDTO = this.MemberService.GetMemberByID(id);
+            IEnumerable<DTO.Subscription> subscriptionDTOList = this.SubscriptionService.GetSubscriptions();
+            IEnumerable<Models.Subscription> subscriptionModels = Mapper.Map<IEnumerable<Models.Subscription>>(subscriptionDTOList);
+
+            var viewModel = new UpdateSubscription(memberDTO, subscriptionModels);
+            return View(viewModel);
+        }
+
+        [HttpPost, ActionName("Subscription")]
+        public ViewResult SubscriptionConfirm(int userID, int subscriptionID)
+        {
+            this.SubscriptionService.ExtendSubscription(userID, subscriptionID);
+            ViewBag.UserID = userID;
+            return View("SubscriptionConfirmed");
         }
         
         private void AddError(StatusCode statusCode)

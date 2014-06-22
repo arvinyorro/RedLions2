@@ -81,6 +81,11 @@
             return PartialView("_NavigationPartial");
         }
 
+        public ViewResult Expired()
+        {
+            return View();
+        }
+
         [Route("Awards/{referrerUsername?}")]
         public ViewResult Awards()
         {

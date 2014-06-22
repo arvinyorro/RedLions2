@@ -67,7 +67,27 @@
         </div>
     </div>
 
-    
 
+    <!-- Subscription -->
+    <div class="panel transparent span7">
+        <div class="panel-content">
+
+            <p><strong>Subscription Plan</strong></p>
+
+            <dl class="horizontal member-details">
+                <!-- Subscription -->
+                <dt>@Html.DisplayNameFor(model => model.Subscription)</dt>
+                <dd>@Html.DisplayFor(model => model.Subscription.Title)</dd>
+                <!-- Subscription -->
+                <dt>@Html.DisplayNameFor(model => model.SubscriptionStatus)</dt>
+                <dd>@Html.DisplayFor(model => model.SubscriptionStatus)</dd>
+                <!-- Expiration -->
+                <dt>@Html.DisplayNameFor(model => model.SubscriptionExpirationDateTime)</dt>
+                <dd>@Html.DisplayFor(model => model.SubscriptionExpirationDateTime)</dd>
+            </dl>
+
+            <p><small>@Html.ActionLink("Update subscription plan", "Subscription", new { id = Model.ID })</small></p>
+        </div>
+    </div>
     
 </div>

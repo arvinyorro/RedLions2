@@ -29,6 +29,8 @@
             this.CellphoneNumber = memberDTO.CellphoneNumber;
             this.UnoID = memberDTO.UnoID;
             this.SubscriptionExpirationDateTime = memberDTO.SubscriptionExpirationDateTime;
+            this.Subscription = new Models.Subscription(memberDTO.Subscription);
+            this.SubscriptionStatus = memberDTO.SubscriptionExpired == true ? "Expired" : "Active";
             this.Country = new Models.Country(memberDTO.Country);
         }
 
@@ -65,8 +67,14 @@
         [Display(Name = "Uno Id")]
         public string UnoID { get; set; }
 
-        [Display(Name = "Subscription Expiration Date")]
+        [Display(Name = "Expiration Date")]
         public DateTime SubscriptionExpirationDateTime { get; set; }
+
+        [Display(Name = "Plan")]
+        public Subscription Subscription { get; set; }
+
+        [Display(Name = "Status")]
+        public string SubscriptionStatus { get; set; }
 
         public Country Country { get; set; }
     }

@@ -22,13 +22,15 @@
         private IMemberRepository memberRepository;
         private IUserRepository userRepository;
         private ICountryRepository countryRepository;
+        private ISubscriptionRepository subscriptionRepository;
 
         public MemberService(
             IUnitOfWork unitOfWork,
             IRepository genericRepository,
             IUserRepository userRepository,
             IMemberRepository memberRepository,
-            ICountryRepository countryRepository)
+            ICountryRepository countryRepository,
+            ISubscriptionRepository subscriptionRepository)
         {
             if (unitOfWork == null)
             {
@@ -55,11 +57,17 @@
                 throw new ArgumentNullException("countryRepository");
             }
 
+            if (subscriptionRepository == null)
+            {
+                throw new ArgumentNullException("subscriptionRepository");
+            }
+
             this.unitOfWork = unitOfWork;
             this.genericRepository = genericRepository;
             this.userRepository = userRepository;
             this.memberRepository = memberRepository;
             this.countryRepository = countryRepository;
+            this.subscriptionRepository = subscriptionRepository;
         }
 
         public int PageSize
@@ -166,7 +174,8 @@
 
             Business.Country country = this.countryRepository.GetByID(memberDTO.Country.ID);
 
-            // TODO: Use subscription repository to retrieve default subscription plan.
+            int silverSubscriptionID = 1;
+            Business.Subscription subscription = this.subscriptionRepository.GetByID(silverSubscriptionID);
 
             var member = new Business.Member(
                 inquiry: inquiry,
@@ -176,7 +185,7 @@
                 email: memberDTO.Email,
                 personalReferralCode: this.GenerateReferralCode(),
                 cellphoneNumber: memberDTO.CellphoneNumber,
-                subscription: null, // TODO: Update this one also.
+                subscription: subscription,
                 country: country,
                 unoID: memberDTO.UnoID);
 
@@ -284,6 +293,12 @@
         /// Constructs the Key, that is randomly generated from alphanumeric characters.
         /// Source of algorithm: <see href="http://stackoverflow.com/a/1344242/1027250" /> 
         /// </summary>
+        /// <remarks>
+        /// Q: Why is this here, and not in the member entity (domain)?
+        /// A: Because we need to verify that the generated code has no conflicts with other
+        /// members, which can only be done outside of the domain. Unless Members has a parent or
+        /// we create a factory.
+        /// </remarks>
         /// <returns>
         /// Returns the Key.
         /// </returns>

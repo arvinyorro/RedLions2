@@ -23,43 +23,49 @@ namespace RedLions.Infrastructure.Repository.Tests
         }
 
         [TestMethod]
-        public void ConnectionTest()
+        public void Connection()
         {
             var users = this.context.Users.ToList();
             Assert.IsNotNull(users);
         }
 
         [TestMethod]
-        public void GetSingleMemberTest()
+        public void GetSingleMember()
         {
             Member user = this.context.Users.OfType<Member>().First();
             Assert.IsTrue(user is Member, "User type should be Member");
         }
 
         [TestMethod]
-        public void GetSingleUserTest()
+        public void GetSingleUser()
         {
             User user = this.context.Users.OfType<User>().First();
             Assert.IsTrue(user is User, "User type should be User");
         }
 
         [TestMethod]
-        public void GetAllMembersTest()
+        public void GetAllMembers()
         {
             IEnumerable<Member> user = this.context.Users.OfType<Member>().AsEnumerable();
             Assert.IsTrue(user.First() is Member, "User type should be Member");
         }
 
         [TestMethod]
-        public void GetAllInquiryChatSessionsTest()
+        public void GetAllInquiryChatSessions()
         {
             IEnumerable<InquiryChatSession> inquiryChatSessions = this.context.InquiryChatSessions.ToList();
         }
 
         [TestMethod]
-        public void GetAllInquiryChatMessagesTest()
+        public void GetAllInquiryChatMessages()
         {
             IEnumerable<InquiryChatMessage> inquiryChatMessages = this.context.InquiryChatMessages.ToList();
+        }
+
+        [TestMethod]
+        public void GetAllSubscriptions()
+        {
+            IEnumerable<Subscription> subscriptions = this.context.Subscriptions.ToList();
         }
     }
 }

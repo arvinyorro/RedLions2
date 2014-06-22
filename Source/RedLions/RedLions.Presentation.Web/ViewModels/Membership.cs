@@ -7,7 +7,6 @@
     using System.Web;
     using System.Web.Mvc;
 
-
     public class Membership
     {
         public int LocationID { get; set; }

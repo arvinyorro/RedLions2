@@ -40,7 +40,10 @@
 
         public IEnumerable<TEntity> GetPagedList<TEntity>(int pageIndex, int pageSize) where TEntity : class
         {
-            return this.context.Set<TEntity>().Skip(pageSize * pageIndex).Take(pageSize).ToList();
+            return this.GetPagedList<TEntity>(
+                this.context.Set<TEntity>(),
+                pageIndex, 
+                pageSize);
         }
 
         public IEnumerable<TEntity> GetPagedList<TEntity, TKey>(
@@ -61,13 +64,24 @@
             totalCount = query.Count();
 
             // Warning: OrderBy() must be used before Skip();
-            query = query.OrderBy(order);
+            var orderedQuery = query.OrderBy(order);
 
-
-            pageIndex = (pageIndex <= 0 ? 1 : pageIndex) - 1;
-            query = query.Skip(pageSize * pageIndex).Take(pageSize);
+            this.GetPagedList<TEntity>(orderedQuery, pageIndex, pageSize);
 
             return query.ToList();
+        }
+
+        protected IQueryable<TEntity> GetQueryableAll<TEntity>() where TEntity : class
+        {
+            return this.context.Set<TEntity>();
+        }
+
+        protected IEnumerable<TEntity> GetPagedList<TEntity>(IOrderedQueryable<TEntity> query, int pageIndex, int pageSize)
+        {
+            pageIndex = (pageIndex <= 0 ? 1 : pageIndex) - 1;
+            //query = query.Skip(pageSize * pageIndex).Take(pageSize);
+
+            return query.Skip(pageSize * pageIndex).Take(pageSize).ToList();
         }
 
         public IEnumerable<TEntity> GetAll<TEntity>(Expression<Func<TEntity, bool>> filter) where TEntity : class

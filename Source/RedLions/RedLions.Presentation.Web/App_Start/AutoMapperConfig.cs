@@ -47,6 +47,13 @@
 
             Mapper.CreateMap<DTO.Subscription, Models.Subscription>()
                 .ReverseMap();
+
+            Mapper.CreateMap<DTO.Announcement, Models.Announcement>();
+
+            Mapper.CreateMap<DTO.Announcement, Models.EditAnnouncement>();
+
+            Mapper.CreateMap<DTO.User, Models.User>()
+                .ReverseMap();
         }
     }
 }

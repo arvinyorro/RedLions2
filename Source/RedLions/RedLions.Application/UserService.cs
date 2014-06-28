@@ -6,6 +6,7 @@
     using RedLions.Application.DTO;
     using RedLions.Business;
     using RedLions.CrossCutting;
+    using AutoMapper;
 
     public class UserService
     {
@@ -40,6 +41,13 @@
             }
 
             return UserAssembler.ToDTO(user);
+        }
+
+        public DTO.User GetUserByUsername(string username)
+        {
+            Business.User user = this.userRepository.GetUserByUsername(username);
+
+            return Mapper.Map<DTO.User>(user);
         }
 
         public DTO.User GetUserByUsername(string username, string password)

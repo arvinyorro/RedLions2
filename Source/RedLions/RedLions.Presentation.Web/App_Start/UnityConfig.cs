@@ -51,10 +51,13 @@ namespace RedLions.Presentation.Web
             container.RegisterType<ICountryRepository, CountryRepository>();
             container.RegisterType<IInquiryChatRepository, InquiryChatRepository>();
             container.RegisterType<ISubscriptionRepository, SubscriptionRepository>();
+            container.RegisterType<IAnnouncementRepository, AnnouncementRepository>();
             container.RegisterType<MemberService, MemberService>();
             container.RegisterType<UserService, UserService>();
             container.RegisterType<CountryService, CountryService>();
             container.RegisterType<InquiryChatService, InquiryChatService>();
+            container.RegisterType<SubscriptionService, SubscriptionService>();
+            container.RegisterType<AnnouncementService, AnnouncementService>();
             container.RegisterType<ChatHub, ChatHub>(new ContainerControlledLifetimeManager());
         }
     }

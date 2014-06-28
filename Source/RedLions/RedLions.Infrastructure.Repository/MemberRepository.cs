@@ -18,7 +18,7 @@
         {
             if (context == null)
             {
-                throw new ArgumentNullException("The parameter 'context' must not be null");
+                throw new ArgumentNullException("context");
             }
 
             this.context = context;
@@ -28,7 +28,7 @@
         {
             if (member == null)
             {
-                throw new ArgumentNullException("The parameter 'member' must not be null");
+                throw new ArgumentNullException("member");
             }
 
             base.Create<Member>(member);
@@ -38,7 +38,7 @@
         {
             if (member == null)
             {
-                throw new ArgumentNullException("The parameter 'member' must not be null");
+                throw new ArgumentNullException("member");
             }
 
             base.Update<Member>(member);

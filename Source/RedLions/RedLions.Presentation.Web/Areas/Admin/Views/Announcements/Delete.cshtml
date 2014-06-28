@@ -1,0 +1,31 @@
+﻿@model RedLions.Presentation.Web.Models.Announcement
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@section NavigationControls
+{
+    @{ Html.RenderPartial("_AnnouncementsControlPartial"); }
+}
+
+<h2>Delete Confirmation</h2>
+
+<p>
+    Are you sure you want to delete <strong>@Model.Title</strong>?
+</p>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.ID)
+    <input type="submit" class="danger" value="Delete" />
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Announcements") | @Html.ActionLink("Back to details", "Details", new { id = @Model.ID })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Announcement.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="IAnnouncementRepository.cs" />
     <Compile Include="ICountryRepository.cs" />
     <Compile Include="IInquiryChatRepository.cs" />
     <Compile Include="IInquiryRepository.cs" />

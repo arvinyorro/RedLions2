@@ -52,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnnouncementService.cs" />
     <Compile Include="AutoMapperConfig.cs" />
+    <Compile Include="DTO\Announcement.cs" />
     <Compile Include="DTO\InquiryChatMessage.cs" />
     <Compile Include="DTO\InquiryChatSession.cs" />
     <Compile Include="DTO\Subscription.cs" />

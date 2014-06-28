@@ -198,6 +198,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AnnouncementsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\InquiriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\MembersController.cs" />
@@ -221,6 +222,7 @@
     </Compile>
     <Compile Include="Hubs\OwinStartup.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\InquiryChatSession.cs" />
     <Compile Include="Models\InquiryChatMessage.cs" />
     <Compile Include="Models\Country.cs" />
@@ -432,6 +434,12 @@
     <Content Include="Areas\Admin\Views\Members\ResetPasswordConfirmed.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Subscription.cshtml" />
     <Content Include="Areas\Admin\Views\Members\SubscriptionConfirmed.cshtml" />
+    <Content Include="Areas\Admin\Views\Announcements\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AnnouncementsControlPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Announcements\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Announcements\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Announcements\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Announcements\Delete.cshtml" />
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion Local.pubxml" />
     <Content Include="Scripts\Custom\inquiry.chat.js" />

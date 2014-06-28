@@ -83,6 +83,7 @@
         public void SubscriptionShouldNotBeExpired()
         {
             // Setup
+            SystemTime.Now = DateTime.Now;
             Member member = this.CreateMember();
 
             // Setup expectactions.
@@ -104,7 +105,7 @@
 
             // Setup expectactions.
             DateTime expectedResult = member.SubscriptionExpirationDateTime;
-            expectedResult.AddMonths(subscription.Months);
+            expectedResult = expectedResult.AddMonths(subscription.Months);
 
             // Exercise
             member.ExtendSubscription(subscription);

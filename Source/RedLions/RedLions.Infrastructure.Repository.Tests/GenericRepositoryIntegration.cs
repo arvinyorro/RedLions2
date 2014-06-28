@@ -67,5 +67,11 @@ namespace RedLions.Infrastructure.Repository.Tests
         {
             IEnumerable<Subscription> subscriptions = this.context.Subscriptions.ToList();
         }
+
+        [TestMethod]
+        public void GetAllAnnouncements()
+        {
+            IEnumerable<Announcement> announcements = this.context.Announcements.ToList();
+        }
     }
 }

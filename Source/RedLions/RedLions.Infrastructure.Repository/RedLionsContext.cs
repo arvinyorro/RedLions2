@@ -32,6 +32,7 @@ namespace RedLions.Infrastructure.Repository
         public DbSet<InquiryChatSession> InquiryChatSessions { get; set; }
         public DbSet<InquiryChatMessage> InquiryChatMessages { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -42,6 +43,7 @@ namespace RedLions.Infrastructure.Repository
             modelBuilder.Configurations.Add(new InquiryChatMessageMap());
             modelBuilder.Configurations.Add(new InquiryChatSessionMap());
             modelBuilder.Configurations.Add(new SubscriptionMap());
+            modelBuilder.Configurations.Add(new AnnouncementMap());            
         }
 
         public void ExecuteSqlCommand(string query, params object[] parameters)

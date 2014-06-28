@@ -1,0 +1,47 @@
+﻿@model RedLions.Presentation.Web.Models.EditAnnouncement
+
+@{
+    ViewBag.Title = "Post Announcement";
+}
+
+@section NavigationControls
+{
+    @{ Html.RenderPartial("_AnnouncementsControlPartial"); }
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.ID)
+
+    <fieldset>
+        <legend>New Announcement</legend>
+
+        <!-- Title -->
+        @Html.LabelFor(model => model.Title)
+        <div class="input-control text" data-role="input-control">
+            @Html.TextBoxFor(model => model.Title, new { placeholder = "Title", maxlength = 50 })
+            <button class="btn-clear" tabindex="-1"></button>
+        </div>
+        @Html.ValidationMessageFor(model => model.Title)
+
+        <!-- Message -->
+        @Html.LabelFor(model => model.Message)
+        <div class="input-control textarea" data-role="input-control">
+            @Html.TextAreaFor(model => model.Message, new { maxlength = 600 })
+        </div>
+        @Html.ValidationMessageFor(model => model.Message)
+
+        <div class="input-control">
+            <input type="submit" class="primary" value="Update" />
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Announcements") | @Html.ActionLink("Back to details", "Details", new { id = @Model.ID })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

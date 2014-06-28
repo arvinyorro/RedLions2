@@ -52,10 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnnouncementRepository.cs" />
     <Compile Include="CountryRepository.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="InquiryChatRepository.cs" />
     <Compile Include="InquiryRepository.cs" />
+    <Compile Include="Mapping\AnnouncementMap.cs" />
     <Compile Include="Mapping\CountryMap.cs" />
     <Compile Include="Mapping\InquiryChatMessageMap.cs" />
     <Compile Include="Mapping\InquiryChatSessionMap.cs" />

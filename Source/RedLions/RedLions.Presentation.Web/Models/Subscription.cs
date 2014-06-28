@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace RedLions.Presentation.Web.Models
+﻿namespace RedLions.Presentation.Web.Models
 {
     using System;
     using System.ComponentModel.DataAnnotations;

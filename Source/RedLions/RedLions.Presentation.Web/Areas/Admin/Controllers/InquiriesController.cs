@@ -3,11 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
-    using PagedList;
-    using RedLions.Application;
     using DTO = RedLions.Application.DTO;
+    using RedLions.Application;
+    using PagedList;
 
     public class InquiriesController : Controller
     {

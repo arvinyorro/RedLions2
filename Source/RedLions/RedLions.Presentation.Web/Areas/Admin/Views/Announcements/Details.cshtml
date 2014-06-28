@@ -1,0 +1,28 @@
+﻿@model RedLions.Presentation.Web.Models.Announcement
+
+@{
+    ViewBag.Title = "Announcement Details";
+}
+
+@section NavigationControls
+{
+    @{ Html.RenderPartial("_AnnouncementsControlPartial"); }
+}
+
+<div class="panel transparent span8">
+    <div class="panel-content">
+        <h2>@Html.DisplayFor(model => model.Title)</h2>
+        <p>@Html.DisplayFor(model => model.PostedDateTime)</p>
+        <p><small>@Html.ActionLink("Go back", "Index") | @Html.ActionLink("Edit", "Edit", new { id = @Model.ID }) | @Html.ActionLink("Delete", "Delete", new { id = @Model.ID })</small></p>
+    </div>
+</div>
+
+<div class="panel transparent span8">
+
+    <div class="panel-content">
+
+        <p style="white-space: pre-line">@Model.Message</p>
+                
+    </div>
+
+</div>

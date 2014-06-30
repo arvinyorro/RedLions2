@@ -104,7 +104,7 @@
         public ViewResult Edit(int id)
         {
             DTO.Announcement announcementDTO = this.announcementService.GetAnnouncementByID(id);
-            Models.EditAnnouncement editAnnouncement = Mapper.Map<Models.EditAnnouncement>(announcementDTO);
+            ViewModels.EditAnnouncement editAnnouncement = Mapper.Map<ViewModels.EditAnnouncement>(announcementDTO);
 
             return View(editAnnouncement);
         }
@@ -112,7 +112,7 @@
         //
         // POST: /Admin/Announcement/Edit
         [HttpPost]
-        public ActionResult Edit(Models.EditAnnouncement editAnnouncement)
+        public ActionResult Edit(ViewModels.EditAnnouncement editAnnouncement)
         {
             if (!ModelState.IsValid)
             {

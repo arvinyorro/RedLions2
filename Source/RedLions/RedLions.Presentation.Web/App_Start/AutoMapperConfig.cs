@@ -49,8 +49,8 @@
                 .ReverseMap();
 
             Mapper.CreateMap<DTO.Announcement, Models.Announcement>();
-
-            Mapper.CreateMap<DTO.Announcement, Models.EditAnnouncement>();
+            Mapper.CreateMap<DTO.Announcement, ViewModels.PublicAnnouncement>();
+            Mapper.CreateMap<DTO.Announcement, Areas.Admin.ViewModels.EditAnnouncement>();
 
             Mapper.CreateMap<DTO.User, Models.User>()
                 .ReverseMap();

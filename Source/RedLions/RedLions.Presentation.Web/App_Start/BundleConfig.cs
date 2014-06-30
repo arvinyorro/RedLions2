@@ -28,7 +28,6 @@
             bundles.Add(new StyleBundle("~/bundles/metro-style")
                 .Include(
                 "~/Content/Styles/Metro/metro-custom.css", // Custom CSS
-                "~/Content/Styles/Metro/metro-bootstrap-responsive.css",
                 "~/Content/Styles/Metro/metro-bootstrap.css",
                 "~/Content/Styles/Metro/iconFont.css"));
 
@@ -54,6 +53,10 @@
             // SignalR
             bundles.Add(new ScriptBundle("~/bundles/signalr")
                 .Include("~/Scripts/jquery.signalR-{version}.js"));
+
+            // Clamp
+            bundles.Add(new ScriptBundle("~/bundles/clamp")
+                .Include("~/Scripts/clamp.js"));
         }
     }
 }

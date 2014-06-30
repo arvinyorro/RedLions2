@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<RedLions.Presentation.Web.Models.Announcement>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_LayoutRedLions.cshtml";
+}
+
+<div style="padding: 10px;">
+    @foreach (var item in Model)
+    {
+        <div style="margin-top:30px;">
+            <h2>@Html.DisplayFor(model => item.Title)</h2>
+            <p>@Html.DisplayFor(model => item.PostedDateTime)</p>
+
+            <p class="message" style="white-space: pre-line">@item.Message</p>
+            <p><small>
+                @Html.ActionLink(
+                linkText: "Read more",
+                actionName: "Announcement",
+                controllerName: "Home",
+                routeValues: new { id = @item.ID },
+                htmlAttributes: null)</small></p>
+            <hr />
+        </div>
+        
+    }
+
+
+
+    <!-- Pagination Info -->
+    <p>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    </p>
+
+    <!-- Pagination Links -->
+    @Html.PagedListPager(
+    list: Model,
+    generatePageUrl: page => Url.Action("Announcements", "Home",
+                             new { page, sortOrder = ViewBag.CurrentSort, searchMember = ViewBag.SearchUsername, }),
+    options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })
+</div>
+
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+
+            $('.message').each(function (index, element) {
+                $clamp(element, { clamp: 10, useNativeClamp: false });
+            });
+        });
+    </script>
+}

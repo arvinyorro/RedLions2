@@ -25,20 +25,4 @@
         [Display(Name="Date Posted")]
         public DateTime PostedDateTime { get; set; }
     }
-
-    public class EditAnnouncement : Announcement
-    {
-        [Required]
-        public override int ID
-        {
-            get
-            {
-                return base.ID;
-            }
-            set
-            {
-                base.ID = value;
-            }
-        }
-    }
 }

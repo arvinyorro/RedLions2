@@ -6,6 +6,8 @@
     using RedLions.Presentation.Web.Components;
     using RedLions.Application;
     using DTO = RedLions.Application.DTO;
+    using AutoMapper;
+    using PagedList;
 
     [SaveReferrer]
     [Route("Home/{action=Index}/{referrerUsername?}", Order = 1)]
@@ -13,14 +15,18 @@
     {
         private MemberService memberService;
         private InquiryService inquiryService;
+        private AnnouncementService announcementService;
 
         public HomeController(
             InquiryService inquiryService,
-            MemberService memberService)
+            MemberService memberService,
+            AnnouncementService announcementService)
         {
             this.memberService = memberService;
             this.inquiryService = inquiryService;
+            this.announcementService = announcementService;
         }
+
         //
         // GET: /Home/
 
@@ -409,6 +415,37 @@
         {
             ViewBag.SelectedID = id;
             return View();
+        }
+
+        [Route("Announcements/{page:int}/{referrerUsername?}")]
+        public ViewResult Announcements(int page)
+        {
+            // Fix negative page
+            int currentPage = page < 0 ? 1 : page;
+
+            int pageSize = 20;
+            int totalItems = 0;
+
+            IEnumerable<DTO.Announcement> announcementDtoList = this.announcementService
+                .GetPagedAnnouncements(
+                    currentPage,
+                    out totalItems,
+                    pageSize);
+
+            IEnumerable<Models.Announcement> announcementModels = Mapper.Map<IEnumerable<Models.Announcement>>(announcementDtoList);
+
+            var pagedList = new StaticPagedList<Models.Announcement>(announcementModels, currentPage, pageSize, totalItems);
+
+            return View(pagedList);
+        }
+
+        [Route("Announcement/{id:int}/{referrerUsername?}")]
+        public ViewResult Announcement(int id)
+        {
+            DTO.Announcement announcementDTO = this.announcementService.GetAnnouncementByID(id);
+            ViewModels.PublicAnnouncement announcement = Mapper.Map<ViewModels.PublicAnnouncement>(announcementDTO);
+
+            return View(announcement);
         }
     }
 }

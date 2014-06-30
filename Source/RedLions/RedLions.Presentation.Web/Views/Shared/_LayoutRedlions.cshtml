@@ -15,6 +15,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/clamp")
 
     @Styles.Render("~/bundles/metro-style")
     @Scripts.Render("~/bundles/metro-script")
@@ -98,7 +99,7 @@
                             </ul>
                         </li>
 
-                        <li><a href="#">News and Update</a></li>
+                        <li><a href="@Url.Action("Announcements", "Home", new { page = 1 })">News and Update</a></li>
                         <li><a href="@Url.Action("Inquire", "Home")">Inquire</a></li>
                         
                     </ul>

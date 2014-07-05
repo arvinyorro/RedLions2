@@ -33,6 +33,7 @@
 .option-container {
     background-color: #7b0002;
     width: 650px;
+    vertical-align: top;
 }
 
 .option {
@@ -65,6 +66,12 @@
     font-size: 12px;
 }
 
+.local.option .panel-heading {
+    background-image: url('/Content/Images/Home/Layout/panel_header_big.png') !important; 
+    height: 50px !important; 
+    padding-top: 2px !important; 
+}
+
 .option .panel-body {
     padding:1px;
     background-color:#1c1c1c;
@@ -72,6 +79,10 @@
     text-align:left;
     padding:10px;
     height:510px;
+}
+
+.local.option .panel-body {
+    height: 670px !important;
 }
 
 #option-hk.option .panel-body {
@@ -166,6 +177,10 @@ div.summary.container {
     display:inline-block;
     float:left;
     margin:2px;
+}
+
+.products.option-container .panel:hover {
+     cursor: pointer;
 }
 
 .products.option-container .panel-heading {

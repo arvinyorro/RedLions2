@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "International Plan";
+    Layout = "~/Views/Shared/_LayoutRedLions.cshtml";
+}
+
+<div style="padding: 10px;">
+    <h2>International Plan</h2>
+
+    <p>Hi, we greatly appreciate your time for dropping by on this page! Whether you are quite interested to do the business in your country, wanted to bring the opportunity and to make yourself as the first in your country, or a Filipino whose staying in a foreign country for good but you wanted to bring UNO in the foreign country you're in, then this opportunity for you is at stake! Click to play the video below to learn more how you can start it up with a International Distributor Account and how you are being under the International Compensation Plan.</p>
+
+    <a href="#" id="products-link">Products Packages</a>
+
+    <div id="control" style="display: none;">
+        <div id="local-control" style="width: 60%;">
+            <label>Select Plan</label>
+            <div class="input-control select">
+                <select>
+                    <option value="1">Platinum US$330.00</option>
+                    <option value="2">TriPlat US$930.00</option>
+                    <option value="3">Elite US$1,820.00</option>
+                </select>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        // Dialog Functionality
+        $("#products-link").on('click', function () {
+            $("#control").show();
+        });
+    });
+</script>
+}

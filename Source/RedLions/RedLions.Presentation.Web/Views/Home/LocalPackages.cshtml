@@ -1,27 +1,1459 @@
-﻿@{
-    ViewBag.Title = "Packages";
+﻿@model RedLions.Presentation.Web.ViewModels.Membership
+
+@{
+    ViewBag.Title = "Local Packages";
+    Layout = "~/Views/Shared/_LayoutRedLions.cshtml";
+}
+<div style="padding: 10px;">
+
+    <ul class="rslides" id="slider">
+        <li><img src="~/Content/Images/Home/Index/acai.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Index/coffee.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Index/global.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Index/lalumiere.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Index/pacman1.jpg" /></li>
+        <li><img src="~/Content/Images/Home/Index/pacman2.jpg" /></li>
+    </ul>
+
+    <br />
+
+
+    <table style="width: 950px;  border-collapse: collapse;">
+
+        <tr>
+            <td id="compensation" style="display: none; text-align: center; vertical-align: top;">
+                <h2 style="clear: both; ">International Compensation Plan</h2>
+            </td>
+
+            <td id="options" class="option-container">
+
+                <div id="option-ad" class="local option">
+
+                    <div class="title"><b>LOCAL PACKAGES A-D</b></div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE A<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>6 boxes of Grape Seed (powder extract)</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="4WRBE4KS2WAEW">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location">
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE B<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>4 boxes of Virgin Coconut Oil (softgel capsule)</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="33JMNE2Z8QXPQ">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE C<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>2 boxes of Glutathione Capsule (30 capsules per box)</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="X5F5XFUYDRMK4">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE D<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>1 piece Bio-Magnetic Bracelet (choose your desired design)</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="DHZLD6TTN4B6A">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+
+                        </div>
+                    </div>
+
+
+                </div> <!-- End of AD -->
+
+                <div id="option-eh" class="local option">
+
+                    <div class="title"><b>LOCAL PACKAGES E-H</b></div>
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE E<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>5 boxes of FitRight</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="XMH7DUUT4HG7S">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE F<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>4 boxes of Organic Thanakha cream</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="Q4RKEPTDJBEYA">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE G<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>3 bottles of KryptOrganic (100 tablets per bottle)</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="Q5RNHJNY54DF8">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE H<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>6 bottles of Glutathione Lotion</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="CQU6Y8ZCQEP4G">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+    
+
+                </div> <!-- End of EH -->
+
+                <div id="option-il" class="local option">
+
+                    <div class="title"><b>LOCAL PACKAGES I-L</b></div>
+                    
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE I<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>3 boxes of Prime Juice (24 sachets per box)</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="AD526GTKZAAP4">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE J<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>13 tube boxes of Advance Care Toothgel</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="PB44WP9UX8EQW">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE K<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>1 piece Scalar Pendant</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="ZJ52XVETV245E">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE L<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>11 bottles of 6in1 Hair Treats</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="2M2G75C7QSQLN">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+                   
+                </div> <!-- End of IL -->
+
+                <div id="option-mp" class="local option">
+
+                    <div class="title"><b>LOCAL PACKAGES M-P</b></div>
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE M<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>1 bottle of Acai Berry Juice</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="53LY88ERPLFAA">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE N<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>10 bottles of Body Works (exfoliating body scrub)</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="MJHGZLRSLWWUA">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE O<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>6 packs of Nutri-hair & hair treats combo</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="R4NH4B868G6WN">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE P<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>4 jars Magic Cream</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="FZ45E2MJNHAQE">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div> <!-- End of MP -->
+
+                <div id="option-qt" class="local option">
+
+                    <div class="title"><b>LOCAL PACKAGES Q-T</b></div>
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE Q<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>6 boxes of Choco 8</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="5UBRJYFLVSH9G">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE R<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>4 jars of Supercharged Extreme</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="4GU75T6VZ4UDG">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE S<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>4 boxes of Wheatgrass & Barley (100 combined extracts)</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="9D3KSC2RWWLWQ">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE T<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>1 box-set of iCare Sanitary Napkin (Magnetism and Negative iOn)</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="9D3KSC2RWWLWQ">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div> <!-- End of QT -->
+
+                <div id="option-uv" class="local option">
+
+                    <div class="title"><b>LOCAL PACKAGES U-V</b></div>
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE U<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>17 bottles of Natura White deororant (w/Songyi extracts)</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="3V8KV95BMWQRS">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel" style="float:left;">
+                        <div class="panel-heading">
+                            PACKAGE V<br>
+                            <small>Within Metro Manila P7,300.00<br>
+                            Outside Metro Manila P7,450.00</small>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>23 bottles of Scare Away insect repellent lotion</li>
+                                <li>Php120,000 Family Accident Insurance Plan</li>
+                                <li>Php2,500 worth of GIFT CERTIFICATE (please see NOTE below)</li>
+                                <li>Sales/Business Kit (brochures, application forms, legal papers, cd’s)</li>
+                                <li>Online portfolio of account with UNO website (access your business account online 24/7)</li>
+                                <li>Cash Card/ATM (optional)</li>
+                                <li>
+                                    Membership ID which will entitle you to the following benefits:
+                                    <ol>
+                                        <li>25-28% Lifetime Discount on all UNO Products upon repeat purchase</li>
+                                        <li>Buy 1, Take 1 Privilege (special promo as scheduled)</li>
+                                        <li>Trainings</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                            <p>Note: Php2,500 GIFT CERTIFICATE is consumable only to the following UNO Products:</p>
+                            <ol>
+                                <li>Grape Seed (Php600</li>
+                                <li>VCO (Php700)</li>
+                                <li>Glutathione Capsule (Php1,300)</li>
+                                <li>FitRight (Php600)</li>
+                                <li>Organic Thanakha (Php750)</li>
+                                <li>KryptOrganic (Php900)</li>
+                                <li>Supercharged Extreme (Php500)</li>
+                            </ol>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="XYJXX9UXYA5RG">
+                                <table>
+                                    
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="on0" value="Select your location"><select name="os0">
+                                                <option value="Within Metro Manila">Within Metro Manila P7,300.00 PHP</option>
+                                                <option value="Outside Metro Manila (includes Vis. and Min.)">Outside Metro Manila P7,450.00 PHP</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" name="currency_code" value="PHP">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div> <!-- End of UV -->
+
+            </td> <!-- End of Option Container -->
+
+            <td width="300" style="vertical-align: top;">
+                <p>List of Local Packages</p>
+                <div id="menu-option-ad" class="menu-option selected">
+                    <b style="color: #c69000;">PACKAGES A-D</b>
+                    <ul style="list-style-type: none;">
+                        <li>PACKAGE A | GRAPE SEED</li>
+                        <li>PACKAGE B | VIRGIN COCONUT OIL</li>
+                        <li>PACKAGE C | GLUTATHIONE CAPSULE</li>
+                        <li>PACKAGE D | BIO-MAGNETIC BRACELET</li>
+                    </ul>
+                </div>
+
+                <div id="menu-option-eh" class="menu-option">
+                    <b style="color: #c69000;">PACKAGES E-H</b>
+                    <ul style="list-style-type: none;">
+                        <li>PACKAGE E | FITRIGHT</li>
+                        <li>PACKAGE F | THANAKA</li>
+                        <li>PACKAGE G | KRYPTORGANIC</li>
+                        <li>PACKAGE H | GLUTATHIONE LOTION</li>
+                    </ul>
+                </div>
+
+                <div id="menu-option-il" class="menu-option">
+                    <b style="color: #c69000;">PACKAGES I-L</b>
+                    <ul style="list-style-type: none;">
+                        <li>PACKAGE I | PRIME JUICE</li>
+                        <li>PACKAGE J | ADVANCE CARE TOOTHGEL</li>
+                        <li>PACKAGE K | SCALAR PENDANT</li>
+                        <li>PACKAGE L | 6in1 HAIR TREATS</li>
+                    </ul>
+                </div>
+
+                <div id="menu-option-mp" class="menu-option">
+                    <b style="color: #c69000;">PACKAGES M-P</b>
+                    <ul style="list-style-type: none;">
+                        <li>PACKAGE M | ACAI BERRY</li>
+                        <li>PACKAGE N | BODY WORKS</li>
+                        <li>PACKAGE O | NUTRI HAIR 6in1 HAIR TREATS COMBO</li>
+                        <li>PACKAGE P | MAGIC CREAM</li>
+                    </ul>
+                </div>
+
+                <div id="menu-option-qt" class="menu-option">
+                    <b style="color: #c69000;">PACKAGES Q-T</b>
+                    <ul style="list-style-type: none;">
+                        <li>PACKAGE Q | CHOCO 8</li>
+                        <li>PACKAGE R | SUPERCHARGED EXTREME</li>
+                        <li>PACKAGE S | WHEATE GRASS AND BARLEY</li>
+                        <li>PACKAGE T | iCARE MAGNETISM</li>
+                    </ul>
+                </div>
+
+                <div id="menu-option-uv" class="menu-option">
+                    <b style="color: #c69000;">PACKAGES U-V</b>
+                    <ul style="list-style-type: none;">
+                        <li>PACKAGE U | GRAPE SEED</li>
+                        <li>PACKAGE V | VIRGIN COCONUT OIL</li>
+                    </ul>
+                </div>
+            </td>
+
+        </tr>
+
+    </table>
+</div>
+
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Styles/packages.css")" rel="stylesheet" type="text/css" />
 }
 
 
-<div id="slider-container">
-    <ul class="rslides" id="slider">
-        <li><img src="~/Content/Images/Home/Packages/local_a1.jpg" /></li>
-        <li><img src="~/Content/Images/Home/Packages/local_j1.jpg" /></li>
-        <li><img src="~/Content/Images/Home/Packages/local_k2.jpg" /></li>
-    </ul>
-</div>
-<div id="slider-control"></div>
 @section Scripts {
     <script>
-        $(document).ready(function () {
-            $("#slider").responsiveSlides({
-                maxwidth: 800,
-                speed: 800,
+        var selectedPackageID = '@ViewBag.SelectedID';
 
-                pager: true,
-                nav: true,
-                namespace: "centered-btns"
+        $(document).ready(function () {
+
+            $("#slider").responsiveSlides({
+                maxwidth: 970,
+                speed: 800,
             });
+
+            // TODO, update javascript selectors
+
+            $("#option-ad").show();
+
+            $("#menu-option-ad").click(function () {
+                $("#options").show();
+                $("#compensation").hide();
+
+                $(".option").hide();
+                $("#option-ad").show();
+                $(".menu-option").removeClass("selected");
+                $("#menu-option-ad").addClass("selected");
+            });
+
+            $("#menu-option-eh").click(function () {
+                $("#options").show();
+                $("#compensation").hide();
+
+                $(".option").hide();
+                $("#option-eh").show();
+                $(".menu-option").removeClass("selected");
+                $("#menu-option-eh").addClass("selected");
+            });
+
+            $("#menu-option-il").click(function () {
+                $("#options").show();
+                $("#compensation").hide();
+
+                $(".option").hide();
+                $("#option-il").show();
+                $(".menu-option").removeClass("selected");
+                $("#menu-option-il").addClass("selected");
+            });
+
+            $("#menu-option-mp").click(function () {
+                $("#options").show();
+                $("#compensation").hide();
+
+                $(".option").hide();
+                $("#option-mp").show();
+                $(".menu-option").removeClass("selected");
+                $("#menu-option-mp").addClass("selected");
+            });
+
+            $("#menu-option-qt").click(function () {
+                $("#options").show();
+                $("#compensation").hide();
+
+                $(".option").hide();
+                $("#option-qt").show();
+                $(".menu-option").removeClass("selected");
+                $("#menu-option-qt").addClass("selected");
+            });
+
+            $("#menu-option-uv").click(function () {
+                $("#options").show();
+                $("#compensation").hide();
+
+                $(".option").hide();
+                $("#option-uv").show();
+                $(".menu-option").removeClass("selected");
+                $("#menu-option-uv").addClass("selected");
+            });
+
+            console.log("Selected ID: ", selectedPackageID);
+            if (selectedPackageID == '2') {
+                $(".menu-option").removeClass("selected");
+                $("#options").hide();
+                $("#compensation").show();
+            }
         });
+
+
     </script>
 }

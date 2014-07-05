@@ -313,6 +313,7 @@
     <Content Include="Content\Images\Home\Index\pacman1.jpg" />
     <Content Include="Content\Images\Home\Index\pacman2.jpg" />
     <Content Include="Content\Images\Home\Layout\delivery.png" />
+    <Content Include="Content\Images\Home\Layout\panel_header_big.png" />
     <Content Include="Content\Images\Home\Layout\payment.png" />
     <Content Include="Content\Images\Home\Nutritions\acai.jpg" />
     <Content Include="Content\Images\Home\Nutritions\ultimac.jpg" />
@@ -343,6 +344,33 @@
     <Content Include="Content\Images\Home\Products\grapeseed.jpg" />
     <Content Include="Content\Images\Home\Products\icare.jpg" />
     <Content Include="Content\Images\Home\Products\banner_lalumiere.jpg" />
+    <Content Include="Content\Images\Home\Products\large_agic.jpg" />
+    <Content Include="Content\Images\Home\Products\large_agnet.jpg" />
+    <Content Include="Content\Images\Home\Products\large_anaka.jpg" />
+    <Content Include="Content\Images\Home\Products\large_appuccino.jpg" />
+    <Content Include="Content\Images\Home\Products\large_atura.jpg" />
+    <Content Include="Content\Images\Home\Products\large_aundry.jpg" />
+    <Content Include="Content\Images\Home\Products\large_bcream.jpg" />
+    <Content Include="Content\Images\Home\Products\large_cai.jpg" />
+    <Content Include="Content\Images\Home\Products\large_calar.jpg" />
+    <Content Include="Content\Images\Home\Products\large_care.jpg" />
+    <Content Include="Content\Images\Home\Products\large_choco.jpg" />
+    <Content Include="Content\Images\Home\Products\large_coffee81.jpg" />
+    <Content Include="Content\Images\Home\Products\large_corn.jpg" />
+    <Content Include="Content\Images\Home\Products\large_dvance.jpg" />
+    <Content Include="Content\Images\Home\Products\large_heat.jpg" />
+    <Content Include="Content\Images\Home\Products\large_irgin.jpg" />
+    <Content Include="Content\Images\Home\Products\large_ish.jpg" />
+    <Content Include="Content\Images\Home\Products\large_lalumiere.jpg" />
+    <Content Include="Content\Images\Home\Products\large_ltimac.jpg" />
+    <Content Include="Content\Images\Home\Products\large_lutacapsule.jpg" />
+    <Content Include="Content\Images\Home\Products\large_lutalotion.jpg" />
+    <Content Include="Content\Images\Home\Products\large_lutasoap.jpg" />
+    <Content Include="Content\Images\Home\Products\large_odyworks.jpg" />
+    <Content Include="Content\Images\Home\Products\large_ojic.jpg" />
+    <Content Include="Content\Images\Home\Products\large_prime.jpg" />
+    <Content Include="Content\Images\Home\Products\large_rape.jpg" />
+    <Content Include="Content\Images\Home\Products\large_rypt.jpg" />
     <Content Include="Content\Images\Home\Products\mini_acai.jpg" />
     <Content Include="Content\Images\Home\Products\mini_advance.jpg" />
     <Content Include="Content\Images\Home\Products\mini_bbcream.jpg" />
@@ -568,6 +596,9 @@
     <Content Include="Views\Home\Expired.cshtml" />
     <Content Include="Views\Home\Announcements.cshtml" />
     <Content Include="Views\Home\Announcement.cshtml" />
+    <Content Include="Views\Home\Opportunities.cshtml" />
+    <Content Include="Views\Home\LocalPlan.cshtml" />
+    <Content Include="Views\Home\InternationalPlan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

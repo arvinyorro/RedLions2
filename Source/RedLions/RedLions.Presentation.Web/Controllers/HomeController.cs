@@ -135,7 +135,7 @@
         {
             return View("UnderConstruction");
         }
-
+              
         [Route("LocalBusiness/{referrerUsername?}")]
         public ViewResult LocalBusiness()
         {
@@ -148,11 +148,6 @@
             return View();
         }
 
-        [Route("LocalPackages/{referrerUsername?}")]
-        public ViewResult LocalPackages()
-        {
-            return View();
-        }
 
         [Route("Dubai/{referrerUsername?}")]
         public ViewResult Dubai()
@@ -417,6 +412,43 @@
             return View();
         }
 
+        [Route("LocalPlan/{referrerUsername?}")]
+        public ViewResult LocalPlan()
+        {
+            var localItems = new List<SelectListItem>();
+            localItems.Add(new SelectListItem()
+            {
+                Value = "1",
+                Text = "Luzon",
+            });
+
+            localItems.Add(new SelectListItem()
+            {
+                Value = "2",
+                Text = "Visayas",
+            });
+
+            localItems.Add(new SelectListItem()
+            {
+                Value = "3",
+                Text = "Mindanao",
+            });
+
+
+            var viewModel = new ViewModels.Membership()
+            {
+                LocalItems = localItems,
+            };
+
+            return View(viewModel);
+        }
+
+        [Route("InternationalPlan/{referrerUsername?}")]
+        public ViewResult InternationalPlan()
+        {
+            return View();
+        }
+
         [Route("Announcements/{page:int}/{referrerUsername?}")]
         public ViewResult Announcements(int page)
         {
@@ -447,5 +479,20 @@
 
             return View(announcement);
         }
+
+        [Route("Opportunities/{referrerUsername?}")]
+        public ViewResult Opportunities()
+        {
+            return View();
+        }
+        
+        [Route("LocalPackages/{id:int}/{referrerUsername?}")]
+        public ViewResult LocalPackages(int id)
+        {
+            ViewBag.SelectedID = id;
+            return View();
+        }
+
+
     }
 }

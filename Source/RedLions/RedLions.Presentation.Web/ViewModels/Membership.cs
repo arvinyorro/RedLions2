@@ -15,7 +15,7 @@
         [Display(Name = "Location")]
         public ICollection<SelectListItem> LocationItems { get; set; }
 
-        [Display(Name = "Island")]
+        [Display(Name = "Location")]
         public ICollection<SelectListItem> LocalItems { get; set; }
     }
 }

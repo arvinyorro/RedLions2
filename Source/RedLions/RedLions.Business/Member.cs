@@ -58,6 +58,8 @@
             }
         }
 
+        public int Points { get; private set; }
+
         /// <remarks>
         /// Must be optional because the very first member has no referrer.
         /// </remarks>
@@ -71,6 +73,8 @@
 
         public virtual ICollection<Member> Referrals { get; private set; }
 
+        public virtual ICollection<MemberPointsLog> MemberPointsLogs { get; private set; }
+
         public IEnumerable<Member> GetPagedReferrals(int pageIndex, int pageSize)
         {
             // Why did I did this again?
@@ -82,6 +86,15 @@
         {
             this.SubscriptionExpirationDateTime = this.SubscriptionExpirationDateTime.AddMonths(subscription.Months);
             this.Subscription = subscription;
+        }
+
+        public void AddPoints(User adminUser, int points)
+        {
+            var memberPointsLog = new MemberPointsLog(adminUser, this, points);
+            this.MemberPointsLogs.Add(memberPointsLog);
+
+            // Update total points.
+            this.Points = this.MemberPointsLogs.Select(x => x.Points).Sum();
         }
     }
 }

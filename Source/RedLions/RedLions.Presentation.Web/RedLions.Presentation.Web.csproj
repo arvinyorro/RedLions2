@@ -238,6 +238,7 @@
     <Compile Include="ViewModels\EditMember.cs" />
     <Compile Include="ViewModels\MemberMessagesViewModel.cs" />
     <Compile Include="ViewModels\Membership.cs" />
+    <Compile Include="Areas\Admin\ViewModels\MemberUpdatePoints.cs" />
     <Compile Include="ViewModels\PublicAnnouncement.cs" />
     <Compile Include="ViewModels\UpdateSubscription.cs" />
   </ItemGroup>
@@ -474,6 +475,7 @@
     <Content Include="Areas\Admin\Views\Announcements\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Announcements\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Announcements\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Members\Points.cshtml" />
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion Local.pubxml" />
     <Content Include="Scripts\Custom\inquiry.chat.js" />

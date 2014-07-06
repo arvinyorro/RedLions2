@@ -28,6 +28,8 @@
                 .IsRequired()
                 .HasColumnType("datetime");
 
+            this.Property(t => t.Points);
+
             // Navigational Models
             this.HasOptional(t => t.Referrer)
                 .WithMany(t => t.Referrals)
@@ -44,6 +46,9 @@
             this.HasRequired(t => t.Subscription)
                 .WithMany()
                 .Map(m => m.MapKey("subscription_id"));
+
+            this.HasMany(t => t.MemberPointsLogs)
+                .WithRequired(t => t.Member);
             
             // Column and Table Mappings
             this.ToTable("member_details");
@@ -52,6 +57,7 @@
             this.Property(t => t.CellphoneNumber).HasColumnName("cellphone_number");
             this.Property(t => t.UnoID).HasColumnName("uno_id");
             this.Property(t => t.SubscriptionExpirationDateTime).HasColumnName("datetime_subscription_expiration");
+            this.Property(t => t.Points).HasColumnName("points");
         }
     }
 }

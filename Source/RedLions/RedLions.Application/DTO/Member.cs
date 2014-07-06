@@ -18,6 +18,7 @@
         public Subscription Subscription { get; set; }
         public bool SubscriptionExpired { get; set; }
         public Country Country { get; set; }
+        public int Points { get; set; }
     }
 
     internal static class MemberAssembler
@@ -46,6 +47,7 @@
                 Country = member.Country.ToDTO(),
                 Subscription = member.Subscription.ToDTO(),
                 SubscriptionExpired = member.SubscriptionExpired,
+                Points = member.Points,
             };
 
             if (member.Referrer != null)

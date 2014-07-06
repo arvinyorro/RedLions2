@@ -63,6 +63,7 @@
     <Compile Include="Mapping\InquiryChatSessionMap.cs" />
     <Compile Include="Mapping\InquiryMap.cs" />
     <Compile Include="Mapping\MemberMap.cs" />
+    <Compile Include="Mapping\MemberPointsLogMap.cs" />
     <Compile Include="Mapping\SubscriptionMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="MemberRepository.cs" />

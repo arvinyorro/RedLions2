@@ -1,0 +1,39 @@
+﻿@model RedLions.Presentation.Web.Areas.Admin.ViewModels.MemberUpdatePoints
+
+@{
+    ViewBag.Title = "Reset Password";
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Add/Subtract Points</legend>
+
+        <p>Input a negative value to subtract points.</p>
+
+        @Html.HiddenFor(model => model.MemberUserID)
+
+        @Html.LabelFor(model => model.Points)
+        <div class="input-control text" data-role="input-control">
+            @Html.TextBoxFor(model => model.Points)
+            <button class="btn-clear" tabindex="-1"></button>
+        </div>
+        @Html.ValidationMessageFor(model => model.Points)
+
+        <div class="input-control">
+            <input type="submit" class="primary" value="Submit" />
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to account Summary", "Details", new { id = Model.MemberUserID })
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

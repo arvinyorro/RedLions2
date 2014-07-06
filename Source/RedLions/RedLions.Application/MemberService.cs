@@ -257,6 +257,28 @@
             return statusCode;
         }
 
+        public void UpdatePoints(int adminUserID, int memberUserID, int points)
+        {
+            // Get and verify adminUserID
+            Business.User adminUser = this.userRepository.GetUserByID(adminUserID);
+            if (adminUserID == null)
+            {
+                throw new Exception("Unable to update points, admin's user ID was not found.");
+            }
+
+            // Retrieve and verify memberUserID
+            Business.Member member = this.memberRepository.GetMemberByID(memberUserID);
+            if (member == null)
+            {
+                throw new Exception("Unable to update points, member's user ID was not found.");
+            }
+
+            // Update points
+            member.AddPoints(adminUser, points);
+
+            this.unitOfWork.Commit();
+        }
+
         private StatusCode Validate(DTO.Member memberDTO)
         {
             if (memberDTO == null)

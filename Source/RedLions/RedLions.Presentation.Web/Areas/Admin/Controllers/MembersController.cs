@@ -19,6 +19,9 @@
     public class MembersController : Controller
     {
         [Dependency]
+        public UserService UserService { get; set; }
+
+        [Dependency]
         public MemberService MemberService { get; set; }
 
         [Dependency]
@@ -199,7 +202,7 @@
                 return View(member);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Details");
         }
 
         public ViewResult ResetPassword(int id)
@@ -243,6 +246,60 @@
             ViewBag.UserID = userID;
             return View("SubscriptionConfirmed");
         }
+
+        public ViewResult Points(int id)
+        {
+            var viewModel = new ViewModels.MemberUpdatePoints()
+            {
+                MemberUserID = id,
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Points(ViewModels.MemberUpdatePoints memberUpdatePoints)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(memberUpdatePoints);
+            }
+            DTO.User adminDTO = this.UserService.GetUserByUsername(User.Identity.Name);
+
+            this.MemberService.UpdatePoints(adminDTO.ID, 
+                memberUpdatePoints.MemberUserID, 
+                memberUpdatePoints.Points);
+
+            return RedirectToAction("Details", new { id = memberUpdatePoints.MemberUserID });
+        }
+
+        public ViewResult Activation(int id)
+        {
+            DTO.Member memberDTO = this.MemberService.GetMemberByID(id);
+
+            ViewBag.Deactivated = memberDTO.Deactivated;
+            ViewBag.UserID = id;
+            return View();
+        }
+
+        [HttpPost, ActionName("Activation")]
+        public ActionResult ToggleActivation(int userID)
+        {
+            DTO.Member memberDTO = this.MemberService.GetMemberByID(userID);
+
+            if (memberDTO.Deactivated)
+            {
+                this.MemberService.Activate(userID);
+            }
+            else
+            {
+                this.MemberService.Deactivate(userID);
+            }
+            
+
+            return RedirectToAction("Details", new { id = userID });
+        }
+
         
         private void AddError(StatusCode statusCode)
         {

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Deactivate/Activate Account";
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Deactivate/Activate Account</legend>
+
+        @Html.Hidden("UserID", (int)ViewBag.UserID)
+
+        
+        <div class="input-control">
+            <input type="submit" class="primary" value="@(ViewBag.Deactivated == true ? "Activate" : "Deactivate")" />
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to account Summary", "Details", new { id = ViewBag.UserID })
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

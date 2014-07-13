@@ -33,6 +33,7 @@
             this.SubscriptionStatus = memberDTO.SubscriptionExpired == true ? "Expired" : "Active";
             this.Country = new Models.Country(memberDTO.Country);
             this.Points = memberDTO.Points;
+            this.Deactivated = memberDTO.Deactivated;
         }
 
         public Member()
@@ -81,5 +82,8 @@
 
         [Display(Name = "Points")]
         public int Points { get; set; }
+
+        [Display(Name = "Deactivated")]
+        public bool Deactivated { get; set; }
     }
 }

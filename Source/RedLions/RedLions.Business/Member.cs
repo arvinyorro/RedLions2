@@ -32,7 +32,8 @@
             this.Country = country;
             this.UnoID = unoID;
             this.Subscription = subscription;
-            this.SubscriptionExpirationDateTime = DateTime.Now.AddMonths(subscription.Months);
+            this.SubscriptionExpirationDateTime = SystemTime.Now.AddMonths(subscription.Months);
+            this.Deactivated = false;
         }
 
         protected Member()
@@ -41,10 +42,13 @@
         }      
         
         public int MemberID { get; private set; }
+
         public string ReferralCode { get; private set; }
+
         public string CellphoneNumber { get; set; }
+
         public string UnoID { get; set; }
-        public DateTime SubscriptionExpirationDateTime { get; set; }
+
         public bool SubscriptionExpired
         {
             get
@@ -59,6 +63,12 @@
         }
 
         public int Points { get; private set; }
+
+        public bool Deactivated { get; private set; }
+
+        public DateTime? DeactivatedDateTime { get; set; }
+
+        public DateTime SubscriptionExpirationDateTime { get; set; }
 
         /// <remarks>
         /// Must be optional because the very first member has no referrer.
@@ -95,6 +105,19 @@
 
             // Update total points.
             this.Points = this.MemberPointsLogs.Select(x => x.Points).Sum();
+        }
+
+        public void Activate()
+        {
+            TimeSpan remainingSubscription = this.SubscriptionExpirationDateTime.Subtract(this.DeactivatedDateTime.Value);
+            this.SubscriptionExpirationDateTime = SystemTime.Now.Add(remainingSubscription);
+            this.Deactivated = false;
+        }
+
+        public void Deactivate()
+        {
+            this.DeactivatedDateTime = SystemTime.Now;
+            this.Deactivated = true;
         }
     }
 }

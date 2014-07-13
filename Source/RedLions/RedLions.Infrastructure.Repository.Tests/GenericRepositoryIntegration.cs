@@ -1,6 +1,4 @@
-﻿
-
-namespace RedLions.Infrastructure.Repository.Tests
+﻿namespace RedLions.Infrastructure.Repository.Tests
 {
     using System;
     using System.Collections.Generic;
@@ -72,6 +70,12 @@ namespace RedLions.Infrastructure.Repository.Tests
         public void GetAllAnnouncements()
         {
             IEnumerable<Announcement> announcements = this.context.Announcements.ToList();
+        }
+
+        [TestMethod]
+        public void GetAllMemberPointsLogs()
+        {
+            IEnumerable<MemberPointsLog> memberPointsLogs = this.context.MemberPointsLogs.ToList();
         }
     }
 }

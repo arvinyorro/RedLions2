@@ -279,6 +279,30 @@
             this.unitOfWork.Commit();
         }
 
+        public void Deactivate(int userID)
+        {
+            Business.Member member = this.memberRepository.GetMemberByID(userID);
+            if (member == null)
+            {
+                throw new Exception("Unable to deactivate account, the user was not found.");
+            }
+
+            member.Deactivate();
+            this.unitOfWork.Commit();
+        }
+
+        public void Activate(int userID)
+        {
+            Business.Member member = this.memberRepository.GetMemberByID(userID);
+            if (member == null)
+            {
+                throw new Exception("Unable to deactivate account, the user was not found.");
+            }
+
+            member.Activate();
+            this.unitOfWork.Commit();
+        }
+
         private StatusCode Validate(DTO.Member memberDTO)
         {
             if (memberDTO == null)

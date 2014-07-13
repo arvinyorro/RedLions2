@@ -24,11 +24,18 @@
                 .IsRequired()
                 .HasMaxLength(50);
 
+            this.Property(t => t.Points);
+
+            this.Property(t => t.Deactivated)
+                .HasColumnType("bit");
+
             this.Property(t => t.SubscriptionExpirationDateTime)
                 .IsRequired()
                 .HasColumnType("datetime");
 
-            this.Property(t => t.Points);
+            this.Property(t => t.DeactivatedDateTime)
+                .IsOptional()
+                .HasColumnType("datetime");
 
             // Navigational Models
             this.HasOptional(t => t.Referrer)
@@ -56,8 +63,10 @@
             this.Property(t => t.ReferralCode).HasColumnName("referral_code");
             this.Property(t => t.CellphoneNumber).HasColumnName("cellphone_number");
             this.Property(t => t.UnoID).HasColumnName("uno_id");
-            this.Property(t => t.SubscriptionExpirationDateTime).HasColumnName("datetime_subscription_expiration");
             this.Property(t => t.Points).HasColumnName("points");
+            this.Property(t => t.Deactivated).HasColumnName("is_deactivated");
+            this.Property(t => t.SubscriptionExpirationDateTime).HasColumnName("datetime_subscription_expiration");
+            this.Property(t => t.DeactivatedDateTime).HasColumnName("datetime_deactivated");
         }
     }
 }

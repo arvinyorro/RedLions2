@@ -476,6 +476,7 @@
     <Content Include="Areas\Admin\Views\Announcements\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Announcements\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Points.cshtml" />
+    <Content Include="Areas\Admin\Views\Members\Activation.cshtml" />
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion Local.pubxml" />
     <Content Include="Scripts\Custom\inquiry.chat.js" />

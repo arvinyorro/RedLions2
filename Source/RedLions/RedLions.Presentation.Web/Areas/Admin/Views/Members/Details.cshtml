@@ -11,12 +11,13 @@
 
 
 <div class="panel transparent span7">
+
     @Html.HiddenFor(model => model.ID)
 
+    <!-- Header -->
     <div class="panel-header bg-transparent">
         Account Summary
     </div>
-        
 
     <!-- Navigation -->
     <div class="panel transparent span7">
@@ -25,6 +26,7 @@
         </div>
     </div>
 
+    <!-- Summary -->
     <div class="panel-content">
 
         <strong>Details</strong>
@@ -62,11 +64,10 @@
     <div class="panel transparent span7">
         <div class="panel-content">
 
-            <p><strong>Password</strong></p>
+            <p><strong>Security</strong></p>
             <p><small>@Html.ActionLink("Reset password", "ResetPassword", new { id = Model.ID })</small></p>
         </div>
     </div>
-
 
     <!-- Subscription -->
     <div class="panel transparent span7">
@@ -87,6 +88,38 @@
             </dl>
 
             <p><small>@Html.ActionLink("Update subscription plan", "Subscription", new { id = Model.ID })</small></p>
+        </div>
+    </div>
+
+    <!-- User Points -->
+    <div class="panel transparent span7">
+        <div class="panel-content">
+
+            <p><strong>User Points</strong></p>
+
+            <dl class="horizontal member-details">
+                <!-- Points -->
+                <dt>@Html.DisplayNameFor(model => model.Points)</dt>
+                <dd>@Html.DisplayFor(model => model.Points)</dd>
+            </dl>
+
+            <p><small>@Html.ActionLink("Update user points", "Points", new { id = Model.ID })</small></p>
+        </div>
+    </div>
+
+    <!-- Deactivation -->
+    <div class="panel transparent span7">
+        <div class="panel-content">
+
+            <p><strong>Activation Status</strong></p>
+
+            <dl class="horizontal member-details">
+                <!-- Points -->
+                <dt>@Html.DisplayNameFor(model => model.Deactivated)</dt>
+                <dd>@(ViewBag.Deactivated == true ? "No" : "Yes")</dd>
+            </dl>
+
+            <p><small>@Html.ActionLink("Deactivate/Activate account", "Activation", new { id = Model.ID })</small></p>
         </div>
     </div>
     

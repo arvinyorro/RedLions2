@@ -1,0 +1,93 @@
+﻿namespace RedLions.Business
+{
+    using System;
+    using System.Linq;
+    using RedLions.CrossCutting;
+
+    public class Payment
+    {
+        public Payment(
+            PaymentType paymentType,
+            string firstName,
+            string lastName,
+            int age,
+            string gender,
+            string paymentMethod,
+            IPaymentRepository paymentRepository)
+        {
+            this.Type = paymentType;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Age = age;
+            this.Gender = gender;
+            this.PaymentMethod = paymentMethod;
+            this.CreatedDateTime = SystemTime.Now;
+            this.PublicID = this.GeneratePublicID(paymentRepository);
+        }
+
+        protected Payment()
+        {
+            // Required by EF.
+        }
+
+        public int ID { get; private set; }
+        public int PaymentTypeID { get; private set; }
+        public PaymentType Type
+        {
+            get
+            {
+                switch (this.PaymentTypeID)
+                {
+                    case 1:
+                        return PaymentType.Cash;
+                    case 2:
+                        return PaymentType.PayPal;
+                    default:
+                        throw new Exception("Unknown payment type ID");
+                }
+            }
+
+            private set
+            {
+                switch (value)
+                {
+                    case PaymentType.Cash:
+                        this.PaymentTypeID = 1;
+                        break;
+                    case PaymentType.PayPal:
+                        this.PaymentTypeID = 2;
+                        break;
+                    default:
+                        throw new Exception("Unknown payment type");
+                }
+            }
+        }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public int Age { get; private set; }
+        public string Gender { get; private set; }
+        public string PaymentMethod { get; private set; }
+        public string PublicID { get; private set; }
+        public string ReferenceNumber { get; private set; }
+        public DateTime CreatedDateTime { get; private set; }
+
+        private string GeneratePublicID(IPaymentRepository paymentRepository)
+        {
+            int publicIDLength = 50;
+            var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var random = new Random();
+            string publicID = string.Empty;
+
+            do
+            {
+                publicID = new string(
+                    Enumerable.Repeat(characters, publicIDLength)
+                              .Select(s => s[random.Next(s.Length)])
+                              .ToArray());
+            }
+            while (paymentRepository.GetByPublicID(publicID) != null);
+
+            return publicID;
+        }
+    }
+}

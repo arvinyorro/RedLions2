@@ -60,21 +60,21 @@
             return Mapper.Map<IEnumerable<DTO.Announcement>>(announcements);
         }
 
-        public void PostAnnouncement(DTO.Announcement announcementDTO)
+        public void PostAnnouncement(DTO.Announcement announcementDto)
         {
-            var poster = this.userRepository.GetUserByID(announcementDTO.Poster.ID);
-            var announcement = new Business.Announcement(announcementDTO.Title, announcementDTO.Message, poster);
+            var poster = this.userRepository.GetUserByID(announcementDto.Poster.ID);
+            var announcement = new Business.Announcement(announcementDto.Title, announcementDto.Message, poster);
 
             this.announcementRepository.Create(announcement);
             this.unitOfWork.Commit();
         }
 
-        public void UpdateAnnouncement(DTO.Announcement announcementDTO)
+        public void UpdateAnnouncement(DTO.Announcement announcementDto)
         {
-            Business.Announcement announcement = this.announcementRepository.GetByID(announcementDTO.ID);
+            Business.Announcement announcement = this.announcementRepository.GetByID(announcementDto.ID);
 
-            announcement.Title = announcementDTO.Title;
-            announcement.Message = announcementDTO.Message;
+            announcement.Title = announcementDto.Title;
+            announcement.Message = announcementDto.Message;
 
             this.announcementRepository.Update(announcement);
             this.unitOfWork.Commit();

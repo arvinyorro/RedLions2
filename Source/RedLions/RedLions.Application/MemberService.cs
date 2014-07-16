@@ -261,7 +261,7 @@
         {
             // Get and verify adminUserID
             Business.User adminUser = this.userRepository.GetUserByID(adminUserID);
-            if (adminUserID == null)
+            if (adminUser == null)
             {
                 throw new Exception("Unable to update points, admin's user ID was not found.");
             }

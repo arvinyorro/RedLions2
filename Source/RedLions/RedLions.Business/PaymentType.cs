@@ -1,6 +1,6 @@
 ﻿namespace RedLions.Business
 {
-    internal enum PaymentType
+    public enum PaymentType
     {
         Cash,
         PayPal

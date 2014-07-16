@@ -6,13 +6,20 @@
 
     public class Payment
     {
+        protected Payment()
+        {
+            // Required by EF.
+        }
+
         public Payment(
             PaymentType paymentType,
+            string email,
             string firstName,
             string lastName,
             int age,
             string gender,
             string paymentMethod,
+            
             IPaymentRepository paymentRepository)
         {
             this.Type = paymentType;
@@ -23,11 +30,6 @@
             this.PaymentMethod = paymentMethod;
             this.CreatedDateTime = SystemTime.Now;
             this.PublicID = this.GeneratePublicID(paymentRepository);
-        }
-
-        protected Payment()
-        {
-            // Required by EF.
         }
 
         public int ID { get; private set; }
@@ -62,6 +64,7 @@
                 }
             }
         }
+        public string Email { get; private set; }
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public int Age { get; private set; }
@@ -70,6 +73,11 @@
         public string PublicID { get; private set; }
         public string ReferenceNumber { get; private set; }
         public DateTime CreatedDateTime { get; private set; }
+
+        public void Confirm(string referenceNumber)
+        {
+            this.ReferenceNumber = referenceNumber;
+        }
 
         private string GeneratePublicID(IPaymentRepository paymentRepository)
         {

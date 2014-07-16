@@ -77,5 +77,11 @@
         {
             IEnumerable<MemberPointsLog> memberPointsLogs = this.context.MemberPointsLogs.ToList();
         }
+
+        [TestMethod]
+        public void GetAllPayments()
+        {
+            IEnumerable<Payment> payments = this.context.Payments.ToList();
+        }
     }
 }

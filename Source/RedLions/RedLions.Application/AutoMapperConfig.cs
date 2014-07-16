@@ -41,6 +41,7 @@
             Mapper.CreateMap<Business.Subscription, DTO.Subscription>();
             Mapper.CreateMap<Business.Announcement, DTO.Announcement>();
             Mapper.CreateMap<Business.User, DTO.User>();
+            Mapper.CreateMap<Business.Payment, DTO.Payment>();
         }
     }
 }

@@ -25,6 +25,10 @@
                 .IsRequired()
                 .HasMaxLength(100);
 
+            this.Property(t => t.MiddleName)
+                .IsOptional()
+                .HasMaxLength(100);
+
             this.Property(t => t.LastName)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -41,6 +45,14 @@
                 .IsRequired()
                 .HasMaxLength(50);
 
+            this.Property(t => t.MobileNumber)
+                .IsRequired()
+                .HasMaxLength(20);
+
+            this.Property(t => t.Address)
+                .IsRequired()
+                .HasMaxLength(300);
+
             this.Property(t => t.PublicID)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -53,7 +65,16 @@
                 .IsRequired()
                 .HasColumnType("datetime");
 
+            this.Property(t => t.BirthDate)
+                .IsRequired()
+                .HasColumnType("datetime");
+
             this.Ignore(t => t.Type);
+
+            // Navigational Models
+            this.HasRequired(t => t.Referrer)
+                .WithMany()
+                .Map(m => m.MapKey("referrer_user_id"));
 
             // Column and Table Mappings
             this.ToTable("payments");
@@ -61,13 +82,17 @@
             this.Property(t => t.PaymentTypeID).HasColumnName("payment_type_id");
             this.Property(t => t.Email).HasColumnName("email");
             this.Property(t => t.FirstName).HasColumnName("first_name");
+            this.Property(t => t.MiddleName).HasColumnName("middle_name");
             this.Property(t => t.LastName).HasColumnName("last_name");
             this.Property(t => t.Age).HasColumnName("age");
             this.Property(t => t.Gender).HasColumnName("gender");
             this.Property(t => t.PaymentMethod).HasColumnName("payment_method");
+            this.Property(t => t.MobileNumber).HasColumnName("mobile_number");
+            this.Property(t => t.Address).HasColumnName("address");
             this.Property(t => t.PublicID).HasColumnName("public_id");
             this.Property(t => t.ReferenceNumber).HasColumnName("reference_number");
             this.Property(t => t.CreatedDateTime).HasColumnName("datetime_created");
+            this.Property(t => t.BirthDate).HasColumnName("date_birth");
         }
     }
 }

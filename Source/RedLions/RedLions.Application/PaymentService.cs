@@ -13,15 +13,18 @@
     {
         private IUnitOfWork unitOfWork;
         private IPaymentRepository paymentRepository;
+        private IMemberRepository memberRepository;
         private IMailClient mailClient;
 
         public PaymentService(
             IUnitOfWork unitOfWork,
             IPaymentRepository paymentRepository,
+            IMemberRepository memberRepository,
             IMailClient mailClient)
         {
             this.unitOfWork = unitOfWork;
             this.paymentRepository = paymentRepository;
+            this.memberRepository = memberRepository;
             this.mailClient = mailClient;
         }
 
@@ -69,14 +72,21 @@
             PaymentType paymentType = paymentDto.PaymentTypeID == 1 ? 
                 PaymentType.Cash : PaymentType.PayPal;
 
+            Business.Member referrer = this.memberRepository.GetMemberByID(paymentDto.ReferrerUserID);
+
             var payment = new Business.Payment(
                 paymentType: paymentType,
                 email: paymentDto.Email,
                 firstName: paymentDto.FirstName,
+                middleName: paymentDto.MiddleName,
                 lastName: paymentDto.LastName,
                 age: paymentDto.Age,
                 gender: paymentDto.Gender,
                 paymentMethod: paymentDto.PaymentMethod,
+                mobileNumber: paymentDto.MobileNumber,
+                address: paymentDto.Address,
+                birthDate: paymentDto.BirthDate,
+                referrer: referrer,
                 paymentRepository: this.paymentRepository);
 
             this.paymentRepository.Create(payment);

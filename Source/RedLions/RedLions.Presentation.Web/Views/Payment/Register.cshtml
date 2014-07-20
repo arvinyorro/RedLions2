@@ -1,4 +1,4 @@
-﻿@model RedLions.Presentation.Web.Models.Payment
+﻿@model RedLions.Presentation.Web.ViewModels.CreatePayment
 
 @{
     ViewBag.Title = "Payment";
@@ -16,64 +16,111 @@
                 <fieldset>
                     <legend>Payment</legend>
 
-                    @Html.HiddenFor(model => model.PaymentTypeID)
-                    @Html.HiddenFor(model => model.PayPalID)
+                    @Html.HiddenFor(model => model.Payment.PaymentTypeID)
+                    @Html.HiddenFor(model => model.Payment.PayPalID)
+                    @Html.HiddenFor(model => model.Payment.ReferrerUserID)
 
                     <!-- Email -->
-                    @Html.LabelFor(model => model.Email)
+                    @Html.LabelFor(model => model.Payment.Email)
                     <div class="input-control text" data-role="input-control">
-                        @Html.TextBoxFor(model => model.Email, new { placeholder = "Email" })
+                        @Html.TextBoxFor(model => model.Payment.Email, new { placeholder = "Email" })
                         <button class="btn-clear" tabindex="-1"></button>
                     </div>
-                    @Html.ValidationMessageFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Payment.Email)
 
                     <!-- First name -->
-                    @Html.LabelFor(model => model.FirstName)
+                    @Html.LabelFor(model => model.Payment.FirstName)
                     <div class="input-control text" data-role="input-control">
-                        @Html.TextBoxFor(model => model.FirstName, new { placeholder = "FirstName" })
+                        @Html.TextBoxFor(model => model.Payment.FirstName, new { placeholder = "FirstName" })
                         <button class="btn-clear" tabindex="-1"></button>
                     </div>
-                    @Html.ValidationMessageFor(model => model.FirstName)
+                    @Html.ValidationMessageFor(model => model.Payment.FirstName)
+
+                    <!-- MiddleName -->
+                    @Html.LabelFor(model => model.Payment.MiddleName)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.Payment.MiddleName, new { placeholder = "MiddleName" })
+                        <button class="btn-clear" tabindex="-1"></button>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Payment.MiddleName)
 
                     <!-- LastName -->
-                    @Html.LabelFor(model => model.LastName)
+                    @Html.LabelFor(model => model.Payment.LastName)
                     <div class="input-control text" data-role="input-control">
-                        @Html.TextBoxFor(model => model.LastName, new { placeholder = "LastName" })
+                        @Html.TextBoxFor(model => model.Payment.LastName, new { placeholder = "LastName" })
                         <button class="btn-clear" tabindex="-1"></button>
                     </div>
-                    @Html.ValidationMessageFor(model => model.LastName)
+                    @Html.ValidationMessageFor(model => model.Payment.LastName)
 
                     <!-- Age -->
-                    @Html.LabelFor(model => model.Age)
+                    @Html.LabelFor(model => model.Payment.Age)
                     <div class="input-control text" data-role="input-control">
-                        @Html.EditorFor(model => model.Age)
+                        @Html.EditorFor(model => model.Payment.Age)
                         <button class="btn-clear" tabindex="-1"></button>
                     </div>
-                    @Html.ValidationMessageFor(model => model.Age)
+                    @Html.ValidationMessageFor(model => model.Payment.Age)
+
+                    <!-- Birthday -->
+                    @Html.LabelFor(model => model.Payment.BirthDate)
+                    <div class="input-control select size2" data-role="input-control">
+                        @Html.DropDownListFor(model => model.BirthDay, Model.BirthDayList)
+                    </div>
+                    <div class="input-control select size2" data-role="input-control">
+                        @Html.DropDownListFor(model => model.BirthMonth, Model.BirthMonthList)
+                    </div>
+                    <div class="input-control select size2" data-role="input-control">
+                        @Html.DropDownListFor(model => model.BirthYear, Model.BirthYearList)
+                    </div>
 
                     <!-- Gender -->
-                    @Html.LabelFor(model => model.Gender)
+                    @Html.LabelFor(model => model.Payment.Gender)
                     <div class="input-control select" data-role="input-control">
-                        @Html.DropDownListFor(model => model.Gender, (SelectList)ViewBag.GenderList)
+                        @Html.DropDownListFor(model => model.Payment.Gender, Model.GenderList)
                     </div>
-                    @Html.ValidationMessageFor(model => model.Gender)
+                    @Html.ValidationMessageFor(model => model.Payment.Gender)
+
+                    <!-- Mobile -->
+                    @Html.LabelFor(model => model.Payment.MobileNumber)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.Payment.MobileNumber)
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Payment.MobileNumber)
+
+                    <!-- Address -->
+                    @Html.LabelFor(model => model.Payment.Address)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.Payment.Address)
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Payment.Address)
 
                     <!-- PaymentMethod -->
-                    @if (Model.PaymentTypeID == 1)
+                    @if (Model.Payment.PaymentTypeID == 1)
                     {
                         <!-- If Cash -->
-                        @Html.LabelFor(model => model.PaymentMethod)
+                        @Html.LabelFor(model => model.Payment.PaymentMethod)
                         <div class="input-control select" data-role="input-control">
-                            @Html.DropDownListFor(model => model.PaymentMethod,
-                            (SelectList)ViewBag.PaymentMethodList)
+                            @Html.DropDownListFor(model => model.Payment.PaymentMethod,
+                            Model.PaymentMethodList)
                         </div>
-                        @Html.ValidationMessageFor(model => model.PaymentMethod)
+                        @Html.ValidationMessageFor(model => model.Payment.PaymentMethod)
                     }
                     else
                     {
                         <!-- If PayPal -->
-                        @Html.HiddenFor(model => model.PaymentMethod)
+                        @Html.HiddenFor(model => model.Payment.PaymentMethod)
                     }
+
+                    <!-- Referrer Name -->
+                    @Html.LabelFor(model => model.Payment.ReferrerName)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.Payment.ReferrerName, new { disabled = "disabled" })
+                    </div>
+
+                    <!-- Referrer UNO ID -->
+                    @Html.LabelFor(model => model.Payment.ReferrerUnoID)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.Payment.ReferrerUnoID, new { disabled = "disabled" })
+                    </div>
 
                     <div class="input-control">
                         <input type="submit" class="primary" value="Submit" />

@@ -238,6 +238,7 @@
     <Compile Include="Security\CustomMembershipProvider.cs" />
     <Compile Include="Security\CustomRoleProvider.cs" />
     <Compile Include="Areas\Admin\ViewModels\EditAnnouncement.cs" />
+    <Compile Include="ViewModels\CreatePayment.cs" />
     <Compile Include="ViewModels\EditMember.cs" />
     <Compile Include="ViewModels\MemberMessagesViewModel.cs" />
     <Compile Include="ViewModels\Membership.cs" />

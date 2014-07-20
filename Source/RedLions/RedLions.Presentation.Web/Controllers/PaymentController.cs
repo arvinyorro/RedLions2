@@ -1,5 +1,6 @@
 ﻿namespace RedLions.Presentation.Web.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Web;
     using System.Web.Mvc;
@@ -11,11 +12,14 @@
     public class PaymentController : Controller
     {
         private PaymentService paymentService;
+        private MemberService memberService;
 
         public PaymentController(
-            PaymentService paymentService)
+            PaymentService paymentService,
+            MemberService memberService)
         {
             this.paymentService = paymentService;
+            this.memberService = memberService;
         }
 
         [Route("Payment/Start/{paypalID:int}")]
@@ -44,10 +48,7 @@
 
         public ViewResult Register(int paypalID, int typeID)
         {
-            ViewBag.GenderList = this.GetGenderSelectList();
-            ViewBag.PaymentMethodList = this.GetPaymentMethodSelectList();
-
-            var paymentModel = new Models.Payment()
+            var payment = new Models.Payment()
             {
                 PaymentTypeID = typeID,
             };
@@ -55,30 +56,47 @@
             // If PayPal
             if (typeID == 2)
             {
-                paymentModel.PaymentMethod = "PayPal";
-                paymentModel.PayPalID = paypalID;
+                payment.PaymentMethod = "PayPal";
+                payment.PayPalID = paypalID;
             }
 
-            return View(paymentModel);
+            payment.AddReferrer(this.GetReferrer());
+            ViewModels.CreatePayment createPaymentViewModel = this.GetCreatePaymentViewModel(payment);
+
+            return View(createPaymentViewModel);
         }
 
         [HttpPost]
-        public ActionResult Confirm(Models.Payment payment)
+        public ActionResult Confirm(ViewModels.CreatePayment createPayment)
         {
+            Models.Payment payment = createPayment.Payment;
+
+            payment.BirthDate = this.ConvertToDate(
+                month: createPayment.BirthMonth,
+                day: createPayment.BirthDay,
+                year: createPayment.BirthYear);
+
+            if (payment.Age < 18)
+            {
+                ModelState.AddModelError("Payment.Age", "You must be 18 or above.");
+            }
+
+            // Success
             if (ModelState.IsValid)
             {
                 DTO.Payment paymentDto = Mapper.Map<DTO.Payment>(payment);
                 this.paymentService.Create(paymentDto);
 
                 string viewName = payment.PaymentTypeID == 1 ? "Confirm" : "PayPal";
-                ViewBag.PayPalID = payment.PayPalID;
+                ViewBag.PayPalID = payment.PayPalID;               
 
                 return View(viewName);
             }
 
-            ViewBag.GenderList = this.GetGenderSelectList();
-            ViewBag.PaymentMethodList = this.GetPaymentMethodSelectList();
-            return View("Register", payment);
+            // Fail
+            payment.AddReferrer(this.GetReferrer());
+            ViewModels.CreatePayment createPaymentViewModel = this.GetCreatePaymentViewModel(payment);
+            return View("Register", createPaymentViewModel);
         }
 
         [Route("Payment/Reference/{publicID}")]
@@ -108,7 +126,84 @@
             return View("ReferenceConfirm");
         }
 
-        private SelectList GetGenderSelectList()
+        private ViewModels.CreatePayment GetCreatePaymentViewModel(Models.Payment payment = null)
+        {
+            var viewModel = new ViewModels.CreatePayment()
+            {
+                Payment = payment,
+                PaymentMethodList = this.GetPaymentMethodSelectList(payment.PaymentMethod),
+                GenderList = this.GetGenderSelectList(payment.Gender),
+                BirthDayList = this.GetBirthDayList(payment.BirthDate.Day.ToString()),
+                BirthMonthList = this.GetBirthMonthList(payment.BirthDate.Month.ToString()),
+                BirthYearList = this.GetBirthYearList(payment.BirthDate.Year.ToString()),
+            };
+
+            return viewModel;
+        }
+        
+
+        private DTO.Member GetReferrer()
+        {
+            // Get Referrer
+            HttpContext httpContext = base.HttpContext.ApplicationInstance.Context;
+            HttpCookie cookie = httpContext.Request.Cookies.Get("ReferrerUsername");
+            bool referrerNotInCookie = (httpContext.Request.Cookies["ReferrerUsername"] == null);
+            if (referrerNotInCookie)
+            {
+                RedirectToAction("Index", "Home");
+            }
+            string referrerUsername = cookie.Value;
+            return this.memberService.GetMemberByUsername(referrerUsername);
+        }
+
+        private SelectList GetBirthYearList(string selectedValue = null)
+        {
+            var years = new List<SelectListItem>();
+            for (int x = DateTime.Now.Year; x >= 1920; x--)
+            {
+                years.Add(new SelectListItem()
+                {
+                    Value = x.ToString(),
+                    Text = x.ToString(),
+                });
+            }
+
+            return new SelectList(years, "Value", "Text", selectedValue);
+        }
+
+        private SelectList GetBirthMonthList(string selectedValue = null)
+        {
+            var months = new List<SelectListItem>();
+
+            for (int x = 1; x <= 12; x++ )
+            {
+                months.Add(new SelectListItem()
+                {
+                    Value = x.ToString(),
+                    Text = x.ToString(),
+                });
+            }
+
+            return new SelectList(months, "Value", "Text", selectedValue);
+        }
+
+        private SelectList GetBirthDayList(string selectedValue = null)
+        {
+            var day = new List<SelectListItem>();
+
+            for (int x = 1; x <= 31; x++)
+            {
+                day.Add(new SelectListItem()
+                {
+                    Value = x.ToString(),
+                    Text = x.ToString(),
+                });
+            }
+
+            return new SelectList(day, "Value", "Text", selectedValue);
+        }
+
+        private SelectList GetGenderSelectList(string selectedValue = null)
         {
             var gender = new List<SelectListItem>();
             gender.Add(new SelectListItem()
@@ -123,19 +218,31 @@
                 Text = "Female",
             });
 
-            return new SelectList(gender, "Value", "Text");
+            return new SelectList(gender, "Value", "Text", selectedValue);
         }
 
-        private SelectList GetPaymentMethodSelectList()
+        private SelectList GetPaymentMethodSelectList(string selectedValue = null)
         {
-            var method = new List<SelectListItem>();
-            method.Add(new SelectListItem()
-            {
-                Value = "Cebuana",
-                Text = "Cebuana",
-            });
+            var methods = new List<SelectListItem>();
 
-            return new SelectList(method, "Value", "Text");
+            methods.Add(new SelectListItem() { Value = "Cebuana Lhuiller", Text = "Cebuana Lhuiller", });
+            methods.Add(new SelectListItem() { Value = "ML Kwarta Padala", Text = "ML Kwarta Padala", });
+            methods.Add(new SelectListItem() { Value = "Western Union", Text = "Western Union", });
+            methods.Add(new SelectListItem() { Value = "Moneygram", Text = "Moneygram", });
+            methods.Add(new SelectListItem() { Value = "LBC Express Remit", Text = "LBC Express Remit", });
+            methods.Add(new SelectListItem() { Value = "JRS Pera Padala", Text = "JRS Pera Padala", });
+            methods.Add(new SelectListItem() { Value = "Cebuana Lhuiller", Text = "Cebuana Lhuiller", });
+            methods.Add(new SelectListItem() { Value = "Bank-to-Bank Deposit", Text = "Bank-to-Bank Deposit", });
+            
+            return new SelectList(methods, "Value", "Text", selectedValue);
         }
+
+        private DateTime ConvertToDate(int month, int day, int year)
+        {
+            DateTime dateTime;
+            DateTime.TryParse(String.Format("{0}-{1}-{2}", month, day, year), out dateTime);
+            return dateTime;
+        }
+
 	}
 }

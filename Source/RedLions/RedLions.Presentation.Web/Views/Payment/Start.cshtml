@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_LayoutRedLions.cshtml";
+}
+
+<div class="page" style="padding: 10px;">
+    <div class="page-region">
+        <div class="page-region-content">
+            @using (Html.BeginForm(actionName: "Register", controllerName: "Payment"))
+            {
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+                    <legend>Begin Payment</legend>
+
+                    @Html.Hidden("PayPalID", (int)ViewBag.PayPalID)
+
+                    <!-- Payment Type -->
+                    @Html.Label("Select Payment")
+                    <div class="input-control select" data-role="input-control">
+                        @Html.DropDownList("TypeID", (SelectList)ViewBag.PaymentTypes)
+                    </div>
+
+                    <div class="input-control">
+                        <button type="submit" class="primary">Next</button>
+                    </div>
+                </fieldset>
+            }
+
+        </div>
+    </div>
+</div>

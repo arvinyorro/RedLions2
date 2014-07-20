@@ -1,0 +1,38 @@
+﻿@model RedLions.Presentation.Web.ViewModels.PaymentReference
+
+@{
+    ViewBag.Title = "Reference Number";
+    Layout = "~/Views/Shared/_LayoutRedLions.cshtml";
+}
+
+<div class="page" style="padding: 10px;">
+    <div class="page-region">
+        <div class="page-region-content">
+            @using (Html.BeginForm(actionName: "ReferenceConfirm", controllerName: "Payment"))
+            {
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+                    <legend>Confirm Payment</legend>
+
+                    <p>Please input the reference number from your receipt.</p>
+
+                    @Html.HiddenFor(model => model.PaymentID)
+
+                    <!-- ReferenceNumber -->
+                   @Html.LabelFor(model => model.ReferenceNumber)
+                    <div class="input-control text" data-role="input-control">
+                        @Html.TextBoxFor(model => model.ReferenceNumber)
+                        <button class="btn-clear" tabindex="-1"></button>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.ReferenceNumber)
+
+                    <div class="input-control">
+                        <button type="submit" class="primary">Submit</button>
+                    </div>
+                </fieldset>
+            }
+
+        </div>
+    </div>
+</div>

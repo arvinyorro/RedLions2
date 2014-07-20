@@ -1,0 +1,59 @@
+﻿@model PagedList.IPagedList<RedLions.Presentation.Web.Models.Payment>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Admin - Payments";
+}
+
+@section NavigationControls
+{
+    @{ Html.RenderPartial("_PaymentsControlPartial"); }
+}
+
+<h3>Payments</h3>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().FirstName)</th>
+                <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().LastName)</th>
+                <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</th>
+                <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().PaymentMethod)</th>
+                <th class="text-left">@Html.DisplayNameFor(model => model.FirstOrDefault().CreatedDateTime)</th>
+                <th class="text-right">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PaymentMethod)</td>
+                    <td class="right">@Html.DisplayFor(modelItem => item.CreatedDateTime)</td>
+                    <td class="right text-right">
+                        <a href="@Url.Action("Details", "Payments", new { id = item.ID })" class="button default">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot></tfoot>
+
+    </table>
+</div>
+
+<!-- Pagination Info -->
+<p>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+</p>
+
+<!-- Pagination Links -->
+@Html.PagedListPager(
+    list: Model,
+    generatePageUrl: page => Url.Action("Index",
+                             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.SearchEmail, }),
+    options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })

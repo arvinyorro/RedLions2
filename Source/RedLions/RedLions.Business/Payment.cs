@@ -25,6 +25,7 @@
             this.Type = paymentType;
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.Email = email;
             this.Age = age;
             this.Gender = gender;
             this.PaymentMethod = paymentMethod;

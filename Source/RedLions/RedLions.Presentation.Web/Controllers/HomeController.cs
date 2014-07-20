@@ -38,6 +38,7 @@
             return View();
         }
 
+        [Route("Inquire/{referrerUsername?}")]
         public ViewResult Inquire(string referrerUsername = null)
         {
             return View();

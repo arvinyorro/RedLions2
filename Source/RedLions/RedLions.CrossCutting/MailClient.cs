@@ -19,14 +19,7 @@
 
         public MailClient()
         {
-            //this.host = ConfigurationManager.AppSettings["MailServer"];
-            //this.username = ConfigurationManager.AppSettings["MailUsername"];
-            //this.password = ConfigurationManager.AppSettings["MailPassword"];
 
-            //if (string.IsNullOrEmpty(this.host))
-            //{
-            //    throw new Exception("The mailServer was not found in the configuration AppSettings");
-            //}
         }
 
         public void Send(Mail message)

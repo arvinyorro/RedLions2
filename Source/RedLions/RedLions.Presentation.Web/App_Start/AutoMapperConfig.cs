@@ -54,6 +54,9 @@
 
             Mapper.CreateMap<DTO.User, Models.User>()
                 .ReverseMap();
+
+            Mapper.CreateMap<DTO.Payment, Models.Payment>()
+                .ReverseMap();
         }
     }
 }

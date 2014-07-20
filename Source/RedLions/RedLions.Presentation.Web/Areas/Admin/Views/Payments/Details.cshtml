@@ -1,0 +1,57 @@
+﻿@model RedLions.Presentation.Web.Models.Payment
+
+@{
+    ViewBag.Title = "Payment Details";
+}
+
+<div class="panel transparent span7">
+
+    @Html.HiddenFor(model => model.ID)
+
+    <!-- Header -->
+    <div class="panel-header bg-transparent">
+        Payment Summary
+    </div>
+
+    <!-- Navigation -->
+    <div class="panel transparent span7">
+        <div class="panel-content">
+            <p>@Html.ActionLink("Back to List", "Index")</p>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="panel-content">
+
+        <strong>Details</strong>
+
+        <dl class="horizontal member-details">
+            <!-- First Name -->
+            <dt>@Html.DisplayNameFor(model => model.FirstName)</dt>
+            <dd>@Html.DisplayFor(model => model.FirstName)</dd>
+            <!-- LastName -->
+            <dt>@Html.DisplayNameFor(model => model.LastName)</dt>
+            <dd>@Html.DisplayFor(model => model.LastName)</dd>
+            <!-- Email -->
+            <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+            <dd>@Html.DisplayFor(model => model.Email)</dd>
+            <!-- Age -->
+            <dt>@Html.DisplayNameFor(model => model.Age)</dt>
+            <dd>@Html.DisplayFor(model => model.Age)</dd>
+            <!-- Gender -->
+            <dt>@Html.DisplayNameFor(model => model.Gender)</dt>
+            <dd>@Html.DisplayFor(model => model.Gender)</dd>
+            <!-- Date -->
+            <dt>@Html.DisplayNameFor(model => model.CreatedDateTime)</dt>
+            <dd>@Html.DisplayFor(model => model.CreatedDateTime)</dd>
+            <!-- Payment Method -->
+            <dt>@Html.DisplayNameFor(model => model.PaymentMethod)</dt>
+            <dd>@Html.DisplayFor(model => model.PaymentMethod)</dd>
+            <!-- Reference Number -->
+            <dt>@Html.DisplayNameFor(model => model.ReferenceNumber)</dt>
+            <dd>@Html.DisplayFor(model => model.ReferenceNumber)</dd>
+        </dl>
+    </div>
+
+
+</div>

@@ -240,7 +240,7 @@ a#youtube
 * 
 */
 
-.page-region .input-control.text, .page-region .input-control.password, .page-region .input-control.file, .page-region .input-control.textarea  {
+.page-region .input-control.text, .page-region .input-control.select, .page-region .input-control.password, .page-region .input-control.file, .page-region .input-control.textarea  {
     width: 60% !important;
 }
 

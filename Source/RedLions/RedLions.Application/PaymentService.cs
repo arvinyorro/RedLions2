@@ -34,16 +34,32 @@
             return paymentDto;
         }
 
+        public DTO.Payment GetByPublicID(string publicID)
+        {
+            Business.Payment payment = this.paymentRepository.GetByPublicID(publicID);
+            DTO.Payment paymentDto = Mapper.Map<DTO.Payment>(payment);
+            return paymentDto;
+        }
+
         public IEnumerable<DTO.Payment> GetPagedList(
            int pageIndex,
            out int totalCount,
-           int pageSize)
+           int pageSize,
+           string filterEmail)
         {
+            Expression<Func<Business.Payment, bool>> query = PredicateBuilder.True<Business.Payment>();
+
+            if (!string.IsNullOrEmpty(filterEmail))
+            {
+                query = query.And(x => x.Email.ToUpper().Contains(filterEmail.ToUpper()));
+            }
+
             IEnumerable<Business.Payment> payments = this.paymentRepository
                 .GetPagedList(
                     pageIndex: pageIndex,
                     pageSize: pageSize,
-                    totalCount: out totalCount);
+                    totalCount: out totalCount,
+                    filter: query);
 
             return Mapper.Map<IEnumerable<DTO.Payment>>(payments);
         }
@@ -68,12 +84,14 @@
 
             /// Send mail.
 
+            if (paymentType == PaymentType.PayPal) return;
+
             string fullName = string.Format("{0} {1}",
                     paymentDto.FirstName,
                     paymentDto.LastName);
 
             string subject = this.GetSubject();
-            string body = this.GetBody(fullName);
+            string body = this.GetBody(fullName, payment.PublicID);
 
             var recipient = new MailAccount(fullName, paymentDto.Email);
             var sender = new MailAccount("RedLions", "redlions@unoredlions.com");
@@ -94,23 +112,24 @@
             this.unitOfWork.Commit();
         }
 
-        private string GetBody(string fullName)
+        private string GetBody(string fullName, string publicID)
         {
             string body = @"<html>
                 <body style=\'font-family: Calibri;\'>
                 Dear {full_name},<br />
                 <br />
-                Thank you for your payment. We are committed in providing you with the highest level of customer satisfaction possible.<br />
+                Thank you for your payment request. We are committed in providing you with the highest level of customer satisfaction possible.<br />
                 <br />
-                Please confirm your payment by submitting the reference number in your receipt to the following link:<br />
+                Please submit the reference number from your payment receipt to the following link:<br />
                 <br />
-                http://redlions.com/payment/confirm/1231512321
+                http://unoredlions.com/payment/reference/{public_id}
                 <br />
                 <br />This is an auto-generated e-mail. Please do not reply to this mail.
                 </body>
                 <html> ";
 
-            body.Replace("{full_name}", fullName);
+            body = body.Replace("{full_name}", fullName);
+            body = body.Replace("{public_id}", publicID);
 
             return body;
         }

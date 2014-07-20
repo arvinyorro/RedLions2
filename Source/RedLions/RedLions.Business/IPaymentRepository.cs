@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Linq.Expressions;
 
     public interface IPaymentRepository
     {
@@ -13,7 +14,8 @@
         IEnumerable<Payment> GetPagedList(
             int pageIndex,
             int pageSize,
-            out int totalCount);
+            out int totalCount,
+            Expression<Func<Payment, bool>> filter = null);
 
         void Create(Payment payment);
         void Update(Payment payment);

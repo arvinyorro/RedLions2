@@ -23,12 +23,21 @@
             return base.GetById<Payment>(id);
         }
 
-        public IEnumerable<Payment> GetPagedList(int pageIndex, int pageSize, out int totalCount)
+        public IEnumerable<Payment> GetPagedList(
+            int pageIndex, 
+            int pageSize, 
+            out int totalCount,
+            Expression<Func<Payment, bool>> filter = null)
         {
             var query = from x in base.GetQueryableAll<Payment>()
                         select x;
 
             totalCount = query.Count();
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
 
             var orderedQuery = query.OrderByDescending(x => x.CreatedDateTime);
 

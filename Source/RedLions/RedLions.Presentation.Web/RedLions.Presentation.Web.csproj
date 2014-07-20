@@ -202,10 +202,12 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\InquiriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\MembersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PaymentsController.cs" />
     <Compile Include="Areas\Admin\ViewModels\UpdatedMemberViewModel.cs" />
     <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="Components\CheckSubscriptionExpirationAttribute.cs" />
     <Compile Include="Controllers\InquiryController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Components\EmailUniqueAttribute.cs" />
     <Compile Include="Components\EnumerableExtensions.cs" />
@@ -230,6 +232,7 @@
     <Compile Include="Models\Inquiry.cs" />
     <Compile Include="Models\InquiryChatRegister.cs" />
     <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Subscription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\CustomMembershipProvider.cs" />
@@ -239,6 +242,7 @@
     <Compile Include="ViewModels\MemberMessagesViewModel.cs" />
     <Compile Include="ViewModels\Membership.cs" />
     <Compile Include="Areas\Admin\ViewModels\MemberUpdatePoints.cs" />
+    <Compile Include="ViewModels\PaymentReference.cs" />
     <Compile Include="ViewModels\PublicAnnouncement.cs" />
     <Compile Include="ViewModels\UpdateSubscription.cs" />
   </ItemGroup>
@@ -477,6 +481,9 @@
     <Content Include="Areas\Admin\Views\Announcements\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Points.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Activation.cshtml" />
+    <Content Include="Areas\Admin\Views\Payments\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_PaymentsControlPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Payments\Details.cshtml" />
     <None Include="Properties\PublishProfiles\RedLion Live.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion Local.pubxml" />
     <Content Include="Scripts\Custom\inquiry.chat.js" />
@@ -602,10 +609,17 @@
     <Content Include="Views\Home\Opportunities.cshtml" />
     <Content Include="Views\Home\LocalPlan.cshtml" />
     <Content Include="Views\Home\InternationalPlan.cshtml" />
+    <Content Include="Views\Payment\Start.cshtml" />
+    <Content Include="Views\Payment\Register.cshtml" />
+    <Content Include="Views\Payment\Confirm.cshtml" />
+    <Content Include="Views\Payment\PayPal.cshtml" />
+    <Content Include="Views\Payment\Reference.cshtml" />
+    <Content Include="Views\Payment\ReferenceConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Payment\" />
     <Folder Include="Areas\Member\Controllers\" />
     <Folder Include="Areas\Member\Models\" />
     <Folder Include="Areas\Member\Views\Shared\" />

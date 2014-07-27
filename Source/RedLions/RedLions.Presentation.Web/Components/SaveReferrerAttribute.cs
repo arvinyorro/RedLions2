@@ -33,25 +33,32 @@
 
             string referrerUsername = string.Empty;
 
+            // If there an indicated referrer in the URL.
             if (referrerInUrl)
             {
                 string value = parameterValue as string;
 
+                // If the referrer in the URL is new.
                 if (referrerUrlInCookie && value != referrerUrlCookie.Value)
                 {
                     // Retrieve referrer in Url query string.
                     referrerUsername = value;
                 }
             }
-            else if(referrerInCookie)
+            
+            // If there is a referrer saved in the cookie and 
+            // a referrer was not retrieved in the URL.
+            if(referrerInCookie && string.IsNullOrEmpty(referrerUsername))
             {
                 // Retrieve referrer in cookie.
                 referrerUsername = cookie.Value;
             }
 
+            // NOTE: This part is only necessary if the referrer was changed or new.
             bool referrerNotFound = false;
             if (referrerUsername != string.Empty)
             {
+                var member = memberService.GetMemberByUsername(referrerUsername);
                 referrerNotFound = memberService.GetMemberByUsername(referrerUsername) == null ? true : false;
             }
 

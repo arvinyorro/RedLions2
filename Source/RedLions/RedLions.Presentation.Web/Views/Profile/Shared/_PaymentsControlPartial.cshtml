@@ -14,7 +14,20 @@
 <span class="element-divider"></span>
 
 <div class="element">
-    <a href="@Url.Action("ReadAllPayments", "Profile")" class="fg-white">Read All Payments (@ViewBag.TotalUnread)</a>
+    <a href="@Url.Action("ReadAllPayments", "Profile")" class="fg-white">Read All</a>
 </div>
 
+
+<span class="element-divider"></span>
+
+<div class="element">
+    @if (ViewBag.UnreadOnly == false)
+    {
+        <a href="@Url.Action("Payments", "Profile", new { unread = true })" class="fg-white">Show All Unread</a>
+    }
+    else
+    {
+        <a href="@Url.Action("Payments", "Profile", new { unread = false })" class="fg-white active">Show All</a>
+    }
+</div>
 

@@ -59,7 +59,7 @@
 @Html.PagedListPager(
     list: Model, 
     generatePageUrl: page => Url.Action("Index", 
-                             new { page, sortOrder = ViewBag.CurrentSort, searchMember = ViewBag.SearchUsername, }),
+                             new { page, sortOrder = ViewBag.CurrentSort, searchUsername = ViewBag.SearchUsername, }),
     options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })
 
 <script type="text/javascript">

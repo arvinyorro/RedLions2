@@ -44,17 +44,40 @@
             return paymentDto;
         }
 
+        public int GetUnreadCount()
+        {
+            int unreadCount = this.paymentRepository
+                .GetUnreadCount(x => x.AdminUnread == true);
+
+            return unreadCount;
+        }
+
+        public int GetUnreadCountByMember(int memberUserID)
+        {
+            int unreadCount = this.paymentRepository
+                .GetUnreadCount(x => 
+                    x.ReferrerUnread == true && 
+                    x.Referrer.ID == memberUserID);
+            return unreadCount;
+        }
+
         public IEnumerable<DTO.Payment> GetPagedList(
            int pageIndex,
            out int totalCount,
            int pageSize,
-           string filterEmail)
+           string filterEmail,
+           bool filterUnread)
         {
             Expression<Func<Business.Payment, bool>> query = PredicateBuilder.True<Business.Payment>();
 
             if (!string.IsNullOrEmpty(filterEmail))
             {
                 query = query.And(x => x.Email.ToUpper().Contains(filterEmail.ToUpper()));
+            }
+
+            if (filterUnread == true)
+            {
+                query = query.And(x => x.AdminUnread == true);
             }
 
             IEnumerable<Business.Payment> payments = this.paymentRepository
@@ -72,7 +95,8 @@
             int pageIndex,
             out int totalCount,
             int pageSize,
-            string filterEmail)
+            string filterEmail,
+            bool filterUnread)
         {
             Expression<Func<Business.Payment, bool>> query = PredicateBuilder.True<Business.Payment>();
 
@@ -81,6 +105,11 @@
             if (!string.IsNullOrEmpty(filterEmail))
             {
                 query = query.And(x => x.Email.ToUpper().Contains(filterEmail.ToUpper()));
+            }
+
+            if (filterUnread == true)
+            {
+                query = query.And(x => x.ReferrerUnread == true);
             }
 
             IEnumerable<Business.Payment> payments = this.paymentRepository
@@ -193,15 +222,32 @@
         {
             string body = @"<html>
                 <body style=\'font-family: Calibri;\'>
-                Dear {full_name},<br />
+                Hello {full_name}!<br />
                 <br />
-                Thank you for your payment request. We are committed in providing you with the highest level of customer satisfaction possible.<br />
+                We received your payment request to sign-up for Local/International Account with Unlimited Network of Opportunities Int'l Corp. or 'UNO' thru RedLions group taking <PRODUCT PACKAGE> as your chosen Distributorship Product Package.<br />
                 <br />
-                Please submit the reference number from your payment receipt to the following link:<br />
-                <br />
+                <p>A.) If you selected to send your payment thru Western Union, Moneygram, Cebuana Lhuiller, ML Kwarta Padala, JRS Pera Padala, LBC Remit Express, or Palawan Express please use the details below:<p>
+                <ul>
+                    <li>Name of the Recipient: WALTER WARREN TRINIDAD JR.</li>
+                    <li>Address: c/o UNO INT'L CORP., #355 ORTIGAS AVE., BRGY. WACK-WACK, MANDALUYONG CITY 1555, METRO MANILA, PHILIPPINES</li>
+                    <li>Contact Number: +639082374424</li>
+                </ul>
+                <p>Note: Once you're done please submit the reference number, as shown on your payment receipt, to the following link: </p>
                 http://unoredlions.com/payment/reference/{public_id}
                 <br />
-                <br />This is an auto-generated e-mail. Please do not reply to this mail.
+                <p>B.) If you selected to send your payment thru a Bank Deposit, please take note of the bank account details below:</p>
+
+                <ul>
+                    <li>Bank Name:</li>
+                    <li>Bank Address:</li>
+                    <li>Account Name:</li>
+                    <li>Account Number:</li>
+                    <li>Swift Code:</li>
+                </ul>
+
+                <p>Note: After depositing your payment please email us your deposit slip with your COMPLETE NAME, UNO ACCOUNT NUMBER, and this Reference Code: <b>{public_id}</b>.</p>
+
+                <br />Thank You! We sincerely appreciate you joining RedLions International.
                 </body>
                 <html> ";
 

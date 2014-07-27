@@ -12,6 +12,7 @@
 }
 
 <h3>Payments</h3>
+<p><b>New Payments: </b>@ViewBag.TotalUnread</p>
 <div>
     <table class="table">
         <thead>
@@ -56,5 +57,5 @@
 @Html.PagedListPager(
     list: Model,
     generatePageUrl: page => Url.Action("Payments",
-                             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.SearchEmail, }),
+                             new { page, sortOrder = ViewBag.CurrentSort, searchEmail = ViewBag.SearchEmail, unread = ViewBag.UnreadOnly }),
     options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })

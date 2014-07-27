@@ -18,6 +18,7 @@
             int pageSize,
             out int totalCount,
             Expression<Func<Payment, bool>> filter = null);
+        int GetUnreadCount(Expression<Func<Payment, bool>> filter);
 
         void Create(Payment payment);
         void Update(Payment payment);

@@ -19,9 +19,10 @@
             this.paymentService = paymentService;
         }
 
-        public ViewResult Index(int? page, string searchEmail)
+        public ViewResult Index(int? page, string searchEmail, bool unread = false)
         {
             ViewBag.SearchEmail = searchEmail;
+            ViewBag.UnreadOnly = unread;
 
             int currentPage = (page ?? 1);
 
@@ -36,9 +37,10 @@
                     currentPage,
                     out totalItems,
                     pageSize,
-                    searchEmail);
+                    searchEmail,
+                    unread);
 
-            int totalUnread = paymentDtoList.Count(x => x.AdminUnread == true);
+            int totalUnread = this.paymentService.GetUnreadCount();
             ViewBag.TotalUnread = totalUnread;
 
             IEnumerable<Models.Payment> announcementModels = Mapper.Map<IEnumerable<Models.Payment>>(paymentDtoList);

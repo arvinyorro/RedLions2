@@ -59,6 +59,11 @@
             return payments;
         }
 
+        public int GetUnreadCount(Expression<Func<Payment, bool>> filter)
+        {
+            return base.Count<Payment>(filter);
+        }
+
         public void Create(Payment payment)
         {
             base.Create<Payment>(payment);

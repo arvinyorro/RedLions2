@@ -38,6 +38,9 @@
                     pageSize,
                     searchEmail);
 
+            int totalUnread = paymentDtoList.Count(x => x.AdminUnread == true);
+            ViewBag.TotalUnread = totalUnread;
+
             IEnumerable<Models.Payment> announcementModels = Mapper.Map<IEnumerable<Models.Payment>>(paymentDtoList);
 
             var pagedList = new StaticPagedList<Models.Payment>(announcementModels, currentPage, pageSize, totalItems);
@@ -45,10 +48,18 @@
             return View(pagedList);
         }
 
+        public ActionResult ReadAll()
+        {
+            this.paymentService.ReadAllPayments();
+            return RedirectToAction("Index");
+        }
+
         public ViewResult Details(int id)
         {
             DTO.Payment paymentDto = this.paymentService.GetByID(id);
             Models.Payment paymentModel = Mapper.Map<Models.Payment>(paymentDto);
+
+            this.paymentService.ReadPayment(id);
 
             return View(paymentModel);
         }

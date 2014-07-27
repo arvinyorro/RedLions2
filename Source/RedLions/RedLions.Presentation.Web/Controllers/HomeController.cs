@@ -33,8 +33,9 @@
         [Route("Home/Index/{referrerUsername?}", Order = 1)]
         [Route("Home/{referrerUsername?}", Order = 2)]
         [Route("{referrerUsername?}", Order = 3)]
-        public ActionResult Index()
+        public ActionResult Index(string referrerUsername = null)
         {
+            ViewBag.ReferrerUsername = referrerUsername;
             return View();
         }
 
@@ -44,11 +45,11 @@
             return View();
         }
 
-        [Route("Products/{id:int}/{referrerUsername?}")]
-        public ViewResult Products(int id)
+        [Route("Products/{prod:int}/{referrerUsername?}")]
+        public ViewResult Products(int prod, string referrerUsername = null)
         {
-            ViewBag.SelectedID = id;
-
+            ViewBag.SelectedID = prod;
+            ViewBag.ReferrerUsername = referrerUsername;
             return View();
         }
 
@@ -270,10 +271,10 @@
             return View(viewModel);
         }
 
-        [Route("Company/{id:int}/{referrerUsername?}")]
-        public ViewResult Company(int id)
+        [Route("Company/{comp:int}/{referrerUsername?}")]
+        public ViewResult Company(int comp, string referrerUsername = null)
         {
-            switch(id)
+            switch (comp)
             {
                 case 1:
                     ViewBag.Company = true;
@@ -301,13 +302,14 @@
                     throw new HttpException("Incorrect ID in company page.");
             }
 
+            ViewBag.ReferrerUsername = referrerUsername;
             return View();
         }
 
-        [Route("Organization/{id:int}/{referrerUsername?}")]
-        public ViewResult Organization(int id)
+        [Route("Organization/{org:int}/{referrerUsername?}")]
+        public ViewResult Organization(int org, string referrerUsername)
         {
-            switch (id)
+            switch (org)
             {
                 case 1:
                     ViewBag.Who = true;
@@ -327,6 +329,7 @@
                     throw new HttpException("Incorrect ID in organization page.");
             }
 
+            ViewBag.ReferrerUsername = referrerUsername;
             return View();
         }
 

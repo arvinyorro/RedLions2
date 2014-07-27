@@ -62,6 +62,7 @@
         public DateTime CreatedDateTime { get; set; }
 
         [Display(Name = "Birthday")]
+        [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
 
         public int ReferrerUserID { get; set; }
@@ -71,6 +72,10 @@
 
         [Display(Name = "Referrer UNO ID")]
         public string ReferrerUnoID { get; set; }
+
+        public bool AdminUnread { get; set; }
+
+        public bool ReferrerUnread { get; set; }
 
         public void AddReferrer(DTO.Member referrer)
         {

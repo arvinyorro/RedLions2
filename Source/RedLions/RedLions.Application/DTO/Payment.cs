@@ -22,5 +22,7 @@
         public int ReferrerUserID { get; set; }
         public string ReferrerName { get; set; }
         public string ReferrerUnoID { get; set; }
+        public bool AdminUnread { get; set; }
+        public bool ReferrerUnread { get; set; }
     }
 }

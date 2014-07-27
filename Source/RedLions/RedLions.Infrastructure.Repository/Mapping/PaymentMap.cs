@@ -61,6 +61,14 @@
                 .IsOptional()
                 .HasMaxLength(100);
 
+            this.Property(t => t.AdminUnread)
+                .IsRequired()
+                .HasColumnType("bit");
+
+            this.Property(t => t.ReferrerUnread)
+                .IsRequired()
+                .HasColumnType("bit");
+
             this.Property(t => t.CreatedDateTime)
                 .IsRequired()
                 .HasColumnType("datetime");
@@ -93,6 +101,8 @@
             this.Property(t => t.ReferenceNumber).HasColumnName("reference_number");
             this.Property(t => t.CreatedDateTime).HasColumnName("datetime_created");
             this.Property(t => t.BirthDate).HasColumnName("date_birth");
+            this.Property(t => t.AdminUnread).HasColumnName("admin_unread");
+            this.Property(t => t.ReferrerUnread).HasColumnName("referrer_unread");
         }
     }
 }

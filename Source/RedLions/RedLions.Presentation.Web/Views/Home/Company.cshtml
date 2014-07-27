@@ -6,13 +6,13 @@
 <div style="padding: 10px;">
 
     <div style="float: right; height: 180px; width: 350px;padding:10px;margin:10px">
-        <b><a href="@Url.Action("Company", "Home", new { id = 1 })">The Company</a></b>
+        <b><a href="@Url.Action("Company", "Home", new { comp = 1, referrerUsername = ViewBag.ReferrerUsername })">The Company</a></b>
         <ul>
-            <li><a href="@Url.Action("Company", "Home", new { id = 2 })">About Uno</a></li>
-            <li><a href="@Url.Action("Company", "Home", new { id = 3 })">Board of Directors</a></li>
-            <li><a href="@Url.Action("Company", "Home", new { id = 4 })">Corporate Mission and Vision</a></li>
-            <li><a href="@Url.Action("Company", "Home", new { id = 5 })">Company's Legalities and Certification</a></li>
-            <li><a href="@Url.Action("Company", "Home", new { id = 6 })">Awards and Certificates</a></li>
+            <li><a href="@Url.Action("Company", "Home", new { comp = 2, referrerUsername = ViewBag.ReferrerUsername })">About Uno</a></li>
+            <li><a href="@Url.Action("Company", "Home", new { comp = 3, referrerUsername = ViewBag.ReferrerUsername })">Board of Directors</a></li>
+            <li><a href="@Url.Action("Company", "Home", new { comp = 4, referrerUsername = ViewBag.ReferrerUsername })">Corporate Mission and Vision</a></li>
+            <li><a href="@Url.Action("Company", "Home", new { comp = 5, referrerUsername = ViewBag.ReferrerUsername })">Company's Legalities and Certification</a></li>
+            <li><a href="@Url.Action("Company", "Home", new { comp = 6, referrerUsername = ViewBag.ReferrerUsername })">Awards and Certificates</a></li>
         </ul>
     </div>
 

@@ -11,6 +11,8 @@
     {
         Payment GetByPublicID(string publicID);
         Payment GetByID(int id);
+        IEnumerable<Payment> GetUnreadPayments();
+        IEnumerable<Payment> GetUnreadPaymentsByMember(Member member);
         IEnumerable<Payment> GetPagedList(
             int pageIndex,
             int pageSize,

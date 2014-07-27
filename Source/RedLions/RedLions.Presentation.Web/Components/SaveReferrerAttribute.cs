@@ -28,19 +28,34 @@
             HttpCookie cookie = httpContext.Request.Cookies.Get(this.referrerCookieName);
             bool referrerInCookie = (httpContext.Request.Cookies[this.referrerCookieName] != null);
 
+            HttpCookie referrerUrlCookie = httpContext.Request.Cookies.Get("ReferrerUrl");
+            bool referrerUrlInCookie = (httpContext.Request.Cookies["ReferrerUrl"] != null);
+
             string referrerUsername = string.Empty;
 
             if (referrerInUrl)
             {
-                // Retrieve referrer in Url query string.
-                referrerUsername = parameterValue as string;
+                string value = parameterValue as string;
+
+                if (referrerUrlInCookie && value != referrerUrlCookie.Value)
+                {
+                    // Retrieve referrer in Url query string.
+                    referrerUsername = value;
+                }
             }
             else if(referrerInCookie)
             {
                 // Retrieve referrer in cookie.
                 referrerUsername = cookie.Value;
             }
-            else
+
+            bool referrerNotFound = false;
+            if (referrerUsername != string.Empty)
+            {
+                referrerNotFound = memberService.GetMemberByUsername(referrerUsername) == null ? true : false;
+            }
+
+            if (string.IsNullOrEmpty(referrerUsername) || referrerNotFound)
             {
                 // Generate random referrer as final solution.
                 referrerUsername = memberService.GetRandomMember().Username;
@@ -57,6 +72,15 @@
             newCookie.Expires = DateTime.Now.AddDays(30);
             httpContext.Response.Cookies.Set(newCookie);
 
+            if (referrerUrlInCookie && referrerUrlCookie.Value != parameterValue as string)
+            {
+                // Create new cookie.
+                var newUrlReferrerCookie = new HttpCookie("ReferrerUrl");
+                newUrlReferrerCookie.Value = parameterValue as string;
+                newUrlReferrerCookie.Expires = DateTime.Now.AddDays(30);
+                httpContext.Response.Cookies.Set(newUrlReferrerCookie);
+            }
+            
             httpContext.Session["ReferrerUsername"] = referrerUsername;
         }
     }

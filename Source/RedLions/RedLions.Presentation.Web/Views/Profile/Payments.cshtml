@@ -2,7 +2,8 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Admin - Payments";
+    ViewBag.Title = "Member - Payments";
+    Layout = "~/Views/Profile/Shared/_Layout.cshtml";
 }
 
 @section NavigationControls
@@ -28,14 +29,14 @@
 
             @foreach (var item in Model)
             {
-                <tr class=@(item.AdminUnread == true ? "success" : "")>
+                <tr class=@(item.ReferrerUnread == true ? "success" : "")>
                     <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
                     <td>@Html.DisplayFor(modelItem => item.LastName)</td>
                     <td>@Html.DisplayFor(modelItem => item.Email)</td>
                     <td>@Html.DisplayFor(modelItem => item.PaymentMethod)</td>
                     <td class="right">@Html.DisplayFor(modelItem => item.CreatedDateTime)</td>
                     <td class="right text-right">
-                        <a href="@Url.Action("Details", "Payments", new { id = item.ID })" class="button primary">Details</a>
+                        <a href="@Url.Action("Payment", "Profile", new { id = item.ID })" class="button primary">Details</a>
                     </td>
                 </tr>
             }
@@ -54,6 +55,6 @@
 <!-- Pagination Links -->
 @Html.PagedListPager(
     list: Model,
-    generatePageUrl: page => Url.Action("Index",
+    generatePageUrl: page => Url.Action("Payments",
                              new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.SearchEmail, }),
     options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })

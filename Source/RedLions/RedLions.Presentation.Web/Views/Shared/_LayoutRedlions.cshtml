@@ -64,18 +64,18 @@
                         <li><a href="@Url.Action("Index","Home")">Home</a></li>
                         <li><a href="#">About Us</a>
                             <ul>
-                                <li><a href="@Url.Action("Company", "Home", new { id = 1 })">The Company</a></li>
-                                <li><a href="@Url.Action("Organization", "Home", new { id = 1 })">The Organization</a></li>
+                                <li><a href="@Url.Action("Company", "Home", new { comp = 1, referrerUsername = ViewBag.ReferrerUsername })">The Company</a></li>
+                                <li><a href="@Url.Action("Organization", "Home", new { org = 1, referrerUsername = ViewBag.ReferrerUsername })">The Organization</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="@Url.Action("Products", "Home", new { id = 1 })">Products</a>
+                            <a href="@Url.Action("Products", "Home", new { prod = 1, referrerUsername = ViewBag.ReferrerUsername })">Products</a>
                             <ul>
-                                <li><a href="@Url.Action("Products", "Home", new { id = 2 })">Skin care and whitening</a></li>
-                                <li><a href="@Url.Action("Products", "Home", new { id = 3 })">Food/Nutritional Supplements</a></li>
-                                <li><a href="@Url.Action("Products", "Home", new { id = 4 })">Health Bevereges</a></li>
-                                <li><a href="@Url.Action("Products", "Home", new { id = 5 })">Household and Personal Care</a></li>
-                                <li><a href="@Url.Action("Products", "Home", new { id = 6 })">Wellness Accessories</a></li>
+                                <li><a href="@Url.Action("Products", "Home", new { prod = 2, referrerUsername = ViewBag.ReferrerUsername })">Skin care and whitening</a></li>
+                                <li><a href="@Url.Action("Products", "Home", new { prod = 3, referrerUsername = ViewBag.ReferrerUsername })">Food/Nutritional Supplements</a></li>
+                                <li><a href="@Url.Action("Products", "Home", new { prod = 4, referrerUsername = ViewBag.ReferrerUsername })">Health Bevereges</a></li>
+                                <li><a href="@Url.Action("Products", "Home", new { prod = 5, referrerUsername = ViewBag.ReferrerUsername })">Household and Personal Care</a></li>
+                                <li><a href="@Url.Action("Products", "Home", new { prod = 6, referrerUsername = ViewBag.ReferrerUsername })">Wellness Accessories</a></li>
                             </ul>
                         </li>
 

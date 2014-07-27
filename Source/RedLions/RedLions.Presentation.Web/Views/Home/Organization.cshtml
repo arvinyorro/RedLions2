@@ -5,11 +5,11 @@
 
 <div style="padding: 10px;">
     <div style="float: right; height: 180px; width: 350px;padding:10px;margin:10px">
-        <b><a href="@Url.Action("Organization", "Home", new { id = 1 })">The Organization</a></b>
+        <b><a href="@Url.Action("Organization", "Home", new { org = 1, referrerUsername = ViewBag.ReferrerUsername })">The Organization</a></b>
         <ul>
-            <li><a href="@Url.Action("Organization", "Home", new { id = 2 })">Who We Are</a></li>
-            <li><a href="@Url.Action("Organization", "Home", new { id = 3 })">History</a></li>
-            <li><a href="@Url.Action("Organization", "Home", new { id = 4 })">Founder</a></li>
+            <li><a href="@Url.Action("Organization", "Home", new { org = 2, referrerUsername = ViewBag.ReferrerUsername })">Who We Are</a></li>
+            <li><a href="@Url.Action("Organization", "Home", new { org = 3, referrerUsername = ViewBag.ReferrerUsername })">History</a></li>
+            <li><a href="@Url.Action("Organization", "Home", new { org = 4, referrerUsername = ViewBag.ReferrerUsername })">Founder</a></li>
         </ul>
     </div>
 

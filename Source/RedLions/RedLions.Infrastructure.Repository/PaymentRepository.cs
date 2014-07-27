@@ -23,6 +23,19 @@
             return base.GetById<Payment>(id);
         }
 
+        public IEnumerable<Payment> GetUnreadPayments()
+        {
+            return base.GetAll<Payment>().Where(x => x.AdminUnread == true);
+        }
+
+        public IEnumerable<Payment> GetUnreadPaymentsByMember(Member member)
+        {
+            return base.GetAll<Payment>()
+                .Where(x =>
+                    x.ReferrerUnread == true &&
+                    x.Referrer.ID == member.ID);
+        }
+
         public IEnumerable<Payment> GetPagedList(
             int pageIndex, 
             int pageSize, 

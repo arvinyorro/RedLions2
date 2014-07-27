@@ -1,6 +1,6 @@
 ﻿<div class="element input-element">
     <div class="input-control text">
-        @using (Html.BeginForm("Index", "Payments", FormMethod.Get))
+        @using (Html.BeginForm("Payments", "Profile", FormMethod.Get))
         {
             @Html.TextBox("SearchEmail", ViewBag.SearchEmail as string, new { placeholder = "Search Email...", autocomplete = "off" })
             <button class="btn-search"></button>
@@ -14,7 +14,7 @@
 <span class="element-divider"></span>
 
 <div class="element">
-    <a href="@Url.Action("ReadAll", "Payments")" class="fg-white">Read All Payments (@ViewBag.TotalUnread)</a>
+    <a href="@Url.Action("ReadAllPayments", "Profile")" class="fg-white">Read All Payments (@ViewBag.TotalUnread)</a>
 </div>
 
 

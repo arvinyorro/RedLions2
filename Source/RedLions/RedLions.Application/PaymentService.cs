@@ -67,6 +67,32 @@
             return Mapper.Map<IEnumerable<DTO.Payment>>(payments);
         }
 
+        public IEnumerable<DTO.Payment> GetPagedListByMember(
+            int memberUserID,
+            int pageIndex,
+            out int totalCount,
+            int pageSize,
+            string filterEmail)
+        {
+            Expression<Func<Business.Payment, bool>> query = PredicateBuilder.True<Business.Payment>();
+
+            query = query.And(x => x.Referrer.ID == memberUserID);
+
+            if (!string.IsNullOrEmpty(filterEmail))
+            {
+                query = query.And(x => x.Email.ToUpper().Contains(filterEmail.ToUpper()));
+            }
+
+            IEnumerable<Business.Payment> payments = this.paymentRepository
+                .GetPagedList(
+                    pageIndex: pageIndex,
+                    pageSize: pageSize,
+                    totalCount: out totalCount,
+                    filter: query);
+
+            return Mapper.Map<IEnumerable<DTO.Payment>>(payments);
+        }
+
         public void Create(DTO.Payment paymentDto)
         {
             PaymentType paymentType = paymentDto.PaymentTypeID == 1 ? 
@@ -118,6 +144,47 @@
             Business.Payment payment = this.paymentRepository.GetByID(id);
 
             payment.Confirm(referenceNumber);
+
+            this.unitOfWork.Commit();
+        }
+
+        public void ReadPayment(int paymentID)
+        {
+            Business.Payment payment = this.paymentRepository.GetByID(paymentID);
+            payment.AdminUnread = false;
+            this.unitOfWork.Commit();
+        }
+
+        public void ReadPaymentByMember(int paymentID)
+        {
+            Business.Payment payment = this.paymentRepository.GetByID(paymentID);
+            payment.ReferrerUnread = false;
+            this.unitOfWork.Commit();
+        }
+
+        public void ReadAllPayments()
+        {
+            IEnumerable<Business.Payment> unreadPayments = this.paymentRepository
+                .GetUnreadPayments();
+
+            foreach (Business.Payment payment in unreadPayments)
+            {
+                payment.AdminUnread = false;
+            }
+
+            this.unitOfWork.Commit();
+        }
+
+        public void ReadAllPaymentsByMember(int memberUserID)
+        {
+            Business.Member member = this.memberRepository.GetMemberByID(memberUserID);
+            IEnumerable<Business.Payment> unreadPayments = this.paymentRepository
+                .GetUnreadPaymentsByMember(member);
+
+            foreach(Business.Payment payment in unreadPayments)
+            {
+                payment.ReferrerUnread = false;
+            }
 
             this.unitOfWork.Commit();
         }

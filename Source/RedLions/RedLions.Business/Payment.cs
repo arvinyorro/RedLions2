@@ -40,6 +40,8 @@
             this.Referrer = referrer;
             this.CreatedDateTime = SystemTime.Now;
             this.PublicID = this.GeneratePublicID(paymentRepository);
+            this.AdminUnread = true;
+            this.ReferrerUnread = true;
         }
 
         public int ID { get; private set; }
@@ -87,7 +89,9 @@
         public string ReferenceNumber { get; private set; }
         public DateTime CreatedDateTime { get; private set; }
         public DateTime BirthDate { get; private set; }
-        public Member Referrer { get; private set; }
+        public virtual Member Referrer { get; private set; }
+        public bool AdminUnread { get; set; }
+        public bool ReferrerUnread { get; set; }
 
         public void Confirm(string referenceNumber)
         {

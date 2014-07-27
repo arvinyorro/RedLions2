@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Payment Details";
+    Layout = "~/Views/Profile/Shared/_Layout.cshtml";
 }
 
 <div class="panel transparent span7">
@@ -16,7 +17,7 @@
     <!-- Navigation -->
     <div class="panel transparent span7">
         <div class="panel-content">
-            <p>@Html.ActionLink("Back to List", "Index")</p>
+            <p>@Html.ActionLink("Back to List", "Payments", "Profile")</p>
         </div>
     </div>
 

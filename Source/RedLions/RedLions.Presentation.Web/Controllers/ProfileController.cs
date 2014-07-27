@@ -23,19 +23,22 @@
         public InquiryService inquiryService;
         private CountryService countryService;
         private InquiryChatService inquiryChatService;
+        private PaymentService paymentService;
 
         public ProfileController(
             MemberService memberService,
             UserService userService,
             InquiryService inquiryService,
             CountryService countryService,
-            InquiryChatService inquiryChatService)
+            InquiryChatService inquiryChatService,
+            PaymentService paymentService)
         {
             this.memberService = memberService;
             this.userService = userService;
             this.inquiryService = inquiryService;
             this.countryService = countryService;
             this.inquiryChatService = inquiryChatService;
+            this.paymentService = paymentService;
         }
 
         //
@@ -48,6 +51,7 @@
 
         public ViewResult Details()
         {
+            //  Can be refactored, see GetMemberDTO().
             string username = User.Identity.Name;
             DTO.Member memberDTO = this.memberService.GetMemberByUsername(username);
             Models.Member memberModel = new Models.Member(memberDTO);
@@ -220,6 +224,55 @@
             viewModel.ChatMessage = chatMessage;
 
             return View(viewModel);
+        }
+
+        public ViewResult Payments(int? page, string searchEmail)
+        {
+            ViewBag.SearchEmail = searchEmail;
+
+            int currentPage = (page ?? 1);
+
+            // Fix negative page
+            currentPage = currentPage < 0 ? 1 : currentPage;
+
+            int pageSize = 20;
+            int totalItems = 0;
+
+            DTO.Member memberDTO = this.GetMemberDTO();
+
+            IEnumerable<DTO.Payment> paymentDtoList = this.paymentService
+                .GetPagedListByMember(
+                    memberDTO.ID,
+                    currentPage,
+                    out totalItems,
+                    pageSize,
+                    searchEmail);
+
+            int totalUnread = paymentDtoList.Count(x => x.AdminUnread == true);
+            ViewBag.TotalUnread = totalUnread;
+
+            IEnumerable<Models.Payment> announcementModels = Mapper.Map<IEnumerable<Models.Payment>>(paymentDtoList);
+
+            var pagedList = new StaticPagedList<Models.Payment>(announcementModels, currentPage, pageSize, totalItems);
+
+            return View(pagedList);
+        }
+
+        public ActionResult ReadAllPayments()
+        {
+            DTO.Member memberDTO = this.GetMemberDTO();
+            this.paymentService.ReadAllPaymentsByMember(memberDTO.ID);
+            return RedirectToAction("Payments");
+        }
+
+        public ViewResult Payment(int id)
+        {
+            DTO.Payment paymentDto = this.paymentService.GetByID(id);
+            Models.Payment paymentModel = Mapper.Map<Models.Payment>(paymentDto);
+
+            this.paymentService.ReadPaymentByMember(id);
+
+            return View(paymentModel);
         }
 
         private DTO.Member GetMemberDTO()

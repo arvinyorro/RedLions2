@@ -238,11 +238,9 @@
                 <p>B.) If you selected to send your payment thru a Bank Deposit, please take note of the bank account details below:</p>
 
                 <ul>
-                    <li>Bank Name:</li>
-                    <li>Bank Address:</li>
-                    <li>Account Name:</li>
-                    <li>Account Number:</li>
-                    <li>Swift Code:</li>
+                    <li>Bank Name: Banco de Oro</li>
+                    <li>Account Number: 004950388692</li>
+                    <li>Account Name: Walter Warren Trinidad</li>
                 </ul>
 
                 <p>Note: After depositing your payment please email us your deposit slip with your COMPLETE NAME, UNO ACCOUNT NUMBER, and this Reference Code: <b>{public_id}</b>.</p>

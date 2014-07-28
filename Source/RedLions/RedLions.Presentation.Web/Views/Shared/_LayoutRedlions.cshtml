@@ -85,21 +85,21 @@
                                 <li>
                                     <a href="@Url.Action("LocalPlan", "Home")">Local</a>
                                     <ul>
-                                        <li><a href="@Url.Action("LocalPackages", "Home", new { id = 1 })">Local Membership Product Packages</a></li>
-                                        <li><a href="@Url.Action("LocalPackages", "Home", new { id = 2 })">Compensation Plan</a></li>
+                                        <li><a href="@Url.Action("LocalPackages", "Home", new { id = 1, referrerUsername = ViewBag.ReferrerUsername })">Local Membership Product Packages</a></li>
+                                        <li><a href="@Url.Action("LocalPackages", "Home", new { id = 2, referrerUsername = ViewBag.ReferrerUsername })">Compensation Plan</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="@Url.Action("InternationalPlan", "Home")">International</a>
                                     <ul>
-                                        <li><a href="@Url.Action("International", "Home", new { id = 1 })">Int'l Membership Product Packages</a></li>
-                                        <li><a href="@Url.Action("International", "Home", new { id = 2 })">Compensation Plan</a></li>
+                                        <li><a href="@Url.Action("International", "Home", new { id = 1, referrerUsername = ViewBag.ReferrerUsername })">Int'l Membership Product Packages</a></li>
+                                        <li><a href="@Url.Action("International", "Home", new { id = 2, referrerUsername = ViewBag.ReferrerUsername })">Compensation Plan</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
 
-                        <li><a href="@Url.Action("Announcements", "Home", new { page = 1 })">News and Update</a></li>
+                        <li><a href="@Url.Action("Announcements", "Home", new { page = 1, referrerUsername = ViewBag.ReferrerUsername })">News and Update</a></li>
                         <li><a href="@Url.Action("Inquire", "Home")">Inquire</a></li>
                         
                     </ul>

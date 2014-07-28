@@ -42,6 +42,7 @@
         [Route("Inquire/{referrerUsername?}")]
         public ViewResult Inquire(string referrerUsername = null)
         {
+            ViewBag.ReferrerUsername = referrerUsername;
             return View();
         }
 
@@ -224,8 +225,10 @@
         }
 
         [Route("Membership/{referrerUsername?}")]
-        public ViewResult Membership()
+        public ViewResult Membership(string referrerUsername = null)
         {
+            ViewBag.ReferrerUsername = referrerUsername;
+
             var locationItems = new List<SelectListItem>();
 
             locationItems.Add(new SelectListItem()
@@ -307,7 +310,7 @@
         }
 
         [Route("Organization/{org:int}/{referrerUsername?}")]
-        public ViewResult Organization(int org, string referrerUsername)
+        public ViewResult Organization(int org, string referrerUsername = null)
         {
             switch (org)
             {
@@ -340,8 +343,9 @@
         }
 
         [Route("ProductDetails/{id:int}/{referrerUsername?}", Name = "ProductDetails")]
-        public ViewResult ProductDetails(int id)
+        public ViewResult ProductDetails(int id, string referrerUsername = null)
         {
+            ViewBag.ReferrerUsername = referrerUsername;
             string viewName = string.Empty;
             switch (id)
             {
@@ -410,8 +414,9 @@
         }
 
         [Route("International/{id:int}/{referrerUsername?}")]
-        public ViewResult International(int id)
+        public ViewResult International(int id, string referrerUsername = null)
         {
+            ViewBag.ReferrerUsername = referrerUsername;
             ViewBag.SelectedID = id;
             return View();
         }
@@ -454,8 +459,10 @@
         }
 
         [Route("Announcements/{page:int}/{referrerUsername?}")]
-        public ViewResult Announcements(int page)
+        public ViewResult Announcements(int page, string referrerUsername = null)
         {
+            ViewBag.ReferrerUsername = referrerUsername;
+
             // Fix negative page
             int currentPage = page < 0 ? 1 : page;
 
@@ -476,8 +483,10 @@
         }
 
         [Route("Announcement/{id:int}/{referrerUsername?}")]
-        public ViewResult Announcement(int id)
+        public ViewResult Announcement(int id, string referrerUsername = null)
         {
+            ViewBag.ReferrerUsername = referrerUsername;
+
             DTO.Announcement announcementDTO = this.announcementService.GetAnnouncementByID(id);
             ViewModels.PublicAnnouncement announcement = Mapper.Map<ViewModels.PublicAnnouncement>(announcementDTO);
 
@@ -491,8 +500,9 @@
         }
         
         [Route("LocalPackages/{id:int}/{referrerUsername?}")]
-        public ViewResult LocalPackages(int id)
+        public ViewResult LocalPackages(int id, string referrerUsername = null)
         {
+            ViewBag.ReferrerUsername = referrerUsername;
             ViewBag.SelectedID = id;
             return View();
         }

@@ -19,7 +19,7 @@
                 linkText: "Read more",
                 actionName: "Announcement",
                 controllerName: "Home",
-                routeValues: new { id = @item.ID },
+                routeValues: new { id = @item.ID, referrerUsername = ViewBag.ReferrerUsername },
                 htmlAttributes: null)</small></p>
             <hr />
         </div>
@@ -37,7 +37,7 @@
     @Html.PagedListPager(
     list: Model,
     generatePageUrl: page => Url.Action("Announcements", "Home",
-                             new { page, sortOrder = ViewBag.CurrentSort, searchMember = ViewBag.SearchUsername, }),
+                             new { page, referrerUsername = ViewBag.ReferrerUsername }),
     options: new PagedListRenderOptions() { ContainerDivClasses = new List<string>() { "pagination" } })
 </div>
 

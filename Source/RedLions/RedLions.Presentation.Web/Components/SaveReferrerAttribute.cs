@@ -16,6 +16,8 @@
         /// </remarks>
         void IActionFilter.OnActionExecuting(ActionExecutingContext filterContext)
         {
+            if (filterContext.ActionDescriptor.ActionName == "ReferrerNotFound") return;
+
             MemberService memberService = UnityConfig.GetConfiguredContainer().Resolve<MemberService>();
 
             HttpContextBase httpContext = filterContext.HttpContext;
@@ -29,23 +31,12 @@
             HttpCookie cookie = httpContext.Request.Cookies.Get(this.referrerCookieName);
             bool referrerInCookie = (httpContext.Request.Cookies[this.referrerCookieName] != null);
 
-            // Get the referrer used in the URL.
-            HttpCookie referrerUrlCookie = httpContext.Request.Cookies.Get("ReferrerUrl");
-            bool referrerUrlInCookie = (httpContext.Request.Cookies["ReferrerUrl"] != null);
-
             string referrerUsername = string.Empty;
 
             // If there an indicated referrer in the URL.
             if (referrerInUrl)
             {
-                string value = parameterValue as string;
-
-                // If the referrer in the URL is new.
-                if (referrerUrlInCookie && value != referrerUrlCookie.Value)
-                {
-                    // Retrieve referrer in Url query string.
-                    referrerUsername = value;
-                }
+                referrerUsername = parameterValue;
             }
             
             // If there is a referrer saved in the cookie and 
@@ -55,18 +46,11 @@
                 // Retrieve referrer in cookie.
                 referrerUsername = cookie.Value;
             }
-
-            // NOTE: This part is only necessary if the referrer was changed or new.
-            bool referrerNotFound = false;
-            if (referrerUsername != string.Empty)
+           
+            // if referrer is still empty after checking url and cookie, then 
+            // retrieve random username.
+            if (string.IsNullOrEmpty(referrerUsername))
             {
-                var member = memberService.GetMemberByUsername(referrerUsername);
-                referrerNotFound = memberService.GetMemberByUsername(referrerUsername) == null ? true : false;
-            }
-
-            if (string.IsNullOrEmpty(referrerUsername) || referrerNotFound)
-            {
-                // Generate random referrer as final solution.
                 referrerUsername = memberService.GetRandomMember().Username;
             }
 
@@ -75,16 +59,29 @@
                 throw new Exception("Failed to generate a referrer.");
             }
 
+            // verify
+            var member = memberService.GetMemberByUsername(referrerUsername);
+            bool referrerNotFound = member == null ? true : false;
+
+            if (referrerNotFound)
+            {
+                // Generate random referrer as final solution.
+                // referrerUsername = memberService.GetRandomMember().Username;
+
+                filterContext.Result = new RedirectToRouteResult(
+                        new RouteValueDictionary 
+                        { 
+                            { "controller", "Home" }, 
+                            { "action", "ReferrerNotFound" },
+                        });
+                return;
+            }
+
             // Create new cookie.
             var newCookie = new HttpCookie(this.referrerCookieName);
             newCookie.Value = referrerUsername;
             newCookie.Expires = DateTime.Now.AddDays(30);
             httpContext.Response.Cookies.Set(newCookie);
-
-            var newUrlReferrerCookie = new HttpCookie("ReferrerUrl");
-            newUrlReferrerCookie.Value = parameterValue as string;
-            newUrlReferrerCookie.Expires = DateTime.Now.AddDays(30);
-            httpContext.Response.Cookies.Set(newUrlReferrerCookie);
 
             httpContext.Session["ReferrerUsername"] = referrerUsername;
         }

@@ -13,10 +13,6 @@
 
     public class MailClient : IMailClient
     {
-        private string host;
-        private string username;
-        private string password;
-
         public MailClient()
         {
 

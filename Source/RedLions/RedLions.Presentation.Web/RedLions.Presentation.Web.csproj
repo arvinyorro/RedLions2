@@ -619,6 +619,7 @@
     <Content Include="Views\Profile\Payments.cshtml" />
     <Content Include="Views\Profile\Shared\_PaymentsControlPartial.cshtml" />
     <Content Include="Views\Profile\Payment.cshtml" />
+    <Content Include="Views\Home\ReferrerNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

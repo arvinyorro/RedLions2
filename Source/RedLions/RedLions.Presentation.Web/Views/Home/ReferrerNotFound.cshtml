@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Referrer Not Found";
+    Layout = "~/Views/Shared/_LayoutRedLions.cshtml";
+}
+
+<div class="page" style="padding: 10px;">
+    <div class="page-region">
+        <div class="page-region-content">
+
+            <h2>Referrer Not Found</h2>
+
+            <p>
+                The referrer in the link was not found, please verify its correctness from the source.
+            </p>
+
+            <a href='@Url.Action("Index", "Home")'>Go back to homepage.</a>
+
+        </div>
+    </div>
+</div>

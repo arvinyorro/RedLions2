@@ -55,11 +55,11 @@
         }
 
         [HttpPost]
-        public ActionResult Inquire(Models.Inquiry inquiry)
+        public ActionResult InquireConfirm(Models.Inquiry inquiry)
         {
             if (!ModelState.IsValid)
             {
-                return View(inquiry);
+                return View("Inquire", inquiry);
             }
 
             var inquiryDTO = new DTO.Inquiry()
@@ -422,8 +422,9 @@
         }
 
         [Route("LocalPlan/{referrerUsername?}")]
-        public ViewResult LocalPlan()
+        public ViewResult LocalPlan(string referrerUsername = null)
         {
+            ViewBag.ReferrerUsername = referrerUsername;
             var localItems = new List<SelectListItem>();
             localItems.Add(new SelectListItem()
             {
@@ -453,8 +454,9 @@
         }
 
         [Route("InternationalPlan/{referrerUsername?}")]
-        public ViewResult InternationalPlan()
+        public ViewResult InternationalPlan(string referrerUsername = null)
         {
+            ViewBag.ReferrerUsername = referrerUsername;
             return View();
         }
 
@@ -507,6 +509,10 @@
             return View();
         }
 
-
+        [Route("ReferrerNotFound")]
+        public ViewResult ReferrerNotFound()
+        {
+            return View();
+        }
     }
 }

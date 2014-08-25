@@ -52,11 +52,9 @@
             Mapper.CreateMap<DTO.Announcement, ViewModels.PublicAnnouncement>();
             Mapper.CreateMap<DTO.Announcement, Areas.Admin.ViewModels.EditAnnouncement>();
 
-            Mapper.CreateMap<DTO.User, Models.User>()
-                .ReverseMap();
-
-            Mapper.CreateMap<DTO.Payment, Models.Payment>()
-                .ReverseMap();
+            Mapper.CreateMap<DTO.User, Models.User>().ReverseMap();
+            Mapper.CreateMap<DTO.Payment, Models.Payment>().ReverseMap();
+            Mapper.CreateMap<DTO.PaymentGift, Models.PaymentGift>().ReverseMap();
         }
     }
 }

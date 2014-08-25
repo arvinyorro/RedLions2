@@ -1,5 +1,4 @@
-﻿
-namespace RedLions.Presentation.Web.Components
+﻿namespace RedLions.Presentation.Web.Components
 {
     using RedLions.Application;
     public class StatusCodeHandler

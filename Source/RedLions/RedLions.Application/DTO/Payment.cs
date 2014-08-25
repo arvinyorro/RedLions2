@@ -1,6 +1,7 @@
 ﻿namespace RedLions.Application.DTO
 {
     using System;
+    using System.Collections.Generic;
 
     public class Payment
     {
@@ -24,5 +25,7 @@
         public string ReferrerUnoID { get; set; }
         public bool AdminUnread { get; set; }
         public bool ReferrerUnread { get; set; }
+
+        public ICollection<PaymentGift> GiftCertificates { get; set; }
     }
 }

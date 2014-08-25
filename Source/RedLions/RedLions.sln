@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Web
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedLions.Presentation.Web", "RedLions.Presentation.Web\RedLions.Presentation.Web.csproj", "{04037008-C139-4692-97B4-DAA88BE14C95}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedLions.Presentation.Web.Tests", "RedLions.Presentation.Web.Tests\RedLions.Presentation.Web.Tests.csproj", "{1DA6D1C8-0833-4F0C-BE8E-960F193C8214}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{7144B480-32A7-4A2F-A1E3-156AD6D0E948}"
@@ -32,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedLions.Application", "RedLions.Application\RedLions.Application.csproj", "{B53B415C-66F3-4A05-841F-ED6205398879}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedLions.CrossCutting.Tests", "RedLions.CrossCutting.Tests\RedLions.CrossCutting.Tests.csproj", "{5CC6052A-6C13-421A-BACC-CCBE0CCCDF14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedLions.Presentation.Web", "RedLions.Presentation.Web\RedLions.Presentation.Web.csproj", "{04037008-C139-4692-97B4-DAA88BE14C95}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -67,24 +67,20 @@ Global
 		SccProjectTopLevelParentUniqueName7 = RedLions.sln
 		SccProjectName7 = RedLions.Presentation.Web.Tests
 		SccLocalPath7 = RedLions.Presentation.Web.Tests
-		SccProjectUniqueName8 = RedLions.Presentation.Web\\RedLions.Presentation.Web.csproj
+		SccProjectUniqueName8 = RedLions.CrossCutting.Tests\\RedLions.CrossCutting.Tests.csproj
 		SccProjectTopLevelParentUniqueName8 = RedLions.sln
-		SccProjectName8 = RedLions.Presentation.Web
-		SccLocalPath8 = RedLions.Presentation.Web
-		SccProjectUniqueName9 = RedLions.CrossCutting.Tests\\RedLions.CrossCutting.Tests.csproj
+		SccProjectName8 = RedLions.CrossCutting.Tests
+		SccLocalPath8 = RedLions.CrossCutting.Tests
+		SccProjectUniqueName9 = RedLions.Presentation.Web\\RedLions.Presentation.Web.csproj
 		SccProjectTopLevelParentUniqueName9 = RedLions.sln
-		SccProjectName9 = RedLions.CrossCutting.Tests
-		SccLocalPath9 = RedLions.CrossCutting.Tests
+		SccProjectName9 = RedLions.Presentation.Web
+		SccLocalPath9 = RedLions.Presentation.Web
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{04037008-C139-4692-97B4-DAA88BE14C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04037008-C139-4692-97B4-DAA88BE14C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04037008-C139-4692-97B4-DAA88BE14C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04037008-C139-4692-97B4-DAA88BE14C95}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1DA6D1C8-0833-4F0C-BE8E-960F193C8214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1DA6D1C8-0833-4F0C-BE8E-960F193C8214}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DA6D1C8-0833-4F0C-BE8E-960F193C8214}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -117,20 +113,24 @@ Global
 		{5CC6052A-6C13-421A-BACC-CCBE0CCCDF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CC6052A-6C13-421A-BACC-CCBE0CCCDF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CC6052A-6C13-421A-BACC-CCBE0CCCDF14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04037008-C139-4692-97B4-DAA88BE14C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04037008-C139-4692-97B4-DAA88BE14C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04037008-C139-4692-97B4-DAA88BE14C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04037008-C139-4692-97B4-DAA88BE14C95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{04037008-C139-4692-97B4-DAA88BE14C95} = {7144B480-32A7-4A2F-A1E3-156AD6D0E948}
 		{1DA6D1C8-0833-4F0C-BE8E-960F193C8214} = {FF0ED1C0-A5DF-4563-84F8-7DDABA2CE64F}
-		{97FDAABE-81CE-4CFD-86BC-BEEB0C3ACF41} = {FF0ED1C0-A5DF-4563-84F8-7DDABA2CE64F}
-		{7F271E96-2EA9-4A87-9251-67985B05ED79} = {FF0ED1C0-A5DF-4563-84F8-7DDABA2CE64F}
-		{5CC6052A-6C13-421A-BACC-CCBE0CCCDF14} = {FF0ED1C0-A5DF-4563-84F8-7DDABA2CE64F}
 		{16369677-0248-4860-92EC-B1EB270AD09D} = {1661E0F1-3615-498F-A5A4-1AFE2395236F}
+		{97FDAABE-81CE-4CFD-86BC-BEEB0C3ACF41} = {FF0ED1C0-A5DF-4563-84F8-7DDABA2CE64F}
 		{24AD3531-5C23-4A14-9C43-EC5FD9642829} = {78A4830E-7131-4108-96BC-95EFFAED92B7}
 		{0B6E6B0A-E880-4E04-9E6F-1F5720CEEAFC} = {08C6F16F-C664-4CF8-A85F-2966B2B33A3C}
+		{7F271E96-2EA9-4A87-9251-67985B05ED79} = {FF0ED1C0-A5DF-4563-84F8-7DDABA2CE64F}
 		{B53B415C-66F3-4A05-841F-ED6205398879} = {5061FD72-54B4-4DB2-9B18-503CEBF658B6}
+		{5CC6052A-6C13-421A-BACC-CCBE0CCCDF14} = {FF0ED1C0-A5DF-4563-84F8-7DDABA2CE64F}
+		{04037008-C139-4692-97B4-DAA88BE14C95} = {7144B480-32A7-4A2F-A1E3-156AD6D0E948}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35

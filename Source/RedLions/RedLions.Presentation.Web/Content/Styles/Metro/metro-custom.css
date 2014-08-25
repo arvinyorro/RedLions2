@@ -61,11 +61,15 @@
   border: 0px !important;
 }
 
-.metro dl.horizontal.member-details dt {
+.metro .member-details {
     text-align: left !important;
     font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
     font-weight: normal;
     font-style: normal;
+}
+
+.metro table.member-details {
+    margin-top: 20px;
 }
 
 /**

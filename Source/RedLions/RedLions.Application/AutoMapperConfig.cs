@@ -42,7 +42,8 @@
             Mapper.CreateMap<Business.Announcement, DTO.Announcement>();
             Mapper.CreateMap<Business.User, DTO.User>();
             Mapper.CreateMap<Business.Payment, DTO.Payment>()
-                .ForMember(dest => dest.ReferrerName, opt => opt.MapFrom(src => string.Format("{0} {1}", src.Referrer.FirstName, src.Referrer.LastName))); ;
+                .ForMember(dest => dest.ReferrerName, opt => opt.MapFrom(src => string.Format("{0} {1}", src.Referrer.FirstName, src.Referrer.LastName)));
+            Mapper.CreateMap<Business.PaymentGift, DTO.PaymentGift>();
         }
     }
 }

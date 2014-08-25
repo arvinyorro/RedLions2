@@ -19,7 +19,8 @@
                     @Html.HiddenFor(model => model.Payment.PaymentTypeID)
                     @Html.HiddenFor(model => model.Payment.PayPalID)
                     @Html.HiddenFor(model => model.Payment.ReferrerUserID)
-
+                    @Html.HiddenFor(model => model.Payment.Local)
+                                       
                     <!-- Email -->
                     @Html.LabelFor(model => model.Payment.Email)
                     <div class="input-control text" data-role="input-control">
@@ -110,6 +111,24 @@
                         @Html.HiddenFor(model => model.Payment.PaymentMethod)
                     }
 
+                    @if(Model.Payment.Local)
+                    {
+                        <!-- Gift Certificates -->
+                        @Html.LabelFor(model => model.GiftCertificates)
+                        @Html.ValidationMessageFor(model => model.GiftCertificates)
+                        foreach (var giftCertificate in Model.GiftCertificates)
+                        {
+                            <div class="input-control checkbox">
+                                <label>
+                                    @Html.CheckBox(giftCertificate.ID.ToString(), giftCertificate.Checked)
+                                    <span class="check"></span>
+                                    @Html.DisplayTextFor(modelItem => giftCertificate.Title)
+                                </label>
+                            </div>
+                            <br />
+                        }
+                    }
+                    
                     <!-- Referrer Name -->
                     @Html.LabelFor(model => model.Payment.ReferrerName)
                     <div class="input-control text" data-role="input-control">

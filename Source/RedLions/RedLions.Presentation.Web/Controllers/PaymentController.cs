@@ -1,6 +1,7 @@
 ﻿namespace RedLions.Presentation.Web.Controllers
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using System.Web;
     using System.Web.Mvc;
@@ -60,6 +61,15 @@
                 payment.PayPalID = paypalID;
             }
 
+            if (paypalID >= 25 && paypalID <= 46)
+            {
+                payment.Local = true;
+            }
+            else
+            {
+                payment.Local = false;
+            }
+
             payment.AddReferrer(this.GetReferrer());
             ViewModels.CreatePayment createPaymentViewModel = this.GetCreatePaymentViewModel(payment);
 
@@ -70,6 +80,38 @@
         public ActionResult Confirm(ViewModels.CreatePayment createPayment)
         {
             Models.Payment payment = createPayment.Payment;
+            
+            
+            ICollection<DTO.PaymentGift> paymentGiftDtoList = this.paymentService
+                .GetAllGifts()
+                .ToList();
+
+            var selectedPaymentGiftDtoList = new List<DTO.PaymentGift>();
+
+            if (createPayment.Payment.Local)
+            {
+                foreach(DTO.PaymentGift paymentGiftDto in paymentGiftDtoList)
+                {
+                    bool selected = Request[paymentGiftDto.ID.ToString()].Split(',').FirstOrDefault() == "true" ? true : false;
+
+                    if (selected)
+                    {
+                        selectedPaymentGiftDtoList.Add(paymentGiftDto);
+                    }
+                }
+
+                decimal totalGiftPrice = selectedPaymentGiftDtoList.Select(x => x.Price).Sum();
+                if (totalGiftPrice > 2500)
+                {
+                    ModelState.AddModelError("GiftCertificates", "Total gift certificate price must not exceed 2500");
+                }
+                else if (totalGiftPrice == 0)
+                {
+                    ModelState.AddModelError("GiftCertificates", "Please select at least 1 gift certificate");
+                }
+            }
+
+            
 
             payment.BirthDate = this.ConvertToDate(
                 month: createPayment.BirthMonth,
@@ -85,6 +127,9 @@
             if (ModelState.IsValid)
             {
                 DTO.Payment paymentDto = Mapper.Map<DTO.Payment>(payment);
+                
+                paymentDto.GiftCertificates = selectedPaymentGiftDtoList;
+
                 this.paymentService.Create(paymentDto);
 
                 string viewName = payment.PaymentTypeID == 1 ? "Confirm" : "PayPal";
@@ -96,6 +141,19 @@
             // Fail
             payment.AddReferrer(this.GetReferrer());
             ViewModels.CreatePayment createPaymentViewModel = this.GetCreatePaymentViewModel(payment);
+
+            foreach (DTO.PaymentGift paymentGiftDto in selectedPaymentGiftDtoList)
+            {
+                var giftCertificateModel = createPaymentViewModel
+                    .GiftCertificates
+                    .FirstOrDefault(x => x.ID == paymentGiftDto.ID);
+
+                if (giftCertificateModel != null)
+                {
+                    giftCertificateModel.Checked = true;
+                }
+            }
+
             return View("Register", createPaymentViewModel);
         }
 
@@ -128,9 +186,11 @@
 
         private ViewModels.CreatePayment GetCreatePaymentViewModel(Models.Payment payment = null)
         {
+            IEnumerable<DTO.PaymentGift> paymentGiftDtoList = this.paymentService.GetAllGifts();
             var viewModel = new ViewModels.CreatePayment()
             {
                 Payment = payment,
+                GiftCertificates = Mapper.Map<IEnumerable<Models.PaymentGift>>(paymentGiftDtoList),
                 PaymentMethodList = this.GetPaymentMethodSelectList(payment.PaymentMethod),
                 GenderList = this.GetGenderSelectList(payment.Gender),
                 BirthDayList = this.GetBirthDayList(payment.BirthDate.Day.ToString()),

@@ -35,6 +35,7 @@ namespace RedLions.Infrastructure.Repository
         public DbSet<Announcement> Announcements { get; set; }
         public DbSet<MemberPointsLog> MemberPointsLogs { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<PaymentGift> PaymentGifts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -47,7 +48,8 @@ namespace RedLions.Infrastructure.Repository
             modelBuilder.Configurations.Add(new SubscriptionMap());
             modelBuilder.Configurations.Add(new AnnouncementMap());
             modelBuilder.Configurations.Add(new MemberPointsLogMap());
-            modelBuilder.Configurations.Add(new PaymentMap());            
+            modelBuilder.Configurations.Add(new PaymentMap());
+            modelBuilder.Configurations.Add(new PaymentGiftMap());            
         }
 
         public void ExecuteSqlCommand(string query, params object[] parameters)

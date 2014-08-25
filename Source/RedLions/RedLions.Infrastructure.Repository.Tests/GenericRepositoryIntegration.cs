@@ -83,5 +83,11 @@
         {
             IEnumerable<Payment> payments = this.context.Payments.ToList();
         }
+
+        [TestMethod]
+        public void GetAllPaymentGifts()
+        {
+            IEnumerable<PaymentGift> paymentGifts = this.context.PaymentGifts.ToList();
+        }
     }
 }

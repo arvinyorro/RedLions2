@@ -10,6 +10,9 @@
     public class CreatePayment
     {
         public Payment Payment { get; set; }
+
+        [Display(Name = "You can redeem your 2500GC to the following products below. Please choose any, maximum of 2,500 worth")]
+        public IEnumerable<PaymentGift> GiftCertificates { get; set; }
         public int BirthDay { get; set; }
         public int BirthMonth { get; set; }
         public int BirthYear { get; set; }

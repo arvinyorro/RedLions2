@@ -1,6 +1,7 @@
 ﻿namespace RedLions.Business
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using RedLions.CrossCutting;
 
@@ -23,6 +24,7 @@
             string address,
             DateTime birthDate,
             Member referrer,
+            IEnumerable<PaymentGift> giftCertificates,
             IPaymentRepository paymentRepository,
             string middleName = null)
         {
@@ -42,6 +44,15 @@
             this.PublicID = this.GeneratePublicID(paymentRepository);
             this.AdminUnread = true;
             this.ReferrerUnread = true;
+
+            decimal totalGiftPrice = giftCertificates.Select(x => x.Price).Sum();
+            decimal maxGiftPrice = 2500;
+            if (totalGiftPrice > maxGiftPrice)
+            {
+                throw new Exception(string.Format("Payment gift certificate total price exceeded {0}", maxGiftPrice));
+            }
+
+            this.GiftCertificates = giftCertificates.ToList();
         }
 
         public int ID { get; private set; }
@@ -90,6 +101,7 @@
         public DateTime CreatedDateTime { get; private set; }
         public DateTime BirthDate { get; private set; }
         public virtual Member Referrer { get; private set; }
+        public virtual ICollection<PaymentGift> GiftCertificates { get; private set; }
         public bool AdminUnread { get; set; }
         public bool ReferrerUnread { get; set; }
 

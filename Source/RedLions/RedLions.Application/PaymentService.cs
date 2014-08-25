@@ -122,12 +122,37 @@
             return Mapper.Map<IEnumerable<DTO.Payment>>(payments);
         }
 
+        public IEnumerable<DTO.PaymentGift> GetAllGifts()
+        {
+            var paymentGiftDtoList = new List<DTO.PaymentGift>();
+
+            paymentGiftDtoList.Add(new DTO.PaymentGift() { ID = 1, Title = "GrapeSeed (P600)", Price = 600 });
+            paymentGiftDtoList.Add(new DTO.PaymentGift() { ID = 2, Title = "Virgin Coconut Oil (P700)", Price = 700 });
+            paymentGiftDtoList.Add(new DTO.PaymentGift() { ID = 3, Title = "Glutathione Capsule (P1300)", Price = 1300 });
+            paymentGiftDtoList.Add(new DTO.PaymentGift() { ID = 4, Title = "Fitright (P600)", Price = 600 });
+            paymentGiftDtoList.Add(new DTO.PaymentGift() { ID = 5, Title = "Organic Thanakha (P750)", Price = 750 });
+            paymentGiftDtoList.Add(new DTO.PaymentGift() { ID = 6, Title = "KryptOrganic (P900)", Price = 900 });
+
+            return paymentGiftDtoList;
+        }
+
         public void Create(DTO.Payment paymentDto)
         {
             PaymentType paymentType = paymentDto.PaymentTypeID == 1 ? 
                 PaymentType.Cash : PaymentType.PayPal;
 
             Business.Member referrer = this.memberRepository.GetMemberByID(paymentDto.ReferrerUserID);
+
+            var paymentGifts = new List<Business.PaymentGift>();
+
+            foreach(var paymentGiftDto in paymentDto.GiftCertificates)
+            {
+                var paymentGift = new Business.PaymentGift(
+                    paymentGiftDto.Title, 
+                    paymentGiftDto.Price);
+
+                paymentGifts.Add(paymentGift);
+            }
 
             var payment = new Business.Payment(
                 paymentType: paymentType,
@@ -142,6 +167,7 @@
                 address: paymentDto.Address,
                 birthDate: paymentDto.BirthDate,
                 referrer: referrer,
+                giftCertificates: paymentGifts,
                 paymentRepository: this.paymentRepository);
 
             this.paymentRepository.Create(payment);

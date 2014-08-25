@@ -1,6 +1,7 @@
 ﻿namespace RedLions.Presentation.Web.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using DTO = RedLions.Application.DTO;
@@ -8,6 +9,8 @@
     public class Payment
     {
         public int ID { get; set; }
+
+        public bool Local { get; set; }
 
         [Required]
         public int PaymentTypeID { get; set; }
@@ -76,6 +79,8 @@
         public bool AdminUnread { get; set; }
 
         public bool ReferrerUnread { get; set; }
+
+        public IEnumerable<Models.PaymentGift> GiftCertificates { get; set; }
 
         public void AddReferrer(DTO.Member referrer)
         {

@@ -58,6 +58,7 @@
     <Compile Include="DTO\InquiryChatMessage.cs" />
     <Compile Include="DTO\InquiryChatSession.cs" />
     <Compile Include="DTO\Payment.cs" />
+    <Compile Include="DTO\PaymentGift.cs" />
     <Compile Include="DTO\Subscription.cs" />
     <Compile Include="InquiryChatService.cs" />
     <Compile Include="CountryService.cs" />

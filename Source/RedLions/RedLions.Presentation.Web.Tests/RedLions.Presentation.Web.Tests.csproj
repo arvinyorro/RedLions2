@@ -116,12 +116,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RedLions.Presentation.Web\RedLions.Presentation.Web.csproj">
-      <Project>{04037008-C139-4692-97B4-DAA88BE14C95}</Project>
-      <Name>RedLions.Presentation.Web</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

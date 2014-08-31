@@ -18,6 +18,9 @@
                 .IsRequired()
                 .HasMaxLength(50);
 
+            this.Property(t => t.Quanitity)
+                .IsRequired();
+
             this.Property(t => t.Price)
                 .IsRequired()
                 .HasColumnType("decimal");
@@ -31,6 +34,7 @@
             this.ToTable("payment_gifts");
             this.Property(t => t.ID).HasColumnName("payment_gift_id");
             this.Property(t => t.Title).HasColumnName("title");
+            this.Property(t => t.Quanitity).HasColumnName("quantity");
             this.Property(t => t.Price).HasColumnName("price");
         }
     }

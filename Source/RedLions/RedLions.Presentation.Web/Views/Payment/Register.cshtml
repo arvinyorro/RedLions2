@@ -111,6 +111,7 @@
                         @Html.HiddenFor(model => model.Payment.PaymentMethod)
                     }
 
+                    <!-- Only local packages have certificates -->
                     @if(Model.Payment.Local)
                     {
                         <!-- Gift Certificates -->
@@ -120,8 +121,11 @@
                         {
                             <div class="input-control checkbox">
                                 <label>
-                                    @Html.CheckBox(giftCertificate.ID.ToString(), giftCertificate.Checked)
+                                    @Html.CheckBoxFor(modelItem => giftCertificate.Checked)
                                     <span class="check"></span>
+                                    @Html.TextBox(
+                                        giftCertificate.ID.ToString(),
+                                     giftCertificate.Quantity, new { @class = "payment-quantity", maxlength = "3" })
                                     @Html.DisplayTextFor(modelItem => giftCertificate.Title)
                                 </label>
                             </div>
@@ -150,3 +154,6 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    @Scripts.Render("~/Scripts/Custom/payment.register.js")
+}

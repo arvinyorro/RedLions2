@@ -461,6 +461,7 @@
     <Content Include="Scripts\clamp.min.js" />
     <Content Include="Scripts\Custom\admin.members.index.js" />
     <Content Include="Scripts\Custom\inquiry.index.js" />
+    <Content Include="Scripts\Custom\payment.register.js" />
     <Content Include="Scripts\jquery.signalR-2.0.3.js" />
     <Content Include="Scripts\jquery.signalR-2.0.3.min.js" />
     <Content Include="Scripts\Metro\metro.min.js" />

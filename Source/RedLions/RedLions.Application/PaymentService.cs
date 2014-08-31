@@ -149,6 +149,7 @@
             {
                 var paymentGift = new Business.PaymentGift(
                     paymentGiftDto.Title, 
+                    paymentGiftDto.Quantity,
                     paymentGiftDto.Price);
 
                 paymentGifts.Add(paymentGift);

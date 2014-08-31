@@ -306,3 +306,17 @@ a#youtube
 #menu li a:hover {
     color: #a8a8a8;
 }
+
+
+/**
+* Payment Registration Module
+*
+* 
+*/
+
+.certificates {
+    width: 300px;
+}
+.payment-quantity {
+    width: 50px;
+}

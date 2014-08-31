@@ -92,10 +92,17 @@
             {
                 foreach(DTO.PaymentGift paymentGiftDto in paymentGiftDtoList)
                 {
-                    bool selected = Request[paymentGiftDto.ID.ToString()].Split(',').FirstOrDefault() == "true" ? true : false;
+                    if (Request[paymentGiftDto.ID.ToString()] == null) continue;
 
-                    if (selected)
+                    string inputValue = Request[paymentGiftDto.ID.ToString()];
+
+                    inputValue = string.IsNullOrEmpty(inputValue) ? "0" : inputValue;
+
+                    int quantity = int.Parse(inputValue);
+
+                    while(quantity > 0)
                     {
+                        quantity--;
                         selectedPaymentGiftDtoList.Add(paymentGiftDto);
                     }
                 }
@@ -151,6 +158,7 @@
                 if (giftCertificateModel != null)
                 {
                     giftCertificateModel.Checked = true;
+                    giftCertificateModel.Quantity++;
                 }
             }
 

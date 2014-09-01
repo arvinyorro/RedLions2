@@ -52,7 +52,7 @@
         public string MobileNumber { get; set; }
 
         [Required]
-        [Display(Name = "Address")]
+        [Display(Name = "Complete Address (with zip code)")]
         [StringLength(300)]
         public string Address { get; set; }
 

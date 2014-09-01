@@ -301,6 +301,7 @@
             methods.Add(new SelectListItem() { Value = "JRS Pera Padala", Text = "JRS Pera Padala", });
             methods.Add(new SelectListItem() { Value = "Cebuana Lhuiller", Text = "Cebuana Lhuiller", });
             methods.Add(new SelectListItem() { Value = "Bank-to-Bank Deposit", Text = "Bank-to-Bank Deposit", });
+            methods.Add(new SelectListItem() { Value = "Credit Card", Text = "Card (Credit/Debit Card - will be processed thru Paypal subject for 4.5%", });
             
             return new SelectList(methods, "Value", "Text", selectedValue);
         }

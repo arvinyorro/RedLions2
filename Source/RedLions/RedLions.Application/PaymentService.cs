@@ -132,6 +132,7 @@
             paymentGiftDtoList.Add(new DTO.PaymentGift() { ID = 4, Title = "Fitright (P600)", Price = 600 });
             paymentGiftDtoList.Add(new DTO.PaymentGift() { ID = 5, Title = "Organic Thanakha (P750)", Price = 750 });
             paymentGiftDtoList.Add(new DTO.PaymentGift() { ID = 6, Title = "KryptOrganic (P900)", Price = 900 });
+            paymentGiftDtoList.Add(new DTO.PaymentGift() { ID = 7, Title = "Acai Berry (P2500)", Price = 2500 });
 
             return paymentGiftDtoList;
         }
@@ -251,30 +252,47 @@
                 <body style=\'font-family: Calibri;\'>
                 Hello {full_name}!<br />
                 <br />
-                We received your payment request to sign-up for Local/International Account with Unlimited Network of Opportunities Int'l Corp. or 'UNO' thru RedLions group taking <PRODUCT PACKAGE> as your chosen Distributorship Product Package.<br />
+
+                <p>We are pleased to receive your payment request to sign-up as a <b>New Distributor for Unlimited Network of Opportunities Int'l Corp</b>. or 'UNO' thru RedLions group.</p>
+
                 <br />
-                <p>A.) If you selected to send your payment thru Western Union, Moneygram, Cebuana Lhuiller, ML Kwarta Padala, JRS Pera Padala, LBC Remit Express, or Palawan Express please use the details below:<p>
+                <p><b>You opted to make a payment using cash so, please follow instructions below.</b></p>
+
+                <p><b>A.) If you selected to send your payment thru Western Union, Moneygram, Cebuana Lhuiller, ML Kwarta Padala, JRS Pera Padala, LBC Remit Express, or Palawan Express please send it to:</b></p>
+
                 <ul>
-                    <li>Name of the Recipient: WALTER WARREN TRINIDAD JR.</li>
-                    <li>Address: c/o UNO INT'L CORP., #355 ORTIGAS AVE., BRGY. WACK-WACK, MANDALUYONG CITY 1555, METRO MANILA, PHILIPPINES</li>
+                    <li>Name of the Recipient: SAHID M. MAMONDAS</li>
+                    <li>Address: c/o UNO INT'L CORP. (HEAD OFFICE), 355 ORTIGAS AVE., BRGY. WACK-WACK, MANDALUYONG CITY 1555, METRO MANILA, PHILIPPINES</li>
                     <li>Contact Number: +639082374424</li>
                 </ul>
-                <p>Note: Once you're done please submit the reference number, as shown on your payment receipt, to the following link: </p>
-                http://unoredlions.com/payment/reference/{public_id}
+
+                <p><b>Note To Option A:</b> <span style=\'color:#C10000;\'>Once you're done, <b style=\'text-decoration: underline;\'>please email your payment receipt to <span style=\'color:#000000;\'>payment.unoredlions@gmail.com</span></b> showing the Name of the Sender and Amount being Sent. Then get back to this email and submit the reference number, as shown on your payment receipt, to the following link --></span> <a href=\'http://unoredlions.com/payment/reference/{public_id}\'>http://unoredlions.com/payment/reference/{public_id}</a></p>
+
                 <br />
-                <p>B.) If you selected to send your payment thru a Bank Deposit, please take note of the bank account details below:</p>
+                <p><b>B.) If you selected to send your payment thru a Bank Deposit, please take note of the bank account details below:</b></p>
 
                 <ul>
-                    <li>Bank Name: Banco de Oro</li>
+                    <li>Bank Name: BANCO DE ORO</li>
                     <li>Account Number: 004950388692</li>
-                    <li>Account Name: Walter Warren Trinidad</li>
+                    <li>Account Name: WALTER WARREN TRINIDAD</li>
+                    <li>Account Type: SAVINGS ACCOUNT</li>
                 </ul>
 
-                <p>Note: After depositing your payment please email us your deposit slip with your COMPLETE NAME, UNO ACCOUNT NUMBER, and this Reference Code: <b>{public_id}</b>.</p>
 
-                <br />Thank You! We sincerely appreciate you joining RedLions International.
+                <p><b>Note To Option B:</b> <span style=\'color:#C10000;\'>After depositing your payment to our bank account, <b style=\'text-decoration: underline;\'>please email your deposit slip to <span style=\'color:#000000;\'>payment.unoredlions@gmail.com</span></b> showing your COMPLETE NAME, UNO ACCOUNT NUMBER, and this Reference Code --></span> <b>{public_id}</b></p>
+
+                <p><b style=\'color:#C10000;\'>NOTE:</b> After depositing your payment <b>please email us your deposit slip with your COMPLETE NAME, UNO ACCOUNT NUMBER, and this Reference Code: </b>.</p>
+
+                <br />
+                <p>Thank You! We sincerely appreciate you joining UNO RedLions International.</p>
+                <br /><br />
+                <p>Wishing You The Best,<br />
+                <br />
+                Mr. Walter Warren Trinidad, Jr.<br />
+                <br />
+                President and Grand Upline</p>
                 </body>
-                <html> ";
+                <html>";
 
             body = body.Replace("{full_name}", fullName);
             body = body.Replace("{public_id}", publicID);

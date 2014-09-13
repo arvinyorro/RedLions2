@@ -280,9 +280,6 @@
 
 
                 <p><b>Note To Option B:</b> <span style=\'color:#C10000;\'>After depositing your payment to our bank account, <b style=\'text-decoration: underline;\'>please email your deposit slip to <span style=\'color:#000000;\'>payment.unoredlions@gmail.com</span></b> showing your COMPLETE NAME, UNO ACCOUNT NUMBER, and this Reference Code --></span> <b>{public_id}</b></p>
-
-                <p><b style=\'color:#C10000;\'>NOTE:</b> After depositing your payment <b>please email us your deposit slip with your COMPLETE NAME, UNO ACCOUNT NUMBER, and this Reference Code: </b>.</p>
-
                 <br />
                 <p>Thank You! We sincerely appreciate you joining UNO RedLions International.</p>
                 <br /><br />

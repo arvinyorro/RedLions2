@@ -25,7 +25,7 @@
         public string ReferrerUnoID { get; set; }
         public bool AdminUnread { get; set; }
         public bool ReferrerUnread { get; set; }
-
+        public int PackageID { get; set; }
         public ICollection<PaymentGift> GiftCertificates { get; set; }
     }
 }

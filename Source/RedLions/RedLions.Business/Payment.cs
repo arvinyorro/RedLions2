@@ -24,6 +24,7 @@
             string address,
             DateTime birthDate,
             Member referrer,
+            ProductPackage package,
             IEnumerable<PaymentGift> giftCertificates,
             IPaymentRepository paymentRepository,
             string middleName = null)
@@ -44,6 +45,7 @@
             this.PublicID = this.GeneratePublicID(paymentRepository);
             this.AdminUnread = true;
             this.ReferrerUnread = true;
+            this.Package = package;
 
             decimal totalGiftPrice = giftCertificates.Select(x => x.Price).Sum();
             decimal maxGiftPrice = 2500;
@@ -98,12 +100,20 @@
         public string Address { get; private set; }
         public string PublicID { get; private set; }
         public string ReferenceNumber { get; private set; }
+
         public DateTime CreatedDateTime { get; private set; }
+
         public DateTime BirthDate { get; private set; }
-        public virtual Member Referrer { get; private set; }
-        public virtual ICollection<PaymentGift> GiftCertificates { get; private set; }
+        
         public bool AdminUnread { get; set; }
+
         public bool ReferrerUnread { get; set; }
+
+        public virtual Member Referrer { get; private set; }
+
+        public virtual ProductPackage Package { get; private set; }
+
+        public virtual ICollection<PaymentGift> GiftCertificates { get; private set; }
 
         public void Confirm(string referenceNumber)
         {

@@ -89,5 +89,11 @@
         {
             IEnumerable<PaymentGift> paymentGifts = this.context.PaymentGifts.ToList();
         }
+
+        [TestMethod]
+        public void GetAllProductPackages()
+        {
+            IEnumerable<ProductPackage> productPackages = this.context.ProductPackages.ToList();
+        }
     }
 }

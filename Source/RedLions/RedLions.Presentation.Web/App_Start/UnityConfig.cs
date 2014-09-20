@@ -53,6 +53,7 @@ namespace RedLions.Presentation.Web
             container.RegisterType<ISubscriptionRepository, SubscriptionRepository>();
             container.RegisterType<IAnnouncementRepository, AnnouncementRepository>();
             container.RegisterType<IPaymentRepository, PaymentRepository>();
+            container.RegisterType<IProductPackageRepository, ProductPackageRepository>();
             container.RegisterType<IMailClient, MailClient>();
             container.RegisterType<MemberService, MemberService>();
             container.RegisterType<UserService, UserService>();

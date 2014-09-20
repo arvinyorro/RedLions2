@@ -14,17 +14,20 @@
         private IUnitOfWork unitOfWork;
         private IPaymentRepository paymentRepository;
         private IMemberRepository memberRepository;
+        private IProductPackageRepository productPackageRepository;
         private IMailClient mailClient;
 
         public PaymentService(
             IUnitOfWork unitOfWork,
             IPaymentRepository paymentRepository,
             IMemberRepository memberRepository,
+            IProductPackageRepository productPackageRepository,
             IMailClient mailClient)
         {
             this.unitOfWork = unitOfWork;
             this.paymentRepository = paymentRepository;
             this.memberRepository = memberRepository;
+            this.productPackageRepository = productPackageRepository;
             this.mailClient = mailClient;
         }
 
@@ -156,6 +159,13 @@
                 paymentGifts.Add(paymentGift);
             }
 
+            Business.ProductPackage productPackage = this.productPackageRepository.GetByID(paymentDto.PackageID);
+
+            if (productPackage == null)
+            {
+                throw new Exception(string.Format("Product package not found. Package ID: ", paymentDto.PackageID));
+            }
+            
             var payment = new Business.Payment(
                 paymentType: paymentType,
                 email: paymentDto.Email,
@@ -169,6 +179,7 @@
                 address: paymentDto.Address,
                 birthDate: paymentDto.BirthDate,
                 referrer: referrer,
+                package: productPackage,
                 giftCertificates: paymentGifts,
                 paymentRepository: this.paymentRepository);
 

@@ -87,6 +87,10 @@
             this.HasMany(t => t.GiftCertificates)
                 .WithRequired(t => t.Payment);
 
+            this.HasRequired(t => t.Package)
+                .WithMany(t => t.Payments)
+                .Map(m => m.MapKey("product_package_id"));
+
             // Column and Table Mappings
             this.ToTable("payments");
             this.Property(t => t.ID).HasColumnName("payment_id");

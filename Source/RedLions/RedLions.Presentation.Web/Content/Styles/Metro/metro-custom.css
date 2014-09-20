@@ -70,6 +70,12 @@
 
 .metro table.member-details {
     margin-top: 20px;
+    width: 100%;
+}
+
+.metro td.details-label {
+    width: 200px;
+    vertical-align: top;
 }
 
 /**

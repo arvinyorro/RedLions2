@@ -12,6 +12,9 @@
         public int ReferralCount { get; set; }
         public string ReferralCode { get; set; }
         public string CellphoneNumber { get; set; }
+        public string HomeAddress { get; set; }
+        public string DeliveryAddress { get; set; }
+        public string Nationality { get; set; }
         public string UnoID { get; set; }
         public string ReferrerUsername { get; set; }
         public DateTime SubscriptionExpirationDateTime { get; set; }
@@ -43,6 +46,9 @@
                 ReferralCount = member.Referrals.Count,
                 ReferralCode = member.ReferralCode,         
                 CellphoneNumber = member.CellphoneNumber,
+                DeliveryAddress = member.DeliveryAddress,
+                HomeAddress = member.HomeAddress,
+                Nationality = member.Nationality,
                 UnoID = member.UnoID,
                 SubscriptionExpirationDateTime = member.SubscriptionExpirationDateTime,
                 Country = member.Country.ToDTO(),

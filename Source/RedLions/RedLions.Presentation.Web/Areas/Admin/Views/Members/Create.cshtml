@@ -73,6 +73,33 @@
             @Html.ValidationMessageFor(model => model.Country.ID)
         </div>
 
+        <!-- HomeAddress -->
+        <div class="editor-field">
+            @Html.LabelFor(model => model.HomeAddress)
+            <div class="input-control textarea" data-role="input-control">
+                @Html.TextAreaFor(model => model.HomeAddress)
+            </div>
+            @Html.ValidationMessageFor(model => model.HomeAddress)
+        </div>
+
+        <!-- DeliveryAddress -->
+        <div class="editor-field">
+            @Html.LabelFor(model => model.DeliveryAddress)
+            <div class="input-control textarea" data-role="input-control">
+                @Html.TextAreaFor(model => model.DeliveryAddress)
+            </div>
+            @Html.ValidationMessageFor(model => model.DeliveryAddress)
+        </div>
+
+        <!-- Nationality -->
+        <div class="editor-field">
+            @Html.LabelFor(model => model.Nationality)
+            <div class="input-control text" data-role="input-control">
+                @Html.TextBoxFor(model => model.Nationality)
+            </div>
+            @Html.ValidationMessageFor(model => model.Nationality)
+        </div>
+
         <!-- Referrer -->
         @Html.LabelFor(model => model.ReferrerUsername)
         <div class="input-control text" data-role="input-control">
@@ -92,5 +119,15 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+    var modelIds = {
+        username : "#" + '@Html.IdFor(model => model.Username)',
+        firstname: "#" + '@Html.IdFor(model => model.FirstName)',
+        lastname: "#" + '@Html.IdFor(model => model.LastName)',
+    };
+
+    </script>
+
+    @Scripts.Render("~/Scripts/Custom/admin.members.create.js")
 }

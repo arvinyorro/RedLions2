@@ -88,7 +88,7 @@
                     @Html.ValidationMessageFor(model => model.Payment.MobileNumber)
 
                     <!-- Address -->
-                    @Html.LabelFor(model => model.Payment.Address)
+                    <label for="Payment_Address">Complete Address (with zip code)</label>
                     <div class="input-control text" data-role="input-control">
                         @Html.TextBoxFor(model => model.Payment.Address)
                     </div>

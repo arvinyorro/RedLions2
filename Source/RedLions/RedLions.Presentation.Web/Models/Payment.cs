@@ -52,7 +52,7 @@
         public string MobileNumber { get; set; }
 
         [Required]
-        [Display(Name = "Complete Address (with zip code)")]
+        [Display(Name = "Complete Address")]
         [StringLength(300)]
         public string Address { get; set; }
 
@@ -62,6 +62,7 @@
 
         public string ReferenceNumber { get; set; }
 
+        [Display(Name = "Payment Request Made (Date & Time)")]
         public DateTime CreatedDateTime { get; set; }
 
         [Display(Name = "Birthday")]

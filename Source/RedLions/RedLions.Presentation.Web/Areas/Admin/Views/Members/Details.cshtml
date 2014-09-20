@@ -31,29 +31,63 @@
 
         <strong>Details</strong>
 
-        <dl class="horizontal member-details">
-            <!-- Full Name -->
-            <dt>@Html.DisplayNameFor(model => model.FullName)</dt>
-            <dd>@Html.DisplayFor(model => model.FullName)</dd>
-            <!-- Username -->
-            <dt>@Html.DisplayNameFor(model => model.Username)</dt>
-            <dd>@Html.DisplayFor(model => model.Username)</dd>
-            <!-- UNO ID -->
-            <dt>@Html.DisplayNameFor(model => model.UnoID)</dt>
-            <dd>@Html.DisplayFor(model => model.UnoID)</dd>
-            <!-- Email Address -->
-            <dt>@Html.DisplayNameFor(model => model.Email)</dt>
-            <dd>@Html.DisplayFor(model => model.Email)</dd>
-            <!-- Cellphone -->
-            <dt>@Html.DisplayNameFor(model => model.CellphoneNumber)</dt>
-            <dd>@Html.DisplayFor(model => model.CellphoneNumber)</dd>
-            <!-- Country -->
-            <dt>@Html.DisplayNameFor(model => model.Country)</dt>
-            <dd>@Html.DisplayFor(model => model.Country.Title)</dd>
-            <!-- Referrer -->
-            <dt>@Html.DisplayNameFor(model => model.ReferrerUsername)</dt>
-            <dd>@Html.DisplayFor(model => model.ReferrerUsername)</dd>
-        </dl>
+        <table class="horizontal member-details">
+            <tr>
+                <!-- Full Name -->
+                <td class="details-label">@Html.DisplayNameFor(model => model.FullName)</td>
+                <td>@Html.DisplayFor(model => model.FullName)</td>
+            </tr>
+            <tr>
+                <!-- Username -->
+                <td class="details-label">@Html.DisplayNameFor(model => model.Username)</td>
+                <td>@Html.DisplayFor(model => model.Username)</td>
+            </tr>
+            <tr>
+                <!-- UNO ID -->
+                <td class="details-label">@Html.DisplayNameFor(model => model.UnoID)</td>
+                <td>@Html.DisplayFor(model => model.UnoID)</td>
+            </tr>
+            <tr>
+                <!-- Email -->
+                <td class="details-label">@Html.DisplayNameFor(model => model.Email)</td>
+                <td>@Html.DisplayFor(model => model.Email)</td>
+            </tr>
+            <tr>
+                <!-- Cellphone Number -->
+                <td class="details-label">@Html.DisplayNameFor(model => model.CellphoneNumber)</td>
+                <td>@Html.DisplayFor(model => model.CellphoneNumber)</td>
+            </tr>
+            <tr>
+                <!-- Delivery -->
+                <td class="details-label">@Html.DisplayNameFor(model => model.DeliveryAddress)</td>
+                <td>@Html.DisplayFor(model => model.DeliveryAddress)</td>
+            </tr>
+            <tr>
+                <!-- Home Address -->
+                <td class="details-label">@Html.DisplayNameFor(model => model.HomeAddress)</td>
+                <td>@Html.DisplayFor(model => model.HomeAddress)</td>
+            </tr>
+            <tr>
+                <!-- Nationality -->
+                <td class="details-label">@Html.DisplayNameFor(model => model.Nationality)</td>
+                <td>@Html.DisplayFor(model => model.Nationality)</td>
+            </tr>
+            <tr>
+                <!-- Country -->
+                <td class="details-label">@Html.DisplayNameFor(model => model.Country)</td>
+                <td>@Html.DisplayFor(model => model.Country.Title)</td>
+            </tr>
+            <tr>
+                <!-- ReferrerUsername -->
+                <td class="details-label">@Html.DisplayNameFor(model => model.ReferrerUsername)</td>
+                <td>@Html.DisplayFor(model => model.ReferrerUsername)</td>
+            </tr>
+            <tr>
+                <!-- Referral Count -->
+                <td class="details-label">@Html.DisplayNameFor(model => model.ReferralCount)</td>
+                <td>@Html.DisplayFor(model => model.ReferralCount)</td>
+            </tr>
+        </table>
 
         <p><small>@Html.ActionLink("Edit Account Details", "Edit", new { id = Model.ID })</small></p>
 
@@ -75,17 +109,23 @@
 
             <p><strong>Subscription Plan</strong></p>
 
-            <dl class="horizontal member-details">
-                <!-- Subscription -->
-                <dt>@Html.DisplayNameFor(model => model.Subscription)</dt>
-                <dd>@Html.DisplayFor(model => model.Subscription.Title)</dd>
-                <!-- Subscription -->
-                <dt>@Html.DisplayNameFor(model => model.SubscriptionStatus)</dt>
-                <dd>@Html.DisplayFor(model => model.SubscriptionStatus)</dd>
-                <!-- Expiration -->
-                <dt>@Html.DisplayNameFor(model => model.SubscriptionExpirationDateTime)</dt>
-                <dd>@Html.DisplayFor(model => model.SubscriptionExpirationDateTime)</dd>
-            </dl>
+            <table class="horizontal member-details">
+                <tr>
+                    <!-- Subscription -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.Subscription)</td>
+                    <td>@Html.DisplayFor(model => model.Subscription.Title)</td>
+                </tr>
+                <tr>
+                    <!-- Subscription -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.SubscriptionStatus)</td>
+                    <td>@Html.DisplayFor(model => model.SubscriptionStatus)</td>
+                </tr>
+                <tr>
+                    <!-- Expiration -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.SubscriptionExpirationDateTime)</td>
+                    <td>@Html.DisplayFor(model => model.SubscriptionExpirationDateTime)</td>
+                </tr>
+            </table>
 
             <p><small>@Html.ActionLink("Update subscription plan", "Subscription", new { id = Model.ID })</small></p>
         </div>
@@ -97,12 +137,13 @@
 
             <p><strong>User Points</strong></p>
 
-            <dl class="horizontal member-details">
-                <!-- Points -->
-                <dt>@Html.DisplayNameFor(model => model.Points)</dt>
-                <dd>@Html.DisplayFor(model => model.Points)</dd>
-            </dl>
-
+            <table class="horizontal member-details">
+                <tr>
+                    <!-- Points -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.Points)</td>
+                    <td>@Html.DisplayFor(model => model.Points)</td>
+                </tr>
+            </table>
             <p><small>@Html.ActionLink("Update user points", "Points", new { id = Model.ID })</small></p>
         </div>
     </div>
@@ -113,12 +154,13 @@
 
             <p><strong>Activation Status</strong></p>
 
-            <dl class="horizontal member-details">
-                <!-- Points -->
-                <dt>@Html.DisplayNameFor(model => model.Deactivated)</dt>
-                <dd>@(ViewBag.Deactivated == true ? "No" : "Yes")</dd>
-            </dl>
-
+            <table class="horizontal member-details">
+                <tr>
+                    <!-- Points -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.Deactivated)</td>
+                    <td>@(ViewBag.Deactivated == true ? "No" : "Yes")</td>
+                </tr>
+            </table>
             <p><small>@Html.ActionLink("Deactivate/Activate account", "Activation", new { id = Model.ID })</small></p>
         </div>
     </div>

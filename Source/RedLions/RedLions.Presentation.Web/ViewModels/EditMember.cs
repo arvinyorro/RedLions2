@@ -21,6 +21,9 @@
             this.ReferrerUsername = memberDTO.ReferrerUsername;
             this.CellphoneNumber = memberDTO.CellphoneNumber;
             this.UnoID = memberDTO.UnoID;
+            this.DeliveryAddress = memberDTO.DeliveryAddress;
+            this.HomeAddress = memberDTO.HomeAddress;
+            this.Nationality = memberDTO.Nationality;
             this.Country = new Models.Country(memberDTO.Country);
             this.CountrySelectListItems = countryDropDownItems.ToSelectListItems(memberDTO.Country.ID);
         }
@@ -52,9 +55,21 @@
         public string LastName { get; set; }
 
         [Required]
-        [Display(Name = "Contact Number")]
+        [Display(Name = "Contact Number (Complete with country and area code)")]
         [StringLength(20, MinimumLength = 11, ErrorMessage = "Invalid Cellphone Number")]
         public string CellphoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Home Address")]
+        public string HomeAddress { get; set; }
+
+        [Required]
+        [Display(Name = "Delivery Address")]
+        public string DeliveryAddress { get; set; }
+
+        [Required]
+        [Display(Name = "Nationality")]
+        public string Nationality { get; set; }
 
         [Required]
         [Display(Name = "UNO ID Number")]

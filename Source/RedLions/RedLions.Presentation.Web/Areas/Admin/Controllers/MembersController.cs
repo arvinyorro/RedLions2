@@ -186,6 +186,9 @@
                 ReferrerUsername = member.ReferrerUsername,
                 CellphoneNumber = member.CellphoneNumber,
                 UnoID = member.UnoID,
+                DeliveryAddress = member.DeliveryAddress,
+                HomeAddress = member.HomeAddress,
+                Nationality = member.Nationality,
                 Country = new DTO.Country() { ID = member.Country.ID },
             };
 
@@ -202,7 +205,7 @@
                 return View(member);
             }
 
-            return RedirectToAction("Details");
+            return RedirectToAction("Details", new { id = memberDTO.ID });
         }
 
         public ViewResult ResetPassword(int id)

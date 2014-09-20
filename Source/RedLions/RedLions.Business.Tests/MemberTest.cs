@@ -20,6 +20,9 @@
                email: "yorro.a@gmail.com",
                personalReferralCode: "E0G9YK1KZ3RYBSYB2XXX",
                cellphoneNumber: "09276865083",
+               homeAddress: "#20 Road 1 Balubaran Valenzuela City Philippines",
+               deliveryAddress: "#20 Road 1 Balubaran Valenzuela City Philippines",
+               nationality: "Filipino",
                subscription: subscription,
                country: null);
 
@@ -35,6 +38,9 @@
             string expectedFirstName = "firstname";
             string expectedLastName = "lastname";
             string expectedEmail = "yorro.a@gmail.com";
+            string expectedDeliveryAddress = "#20 Road 1 Balubaran Valenzuela City Philippines";
+            string expectedHomeAddress = "#20 Road 1 Balubaran Valenzuela City Philippines";
+            string expectedNationality = "Filipino";
             string expectedPassword = Encryption.Encrypt("redlions");
             DateTime expectedRegisteredDateTime = DateTime.Now;
             Role expectedUserRole = Role.Member;
@@ -50,6 +56,9 @@
                 email: expectedEmail,
                 personalReferralCode: "E0G9YK1KZ3RYBSYB2XXX", 
                 cellphoneNumber: "09276865083",
+                homeAddress: expectedHomeAddress,
+                deliveryAddress: expectedDeliveryAddress,
+                nationality: expectedNationality,
                 subscription: subscription,
                 country: null);
 
@@ -61,6 +70,9 @@
             Assert.AreEqual(expectedUserRole, member.Role, "Role should be {0}", expectedUserRole);
             Assert.AreEqual(expectedRegisteredDateTime.Date, member.RegisteredDateTime.Date, "Registered Date should be {0}", expectedRegisteredDateTime.Date);
             Assert.AreEqual(expectedDeactivated, member.Deactivated, "Deactivated should be {0}", expectedDeactivated);
+            Assert.AreEqual(expectedDeliveryAddress, member.DeliveryAddress, "Delivery address should be {0}", expectedDeliveryAddress);
+            Assert.AreEqual(expectedHomeAddress, member.HomeAddress, "Home address should be {0}", expectedHomeAddress);
+            Assert.AreEqual(expectedNationality, member.Nationality, "Nationality should be {0}", expectedNationality);
         }
 
         [TestMethod]

@@ -185,6 +185,9 @@
                 email: memberDTO.Email,
                 personalReferralCode: this.GenerateReferralCode(),
                 cellphoneNumber: memberDTO.CellphoneNumber,
+                homeAddress: memberDTO.HomeAddress,
+                deliveryAddress: memberDTO.DeliveryAddress,
+                nationality: memberDTO.Nationality,
                 subscription: subscription,
                 country: country,
                 unoID: memberDTO.UnoID);
@@ -219,6 +222,9 @@
             member.Email = memberDTO.Email;
             member.CellphoneNumber = memberDTO.CellphoneNumber;
             member.UnoID = memberDTO.UnoID;
+            member.DeliveryAddress = memberDTO.DeliveryAddress;
+            member.HomeAddress = memberDTO.HomeAddress;
+            member.Nationality = memberDTO.Nationality;
 
             if (member.Country.ID != memberDTO.Country.ID)
             {

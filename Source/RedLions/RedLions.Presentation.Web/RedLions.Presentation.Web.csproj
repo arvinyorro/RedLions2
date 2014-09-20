@@ -459,6 +459,7 @@
     <Content Include="Areas\Admin\Views\Members\Edit.cshtml" />
     <Content Include="Scripts\clamp.js" />
     <Content Include="Scripts\clamp.min.js" />
+    <Content Include="Scripts\Custom\admin.members.create.js" />
     <Content Include="Scripts\Custom\admin.members.index.js" />
     <Content Include="Scripts\Custom\inquiry.index.js" />
     <Content Include="Scripts\Custom\payment.register.js" />
@@ -626,7 +627,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Payment\" />
     <Folder Include="Areas\Member\Controllers\" />
     <Folder Include="Areas\Member\Models\" />
     <Folder Include="Areas\Member\Views\Shared\" />

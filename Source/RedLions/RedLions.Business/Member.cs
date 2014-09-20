@@ -15,6 +15,9 @@
             string email,
             string personalReferralCode,
             string cellphoneNumber,
+            string homeAddress,
+            string deliveryAddress,
+            string nationality,
             Subscription subscription,
             Country country,
             Inquiry inquiry = null)
@@ -30,6 +33,9 @@
             this.ReferralCode = personalReferralCode;
             this.CellphoneNumber = cellphoneNumber;
             this.Country = country;
+            this.HomeAddress = homeAddress;
+            this.DeliveryAddress = deliveryAddress;
+            this.Nationality = nationality;
             this.UnoID = unoID;
             this.Subscription = subscription;
             this.SubscriptionExpirationDateTime = SystemTime.Now.AddMonths(subscription.Months);
@@ -46,6 +52,12 @@
         public string ReferralCode { get; private set; }
 
         public string CellphoneNumber { get; set; }
+
+        public string HomeAddress { get; set; }
+
+        public string DeliveryAddress { get; set; }
+
+        public string Nationality { get; set; }
 
         public string UnoID { get; set; }
 

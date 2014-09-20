@@ -20,6 +20,18 @@
                 .IsRequired()
                 .HasMaxLength(20);
 
+            this.Property(t => t.DeliveryAddress)
+                .IsRequired()
+                .HasMaxLength(300);
+
+            this.Property(t => t.HomeAddress)
+                .IsRequired()
+                .HasMaxLength(300);
+
+            this.Property(t => t.Nationality)
+                .IsRequired()
+                .HasMaxLength(60);
+
             this.Property(t => t.UnoID)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -62,6 +74,9 @@
             this.Property(t => t.MemberID).HasColumnName("member_id");
             this.Property(t => t.ReferralCode).HasColumnName("referral_code");
             this.Property(t => t.CellphoneNumber).HasColumnName("cellphone_number");
+            this.Property(t => t.DeliveryAddress).HasColumnName("delivery_address");
+            this.Property(t => t.HomeAddress).HasColumnName("home_address");
+            this.Property(t => t.Nationality).HasColumnName("nationality");
             this.Property(t => t.UnoID).HasColumnName("uno_id");
             this.Property(t => t.Points).HasColumnName("points");
             this.Property(t => t.Deactivated).HasColumnName("is_deactivated");

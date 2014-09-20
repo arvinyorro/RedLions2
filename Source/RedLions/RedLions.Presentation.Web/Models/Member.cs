@@ -27,6 +27,9 @@
             this.ReferralLink = string.Format("{0}/{1}",
                 request.Url.GetLeftPart(UriPartial.Authority), memberDTO.Username);
             this.CellphoneNumber = memberDTO.CellphoneNumber;
+            this.DeliveryAddress = memberDTO.DeliveryAddress;
+            this.HomeAddress = memberDTO.HomeAddress;
+            this.Nationality = memberDTO.Nationality;
             this.UnoID = memberDTO.UnoID;
             this.SubscriptionExpirationDateTime = memberDTO.SubscriptionExpirationDateTime;
             this.Subscription = new Models.Subscription(memberDTO.Subscription);
@@ -45,7 +48,7 @@
 
         public int? InquiryID { get; set; }
 
-        [Display(Name="Name")]
+        [Display(Name="Complete Name")]
         public string FullName { get; set; }
 
         [Display(Name = "Referral Code")]
@@ -64,6 +67,18 @@
         [Display(Name = "Contact Number")]
         [StringLength(20, MinimumLength = 11, ErrorMessage = "Invalid Cellphone Length.")]
         public string CellphoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Home Address")]
+        public string HomeAddress { get; set; }
+
+        [Required]
+        [Display(Name = "Delivery Address")]
+        public string DeliveryAddress { get; set; }
+
+        [Required]
+        [Display(Name = "Nationality")]
+        public string Nationality { get; set; }
 
         [Required]
         [Display(Name = "Uno Id")]

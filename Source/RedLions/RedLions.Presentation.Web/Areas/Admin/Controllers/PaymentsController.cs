@@ -9,6 +9,7 @@
     using PagedList;
     using AutoMapper;
 
+    [Authorize(Roles = "Admin")]
     public class PaymentsController : Controller
     {
         private PaymentService paymentService;

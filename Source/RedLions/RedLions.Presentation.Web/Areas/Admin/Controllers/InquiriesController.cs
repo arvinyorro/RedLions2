@@ -8,6 +8,7 @@
     using RedLions.Application;
     using PagedList;
 
+    [Authorize(Roles = "Admin")]
     public class InquiriesController : Controller
     {
         private InquiryService inquiryService;

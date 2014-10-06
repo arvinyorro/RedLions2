@@ -25,51 +25,88 @@
 
         <div class="panel-content">
 
-            <strong>Details</strong>
+            <strong>User Details</strong>
 
             <table class="horizontal member-details">
                 <tr><!-- First Name -->
-                <td>@Html.DisplayNameFor(model => model.FirstName)</td>
+                <td class="details-label">@Html.DisplayNameFor(model => model.FirstName)</td>
                 <td>@Html.DisplayFor(model => model.FirstName)</td>
-                </tr><tr><!-- Mitdle Name -->
-                <td>@Html.DisplayNameFor(model => model.MiddleName)</td>
-                <td>@Html.DisplayFor(model => model.MiddleName)</td>
-                </tr><tr><!-- LastName -->
-                <td>@Html.DisplayNameFor(model => model.LastName)</td>
-                <td>@Html.DisplayFor(model => model.LastName)</td>
-                </tr><tr><!-- Email -->
-                <td>@Html.DisplayNameFor(model => model.Email)</td>
-                <td>@Html.DisplayFor(model => model.Email)</td>
-                </tr><tr><!-- Age -->
-                <td>@Html.DisplayNameFor(model => model.Age)</td>
-                <td>@Html.DisplayFor(model => model.Age)</td>
-                </tr><tr><!-- Gender -->
-                <td>@Html.DisplayNameFor(model => model.Gender)</td>
-                <td>@Html.DisplayFor(model => model.Gender)</td>
-                </tr><tr><!-- Birthday -->
-                <td>@Html.DisplayNameFor(model => model.BirthDate)</td>
-                <td>@Html.DisplayFor(model => model.BirthDate)</td>
-                </tr><tr><!-- Atdress -->
-                <td>@Html.DisplayNameFor(model => model.Address)</td>
-                <td>@Html.DisplayFor(model => model.Address)</td>
-                </tr><tr><!-- Mobile -->
-                <td>@Html.DisplayNameFor(model => model.MobileNumber)</td>
-                <td>@Html.DisplayFor(model => model.MobileNumber)</td>
-                </tr><tr><!-- Date -->
-                <td>@Html.DisplayNameFor(model => model.CreatedDateTime)</td>
-                <td>@Html.DisplayFor(model => model.CreatedDateTime)</td>
-                </tr><tr><!-- Referrer Name -->
-                <td>@Html.DisplayNameFor(model => model.ReferrerName)</td>
-                <td>@Html.DisplayFor(model => model.ReferrerName)</td>
-                </tr><tr><!-- Referrer Uno ID -->
-                <td>@Html.DisplayNameFor(model => model.ReferrerUnoID)</td>
-                <td>@Html.DisplayFor(model => model.ReferrerUnoID)</td>
-                </tr><tr><!-- Payment Method -->
-                <td>Payment Option Selected</td>
-                <td>@Html.DisplayFor(model => model.PaymentMethod)</td>
-                </tr><tr><!-- Reference Number -->
-                <td>@Html.DisplayNameFor(model => model.ReferenceNumber)</td>
-                <td>@Html.DisplayFor(model => model.ReferenceNumber)</td>
+                </tr>
+                <tr><!-- Mitdle Name -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.MiddleName)</td>
+                    <td>@Html.DisplayFor(model => model.MiddleName)</td>
+                </tr>
+                <tr><!-- LastName -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.LastName)</td>
+                    <td>@Html.DisplayFor(model => model.LastName)</td>
+                </tr>
+                <tr><!-- Email -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.Email)</td>
+                    <td>@Html.DisplayFor(model => model.Email)</td>
+                </tr>
+                <tr><!-- Age -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.Age)</td>
+                    <td>@Html.DisplayFor(model => model.Age)</td>
+                </tr>
+                <tr><!-- Gender -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.Gender)</td>
+                    <td>@Html.DisplayFor(model => model.Gender)</td>
+                </tr>
+                <tr><!-- Birthday -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.BirthDate)</td>
+                    <td>@Html.DisplayFor(model => model.BirthDate)</td>
+                </tr>
+                <tr><!-- Atdress -->
+                    <td class ="details-label">@Html.DisplayNameFor(model => model.Address)</td>
+                    <td>@Html.DisplayFor(model => model.Address)</td>
+                </tr>
+                <tr><!-- Mobile -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.MobileNumber)</td>
+                    <td>@Html.DisplayFor(model => model.MobileNumber)</td>
+                </tr>
+                
+                <tr><!-- Referrer Name -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.ReferrerName)</td>
+                    <td>@Html.DisplayFor(model => model.ReferrerName)</td>
+                </tr>
+                <tr><!-- Referrer Uno ID -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.ReferrerUnoID)</td>
+                    <td>@Html.DisplayFor(model => model.ReferrerUnoID)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Gift Certificates -->
+    <div class="panel transparent span7" style="margin-top:20px;">
+        <div class="panel-content member-details">
+
+            <strong>Payment Details</strong>
+            <table class="horizontal member-details" style="width: 650px;">
+                <tr>
+                    <!-- Date -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.CreatedDateTime)</td>
+                    <td>@Html.DisplayFor(model => model.CreatedDateTime)</td>
+                </tr>
+                <tr>
+                    <!-- Payment Method -->
+                    <td class="details-label">Payment Option Selected</td>
+                    <td>@Html.DisplayFor(model => model.PaymentMethod)</td>
+                </tr>
+                <tr>
+                    <!-- Selected Product Package -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.PackageTitle)</td>
+                    <td>@Html.DisplayFor(model => model.PackageTitle)</td>
+                </tr>
+                <tr>
+                    <!-- Reference Number -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.PublicID)</td>
+                    <td>@Html.DisplayFor(model => model.PublicID)</td>
+                </tr>
+                <tr>
+                    <!-- Reference Number -->
+                    <td class="details-label">@Html.DisplayNameFor(model => model.ReferenceNumber)</td>
+                    <td>@Html.DisplayFor(model => model.ReferenceNumber)</td>
                 </tr>
             </table>
         </div>

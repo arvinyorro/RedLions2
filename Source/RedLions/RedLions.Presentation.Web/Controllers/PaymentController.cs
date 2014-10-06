@@ -52,6 +52,7 @@
             var payment = new Models.Payment()
             {
                 PaymentTypeID = typeID,
+                PackageID = paypalID,
             };
 
             // If PayPal

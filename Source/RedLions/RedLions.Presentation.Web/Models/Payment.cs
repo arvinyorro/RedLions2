@@ -58,11 +58,13 @@
 
         public int PayPalID { get; set; }
 
+        [Display(Name = "Tracking Number")]
         public string PublicID { get; set; }
 
+        [Display(Name = "Reference Code")]
         public string ReferenceNumber { get; set; }
 
-        [Display(Name = "Payment Request Made (Date & Time)")]
+        [Display(Name = "Request Made (Date & Time)")]
         public DateTime CreatedDateTime { get; set; }
 
         [Display(Name = "Birthday")]
@@ -80,6 +82,12 @@
         public bool AdminUnread { get; set; }
 
         public bool ReferrerUnread { get; set; }
+
+        [Required]
+        public int PackageID { get; set; }
+
+        [Display(Name = "Selected Product Package")]
+        public string PackageTitle { get; set; }
 
         public IEnumerable<Models.PaymentGift> GiftCertificates { get; set; }
 
